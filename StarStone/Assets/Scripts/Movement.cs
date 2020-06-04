@@ -38,16 +38,16 @@ public class Movement : MonoBehaviour
             transform.position -= transform.TransformDirection(Vector3.left) * Time.deltaTime * m_movementSpeed;
         }
         float mouseX = Input.GetAxis("Mouse X") * m_mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * m_mouseSensitivity * Time.deltaTime;
+        //float mouseY = Input.GetAxis("Mouse Y") * m_mouseSensitivity * Time.deltaTime;
         //xRotation -= mouseY;
         //xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         //transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         Player.Rotate(Vector3.up * mouseX);
-        Player.Rotate(Vector3.forward * -mouseY);
+        //Player.Rotate(Vector3.forward * -mouseY);
 
         if (Input.GetKey(KeyCode.Space))
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.up * 10);
+            GetComponent<Rigidbody>().AddForce(Vector3.up * 20);
         }
     }
 }
