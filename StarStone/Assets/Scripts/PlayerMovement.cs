@@ -24,10 +24,39 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_moveInputX = Input.GetAxis("Horizontal");
-        m_moveInputZ = Input.GetAxis("Vertical");
+        if (Input.GetKey("a"))
+        {
+            transform.position += transform.TransformDirection(Vector3.left) * Time.deltaTime * m_movementSpeed;
+        }
+        if (Input.GetKey("w") && Input.GetKey(KeyCode.LeftShift))
+        {
+            transform.position += transform.TransformDirection(Vector3.forward) * Time.deltaTime * m_movementSpeed * 2f;
+        }
+        if (Input.GetKey("w") && !Input.GetKey(KeyCode.LeftShift))
+        {
+            transform.position += transform.TransformDirection(Vector3.forward) * Time.deltaTime * m_movementSpeed;
+        }
+        if (Input.GetKey("s"))
+        {
+            transform.position -= transform.TransformDirection(Vector3.forward) * Time.deltaTime * m_movementSpeed;
+        }
+        if (Input.GetKey("d"))
+        {
+            transform.position -= transform.TransformDirection(Vector3.left) * Time.deltaTime * m_movementSpeed;
+        }
+        //if (Input.GetKey("a") && !Input.GetKey("d") && Input.GetKey(KeyCode.LeftShift))
+        //{
+        //    transform.position += transform.TransformDirection(Vector3.left) * Time.deltaTime * m_movementSpeed * 2f;
+        //}
+        //if (Input.GetKey("d") && !Input.GetKey("a"))
+        //{
+        //    transform.position -= transform.TransformDirection(Vector3.left) * Time.deltaTime * m_movementSpeed;
+        //}
 
-        m_movementDirection = transform.right * m_moveInputX + transform.forward * m_moveInputZ;
+        //m_moveInputX = Input.GetAxis("Horizontal");
+        //m_moveInputZ = Input.GetAxis("Vertical");
+
+        //m_movementDirection = transform.right * m_moveInputX + transform.forward * m_moveInputZ;
 
 
     }
