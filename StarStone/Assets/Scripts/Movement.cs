@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
     public float m_movementSpeed;
     public float m_mouseSensitivity = 200f;
     public Transform Player;
-    float xRotation = 0f;
+    private float xRotation = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,12 +37,16 @@ public class Movement : MonoBehaviour
         {
             transform.position -= transform.TransformDirection(Vector3.left) * Time.deltaTime * m_movementSpeed;
         }
+
         float mouseX = Input.GetAxis("Mouse X") * m_mouseSensitivity * Time.deltaTime;
-        //float mouseY = Input.GetAxis("Mouse Y") * m_mouseSensitivity * Time.deltaTime;
-        //xRotation -= mouseY;
-        //xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        //transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        float mouseY = Input.GetAxis("Mouse Y") * m_mouseSensitivity * Time.deltaTime;
         Player.Rotate(Vector3.up * mouseX);
+
+        
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
         //Player.Rotate(Vector3.forward * -mouseY);
 
         if (Input.GetKey(KeyCode.Space))
