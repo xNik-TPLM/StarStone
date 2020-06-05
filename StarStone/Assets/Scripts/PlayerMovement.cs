@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float m_moveInputX;
-    private float m_moveInputZ;
+    //private float m_moveInputX;
+    //private float m_moveInputZ;
 
     private Vector3 m_movementDirection;
 
@@ -54,6 +54,16 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey("w") && Input.GetKey(KeyCode.LeftShift))
         {
             transform.position += transform.TransformDirection(Vector3.forward) * Time.deltaTime * m_movementSpeed * 2f;
+        }
+
+
+        if (Input.GetKey(KeyCode.C))
+        {
+            m_characterController.height = 0.02f;
+        }
+        else
+        {
+            m_characterController.height = 0.07f;
         }
     }
 }
