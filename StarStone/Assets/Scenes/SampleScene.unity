@@ -127,11 +127,40 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1893328940}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!4 &192695753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: f847f0a604ee3b04aa18d4553090ba40,
     type: 3}
   m_PrefabInstance: {fileID: 1893328940}
+=======
+--- !u!114 &389122949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389122946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe00809bc5956e1439746251dfd95717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_movementSpeed: 8
+  m_mouseSensitivity: 200
+  Player: {fileID: 2132262963}
+  Camera: {fileID: 963194228}
+  minRotation: -45
+  maxRotation: 90
+  m_isGrounded: 0
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+--- !u!54 &389122950
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+>>>>>>> Stashed changes
   m_PrefabAsset: {fileID: 0}
 --- !u!143 &192695754
 CharacterController:

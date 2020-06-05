@@ -7,11 +7,23 @@ public class Movement : MonoBehaviour
     public float m_movementSpeed;
     public float m_mouseSensitivity = 200f;
     public Transform Player;
+<<<<<<< Updated upstream
     private float xRotation = 0f;
+=======
+    public Transform Camera;
+    public float minRotation = -100;
+    public float maxRotation = 90;
+    public bool m_isGrounded;
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+    Rigidbody rb;
+    //float xRotation = 0f;
+>>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        m_isGrounded = true;
     }
 
     // Update is called once per frame
@@ -40,6 +52,7 @@ public class Movement : MonoBehaviour
 
         float mouseX = Input.GetAxis("Mouse X") * m_mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * m_mouseSensitivity * Time.deltaTime;
+<<<<<<< Updated upstream
         Player.Rotate(Vector3.up * mouseX);
 
         
@@ -48,10 +61,25 @@ public class Movement : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
         //Player.Rotate(Vector3.forward * -mouseY);
+=======
+        //xRotation -= mouseY;
+        //xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        //transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        Player.Rotate(Vector3.up * mouseX);
+        Camera.Rotate(Vector3.left * mouseY);
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            GetComponent<Rigidbody>().AddForce(Vector3.up * 20);
-        }
+        Vector3 currentRotation = Camera.localRotation.eulerAngles;
+        currentRotation.x = Mathf.Clamp(currentRotation.x, minRotation, maxRotation);
+        Camera.localRotation = Quaternion.Euler(currentRotation);
+
+        //if (m_isGrounded == true)
+        //{
+        //    if (Input.GetKey(KeyCode.Space))
+        //    {
+        //        GetComponent<Rigidbody>().AddForce(Vector3.up * 20);
+        //    }
+        //}
+>>>>>>> Stashed changes
+
     }
 }
