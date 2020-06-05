@@ -147,10 +147,31 @@ CharacterController:
   m_Height: 0.07
   m_Radius: 0.011
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.7
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.015, z: 0}
+--- !u!114 &192695755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192695750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fc69c5b01fca04aa314ba7b1b4ed27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_characterController: {fileID: 192695754}
+  m_movementSpeed: 10
+  m_gravity: -20
+  m_jumpHeight: 3
+  groundCheck: {fileID: 1245019474}
+  groundDistance: 0.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +444,7 @@ GameObject:
   - component: {fileID: 1245019472}
   - component: {fileID: 1245019471}
   - component: {fileID: 1245019475}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +554,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: f847f0a604ee3b04aa18d4553090ba40,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 10.98
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f847f0a604ee3b04aa18d4553090ba40,
         type: 3}
