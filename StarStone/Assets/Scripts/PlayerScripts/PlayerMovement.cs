@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    private bool m_isGrounded;
+
+    private float m_moveInputX;
+    private float m_moveInputZ;
+
+    private Vector3 m_playerVelocity;
+
+    public float PlayerMovementSpeed;
+    public float PlayerJumpForce;
+    public float PlayerGravityForce;
+
+    public GameObject Player;
+
+
+
+
+
+
     public CharacterController m_characterController;
-    public float m_movementSpeed;
-    public float m_gravity = -9.81f;
-    public float m_jumpHeight = 3f;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    bool isGrounded;
-    Vector3 velocity;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -23,41 +38,57 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (isGrounded && velocity.y < 0)
+        PlayerMove();
+        PlayerJump();
+        PlayerSprint();
+        PlayerCrouch();
+    }
+
+    private void PlayerMove()
+    {
+        m_moveInputX = Input.GetAxis("Horizontal");
+        m_moveInputZ = Input.GetAxis("Vertical");
+
+        Vector3 move = transform.right * m_moveInputX + transform.forward * m_moveInputZ;
+        m_characterController.Move(move * PlayerMovementSpeed * Time.deltaTime);
+        m_characterController.Move(m_playerVelocity * Time.deltaTime);
+    }
+
+    private void PlayerJump()
+    {
+        m_isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if (m_isGrounded && m_playerVelocity.y < 0)
         {
-            velocity.y = -9.81f;
+            m_playerVelocity.y = PlayerGravityForce;
         }
 
-        // This controls the movement of the player
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        Vector3 move = transform.right * x + transform.forward * z;
-        m_characterController.Move(move * m_movementSpeed * Time.deltaTime);
-
-        // This allows the player to jump by adding a vertical force
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && m_isGrounded)
         {
-            velocity.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
+            m_playerVelocity.y = Mathf.Sqrt(PlayerJumpForce * -2f * PlayerGravityForce);
         }
 
-        // This sets the gravity on the player
-        velocity.y += m_gravity * Time.deltaTime;
-        m_characterController.Move(velocity * Time.deltaTime);
+        m_playerVelocity.y += PlayerGravityForce * Time.deltaTime;
+    }
 
-        // This allows the player to sprint
+    private void PlayerSprint()
+    {
         if (Input.GetKey("w") && Input.GetKey(KeyCode.LeftShift))
         {
-            transform.position += transform.TransformDirection(Vector3.forward) * Time.deltaTime * m_movementSpeed * 2f;
+            transform.position += transform.TransformDirection(Vector3.forward) * Time.deltaTime * PlayerMovementSpeed * 2f;
         }
+    }
 
-        // This allows the player to crouch
+    private void PlayerCrouch()
+    {
         if (Input.GetKey(KeyCode.C))
         {
             m_characterController.height = 0.02f;
+            Player.transform.localScale = new Vector3(40f, 30f, 100f);
         }
         else
         {
+            Player.transform.localScale = new Vector3(40f, 60f, 100f);
             m_characterController.height = 0.07f;
         }
     }
