@@ -31,10 +31,16 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Player; //Reference to the palyer model
     public LayerMask GroundType; //The layer in the scene, which is used to check if the player is on the ground
 
+
+    //Only for WhiteBox scene
+    private float m_playerNormalHeight;
+    private float m_playerCrouchHeight;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        m_playerCrouchHeight = Player.transform.localScale.y / 2;
+        m_playerNormalHeight = Player.transform.localScale.y;
     }
 
     // Update is called once per frame
@@ -89,13 +95,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.C))
         {
-            CharacterController.height = 0.02f;
-            Player.transform.localScale = new Vector3(40f, 30f, 100f);
+            Player.transform.localScale = new Vector3(Player.transform.localScale.x, m_playerCrouchHeight, Player.transform.localScale.z);
+
         }
         else
         {
-            Player.transform.localScale = new Vector3(40f, 60f, 100f);
-            CharacterController.height = 0.07f;
+            Player.transform.localScale = new Vector3(Player.transform.localScale.x, m_playerNormalHeight, Player.transform.localScale.z);
         }
     }
 }
