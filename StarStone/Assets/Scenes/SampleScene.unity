@@ -266,12 +266,12 @@ MonoBehaviour:
   PlayerJumpForce: 3
   PlayerGravityForce: -9.81
   GroundCheckRadius: 0.4
-  PlayerFeetPosition: {fileID: 0}
-  CharacterController: {fileID: 0}
+  PlayerFeetPosition: {fileID: 96909711}
+  CharacterController: {fileID: 192695754}
   Player: {fileID: 192695750}
   GroundType:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!4 &192695753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: f847f0a604ee3b04aa18d4553090ba40,
