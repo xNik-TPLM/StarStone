@@ -9,37 +9,36 @@ public class EnemyBase : MonoBehaviour
     public float MaxHealth;
 
     public GameObject HealthBarUI;
-    public Slider HealthBar;
+    public Slider HealthBarSlider;
 
     void Start()
     {
-        Health = MaxHealth;
 
-        HealthBar.value = SetHealth();
     }
 
     void Update()
     {
-        HealthBar.value = SetHealth();
+        DisplayEnemyHealth();
+    }
 
-        if(Health < MaxHealth)
+    private float ReturnHealth()
+    {
+        return Health / MaxHealth;
+    }
+
+    protected virtual void DisplayEnemyHealth()
+    {
+        HealthBarSlider.value = ReturnHealth();
+
+        if (Health < MaxHealth)
         {
             HealthBarUI.SetActive(true);
         }
 
-        if(Health <= 0)
-        {
-            Destroy(gameObject);
-        }
-
-        /*if(Health > MaxHealth)
+        if (Health >= MaxHealth)
         {
             HealthBarUI.SetActive(false);
-        }*/
-    }
-
-    float SetHealth()
-    {
-        return Health / MaxHealth;
+            Health = MaxHealth;
+        }
     }
 }

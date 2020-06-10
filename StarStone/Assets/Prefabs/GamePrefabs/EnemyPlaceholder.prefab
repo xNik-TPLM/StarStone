@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 3229026134900129422}
   - component: {fileID: 5878543961469191352}
   - component: {fileID: 191475539165870145}
-  - component: {fileID: 1648972655577161839}
+  - component: {fileID: 5971038416021765333}
   m_Layer: 0
   m_Name: EnemyPlaceholder
   m_TagString: Untagged
@@ -215,7 +215,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1648972655577161839
+--- !u!114 &5971038416021765333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,13 +224,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1915322805880769693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ec1ec578022a64ba73e0c65421d554, type: 3}
+  m_Script: {fileID: 11500000, guid: 2da8f0ec56ef2f9469cd73849f901d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
-  MaxHealth: 1
+  Health: 100
+  MaxHealth: 100
   HealthBarUI: {fileID: 1832877923154584987}
-  HealthBar: {fileID: 6876950127229277989}
+  HealthBarSlider: {fileID: 6876950127229277989}
 --- !u!1 &7771744781390869246
 GameObject:
   m_ObjectHideFlags: 0
