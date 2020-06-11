@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 5971038416021765333}
   m_Layer: 0
   m_Name: EnemyPlaceholder
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,7 +227,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da8f0ec56ef2f9469cd73849f901d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  NormalDamage: 0
+  BurnDamage: 0
+  BurnDuration: 0
+  CurrentHealth: 0
   MaxHealth: 100
   HealthBarUI: {fileID: 1832877923154584987}
   HealthBarSlider: {fileID: 6876950127229277989}

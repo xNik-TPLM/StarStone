@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 6619686179697186893}
   m_Layer: 0
   m_Name: EarthEnemyPlaceholder
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -479,7 +479,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367842a4cae9acb44ac1d773e3c64e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 50
+  NormalDamage: 0
+  BurnDamage: 0
+  BurnDuration: 0
+  CurrentHealth: 0
   MaxHealth: 100
   HealthBarUI: {fileID: 4917567149950605088}
   HealthBarSlider: {fileID: 161795551177958814}

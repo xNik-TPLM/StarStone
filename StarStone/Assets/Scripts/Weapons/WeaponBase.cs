@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FiringWeaponBase : MonoBehaviour
+public class WeaponBase : MonoBehaviour
 {
     private float m_fireTime;
 
@@ -32,7 +32,6 @@ public class FiringWeaponBase : MonoBehaviour
             bullet.transform.rotation = WeaponMuzzle.transform.rotation;
 
             m_fireTime = Time.time + 1 / FireRate;
-            Debug.Log(Time.time);
         }
     }
 }

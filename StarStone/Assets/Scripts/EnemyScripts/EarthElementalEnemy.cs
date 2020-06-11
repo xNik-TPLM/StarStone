@@ -9,7 +9,10 @@ public class EarthElementalEnemy : EnemyBase
 
     private void RegenerateHealth()
     {
-        Health += RegeneratedHealth * Time.deltaTime;
+        if(CurrentHealth < MaxHealth)
+        {
+            CurrentHealth += RegeneratedHealth * Time.deltaTime;
+        }
     }
 
     protected override void DisplayEnemyHealth()
