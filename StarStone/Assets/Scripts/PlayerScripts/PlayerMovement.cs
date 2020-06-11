@@ -33,14 +33,14 @@ public class PlayerMovement : MonoBehaviour
 
 
     //Only for WhiteBox scene
-    private float m_playerNormalHeight;
-    private float m_playerCrouchHeight;
+    //private float m_playerNormalHeight;
+    //private float m_playerCrouchHeight;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_playerCrouchHeight = Player.transform.localScale.y / 2;
-        m_playerNormalHeight = Player.transform.localScale.y;
+        //m_playerCrouchHeight = Player.transform.localScale.y / 2;
+        //m_playerNormalHeight = Player.transform.localScale.y;
     }
 
     // Update is called once per frame
@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
     //This function controls the crouch
     private void PlayerCrouch()
     {
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             CharacterController.height = 0.02f;
             //Player.transform.localScale = new Vector3(Player.transform.localScale.x, m_playerCrouchHeight, Player.transform.localScale.z);
