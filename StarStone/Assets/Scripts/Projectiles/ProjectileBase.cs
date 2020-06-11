@@ -41,8 +41,8 @@ public class ProjectileBase : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            Enemy.EnemyDamaged(ProjectileType, ProjectileDamage);
-
+            //Enemy.EnemyDamaged(ProjectileDamage);
+            collision.collider.gameObject.GetComponent<EnemyBase>().EnemyDamaged(ProjectileDamage);
 
 
             Debug.Log("Hit");
