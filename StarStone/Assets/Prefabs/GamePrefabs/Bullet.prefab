@@ -126,3 +126,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileDuration: 2
   ProjectileSpeed: 10
+  ProjectileDamage: 10
+  Enemy: {fileID: 0}

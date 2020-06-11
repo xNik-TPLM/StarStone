@@ -6,16 +6,22 @@ public class ProjectileBase : MonoBehaviour
 {
     private float m_projectileLifeTimer;
 
+    private bool m_hasHit;
+
     public float ProjectileDuration;
     public float ProjectileSpeed;
-    public static float ProjectileDamage;
-    
+    public float ProjectileDamage;
+
     public static int ProjectileType = 0;
+
+    public EnemyBase Enemy;
 
     // Start is called before the first frame update
     void Start()
     {
         m_projectileLifeTimer = ProjectileDuration;
+
+        Enemy = FindObjectOfType<EnemyBase>();
     }
 
     // Update is called once per frame
@@ -35,6 +41,10 @@ public class ProjectileBase : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
+            Enemy.EnemyDamaged(ProjectileType, ProjectileDamage);
+
+
+
             Debug.Log("Hit");
         }
 

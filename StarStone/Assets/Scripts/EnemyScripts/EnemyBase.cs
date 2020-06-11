@@ -22,6 +22,14 @@ public class EnemyBase : MonoBehaviour
     public GameObject HealthBarUI;
     public Slider HealthBarSlider;
 
+    public ProjectileBase Projectile;
+
+
+    void Start()
+    {
+        Projectile = FindObjectOfType<ProjectileBase>();
+        
+    }
 
     void Update()
     {
@@ -49,5 +57,8 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-
+    public virtual void EnemyDamaged(int projectileType, float projectileDamage)
+    {
+        CurrentHealth -= projectileDamage;
+    }
 }
