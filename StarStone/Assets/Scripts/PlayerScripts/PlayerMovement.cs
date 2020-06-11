@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //Private feilds
+    //Private fields
     //This bool will check if the player is on the ground
     private bool m_isGrounded;
 
-    //Float feilds
+    //Float fields
     //These floats will get the reference of axis of where the player will move.
     private float m_moveInputX;
     private float m_moveInputZ;
@@ -50,6 +50,13 @@ public class PlayerMovement : MonoBehaviour
         PlayerJump();
         PlayerSprint();
         PlayerCrouch();
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (Input.GetKeyDown(KeyCode.E) && m_isGrounded)
+            {
+                m_playerVelocity.y = Mathf.Sqrt(PlayerJumpForce * -6f * PlayerGravityForce);
+            }
+        }
     }
 
     //This function controls movement of the player
