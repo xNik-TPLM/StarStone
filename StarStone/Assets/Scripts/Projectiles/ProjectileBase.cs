@@ -6,8 +6,6 @@ public class ProjectileBase : MonoBehaviour
 {
     private float m_projectileLifeTimer;
 
-    private bool m_hasHit;
-
     public float ProjectileDuration;
     public float ProjectileSpeed;
     public float ProjectileDamage;
