@@ -191,7 +191,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7c15b9fc7767a964196214b4914d7f5e,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: LadderBottom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c15b9fc7767a964196214b4914d7f5e, type: 3}
@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 747204866}
   - component: {fileID: 747204865}
   - component: {fileID: 747204864}
+  - component: {fileID: 747204867}
   - component: {fileID: 747204863}
   m_Layer: 0
   m_Name: Cube
@@ -509,6 +510,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &747204867
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747204862}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1122251527 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 7c15b9fc7767a964196214b4914d7f5e,
@@ -526,26 +541,14 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.660536, y: 4.756469, z: 4.5}
-  m_Center: {x: -1.3302679, y: -2.6217656, z: 0}
+  m_Size: {x: 1, y: 8, z: 4.5}
+  m_Center: {x: 0.17, y: -1, z: 0}
 --- !u!4 &1122251529 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 7c15b9fc7767a964196214b4914d7f5e,
     type: 3}
   m_PrefabInstance: {fileID: 506750101}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1122251530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1122251527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f13d185ca9f1814ab6b4e1ba70b13a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1245019470
 GameObject:
   m_ObjectHideFlags: 0

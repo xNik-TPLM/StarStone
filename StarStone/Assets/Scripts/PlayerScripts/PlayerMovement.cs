@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     //Private fields
     //This bool will check if the player is on the ground
     private bool m_isGrounded;
+    private bool m_ladderCollision;
 
     //Float fields
     //These floats will get the reference of axis of where the player will move.
@@ -14,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private float m_moveInputZ;
 
     //This is to set velocity of the player moving around
-    private Vector3 m_playerVelocity;
+    public Vector3 m_playerVelocity;
 
     //Player properties
     //Float properties
@@ -50,13 +51,27 @@ public class PlayerMovement : MonoBehaviour
         PlayerJump();
         PlayerSprint();
         PlayerCrouch();
-        if (Input.GetKeyDown(KeyCode.E))
+    }
+
+    private void OnTriggerStay(Collider collision)
+    {
+        m_ladderCollision = true;
+        if (collision.CompareTag("LadderBottom"))
         {
-            if (Input.GetKeyDown(KeyCode.E) && m_isGrounded)
+            if (CharacterController.velocity.y >= 0)
             {
-                m_playerVelocity.y = Mathf.Sqrt(PlayerJumpForce * -6f * PlayerGravityForce);
+                m_playerVelocity.y = Mathf.Sqrt(PlayerJumpForce * -1.5f * PlayerGravityForce);
             }
+            if (CharacterController.velocity.y < 0)
+            {
+                m_playerVelocity.y = Mathf.Sqrt(PlayerJumpForce * -200f * PlayerGravityForce);
+            }
+
         }
+    }
+    private void OnTriggerExit(Collider collision)
+    {
+        m_ladderCollision = false;
     }
 
     //This function controls movement of the player
@@ -96,7 +111,6 @@ public class PlayerMovement : MonoBehaviour
             transform.position += transform.TransformDirection(Vector3.forward) * Time.deltaTime * PlayerMovementSpeed * 2f;
         }
     }
-
     //This function controls the crouch
     private void PlayerCrouch()
     {
