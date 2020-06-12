@@ -8,13 +8,20 @@ public class WeaponBase : MonoBehaviour
 
     public float FireRate;
 
+    public float RecoilUp;
+    public float RecoilSide;
+
     public GameObject WeaponBullet;
     public GameObject WeaponMuzzle;
+
+    public CameraMovement Camera;
+
+    public float m_recoilReturnPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -32,6 +39,8 @@ public class WeaponBase : MonoBehaviour
             bullet.transform.rotation = WeaponMuzzle.transform.rotation;
 
             m_fireTime = Time.time + 1 / FireRate;
+
+            Camera.WeaponRecoil(RecoilSide / 3f, RecoilUp / 3f);
         }
     }
 }

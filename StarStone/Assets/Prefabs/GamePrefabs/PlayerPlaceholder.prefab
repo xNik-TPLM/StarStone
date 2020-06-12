@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c022f57917958747aa0f4cef8ebcb39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RecoilSpeed: 0
   m_mouseSensitivity: 300
   Player: {fileID: 7546639738728764489}
 --- !u!1 &3297118803590164209
@@ -241,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88fc69c5b01fca04aa314ba7b1b4ed27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerVelocity: {x: 0, y: 0, z: 0}
   PlayerMovementSpeed: 10
   PlayerJumpForce: 3
   PlayerGravityForce: -9.81
