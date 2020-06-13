@@ -17,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
     //This is to set velocity of the player moving around
     public Vector3 m_playerVelocity;
 
+    private bool ladderBottom;
+    private bool ladderTop;
+    public float ladderSpeed;
+
     //Player properties
     //Float properties
     public float PlayerMovementSpeed; //Speed of the player movement
@@ -32,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Player; //Reference to the palyer model
     public LayerMask GroundType; //The layer in the scene, which is used to check if the player is on the ground
 
+    //public Rigidbody rb = GetComponent<Rigidbody>();
 
     //Only for WhiteBox scene
     //private float m_playerNormalHeight;
@@ -51,6 +56,29 @@ public class PlayerMovement : MonoBehaviour
         PlayerJump();
         PlayerSprint();
         PlayerCrouch();
+
+        if (ladderBottom == true && ladderTop == false && transform.position.x > 17.5)
+        {
+            PlayerGravityForce = 0;
+            transform.Translate(Vector3.up * ladderSpeed * Time.deltaTime);
+        }
+        if (ladderTop == true && ladderBottom == false)
+        {
+            PlayerGravityForce = 0;
+            transform.Translate(Vector3.up * ladderSpeed * Time.deltaTime);
+        }
+        if (transform.position.y >= 10.0f)
+        {
+            ladderBottom = false;
+        }
+        if (transform.position.y <= 2.0f)
+        {
+            ladderTop = false;
+        }
+        if (ladderBottom == false && ladderTop == false)
+        {
+            PlayerGravityForce = -9.81f;
+        }
     }
 
     private void OnTriggerStay(Collider collision)
@@ -58,15 +86,22 @@ public class PlayerMovement : MonoBehaviour
         m_ladderCollision = true;
         if (collision.CompareTag("LadderBottom"))
         {
-            if (CharacterController.velocity.y >= 0)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                m_playerVelocity.y = Mathf.Sqrt(PlayerJumpForce * -1.5f * PlayerGravityForce);
-            }
-            if (CharacterController.velocity.y < 0)
-            {
-                m_playerVelocity.y = Mathf.Sqrt(PlayerJumpForce * -200f * PlayerGravityForce);
-            }
-
+                ladderBottom = true;
+            } 
+        }
+        else
+        {
+            ladderBottom = false;
+        }
+        if (collision.CompareTag("LadderTop"))
+        {
+            ladderTop = true;
+        }
+        else
+        {
+            ladderTop = false;
         }
     }
     private void OnTriggerExit(Collider collision)
@@ -77,12 +112,16 @@ public class PlayerMovement : MonoBehaviour
     //This function controls movement of the player
     private void PlayerMove()
     {
-        m_moveInputX = Input.GetAxis("Horizontal");
-        m_moveInputZ = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * m_moveInputX + transform.forward * m_moveInputZ;
-        CharacterController.Move(move * PlayerMovementSpeed * Time.deltaTime);
-        CharacterController.Move(m_playerVelocity * Time.deltaTime);
+        if (m_ladderCollision == false)
+        {
+            m_moveInputX = Input.GetAxis("Horizontal");
+            m_moveInputZ = Input.GetAxis("Vertical");
+        }
+            Vector3 move = transform.right * m_moveInputX + transform.forward * m_moveInputZ;
+            CharacterController.Move(move * PlayerMovementSpeed * Time.deltaTime);
+            CharacterController.Move(m_playerVelocity * Time.deltaTime);
+        
+       
     }
 
     //This function controls the jumping of the player
