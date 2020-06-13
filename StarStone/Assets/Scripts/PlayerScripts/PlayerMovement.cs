@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (ladderTop == true && ladderBottom == false)
         {
-            PlayerGravityForce = 0;
+            PlayerGravityForce = -1.0f;
             transform.Translate(Vector3.up * ladderSpeed * Time.deltaTime);
         }
         if (transform.position.y >= 10.0f)
@@ -97,7 +97,11 @@ public class PlayerMovement : MonoBehaviour
         }
         if (collision.CompareTag("LadderTop"))
         {
-            ladderTop = true;
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ladderTop = true;
+            }
+
         }
         else
         {
