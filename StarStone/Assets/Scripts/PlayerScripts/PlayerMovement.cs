@@ -57,15 +57,19 @@ public class PlayerMovement : MonoBehaviour
         PlayerSprint();
         PlayerCrouch();
 
-        if (ladderBottom == true && ladderTop == false && transform.position.x > 17.5)
+        if (ladderBottom == true && ladderTop == false)
         {
             PlayerGravityForce = 0;
             transform.Translate(Vector3.up * ladderSpeed * Time.deltaTime);
         }
-        if (ladderTop == true && ladderBottom == false)
+        if (ladderTop == true && ladderBottom == false && transform.position.x >= 17.5f)
         {
-            PlayerGravityForce = -1.0f;
-            transform.Translate(Vector3.up * ladderSpeed * Time.deltaTime);
+            PlayerGravityForce = 0;
+            transform.Translate(Vector3.up * -ladderSpeed * Time.deltaTime);
+            if (transform.position.x > 18.2f)
+            {
+                transform.Translate(Vector3.forward * ladderSpeed * Time.deltaTime);
+            }
         }
         if (transform.position.y >= 10.0f)
         {
@@ -83,11 +87,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerStay(Collider collision)
     {
-        m_ladderCollision = true;
+        
         if (collision.CompareTag("LadderBottom"))
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                m_ladderCollision = true;
                 ladderBottom = true;
             } 
         }
@@ -101,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 ladderTop = true;
             }
-
         }
         else
         {
