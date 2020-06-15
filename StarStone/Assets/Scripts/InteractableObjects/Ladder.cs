@@ -15,25 +15,25 @@ public class Ladder : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        CharacterController.Move(m_playerVelocity * Time.deltaTime);
-    }
+    //void FixedUpdate()
+    //{
+    //    CharacterController.Move(m_playerVelocity * Time.deltaTime);
+    //}
 
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            CanInteract = true;
-            m_playerVelocity.y = Mathf.Sqrt(m_ladderForce * 60f * 4f);
-        }
-    }
+    //private void OnTriggerEnter(Collider collision)
+    //{
+    //    if (collision.CompareTag("Player"))
+    //    {
+    //        CanInteract = true;
+    //        m_playerVelocity.y = Mathf.Sqrt(m_ladderForce * 60f * 4f);
+    //    }
+    //}
 
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            CanInteract = false;
-        }
-    }
+    //private void OnTriggerExit(Collider collision)
+    //{
+    //    if (collision.CompareTag("Player"))
+    //    {
+    //        CanInteract = false;
+    //    }
+    //}
 }

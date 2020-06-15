@@ -17,9 +17,9 @@ public class PlayerMovement : MonoBehaviour
     //This is to set velocity of the player moving around
     public Vector3 m_playerVelocity;
 
-    private bool ladderBottom;
-    private bool ladderTop;
-    public float ladderSpeed;
+    private bool ladderBottom; //Collider to check if the player has entered to move up ladder
+    private bool ladderTop; //Collider to check if the player has entered to move down ladder
+    public float ladderSpeed; //Speed of the player moving on the ladder
 
     //Player properties
     //Float properties
@@ -56,38 +56,12 @@ public class PlayerMovement : MonoBehaviour
         PlayerJump();
         PlayerSprint();
         PlayerCrouch();
-
-        if (ladderBottom == true && ladderTop == false)
-        {
-            PlayerGravityForce = 0;
-            transform.Translate(Vector3.up * ladderSpeed * Time.deltaTime);
-        }
-        if (ladderTop == true && ladderBottom == false && transform.position.x >= 17.5f)
-        {
-            PlayerGravityForce = 0;
-            transform.Translate(Vector3.up * -ladderSpeed * Time.deltaTime);
-            if (transform.position.x > 18.2f)
-            {
-                transform.Translate(Vector3.forward * ladderSpeed * Time.deltaTime);
-            }
-        }
-        if (transform.position.y >= 10.0f)
-        {
-            ladderBottom = false;
-        }
-        if (transform.position.y <= 2.0f)
-        {
-            ladderTop = false;
-        }
-        if (ladderBottom == false && ladderTop == false)
-        {
-            PlayerGravityForce = -9.81f;
-        }
+        PlayerLadder();
     }
 
+    //This checks if the player has collided with the ladder
     private void OnTriggerStay(Collider collision)
     {
-        
         if (collision.CompareTag("LadderBottom"))
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -116,6 +90,38 @@ public class PlayerMovement : MonoBehaviour
     {
         m_ladderCollision = false;
     }
+
+    //This function controls the ladder climbing of the player
+    private void PlayerLadder()
+    {
+        if (ladderBottom == true && ladderTop == false)
+        {
+            PlayerGravityForce = 0;
+            transform.Translate(Vector3.up * ladderSpeed * Time.deltaTime);
+        }
+        if (ladderTop == true && ladderBottom == false && transform.position.x >= 17.5f)
+        {
+            PlayerGravityForce = 0;
+            transform.Translate(Vector3.up * -ladderSpeed * Time.deltaTime);
+            if (transform.position.x > 18.2f)
+            {
+                transform.Translate(Vector3.forward * ladderSpeed * Time.deltaTime);
+            }
+        }
+        if (transform.position.y >= 10.0f)
+        {
+            ladderBottom = false;
+        }
+        if (transform.position.y <= 2.0f)
+        {
+            ladderTop = false;
+        }
+        if (ladderBottom == false && ladderTop == false)
+        {
+            PlayerGravityForce = -9.81f;
+        }
+    }
+    
 
     //This function controls movement of the player
     private void PlayerMove()
