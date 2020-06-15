@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - LadderBottom
   - LadderTop
+  - Knife
   layers:
   - Default
   - TransparentFX
