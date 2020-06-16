@@ -2,8 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This script is a base script for projectiles in the game. As there will
+/// It will mainly check collision against objects, such as enemies. It also holds properties, such as projectile speed and damage.
+/// Worked By: Nikodem Hamrol
+/// References: Gabriel Aguiar Prod. (2018). Unity 2018 - Game VFX - Projectile/Bullet Raycast Tutorial [online]. Available: https://www.youtube.com/watch?v=xenW67bXTgM [Last Accessed 9th June June 2020].
+/// </summary>
+
 public class ProjectileBase : MonoBehaviour
 {
+    //Projectile feilds
+    //This folat will get the property value of projectile duration and use it to count down the life of a projectile
     private float m_projectileLifeTimer;
 
     public float ProjectileDuration;
@@ -43,7 +52,7 @@ public class ProjectileBase : MonoBehaviour
             collision.collider.gameObject.GetComponent<EnemyBase>().EnemyDamaged(ProjectileDamage);
 
 
-            Debug.Log("Hit");
+            //Debug.Log("Hit");
         }
 
         Destroy(gameObject);

@@ -479,14 +479,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367842a4cae9acb44ac1d773e3c64e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NormalDamage: 0
-  BurnDamage: 0
-  BurnDuration: 0
   CurrentHealth: 0
   MaxHealth: 100
   HealthBarUI: {fileID: 4917567149950605088}
   HealthBarSlider: {fileID: 161795551177958814}
-  RegeneratedHealth: 3
+  RegeneratedHealth: 1
 --- !u!1 &6175740018170163539
 GameObject:
   m_ObjectHideFlags: 0

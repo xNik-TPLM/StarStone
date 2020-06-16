@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This script handles camera movement
+/// </summary>
+
 public class CameraMovement : MonoBehaviour
 {
     //Float feilds 
