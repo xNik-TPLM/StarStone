@@ -933,6 +933,21 @@ PrefabInstance:
       propertyPath: m_Height
       value: 0.063
       objectReference: {fileID: 0}
+    - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: FireRate
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: RecoilUp
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: RecoilSide
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6836557706347718234, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_Name

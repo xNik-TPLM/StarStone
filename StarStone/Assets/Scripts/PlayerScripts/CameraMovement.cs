@@ -68,7 +68,7 @@ public class CameraMovement : MonoBehaviour
 
             if(m_cameraRotationY != m_recoilReturnPosition && m_recoilReturned == false)
             {
-                m_cameraRotationY = Mathf.MoveTowards(m_cameraRotationY, m_recoilReturnPosition, Time.deltaTime *10);
+                m_cameraRotationY = Mathf.MoveTowards(m_cameraRotationY, m_recoilReturnPosition, Time.deltaTime * 10);
             }
             else if (m_cameraRotationY == m_recoilReturnPosition)
             {

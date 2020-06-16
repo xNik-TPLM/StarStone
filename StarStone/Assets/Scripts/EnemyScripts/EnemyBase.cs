@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 /// <summary>
 /// This script is a base script for each enemy in the game
@@ -12,18 +13,24 @@ using UnityEngine.UI;
 
 public class EnemyBase : MonoBehaviour
 {
+    //Enemy feilds
+    private NavMeshAgent m_enemyNavMesh;
+
+
     //Enemy properties    
     //Float properties
     public float CurrentHealth; //This keeps track of how much health does the enemy have
     public float MaxHealth; //This sets the max health of an enemy
+    public float EnemySpeed; //This sets the speed of our enemy
 
     public GameObject HealthBarUI;
     public Slider HealthBarSlider;
+    public Transform Target;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_enemyNavMesh = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -31,6 +38,7 @@ public class EnemyBase : MonoBehaviour
     {
         //Constanlty display enemies health
         EnemyHealth();
+        EnemyMovement();
     }
 
     //This function returns the health to display it on the enemy's health bar
@@ -64,5 +72,11 @@ public class EnemyBase : MonoBehaviour
     public void EnemyDamaged(float projectileDamage)
     {
         CurrentHealth -= projectileDamage;
+    }
+
+    private void EnemyMovement()
+    {
+        Vector3 targetPosition = Vector3.MoveTowards(transform.position, Target.position, m_enemyNavMesh.speed * Time.deltaTime);
+        m_enemyNavMesh.SetDestination(targetPosition);
     }
 }
