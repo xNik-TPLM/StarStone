@@ -5,28 +5,41 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public float attackSpeed;
-    public Transform start;
-    public float end;
+
+    public Transform KnifePosition;
+    public Transform KnifeEndPosition;
+
+    private BoxCollider m_knifeCollider;
+
+
     // Start is called before the first frame update
     void Start()
     {
         gameObject.SetActive(false);
-        GetComponent<BoxCollider>().enabled = false;
-        start.position = transform.position;
+        m_knifeCollider = GetComponent<BoxCollider>();
+
+        m_knifeCollider.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (PlayerController.meleeActive == true)
+        MeleeAttack();
+    }
+
+    private void MeleeAttack()
+    {
+        if (PlayerController.meleeActive == true && KnifePosition.position.x != KnifeEndPosition.position.x)
         {
-            GetComponent<BoxCollider>().enabled = true;
-            transform.position = Mathf.MoveTowards(transform.position.x, end, Time.deltaTime * attackSpeed);
-            PlayerController.meleeActive = false;
+            gameObject.SetActive(true);
+            m_knifeCollider.enabled = true;
+
+            KnifePosition.position = new Vector3(Mathf.MoveTowards(KnifePosition.position.x, KnifeEndPosition.position.x, Time.deltaTime), KnifePosition.position.y, KnifePosition.position.z);
         }
-        else
+        else if(KnifePosition.position.x == KnifeEndPosition.position.x)
         {
-            transform.position = start.position;
+            KnifePosition.position = PlayerController.KnifeStartPosition.position;
         }
     }
+
 }

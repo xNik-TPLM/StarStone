@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
     public GameObject Player; //Reference to the palyer model
     public LayerMask GroundType; //The layer in the scene, which is used to check if the player is on the ground
 
+
+    public static Transform KnifeStartPosition;
+
     //public Rigidbody rb = GetComponent<Rigidbody>();
 
     //Only for WhiteBox scene
@@ -65,6 +68,8 @@ public class PlayerController : MonoBehaviour
         {
             Knife.SetActive(true);
             meleeActive = true;
+
+            KnifeStartPosition.position = Knife.transform.position;
         }
     }
 
