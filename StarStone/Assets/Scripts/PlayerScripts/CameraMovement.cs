@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This script handles camera movement
+/// This script handles camera movement and recoil that is controlled using the camera
+/// Worked By: Ben Smith & Nikodem Hamrol
 /// </summary>
 
 public class CameraMovement : MonoBehaviour
@@ -13,6 +14,7 @@ public class CameraMovement : MonoBehaviour
     private float m_mouseMovementX;
     private float m_mouseMovementY;
 
+    //These 2 floats will 
     private float m_recoilUp;
     private float m_recoilSide;
 

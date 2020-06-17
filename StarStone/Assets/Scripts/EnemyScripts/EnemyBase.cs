@@ -14,6 +14,11 @@ using UnityEngine.AI;
 public class EnemyBase : MonoBehaviour
 {
     //Enemy feilds
+    private bool m_isPlayerInRange = false;
+
+    private float m_detinationTime;
+    public float DetinationTimer;
+
     private NavMeshAgent m_enemyNavMesh;
 
 
@@ -39,6 +44,7 @@ public class EnemyBase : MonoBehaviour
         //Constanlty display enemies health
         EnemyHealth();
         EnemyMovement();
+        EnemyDetination();
     }
 
     //This function returns the health to display it on the enemy's health bar
@@ -74,9 +80,36 @@ public class EnemyBase : MonoBehaviour
         CurrentHealth -= projectileDamage;
     }
 
-    private void EnemyMovement()
+    protected virtual void EnemyMovement()
     {
-        Vector3 targetPosition = Vector3.MoveTowards(transform.position, Target.position, m_enemyNavMesh.speed * Time.deltaTime);
-        m_enemyNavMesh.SetDestination(targetPosition);
+        m_enemyNavMesh.speed = EnemySpeed;
+        Vector3 targetPosition = Target.position;
+
+        if(m_isPlayerInRange == false)
+        {
+            m_enemyNavMesh.SetDestination(targetPosition);
+        }
+
+    }
+
+    private void EnemyDetination()
+    {
+        if (m_isPlayerInRange == true)
+        {
+            m_detinationTime += Time.deltaTime;
+
+            if (m_detinationTime > DetinationTimer)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            m_isPlayerInRange = true;
+        }
     }
 }
