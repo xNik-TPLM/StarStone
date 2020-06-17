@@ -16,8 +16,8 @@ public class EnemyBase : MonoBehaviour
     //Enemy feilds
     private bool m_isPlayerInRange = false;
 
-    private float m_detinationTime;
-    public float DetinationTimer;
+    private float m_detonationTime;
+    public float DetonationTimer;
 
     private NavMeshAgent m_enemyNavMesh;
 
@@ -44,7 +44,7 @@ public class EnemyBase : MonoBehaviour
         //Constanlty display enemies health
         EnemyHealth();
         EnemyMovement();
-        EnemyDetination();
+        EnemyDetonation();
     }
 
     //This function returns the health to display it on the enemy's health bar
@@ -75,9 +75,9 @@ public class EnemyBase : MonoBehaviour
     }
 
     //This function will damage the enemy, which will be called in the projectile script as projectile damage is needed
-    public void EnemyDamaged(float projectileDamage)
+    public void EnemyDamaged(float damage)
     {
-        CurrentHealth -= projectileDamage;
+        CurrentHealth -= damage;
     }
 
     protected virtual void EnemyMovement()
@@ -92,13 +92,13 @@ public class EnemyBase : MonoBehaviour
 
     }
 
-    private void EnemyDetination()
+    private void EnemyDetonation()
     {
         if (m_isPlayerInRange == true)
         {
-            m_detinationTime += Time.deltaTime;
+            m_detonationTime += Time.deltaTime;
 
-            if (m_detinationTime > DetinationTimer)
+            if (m_detonationTime > DetonationTimer)
             {
                 Destroy(gameObject);
             }

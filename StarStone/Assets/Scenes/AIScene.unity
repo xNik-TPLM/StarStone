@@ -278,7 +278,7 @@ PrefabInstance:
     - target: {fileID: 3229026134900129422, guid: 92ad10fa6cd8faf4bb3ca12840246712,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3229026134900129422, guid: 92ad10fa6cd8faf4bb3ca12840246712,
         type: 3}
@@ -315,6 +315,11 @@ PrefabInstance:
       propertyPath: EnemySpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5971038416021765333, guid: 92ad10fa6cd8faf4bb3ca12840246712,
+        type: 3}
+      propertyPath: DetonationTimer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6876950127229277989, guid: 92ad10fa6cd8faf4bb3ca12840246712,
         type: 3}
       propertyPath: m_Direction
@@ -322,6 +327,99 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92ad10fa6cd8faf4bb3ca12840246712, type: 3}
+--- !u!1001 &533903811
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493092024056437655, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_Name
+      value: FireStarStone
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205385617349832523, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7153e2f7dab9b1c4498662da3d4fb6e7, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 58e896e53a5241f4eb2cdf94aef3db39, type: 3}
+--- !u!1 &533903812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7493092024056437655, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+    type: 3}
+  m_PrefabInstance: {fileID: 533903811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &533903813
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533903812}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.03170712, z: 0.019924553}
+  m_Center: {x: 0, y: 0.004515643, z: -0.000075980424}
 --- !u!20 &698477758 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 3297118802594970124, guid: 60b5e663693a4374b96e44b9caa65eae,
@@ -777,7 +875,7 @@ PrefabInstance:
     - target: {fileID: 1067207745327775590, guid: c02eb9eb012f5ae4dbb45340f058791a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1067207745327775590, guid: c02eb9eb012f5ae4dbb45340f058791a,
         type: 3}
@@ -814,6 +912,11 @@ PrefabInstance:
       propertyPath: Target
       value: 
       objectReference: {fileID: 1296352139}
+    - target: {fileID: 6778946180520113375, guid: c02eb9eb012f5ae4dbb45340f058791a,
+        type: 3}
+      propertyPath: DetonationTimer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8132891998174723389, guid: c02eb9eb012f5ae4dbb45340f058791a,
         type: 3}
       propertyPath: Target
