@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// References: Brackeys. (2020). Unity Tutorial - How to make a HEALTH BAR in Unity! [online]. Available: https://www.youtube.com/watch?v=BLfNP4Sc_iA [Last Accessed 17th June 2020].
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
     //Private fields
@@ -30,6 +34,9 @@ public class PlayerController : MonoBehaviour
     public float PlayerJumpForce; //The force of Player's jump
     public float PlayerGravityForce; //The gravity force of the player
     public float GroundCheckRadius = 0.4f; //The radius to check if the player's still on the ground
+    public int maxHealth = 100;
+    public int currentHealth;
+    public HealthBar healthBar;
 
     //Transform properties
     public Transform PlayerFeetPosition; //Position of the player's feet to check if player is grounded
@@ -51,6 +58,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         //m_playerCrouchHeight = Player.transform.localScale.y / 2;
         //m_playerNormalHeight = Player.transform.localScale.y;
     }
@@ -68,10 +77,17 @@ public class PlayerController : MonoBehaviour
         {
             Knife.SetActive(true);
             meleeActive = true;
+            //TakeDamage(20);
 
-            KnifeStartPosition.position = Knife.transform.position;
+            //KnifeStartPosition.position = Knife.transform.position;
         }
     }
+
+    //void TakeDamage(int damage)
+    //{
+    //    currentHealth -= damage;
+    //    healthBar.SetHealth(currentHealth);
+    //}
 
     //This checks if the player has collided with the ladder
     private void OnTriggerStay(Collider collision)

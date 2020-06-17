@@ -38,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else if(KnifePosition.position.x == KnifeEndPosition.position.x)
         {
-            KnifePosition.position = PlayerController.KnifeStartPosition.position;
+            //KnifePosition.position = PlayerController.KnifeStartPosition.position;
         }
     }
 
