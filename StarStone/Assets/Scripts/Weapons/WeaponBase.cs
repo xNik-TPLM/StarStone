@@ -62,4 +62,13 @@ public class WeaponBase : MonoBehaviour
             Camera.WeaponRecoil(RecoilSide / 3f, RecoilUp / 3f);
         }
     }
+
+    public void SetProjectile(string starStoneName)
+    {
+        switch (starStoneName)
+        {
+            case "FireStarStone":
+                break;
+        }
+    }
 }
