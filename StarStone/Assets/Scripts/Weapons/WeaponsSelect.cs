@@ -14,6 +14,35 @@ public class WeaponsSelect : MonoBehaviour
     void Update()
     {
         SetWeapon();
+
+        int previousWeapon = InteractStarStone.StarStoneID;
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        {
+            if (InteractStarStone.StarStoneID >= transform.childCount - 1)
+            {
+                InteractStarStone.StarStoneID = 0;
+            }
+            else
+            {
+                InteractStarStone.StarStoneID++;
+            }
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        {
+            if (InteractStarStone.StarStoneID <= transform.childCount - 1)
+            {
+                InteractStarStone.StarStoneID = 0;
+            }
+            else
+            {
+                InteractStarStone.StarStoneID--;
+            }
+        }
+        if (previousWeapon != InteractStarStone.StarStoneID)
+        {
+            SetWeapon();
+        }
     }
 
     public void SetWeapon()
