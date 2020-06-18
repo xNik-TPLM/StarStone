@@ -16,6 +16,8 @@ public class EnemyBase : MonoBehaviour
     //Enemy feilds
     private bool m_isPlayerInRange = false;
 
+    protected bool m_isEnemyBurning;
+
     private float m_detonationTime;
     public float DetonationTimer;
 
@@ -27,6 +29,11 @@ public class EnemyBase : MonoBehaviour
     public float CurrentHealth; //This keeps track of how much health does the enemy have
     public float MaxHealth; //This sets the max health of an enemy
     public float EnemySpeed; //This sets the speed of our enemy
+
+    public int BurnDamage;
+    public float BurningTime;
+
+    private float m_enemyBurningTimer;
 
     public GameObject HealthBarUI;
     public Slider HealthBarSlider;
@@ -45,6 +52,7 @@ public class EnemyBase : MonoBehaviour
         EnemyHealth();
         EnemyMovement();
         EnemyDetonation();
+        EnemyBurning();
     }
 
     //This function returns the health to display it on the enemy's health bar
@@ -75,9 +83,12 @@ public class EnemyBase : MonoBehaviour
     }
 
     //This function will damage the enemy, which will be called in the projectile script as projectile damage is needed
-    public void EnemyDamaged(float damage)
+    public virtual void EnemyDamaged(float damage, int projectileType)
     {
-        CurrentHealth -= damage;
+        if(projectileType == 0)
+        {
+            CurrentHealth -= damage;
+        }
     }
 
     protected virtual void EnemyMovement()
@@ -111,5 +122,21 @@ public class EnemyBase : MonoBehaviour
         {
             m_isPlayerInRange = true;
         }
+    }
+
+    protected void EnemyBurning()
+    {
+        if(m_isEnemyBurning == true)
+        {
+            CurrentHealth -= BurnDamage * Time.deltaTime;
+            m_enemyBurningTimer += Time.deltaTime;
+
+            if(m_enemyBurningTimer > BurningTime)
+            {
+                m_isEnemyBurning = false;
+                m_enemyBurningTimer = 0;
+            }
+        }
+        Debug.Log(m_enemyBurningTimer);
     }
 }

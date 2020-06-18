@@ -32,7 +32,7 @@ public class MeleeAttack : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             Debug.Log("Works");
-            collision.gameObject.GetComponent<EnemyBase>().EnemyDamaged(MeleeDamage);
+            collision.gameObject.GetComponent<EnemyBase>().EnemyDamaged(MeleeDamage, 0);
         }
     }
 }

@@ -21,14 +21,10 @@ public class ProjectileBase : MonoBehaviour
 
     public static int ProjectileType = 0;
 
-    public EnemyBase Enemy;
-
     // Start is called before the first frame update
     void Start()
     {
         m_projectileLifeTimer = ProjectileDuration;
-
-        Enemy = FindObjectOfType<EnemyBase>();
     }
 
     // Update is called once per frame
@@ -49,7 +45,7 @@ public class ProjectileBase : MonoBehaviour
         if(collision.gameObject.CompareTag("Enemy"))
         {
             //Enemy.EnemyDamaged(ProjectileDamage);
-            collision.collider.gameObject.GetComponent<EnemyBase>().EnemyDamaged(ProjectileDamage);
+            collision.collider.gameObject.GetComponent<EnemyBase>().EnemyDamaged(ProjectileDamage, InteractStarStone.StarStoneID);
 
 
             //Debug.Log("Hit");

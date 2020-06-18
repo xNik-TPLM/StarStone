@@ -32,4 +32,15 @@ public class EarthElementalEnemy : EnemyBase
             CurrentHealth += RegeneratedHealth * Time.deltaTime;
         }
     }
+
+    public override void EnemyDamaged(float damage, int projectileType)
+    {
+        base.EnemyDamaged(damage, projectileType);
+        switch(projectileType)
+        {
+            case 1:
+                m_isEnemyBurning = true;
+                break;
+        }
+    }
 }

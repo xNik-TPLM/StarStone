@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class InteractStarStone : MonoBehaviour
 {
-    private string StarStoneName;
+    public static int StarStoneID;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +22,18 @@ public class InteractStarStone : MonoBehaviour
     {
         if (trigger.CompareTag("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKey(KeyCode.E))
             {
-                StarStoneName = gameObject.name;
-                GetComponent<WeaponBase>().SetProjectile(StarStoneName);
+                switch (gameObject.name)
+                {
+                    case "EarthStarStone":
+                        StarStoneID = 0;
+                        break;
+
+                    case "FireStarStone":
+                        StarStoneID = 1;
+                        break;
+                }
             }
 
         }
