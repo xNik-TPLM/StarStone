@@ -26,7 +26,7 @@ public class EarthElementalEnemy : EnemyBase
     private void RegenerateHealth()
     {
         //Check if health is less than max health
-        if(CurrentHealth < MaxHealth)
+        if(CurrentHealth < MaxHealth && m_isEnemyBurning == false)
         {
             //Regenerate health
             CurrentHealth += RegeneratedHealth * Time.deltaTime;
@@ -39,6 +39,7 @@ public class EarthElementalEnemy : EnemyBase
         switch(projectileType)
         {
             case 1:
+                CurrentHealth -= damage;
                 m_isEnemyBurning = true;
                 break;
         }

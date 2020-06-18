@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileDuration: 5
   ProjectileSpeed: 10
-  ProjectileDamage: 5
+  ProjectileDamage: 10
 --- !u!135 &1198082834154564943
 SphereCollider:
   m_ObjectHideFlags: 0

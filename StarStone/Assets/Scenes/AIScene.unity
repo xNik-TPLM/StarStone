@@ -962,7 +962,7 @@ PrefabInstance:
     - target: {fileID: 6778946180520113375, guid: c02eb9eb012f5ae4dbb45340f058791a,
         type: 3}
       propertyPath: EnemySpeed
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6778946180520113375, guid: c02eb9eb012f5ae4dbb45340f058791a,
         type: 3}
@@ -1063,6 +1063,16 @@ PrefabInstance:
       propertyPath: Target
       value: 
       objectReference: {fileID: 1296352139}
+    - target: {fileID: 7808039226078151873, guid: 347bdac3c46b91c41ae791346e7cabd2,
+        type: 3}
+      propertyPath: BurningTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808039226078151873, guid: 347bdac3c46b91c41ae791346e7cabd2,
+        type: 3}
+      propertyPath: EnemySpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819389283279025582, guid: 347bdac3c46b91c41ae791346e7cabd2,
         type: 3}
       propertyPath: m_Camera
