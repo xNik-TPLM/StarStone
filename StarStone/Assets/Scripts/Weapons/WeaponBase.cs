@@ -15,6 +15,8 @@ public class WeaponBase : MonoBehaviour
     //Boolean feild to chekc if the weapon is realodaing so that the player can't shoot, whilst realoding is happening
     private bool m_isWeaponReloading;
 
+    public static bool IsFiring;
+
     //Float feild that times the fire rate of a weapon
     private float m_fireTime;
 
@@ -37,13 +39,40 @@ public class WeaponBase : MonoBehaviour
     public GameObject WeaponProjectile; //Reference to the projectile that will be used to fire it out of the weapon
     public GameObject WeaponMuzzle; //Reference to the weapon muzzle that will be used to get the position of where the projectile will spawn
 
-    //Reference to the camera script to get the recoil movement
-    public CameraMovement Camera;
+
+    public Transform recoilPosition;
+    public Transform rotationalPoint;
+
+    public float positionalrecoilspeed = 8f;
+    public float rotationalrecoilspeed = 8f;
+
+    public float positionalreturnspeed = 18f;
+    public float rotationalreturnspeed = 38f;
+
+    public Vector3 RecoilRotation = new Vector3(10, 5, 7);
+    public Vector3 RecoilKickBack = new Vector3(0.015f, 0f, -0.2f);
+
+    private Vector3 rotationalRecoil;
+    private Vector3 positionalRecoil;
+    private Vector3 Rotation;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         CurrentAmmo = WeaponClipSize;
+    }
+
+    void FixedUpdate()
+    {
+        rotationalRecoil = Vector3.Lerp(rotationalRecoil, Vector3.zero, rotationalreturnspeed * Time.deltaTime);
+        positionalRecoil = Vector3.Lerp(positionalRecoil, Vector3.zero, positionalrecoilspeed * Time.deltaTime);
+
+        recoilPosition.localPosition = Vector3.Slerp(recoilPosition.localPosition, positionalRecoil, positionalrecoilspeed * Time.fixedDeltaTime);
+        Rotation = Vector3.Slerp(Rotation, rotationalRecoil, rotationalrecoilspeed * Time.fixedDeltaTime);
+        rotationalPoint.localRotation = Quaternion.Euler(Rotation);
     }
 
     // Update is called once per frame
@@ -63,6 +92,8 @@ public class WeaponBase : MonoBehaviour
             //If player holds down the left mouse button and if it is time to fire and if the player is not reloading
             if (Input.GetMouseButton(0) && Time.time >= m_fireTime && m_isWeaponReloading == false)
             {
+                IsFiring = true;
+
                 //Instantiate a projectile prefab and take away from ammo
                 GameObject bullet = Instantiate(WeaponProjectile);
                 CurrentAmmo -= 1;
@@ -75,7 +106,14 @@ public class WeaponBase : MonoBehaviour
                 m_fireTime = Time.time + 1 / FireRate;
 
                 //Move camera for weapon recoil
-                Camera.WeaponRecoil(RecoilSide / 3f, RecoilUp / 3f);
+
+                rotationalRecoil += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
+                positionalRecoil += new Vector3(Random.Range(-RecoilKickBack.x, RecoilKickBack.x), Random.Range(-RecoilKickBack.y, RecoilKickBack.y), RecoilKickBack.z);
+
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                IsFiring = false;
             }
         }
     }

@@ -137,6 +137,5 @@ public class EnemyBase : MonoBehaviour
                 m_enemyBurningTimer = 0;
             }
         }
-        Debug.Log(m_enemyBurningTimer);
     }
 }
