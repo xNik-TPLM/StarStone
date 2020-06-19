@@ -43,7 +43,7 @@ public class WeaponBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        CurrentAmmo = WeaponClipSize;
     }
 
     // Update is called once per frame
