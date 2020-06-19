@@ -163,9 +163,7 @@ public class PlayerController : MonoBehaviour
         }
             Vector3 move = transform.right * m_moveInputX + transform.forward * m_moveInputZ;
             CharacterController.Move(move * PlayerMovementSpeed * Time.deltaTime);
-            CharacterController.Move(m_playerVelocity * Time.deltaTime);
-        
-       
+            CharacterController.Move(m_playerVelocity * Time.deltaTime); 
     }
 
     //This function controls the jumping of the player
