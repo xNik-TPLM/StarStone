@@ -102,6 +102,14 @@ MonoBehaviour:
   WeaponProjectile: {fileID: 2715922866524773295, guid: e1fcb8d73dcabfb4ba2b0a2b77c58fa5,
     type: 3}
   WeaponMuzzle: {fileID: 7029881734540371093}
+  recoilPosition: {fileID: 0}
+  rotationalPoint: {fileID: 0}
+  positionalrecoilspeed: 8
+  rotationalrecoilspeed: 8
+  positionalreturnspeed: 18
+  rotationalreturnspeed: 38
+  RecoilRotation: {x: 10, y: 5, z: 7}
+  RecoilKickBack: {x: 0.0015, y: 0, z: -0.0002}
 --- !u!1 &7029881734540371093
 GameObject:
   m_ObjectHideFlags: 0
