@@ -445,6 +445,21 @@ PrefabInstance:
       propertyPath: RecoilSide
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: CurrentAmmo
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: WeaponClipSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: MaxAmmo
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5590742485740564429, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_Layer
@@ -832,24 +847,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1972851218 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8399359680510400983, guid: 60b5e663693a4374b96e44b9caa65eae,
-    type: 3}
-  m_PrefabInstance: {fileID: 1512003360}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1972851220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1972851218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85047f3450debb247b9a2210a61d2df2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2004915432 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3297118802594970122, guid: 60b5e663693a4374b96e44b9caa65eae,

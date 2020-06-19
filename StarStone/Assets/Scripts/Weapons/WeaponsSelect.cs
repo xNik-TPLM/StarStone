@@ -30,9 +30,9 @@ public class WeaponsSelect : MonoBehaviour
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            if (InteractStarStone.StarStoneID <= transform.childCount - 1)
+            if (InteractStarStone.StarStoneID <= 0)
             {
-                InteractStarStone.StarStoneID = 0;
+                InteractStarStone.StarStoneID = transform.childCount -1;
             }
             else
             {

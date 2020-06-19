@@ -12,14 +12,23 @@ using UnityEngine;
 public class WeaponBase : MonoBehaviour
 {
     //Private feilds
+    //Boolean feild to chekc if the weapon is realodaing so that the player can't shoot, whilst realoding is happening
+    private bool m_isWeaponReloading;
+
     //Float feild that times the fire rate of a weapon
     private float m_fireTime;
+
+    //Integer field to get the difference between ammo and clip size to have conservative ammo
+    private int m_ammoDifference;
 
     //Weapon properties
     //Float properties
     public float FireRate; //Weapon fire rate
     public float RecoilUp; //Weapon recoil going up
     public float RecoilSide; //Weapon recoil going to the side
+    public static int CurrentAmmo; //Amount of ammo in the clip
+    public int WeaponClipSize; //Weapon's clip size
+    public int MaxAmmo; //Maximum ammo the weapon will have
 
     //Boolean property that will check if the weapon is automatic or semi-automatic
     public bool IsAutomatic;
@@ -42,24 +51,66 @@ public class WeaponBase : MonoBehaviour
     {
         //Run the shooting function
         PlayerShooting();
+        WeaponReload();
     }
 
     //This function handles when the player shoots their weapon
     private void PlayerShooting()
     {
-        //If player holds down the left mouse button and if it is time to fire then
-        if (Input.GetMouseButton(0) && Time.time >= m_fireTime)
+        //If there is ammo left
+        if (CurrentAmmo > 0)
         {
-            //Instantiate a projectile prefab and use Muzzle's position and rotation to fire the projectile
-            GameObject bullet = Instantiate(WeaponProjectile);
-            bullet.transform.position = WeaponMuzzle.transform.position;
-            bullet.transform.rotation = WeaponMuzzle.transform.rotation;
+            //If player holds down the left mouse button and if it is time to fire and if the player is not reloading
+            if (Input.GetMouseButton(0) && Time.time >= m_fireTime && m_isWeaponReloading == false)
+            {
+                //Instantiate a projectile prefab and take away from ammo
+                GameObject bullet = Instantiate(WeaponProjectile);
+                CurrentAmmo -= 1;
 
-            //Set the fire timer
-            m_fireTime = Time.time + 1 / FireRate;
+                //Use Muzzle's position and rotation to fire the projectile
+                bullet.transform.position = WeaponMuzzle.transform.position;
+                bullet.transform.rotation = WeaponMuzzle.transform.rotation;
+                
+                //Set the fire timer
+                m_fireTime = Time.time + 1 / FireRate;
 
-            //Move camera for weapon recoil
-            Camera.WeaponRecoil(RecoilSide / 3f, RecoilUp / 3f);
+                //Move camera for weapon recoil
+                Camera.WeaponRecoil(RecoilSide / 3f, RecoilUp / 3f);
+            }
+        }
+    }
+
+    //This function handles the reloading of a weapon
+    private void WeaponReload()
+    {
+        //If R key is pressed and if player is not already reloading
+        if (Input.GetKeyDown(KeyCode.R) && m_isWeaponReloading == false)
+        {
+            //Realoding is true, so it's in progress
+            m_isWeaponReloading = true;
+
+            //If current clip is not full
+            if (CurrentAmmo < WeaponClipSize)
+            {
+                //Set ammo difference, by subtracting the clip size by ammo in clip
+                m_ammoDifference = WeaponClipSize - CurrentAmmo;
+
+                //If there's more ammo left
+                if(MaxAmmo > m_ammoDifference)
+                {
+                    CurrentAmmo += m_ammoDifference; //Add the ammo difference to the current ammo, so that it's not bigger than the clip size
+                    MaxAmmo -= m_ammoDifference; //Subtract max ammo by the ammo difference
+                }
+                else //If there's no ammo left
+                {
+                    //Add the remaing ammo and set max ammo to 0
+                    CurrentAmmo += MaxAmmo;
+                    MaxAmmo = 0;
+                }
+
+                //Once all of that is done, set realoding to false
+                m_isWeaponReloading = false;
+            }
         }
     }
 }
