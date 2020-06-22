@@ -11,13 +11,13 @@ public class Ammo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        ammoDisplay.text = WeaponBase.CurrentAmmo.ToString();
-        maxAmmo.text = GetComponentInChildren<WeaponBase>().MaxAmmo.ToString();
+        ammoDisplay.text = FindObjectOfType<WeaponBase>().CurrentAmmo.ToString();
+        maxAmmo.text = FindObjectOfType<WeaponBase>().MaxAmmo.ToString();
     }
 }

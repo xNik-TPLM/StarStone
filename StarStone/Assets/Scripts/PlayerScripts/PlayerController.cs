@@ -71,17 +71,17 @@ public class PlayerController : MonoBehaviour
         PlayerSprint();
         PlayerCrouch();
         PlayerLadder();
+        Melee();
+        
+    }
 
+    private void Melee()
+    {
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Knife.SetActive(true);
-            meleeActive = true;
-            //TakeDamage(20);
-
-            //KnifeStartPosition.position = Knife.transform.position;
         }
     }
-
     //void TakeDamage(int damage)
     //{
     //    currentHealth -= damage;

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
 {
-    public GameObject Knife; // This sets the reference to the player knife
     Animator meleeAnimation; // This sets the reference to the melee attack animation
     public float MeleeDamage; // This is the damage of the knife per hit
 
@@ -17,17 +16,9 @@ public class MeleeAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // These set the melee attack animation to true or false depending on whether the player presses the attack key
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            meleeAnimation.SetBool("MeleeAttack", true);
-        }
-        else if (Input.GetKeyUp(KeyCode.Q))
-        {
-            meleeAnimation.SetBool("MeleeAttack", false);
-        }
+        MeleeAnimation();
     }
-    
+
     // This creates a collider which detects whether the knife has hit the enemy and then does damage accordingly
     void OnTriggerEnter(Collider collision)
     {
@@ -37,4 +28,16 @@ public class MeleeAttack : MonoBehaviour
             collision.gameObject.GetComponent<EnemyBase>().EnemyDamaged(MeleeDamage, 0);
         }
     }
+
+    public void MeleeAnimation()
+    {
+        // These set the melee attack animation to true or false depending on whether the player presses the attack key
+        meleeAnimation.SetBool("MeleeAttack", true);
+
+        if (meleeAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        {
+            meleeAnimation.SetBool("MeleeAttack", false);
+            gameObject.SetActive(false);
+        }
+    }      
 }
