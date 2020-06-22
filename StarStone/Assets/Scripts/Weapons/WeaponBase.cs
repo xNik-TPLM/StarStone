@@ -26,7 +26,7 @@ public class WeaponBase : MonoBehaviour
     //Weapon properties
     //Float properties
     public float FireRate; //Weapon fire rate
-    public static int CurrentAmmo; //Amount of ammo in the clip
+    public int CurrentAmmo; //Amount of ammo in the clip
     public int WeaponClipSize; //Weapon's clip size
     public int MaxAmmo; //Maximum ammo the weapon will have
 
