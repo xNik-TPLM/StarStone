@@ -49,7 +49,6 @@ public class PlayerController : MonoBehaviour
 
     public static Transform KnifeStartPosition;
 
-    //public Rigidbody rb = GetComponent<Rigidbody>();
 
     //Only for WhiteBox scene
     //private float m_playerNormalHeight;
@@ -151,7 +150,6 @@ public class PlayerController : MonoBehaviour
             PlayerGravityForce = -9.81f;
         }
     }
-    
 
     //This function controls movement of the player
     private void PlayerMove()
