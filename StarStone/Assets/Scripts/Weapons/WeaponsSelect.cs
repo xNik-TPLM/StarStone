@@ -13,33 +13,31 @@ public class WeaponsSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetWeapon();
-
-        int previousWeapon = InteractStarStone.StarStoneID;
+        int previousWeapon = InteractStarStone.WeaponID;
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
-            if (InteractStarStone.StarStoneID >= transform.childCount - 1)
+            if (InteractStarStone.WeaponID >= transform.childCount - 1)
             {
-                InteractStarStone.StarStoneID = 0;
+                InteractStarStone.WeaponID = 0;
             }
             else
             {
-                InteractStarStone.StarStoneID++;
+                InteractStarStone.WeaponID++;
             }
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            if (InteractStarStone.StarStoneID <= 0)
+            if (InteractStarStone.WeaponID <= 0)
             {
-                InteractStarStone.StarStoneID = transform.childCount -1;
+                InteractStarStone.WeaponID = transform.childCount -1;
             }
             else
             {
-                InteractStarStone.StarStoneID--;
+                InteractStarStone.WeaponID--;
             }
         }
-        if (previousWeapon != InteractStarStone.StarStoneID)
+        if (previousWeapon != InteractStarStone.WeaponID)
         {
             SetWeapon();
         }
@@ -50,7 +48,7 @@ public class WeaponsSelect : MonoBehaviour
         int i = 0;
         foreach(Transform weapon in transform)
         {
-            if(i == InteractStarStone.StarStoneID)
+            if(i == InteractStarStone.WeaponID)
             {
                 weapon.gameObject.SetActive(true);
             }

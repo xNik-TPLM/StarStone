@@ -55,7 +55,7 @@ public class WeaponBase : MonoBehaviour
     private Vector3 Rotation;
 
 
-
+    protected GameObject SelectedProjectile;
 
     // Start is called before the first frame update
     void Start()
@@ -82,7 +82,7 @@ public class WeaponBase : MonoBehaviour
     }
 
     //This function handles when the player shoots their weapon
-    private void PlayerShooting()
+    protected virtual void PlayerShooting()
     {
         //If there is ammo left
         if (CurrentAmmo > 0)
@@ -92,13 +92,7 @@ public class WeaponBase : MonoBehaviour
             {
                 IsFiring = true;
 
-                //Instantiate a projectile prefab and take away from ammo
-                GameObject bullet = Instantiate(WeaponProjectile);
-                CurrentAmmo -= 1;
-
-                //Use Muzzle's position and rotation to fire the projectile
-                bullet.transform.position = WeaponMuzzle.transform.position;
-                bullet.transform.rotation = WeaponMuzzle.transform.rotation;
+                InstantiateProjectile();
                 
                 //Set the fire timer
                 m_fireTime = Time.time + 1 / FireRate;
@@ -107,13 +101,22 @@ public class WeaponBase : MonoBehaviour
 
                 rotationalRecoil += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
                 positionalRecoil += new Vector3(Random.Range(-RecoilKickBack.x, RecoilKickBack.x), Random.Range(-RecoilKickBack.y, RecoilKickBack.y), RecoilKickBack.z);
-
             }
             if (Input.GetMouseButtonUp(0))
             {
                 IsFiring = false;
             }
         }
+    }
+
+    protected virtual void InstantiateProjectile()
+    {
+        SelectedProjectile = Instantiate(WeaponProjectile);
+        CurrentAmmo -= 1;
+
+        //Use Muzzle's position and rotation to fire the projectile
+        SelectedProjectile.transform.position = WeaponMuzzle.transform.position;
+        SelectedProjectile.transform.rotation = WeaponMuzzle.transform.rotation;
     }
 
     //This function handles the reloading of a weapon

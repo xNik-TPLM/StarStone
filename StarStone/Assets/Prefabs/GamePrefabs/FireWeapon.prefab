@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2609227005248944782}
   - component: {fileID: 6444317485330530488}
   - component: {fileID: 743755807073303617}
-  - component: {fileID: 2851377721164807728}
+  - component: {fileID: 2519397886453861574}
   m_Layer: 0
   m_Name: FireWeapon
   m_TagString: Untagged
@@ -81,7 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &2851377721164807728
+--- !u!114 &2519397886453861574
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,17 +90,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1328157252576528541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00d0656979b19b641911c64c6da42101, type: 3}
+  m_Script: {fileID: 11500000, guid: f05afeb910d3da34e9cbb7e8f2ecb054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 0
-  RecoilUp: 0
-  RecoilSide: 0
-  WeaponClipSize: 0
-  MaxAmmo: 0
+  FireRate: 10
+  WeaponClipSize: 1
+  MaxAmmo: 10
   IsAutomatic: 0
-  WeaponProjectile: {fileID: 2715922866524773295, guid: e1fcb8d73dcabfb4ba2b0a2b77c58fa5,
-    type: 3}
+  WeaponProjectile: {fileID: 0}
   WeaponMuzzle: {fileID: 7029881734540371093}
   recoilPosition: {fileID: 0}
   rotationalPoint: {fileID: 0}
@@ -110,6 +107,7 @@ MonoBehaviour:
   rotationalreturnspeed: 38
   RecoilRotation: {x: 10, y: 5, z: 7}
   RecoilKickBack: {x: 0.0015, y: 0, z: -0.0002}
+  FireProjectile: {fileID: 0}
 --- !u!1 &7029881734540371093
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,10 +131,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7029881734540371093}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2609227005248944782}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

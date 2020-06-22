@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1435448360936352188}
   - component: {fileID: 7976079530199094154}
   - component: {fileID: 4434976330337218419}
-  - component: {fileID: 7860035280423787166}
   - component: {fileID: 1198082834154564943}
   - component: {fileID: -1914686548165017711}
+  - component: {fileID: 7860035280423787166}
   m_Layer: 0
   m_Name: PrototypeBullet
   m_TagString: Untagged
@@ -82,21 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &7860035280423787166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2715922866524773295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5adae12c5acc44da92405bfb046c35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ProjectileDuration: 5
-  ProjectileSpeed: 10
-  ProjectileDamage: 10
 --- !u!135 &1198082834154564943
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -126,3 +111,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7860035280423787166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2715922866524773295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5adae12c5acc44da92405bfb046c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProjectileDuration: 5
+  ProjectileSpeed: 10
+  ProjectileDamage: 10

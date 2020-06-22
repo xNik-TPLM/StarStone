@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 6989485618890738874}
   - component: {fileID: 3232717784260162535}
   m_Layer: 0
-  m_Name: RotationPoint
+  m_Name: WeaponRotationPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,7 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2117802646086677836}
   m_Layer: 9
-  m_Name: WeaponHolder
+  m_Name: WeaponPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -393,7 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1564515103104891275}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -424,7 +424,7 @@ PrefabInstance:
     - target: {fileID: 1328157252576528541, guid: 6ca3fe58d3097ed4e938a49ae27b7909,
         type: 3}
       propertyPath: m_Name
-      value: Weapon
+      value: PrimaryWeapon
       objectReference: {fileID: 0}
     - target: {fileID: 2609227005248944782, guid: 6ca3fe58d3097ed4e938a49ae27b7909,
         type: 3}
@@ -551,7 +551,7 @@ PrefabInstance:
     - target: {fileID: 6991691930648844957, guid: 6ca3fe58d3097ed4e938a49ae27b7909,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ca3fe58d3097ed4e938a49ae27b7909, type: 3}
@@ -678,6 +678,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndKnifePosition
       objectReference: {fileID: 0}
+    - target: {fileID: 5233771868464679553, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
+        type: 3}
+      propertyPath: Knife
+      value: 
+      objectReference: {fileID: 9195779116005136097}
     - target: {fileID: 8908043011710900811, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -693,8 +698,15 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4915398034560546713, guid: 7a1036c4aa08d814a8d33cf0ecf19071, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7a1036c4aa08d814a8d33cf0ecf19071, type: 3}
+--- !u!1 &9195779116005136097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3969621180237925670, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
+    type: 3}
+  m_PrefabInstance: {fileID: 5227294934020905927}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5316114232908440818 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 93929863628734261, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
@@ -711,8 +723,18 @@ PrefabInstance:
     - target: {fileID: 1328157252576528541, guid: e08bb334b5386d24e9b20dc32874d53f,
         type: 3}
       propertyPath: m_Name
-      value: FireWeapon
+      value: PrototypeWeapon
       objectReference: {fileID: 0}
+    - target: {fileID: 2519397886453861574, guid: e08bb334b5386d24e9b20dc32874d53f,
+        type: 3}
+      propertyPath: recoilPosition
+      value: 
+      objectReference: {fileID: 2117802646086677836}
+    - target: {fileID: 2519397886453861574, guid: e08bb334b5386d24e9b20dc32874d53f,
+        type: 3}
+      propertyPath: rotationalPoint
+      value: 
+      objectReference: {fileID: 6989485618890738874}
     - target: {fileID: 2609227005248944782, guid: e08bb334b5386d24e9b20dc32874d53f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -783,16 +805,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.002
       objectReference: {fileID: 0}
-    - target: {fileID: 2851377721164807728, guid: e08bb334b5386d24e9b20dc32874d53f,
-        type: 3}
-      propertyPath: recoilposition
-      value: 
-      objectReference: {fileID: 2117802646086677836}
-    - target: {fileID: 2851377721164807728, guid: e08bb334b5386d24e9b20dc32874d53f,
-        type: 3}
-      propertyPath: recoilrotation
-      value: 
-      objectReference: {fileID: 6989485618890738874}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e08bb334b5386d24e9b20dc32874d53f, type: 3}
 --- !u!4 &7874985139208305392 stripped

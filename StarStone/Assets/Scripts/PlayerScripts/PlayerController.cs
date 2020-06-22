@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        //healthBar.SetMaxHealth(maxHealth);
         //m_playerCrouchHeight = Player.transform.localScale.y / 2;
         //m_playerNormalHeight = Player.transform.localScale.y;
     }
