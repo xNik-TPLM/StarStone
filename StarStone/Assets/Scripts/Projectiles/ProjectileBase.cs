@@ -19,8 +19,6 @@ public class ProjectileBase : MonoBehaviour
     public float ProjectileSpeed;
     public float ProjectileDamage;
 
-    public static int ProjectileType = 0;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +28,7 @@ public class ProjectileBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * (ProjectileSpeed * Time.deltaTime);
+        transform.position += transform.forward * ProjectileSpeed * Time.deltaTime;
 
         m_projectileLifeTimer -= Time.deltaTime;
 
@@ -40,17 +38,21 @@ public class ProjectileBase : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    /*void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            //Enemy.EnemyDamaged(ProjectileDamage);
-            collision.collider.gameObject.GetComponent<EnemyBase>().EnemyDamaged(ProjectileDamage, InteractStarStone.StarStoneID);
-
-
-            //Debug.Log("Hit");
+            Destroy(gameObject);
         }
 
-        Destroy(gameObject);
-    }
+        
+    }*/
+
+    /*private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+    }*/
 }
