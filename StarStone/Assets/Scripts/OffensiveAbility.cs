@@ -4,33 +4,31 @@ using UnityEngine;
 
 public class OffensiveAbility : MonoBehaviour
 {
-    public float delay = 3f;
     public float radius = 5f;
     public float force = 700f;
-    //public GameObject explosionEffect;
-    float countDown;
     bool hasExploded = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        countDown = delay;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        countDown -= Time.deltaTime;
-        if (countDown <= 0f && !hasExploded)
+        hasExploded = false;
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            Explode();
-            hasExploded = true;
+            if (!hasExploded)
+            {
+                Explode();
+                hasExploded = true;
+            }
         }
     }
     void Explode()
     {
-        Debug.Log("BOOM!");
-        //Instantiate(explosionEffect, transform.position, transform.rotation);
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         foreach (Collider nearbyObject in colliders)
         {
@@ -38,8 +36,8 @@ public class OffensiveAbility : MonoBehaviour
             if (rb != null)
             {
                 rb.AddExplosionForce(force, transform.position, radius);
+                
             }
         }
-        Destroy(gameObject);
     }
 }
