@@ -54,6 +54,10 @@ public class WeaponBase : MonoBehaviour
     private Vector3 positionalRecoil;
     private Vector3 Rotation;
 
+    public static bool EnemyHit;
+    public EnemyBase EnemyTarget;
+
+    private GameObject m_camera;
 
     protected GameObject SelectedProjectile;
 
@@ -61,6 +65,7 @@ public class WeaponBase : MonoBehaviour
     void Start()
     {
         CurrentAmmo = WeaponClipSize;
+        m_camera = GameObject.Find("Main Camera");
     }
 
     void FixedUpdate()
@@ -88,12 +93,17 @@ public class WeaponBase : MonoBehaviour
         if (CurrentAmmo > 0)
         {
             //If player holds down the left mouse button and if it is time to fire and if the player is not reloading
-            if (Input.GetMouseButton(0) && Time.time >= m_fireTime && m_isWeaponReloading == false)
+            /*if (Input.GetMouseButton(0) && Time.time >= m_fireTime && m_isWeaponReloading == false)
             {
                 IsFiring = true;
 
-                InstantiateProjectile();
-                
+                SelectedProjectile = Instantiate(WeaponProjectile);
+                CurrentAmmo -= 1;
+
+                //Use Muzzle's position and rotation to fire the projectile
+                SelectedProjectile.transform.position = WeaponMuzzle.transform.position;
+                SelectedProjectile.transform.rotation = WeaponMuzzle.transform.rotation;
+               
                 //Set the fire timer
                 m_fireTime = Time.time + 1 / FireRate;
 
@@ -101,22 +111,24 @@ public class WeaponBase : MonoBehaviour
 
                 rotationalRecoil += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
                 positionalRecoil += new Vector3(Random.Range(-RecoilKickBack.x, RecoilKickBack.x), Random.Range(-RecoilKickBack.y, RecoilKickBack.y), RecoilKickBack.z);
-            }
-            if (Input.GetMouseButtonUp(0))
+            }*/
+
+            if(Input.GetMouseButtonDown(0) && m_isWeaponReloading == false)
             {
-                IsFiring = false;
+                SelectedProjectile = Instantiate(WeaponProjectile);
+                CurrentAmmo -= 1;
+
+                HitDetection();
+
+                //Use Muzzle's position and rotation to fire the projectile
+                SelectedProjectile.transform.position = WeaponMuzzle.transform.position;
+                SelectedProjectile.transform.rotation = WeaponMuzzle.transform.rotation;
+
+                //Move camera
+                rotationalRecoil += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
+                positionalRecoil += new Vector3(Random.Range(-RecoilKickBack.x, RecoilKickBack.x), Random.Range(-RecoilKickBack.y, RecoilKickBack.y), RecoilKickBack.z);
             }
         }
-    }
-
-    protected virtual void InstantiateProjectile()
-    {
-        SelectedProjectile = Instantiate(WeaponProjectile);
-        CurrentAmmo -= 1;
-
-        //Use Muzzle's position and rotation to fire the projectile
-        SelectedProjectile.transform.position = WeaponMuzzle.transform.position;
-        SelectedProjectile.transform.rotation = WeaponMuzzle.transform.rotation;
     }
 
     //This function handles the reloading of a weapon
@@ -149,6 +161,20 @@ public class WeaponBase : MonoBehaviour
 
                 //Once all of that is done, set realoding to false
                 m_isWeaponReloading = false;
+            }
+        }
+    }
+
+    private void HitDetection()
+    {
+        if (Physics.Raycast(WeaponMuzzle.transform.position, WeaponMuzzle.transform.forward, out RaycastHit m_raycastHitDetector, 100))
+        {
+            Debug.Log(m_raycastHitDetector.transform.name);
+            EnemyTarget = m_raycastHitDetector.transform.GetComponent<EnemyBase>();
+
+            if (EnemyTarget != null)
+            {
+                EnemyTarget.EnemyDamaged(WeaponProjectile.GetComponent<ProjectileBase>().ProjectileDamage, InteractStarStone.StarStoneID);
             }
         }
     }

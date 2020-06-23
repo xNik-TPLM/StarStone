@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractStarStone : MonoBehaviour
 {
-    public static int StarStoneID =1;
+    public static int StarStoneID;
     public static int WeaponID;
 
 

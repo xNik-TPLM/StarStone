@@ -414,6 +414,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11543518401450310, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: meleeAnimation
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1032987735157241578, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_IsActive
@@ -437,7 +442,7 @@ PrefabInstance:
     - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: FireRate
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
@@ -552,7 +557,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2787169702471085465, guid: 60b5e663693a4374b96e44b9caa65eae, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 60b5e663693a4374b96e44b9caa65eae, type: 3}
 --- !u!1 &1538423873
 GameObject:
@@ -923,6 +929,16 @@ PrefabInstance:
         type: 3}
       propertyPath: BurningTime
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6778946180520113375, guid: c02eb9eb012f5ae4dbb45340f058791a,
+        type: 3}
+      propertyPath: CurrentHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6778946180520113375, guid: c02eb9eb012f5ae4dbb45340f058791a,
+        type: 3}
+      propertyPath: MaxHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8132891998174723389, guid: c02eb9eb012f5ae4dbb45340f058791a,
         type: 3}
