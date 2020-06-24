@@ -17,8 +17,6 @@ public class PrototypeWeapon : WeaponBase
             projectile.transform.position = WeaponMuzzle.transform.position;
             projectile.transform.rotation = WeaponMuzzle.transform.rotation;
         }
-
-
         SetPrototypeProjectile();
     }
 

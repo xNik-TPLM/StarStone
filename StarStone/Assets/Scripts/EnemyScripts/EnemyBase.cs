@@ -13,15 +13,25 @@ using UnityEngine.AI;
 
 public class EnemyBase : MonoBehaviour
 {
+    protected bool isPlayerInRange;
+
+
+
+
+
+
+
+
+
     //Enemy feilds
-    private bool m_isPlayerInRange = false;
+    //private bool m_isPlayerInRange = false;
 
     protected bool m_isEnemyBurning;
 
-    private float m_detonationTime;
-    public float DetonationTimer;
+    //private float m_detonationTime;
+    //public float DetonationTimer;
 
-    private NavMeshAgent m_enemyNavMesh;
+    protected NavMeshAgent m_enemyNavMesh;
 
 
     //Enemy properties    
@@ -40,9 +50,10 @@ public class EnemyBase : MonoBehaviour
     public Transform Target;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         m_enemyNavMesh = GetComponent<NavMeshAgent>();
+        Target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -50,8 +61,7 @@ public class EnemyBase : MonoBehaviour
     {
         //Constanlty display enemies health
         EnemyHealth();
-        EnemyMovement();
-        EnemyDetonation();
+        EnemyBehaviour();
         EnemyBurning();
     }
 
@@ -91,37 +101,16 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    protected virtual void EnemyMovement()
+    protected virtual void EnemyBehaviour()
     {
         m_enemyNavMesh.speed = EnemySpeed;
         Vector3 targetPosition = Target.position;
 
-        if(m_isPlayerInRange == false)
+        if(!isPlayerInRange)
         {
             m_enemyNavMesh.SetDestination(targetPosition);
         }
 
-    }
-
-    private void EnemyDetonation()
-    {
-        if (m_isPlayerInRange == true)
-        {
-            m_detonationTime += Time.deltaTime;
-
-            if (m_detonationTime > DetonationTimer)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            m_isPlayerInRange = true;
-        }
     }
 
     protected void EnemyBurning()
