@@ -10,6 +10,15 @@ public class PrototypeWeapon : WeaponBase
     protected override void PlayerShooting()
     {
         base.PlayerShooting();
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            GameObject projectile = Instantiate(WeaponProjectile);
+            projectile.transform.position = WeaponMuzzle.transform.position;
+            projectile.transform.rotation = WeaponMuzzle.transform.rotation;
+        }
+
+
         SetPrototypeProjectile();
     }
 

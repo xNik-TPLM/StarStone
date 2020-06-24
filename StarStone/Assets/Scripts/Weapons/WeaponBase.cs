@@ -54,8 +54,9 @@ public class WeaponBase : MonoBehaviour
     private Vector3 positionalRecoil;
     private Vector3 Rotation;
 
-    public static bool EnemyHit;
     public EnemyBase EnemyTarget;
+
+    private bool fired;
 
     private GameObject m_camera;
 
@@ -64,6 +65,7 @@ public class WeaponBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Set current ammo as clip size and get reference 
         CurrentAmmo = WeaponClipSize;
         m_camera = GameObject.Find("Main Camera");
     }
@@ -92,6 +94,7 @@ public class WeaponBase : MonoBehaviour
         //If there is ammo left
         if (CurrentAmmo > 0)
         {
+            ///Automatic weapon solution
             //If player holds down the left mouse button and if it is time to fire and if the player is not reloading
             /*if (Input.GetMouseButton(0) && Time.time >= m_fireTime && m_isWeaponReloading == false)
             {
@@ -113,18 +116,23 @@ public class WeaponBase : MonoBehaviour
                 positionalRecoil += new Vector3(Random.Range(-RecoilKickBack.x, RecoilKickBack.x), Random.Range(-RecoilKickBack.y, RecoilKickBack.y), RecoilKickBack.z);
             }*/
 
+            ///Semi-automatic weapon solution
+            //If the player presses the left mouse button and if the player is not reloading
             if(Input.GetMouseButtonDown(0) && m_isWeaponReloading == false)
             {
-                SelectedProjectile = Instantiate(WeaponProjectile);
+                //Instantiate a projectile and take away ammo by one
+                //SelectedProjectile = Instantiate(WeaponProjectile);
                 CurrentAmmo -= 1;
 
+                //Initiate a raycast
                 HitDetection();
+                Debug.Log("Firing");
 
                 //Use Muzzle's position and rotation to fire the projectile
-                SelectedProjectile.transform.position = WeaponMuzzle.transform.position;
-                SelectedProjectile.transform.rotation = WeaponMuzzle.transform.rotation;
+                //SelectedProjectile.transform.position = WeaponMuzzle.transform.position;
+                //SelectedProjectile.transform.rotation = WeaponMuzzle.transform.rotation;
 
-                //Move camera
+                //Move weapon for recoil
                 rotationalRecoil += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
                 positionalRecoil += new Vector3(Random.Range(-RecoilKickBack.x, RecoilKickBack.x), Random.Range(-RecoilKickBack.y, RecoilKickBack.y), RecoilKickBack.z);
             }
@@ -165,11 +173,12 @@ public class WeaponBase : MonoBehaviour
         }
     }
 
+    //This function handles the raycast initiation
     private void HitDetection()
     {
+        //Initiate raycast from the weapon muzzle and point it forward and get the information on the object hit from 
         if (Physics.Raycast(WeaponMuzzle.transform.position, WeaponMuzzle.transform.forward, out RaycastHit m_raycastHitDetector, 100))
         {
-            Debug.Log(m_raycastHitDetector.transform.name);
             EnemyTarget = m_raycastHitDetector.transform.GetComponent<EnemyBase>();
 
             if (EnemyTarget != null)
