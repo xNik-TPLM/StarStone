@@ -10,6 +10,7 @@ TagManager:
   - LadderBottom
   - LadderTop
   - Knife
+  - StarStone
   layers:
   - Default
   - TransparentFX
