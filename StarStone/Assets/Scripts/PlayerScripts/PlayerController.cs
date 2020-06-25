@@ -36,7 +36,8 @@ public class PlayerController : MonoBehaviour
     public float GroundCheckRadius = 0.4f; //The radius to check if the player's still on the ground
     public int maxHealth = 100;
     public int currentHealth;
-    public HealthBar healthBar;
+    public static HealthBar healthBar;
+    public int damage;
 
     //Transform properties
     public Transform PlayerFeetPosition; //Position of the player's feet to check if player is grounded
@@ -72,7 +73,6 @@ public class PlayerController : MonoBehaviour
         PlayerCrouch();
         PlayerLadder();
         Melee();
-        
     }
 
     private void Melee()
@@ -82,11 +82,7 @@ public class PlayerController : MonoBehaviour
             Knife.SetActive(true);
         }
     }
-    //void TakeDamage(int damage)
-    //{
-    //    currentHealth -= damage;
-    //    healthBar.SetHealth(currentHealth);
-    //}
+    
 
     //This checks if the player has collided with the ladder
     private void OnTriggerStay(Collider collision)
@@ -113,6 +109,18 @@ public class PlayerController : MonoBehaviour
         else
         {
             ladderTop = false;
+        }
+        if (collision.CompareTag("StarStone"))
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Shield.shieldActive = true;
+                Debug.Log("Works!!!!!");
+                
+                currentHealth -= damage;
+                healthBar.SetHealth(currentHealth);
+                
+            }
         }
     }
     private void OnTriggerExit(Collider collision)
