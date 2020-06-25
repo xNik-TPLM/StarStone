@@ -29,6 +29,7 @@ public class FireElementalEnemy : EnemyBase
         }
 
 
+
         if(timeBtwShots <= 0 && isPlayerInRange)
         {
             Instantiate(FireProjectile, transform.position, transform.rotation);

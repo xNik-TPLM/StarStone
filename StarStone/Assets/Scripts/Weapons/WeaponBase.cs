@@ -17,6 +17,8 @@ public class WeaponBase : MonoBehaviour
 
     public static bool IsFiring;
 
+    public bool UseHitscan;
+
     //Float feild that times the fire rate of a weapon
     private float m_fireTime;
 
@@ -177,13 +179,13 @@ public class WeaponBase : MonoBehaviour
     private void HitDetection()
     {
         //Initiate raycast from the weapon muzzle and point it forward and get the information on the object hit from 
-        if (Physics.Raycast(WeaponMuzzle.transform.position, WeaponMuzzle.transform.forward, out RaycastHit m_raycastHitDetector, 100))
+        if (Physics.Raycast(WeaponMuzzle.transform.position, WeaponMuzzle.transform.forward, out RaycastHit m_raycastHitDetector, 100) && UseHitscan == true)
         {
             EnemyTarget = m_raycastHitDetector.transform.GetComponent<EnemyBase>();
 
             if (EnemyTarget != null)
             {
-                EnemyTarget.EnemyDamaged(WeaponProjectile.GetComponent<ProjectileBase>().ProjectileDamage, InteractStarStone.StarStoneID);
+                EnemyTarget.EnemyDamaged(45, InteractStarStone.StarStoneID);
             }
         }
     }

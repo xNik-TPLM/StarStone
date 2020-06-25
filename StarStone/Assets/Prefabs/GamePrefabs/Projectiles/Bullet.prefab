@@ -108,5 +108,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileDuration: 1
-  ProjectileSpeed: 500
+  ProjectileSpeed: 100
   ProjectileDamage: 1

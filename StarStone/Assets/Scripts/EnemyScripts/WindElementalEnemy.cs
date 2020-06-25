@@ -32,7 +32,6 @@ public class WindElementalEnemy : EnemyBase
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Count Down");
             m_isPlayerInDetonationRange = true;
         }
     }
@@ -47,6 +46,7 @@ public class WindElementalEnemy : EnemyBase
             if (m_detonationTime > DetonationTimer)
             {
                 Destroy(gameObject);
+                CurrentHealth = 0;
             }
         }
     }

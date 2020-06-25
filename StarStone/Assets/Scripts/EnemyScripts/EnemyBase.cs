@@ -90,6 +90,12 @@ public class EnemyBase : MonoBehaviour
             HealthBarUI.SetActive(false);
             CurrentHealth = MaxHealth;
         }
+
+        if(CurrentHealth < 0)
+        {
+            Destroy(gameObject);
+            WaveSystem.EnemiesOnMap--;
+        }
     }
 
     //This function will damage the enemy, which will be called in the projectile script as projectile damage is needed
@@ -106,7 +112,7 @@ public class EnemyBase : MonoBehaviour
         m_enemyNavMesh.speed = EnemySpeed;
         Vector3 targetPosition = Target.position;
 
-        if(!isPlayerInRange)
+        if(isPlayerInRange == false && m_enemyNavMesh != null)
         {
             m_enemyNavMesh.SetDestination(targetPosition);
         }

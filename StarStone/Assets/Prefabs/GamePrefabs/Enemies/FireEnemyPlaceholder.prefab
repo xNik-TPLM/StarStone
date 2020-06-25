@@ -146,7 +146,6 @@ GameObject:
   - component: {fileID: 6470528464220020395}
   - component: {fileID: 790212617416778322}
   - component: {fileID: 603244638575752958}
-  - component: {fileID: 603244638575752957}
   - component: {fileID: 603244638575752959}
   - component: {fileID: 5907357315304100358}
   m_Layer: 0
@@ -231,19 +230,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04607644, y: 0.061215468, z: 0.008171767}
   m_Center: {x: -0.0000028768554, y: 0.014775044, z: -2.6245751e-17}
---- !u!135 &603244638575752957
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354369888520148622}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.040889386
-  m_Center: {x: -0.0000028709076, y: 0.01477505, z: -0.0016945362}
 --- !u!195 &603244638575752959
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -286,6 +272,9 @@ MonoBehaviour:
   HealthBarUI: {fileID: 1238655991550590856}
   HealthBarSlider: {fileID: 6282788082468310326}
   Target: {fileID: 0}
+  FiringDistance: 0
+  startTimeBtwShots: 0
+  FireProjectile: {fileID: 0}
 --- !u!1 &7171401308565186797
 GameObject:
   m_ObjectHideFlags: 0
