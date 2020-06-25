@@ -447,12 +447,27 @@ PrefabInstance:
     - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: WeaponClipSize
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: MaxAmmo
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: RecoilKickBack.x
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: RecoilKickBack.z
+      value: -0.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: RecoilRotation.y
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6562528172232624355, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
@@ -885,6 +900,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2353399215453534633, guid: c02eb9eb012f5ae4dbb45340f058791a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ae2da5da56bafa246934fddcbd94d8a7, type: 2}
     - target: {fileID: 2450158184775920900, guid: c02eb9eb012f5ae4dbb45340f058791a,
         type: 3}
       propertyPath: m_Enabled
@@ -964,6 +984,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5748563211949454174, guid: 347bdac3c46b91c41ae791346e7cabd2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d278df7bdbfa16a4a9954817e2d4d831, type: 2}
     - target: {fileID: 6339425347480717186, guid: 347bdac3c46b91c41ae791346e7cabd2,
         type: 3}
       propertyPath: m_Name

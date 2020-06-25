@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This sript deals with camera movement for recoil of the weapon.
+/// It is mainly attatched to the camera holder object, instead of the main camera object, because it the camera rotates on all axis, whereas the camera object roates only on the the x axis.
+/// </summary>
+
 public class CameraRecoilMovement : MonoBehaviour
 {
     public float rotationSpeed = 6;
@@ -28,9 +33,9 @@ public class CameraRecoilMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) && GetComponentInChildren<WeaponBase>().CurrentAmmo > 0)
+        if (Input.GetMouseButtonDown(0) && GetComponentInChildren<WeaponBase>().CurrentAmmo > 0)
         {
-            currentRotation += new Vector3(Random.Range(-RecoilRotation.x, RecoilRotation.x), currentRotation.y, Random.Range(-RecoilRotation.z, RecoilRotation.z));
+            currentRotation += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
         }      
     }
 }

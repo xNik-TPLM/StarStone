@@ -40,6 +40,10 @@ public class EarthElementalEnemy : EnemyBase
         {
             case 1:
                 CurrentHealth -= damage;
+                break;
+
+            case 2:
+                CurrentHealth -= damage;
                 m_isEnemyBurning = true;
                 break;
         }
