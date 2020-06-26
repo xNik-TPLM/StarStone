@@ -13,8 +13,9 @@ public class PlayerController : MonoBehaviour
     private bool m_isGrounded;
     private bool m_ladderCollision;
 
-    public static bool meleeActive; //This bool checks whether the player is melee attacking
+    //public static bool meleeActive; //This bool checks whether the player is melee attacking
     public GameObject Knife; //This sets the reference to the melee weapon
+    public GameObject playerShield;
 
     //Float fields
     //These floats will get the reference of axis of where the player will move.
@@ -73,6 +74,7 @@ public class PlayerController : MonoBehaviour
         PlayerCrouch();
         PlayerLadder();
         Melee();
+        //ShieldActive();
     }
 
     private void Melee()
@@ -82,7 +84,14 @@ public class PlayerController : MonoBehaviour
             Knife.SetActive(true);
         }
     }
-    
+    //private void ShieldActive()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.E))
+    //    {
+            
+    //    }
+    //}
+
 
     //This checks if the player has collided with the ladder
     private void OnTriggerStay(Collider collision)
@@ -114,9 +123,9 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Shield.shieldActive = true;
-                Debug.Log("Works!!!!!");
-                
+                Debug.Log("!!!!");
+                //Shield.shieldActive = true;
+                playerShield.SetActive(true);
                 currentHealth -= damage;
                 healthBar.SetHealth(currentHealth);
                 
