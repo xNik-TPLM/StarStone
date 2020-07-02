@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class ProjectileBase : MonoBehaviour
 {
-    //Projectile feild
+    //Projectile field
     //This float will get the property value of a projectile duration and uses it to count down the life of a projectile
     private float m_projectileLifeTimer;
 

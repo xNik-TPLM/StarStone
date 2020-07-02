@@ -27,8 +27,10 @@ public class FireElementalEnemy : EnemyBase
             isPlayerInRange = true;
             transform.position = transform.position;
         }
-
-
+        else
+        {
+            isPlayerInRange = false;
+        }
 
         if(timeBtwShots <= 0 && isPlayerInRange)
         {

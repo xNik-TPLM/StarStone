@@ -45,8 +45,7 @@ public class WindElementalEnemy : EnemyBase
 
             if (m_detonationTime > DetonationTimer)
             {
-                Destroy(gameObject);
-                CurrentHealth = 0;
+                CurrentHealth = -1;
             }
         }
     }

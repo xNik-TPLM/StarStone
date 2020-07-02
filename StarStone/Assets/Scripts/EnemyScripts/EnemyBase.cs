@@ -13,53 +13,46 @@ using UnityEngine.AI;
 
 public class EnemyBase : MonoBehaviour
 {
-    protected bool isPlayerInRange;
+    //Enemy fields
+    //This float is the duration of bruning that will be checked if it reaches the "Burning Time" property
+    private float m_enemyBurningTimer;
+    
+    //Protected fields
+    //protected booleans
+    protected bool isPlayerInRange; //This will check if the enemy is in range with the player for detonation, or shooting
+    protected bool m_isEnemyBurning; //This will check if the enemy is burning    
+    
+    //This transform will get the location of the player so that the AI will know what their target is
+    protected Transform Target;
 
-
-
-
-
-
-
-
-
-    //Enemy feilds
-    //private bool m_isPlayerInRange = false;
-
-    protected bool m_isEnemyBurning;
-
-    //private float m_detonationTime;
-    //public float DetonationTimer;
-
+    //This navmesh agent will be used as reference to the component in our enemy object
     protected NavMeshAgent m_enemyNavMesh;
-
 
     //Enemy properties    
     //Float properties
     public float CurrentHealth; //This keeps track of how much health does the enemy have
     public float MaxHealth; //This sets the max health of an enemy
     public float EnemySpeed; //This sets the speed of our enemy
+    public float BurningTime; //This sets the burning time of our enemy
 
-    public int BurnDamage;
-    public float BurningTime;
+    //This integer sets the burning damage of our enemy
+    public int BurnDamage; 
 
-    private float m_enemyBurningTimer;
-
-    public GameObject HealthBarUI;
-    public Slider HealthBarSlider;
-    public Transform Target;
+    //Unity properties
+    public GameObject HealthBarUI; //This is the reference to the canvas of our health bar so that we can deactivate it when health is full
+    public Slider HealthBarSlider; //this is the reference to the slider, which change the value of the slider
+    
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        m_enemyNavMesh = GetComponent<NavMeshAgent>();
-        Target = GameObject.FindGameObjectWithTag("Player").transform;
+        m_enemyNavMesh = GetComponent<NavMeshAgent>(); //Get a reference to the navmesh agent component
+        Target = GameObject.FindGameObjectWithTag("Player").transform; //Get the transform of our player to be used at destination for the AI
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Constanlty display enemies health
         EnemyHealth();
         EnemyBehaviour();
         EnemyBurning();
@@ -91,43 +84,52 @@ public class EnemyBase : MonoBehaviour
             CurrentHealth = MaxHealth;
         }
 
-        if(CurrentHealth < 0)
+        //If enemy's current health is below or equla to 0 then 
+        if(CurrentHealth <= 0)
         {
-            Destroy(gameObject);
+            //Decrement enemies on the map for the wave system and destroy the game object
             WaveSystem.EnemiesOnMap--;
+            Destroy(gameObject);
         }
     }
 
-    //This function will damage the enemy, which will be called in the projectile script as projectile damage is needed
+    //This function will damage the enemy, which uses damage for the damage that will deal to the enemy and the projectile type to get reference of what elemental projectile will do to the enemy
     public virtual void EnemyDamaged(float damage, int projectileType)
     {
+        //if it's a normal projectile then deal normal damage
         if(projectileType == 0)
         {
             CurrentHealth -= damage;
         }
     }
 
+    //This function will handle the behaviour of each enemy, this will be overriden, to match elemental enemy's behaviour
     protected virtual void EnemyBehaviour()
     {
-        m_enemyNavMesh.speed = EnemySpeed;
-        Vector3 targetPosition = Target.position;
+        m_enemyNavMesh.speed = EnemySpeed; //Set speed for the Navmesh agent. Using the speed property to set the navmesh will be simpler, instead of scrolling through a load of navmesh agent properties
+        Vector3 targetPosition = Target.position; //Set the target position to the position of the player
 
-        if(isPlayerInRange == false && m_enemyNavMesh != null)
+        //If the player is not in range, then set the destination of the player's location
+        if(isPlayerInRange == false)
         {
             m_enemyNavMesh.SetDestination(targetPosition);
         }
-
     }
 
+    //This function will handle the burning of the enemy. It's protected so that it can be used on some child classes.
     protected void EnemyBurning()
     {
+        //If the enemy is burning
         if(m_isEnemyBurning == true)
         {
+            //Take away enemy's health and initiate burning timer
             CurrentHealth -= BurnDamage * Time.deltaTime;
             m_enemyBurningTimer += Time.deltaTime;
 
+            //The timer reaches the time of burning
             if(m_enemyBurningTimer > BurningTime)
             {
+                //stop the burning and set the timer back to 0
                 m_isEnemyBurning = false;
                 m_enemyBurningTimer = 0;
             }

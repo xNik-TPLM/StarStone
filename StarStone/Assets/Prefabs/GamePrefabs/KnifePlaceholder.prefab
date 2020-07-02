@@ -167,6 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 93929863628734261}
+  - component: {fileID: 1964725380178893913}
   - component: {fileID: 4915398034560546714}
   - component: {fileID: 5233771868464679553}
   m_Layer: 0
@@ -193,6 +194,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 40, z: -90.00001}
+--- !u!95 &1964725380178893913
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3969621180237925670}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 603988453b460cf49ad73366540fa742, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!65 &4915398034560546714
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -218,7 +238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7d997e15257c74fbc246cecab2abe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Knife: {fileID: 3969621180237925670}
   MeleeDamage: 10
 --- !u!1 &7390016912522692118
 GameObject:

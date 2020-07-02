@@ -11,15 +11,15 @@ using UnityEngine;
 
 public class WeaponBase : MonoBehaviour
 {
-    //Private feilds
-    //Boolean feild to chekc if the weapon is realodaing so that the player can't shoot, whilst realoding is happening
+    //Private fields
+    //Boolean field to chekc if the weapon is realodaing so that the player can't shoot, whilst realoding is happening
     private bool m_isWeaponReloading;
 
     public static bool IsFiring;
 
     public bool UseHitscan;
 
-    //Float feild that times the fire rate of a weapon
+    //Float field that times the fire rate of a weapon
     private float m_fireTime;
 
     //Integer field to get the difference between ammo and clip size to have conservative ammo
@@ -128,7 +128,7 @@ public class WeaponBase : MonoBehaviour
 
                 //Initiate a raycast
                 HitDetection();
-                Debug.Log("Firing");
+                //Debug.Log("Firing");
 
                 //Use Muzzle's position and rotation to fire the projectile
                 //SelectedProjectile.transform.position = WeaponMuzzle.transform.position;
