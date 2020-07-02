@@ -526,6 +526,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 723138969}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &723138971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723138970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae24d37fb0a36e141a4c32c646a5b475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+  force: 700
+  nukeDamage: 5
 --- !u!54 &723138972
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -724,6 +739,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1199946274}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &833580470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833580469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae24d37fb0a36e141a4c32c646a5b475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+  force: 700
+  nukeDamage: 5
 --- !u!65 &833580474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1280,6 +1310,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1251788308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251788305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae24d37fb0a36e141a4c32c646a5b475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+  force: 700
+  nukeDamage: 5
 --- !u!1 &1459224539
 GameObject:
   m_ObjectHideFlags: 0
