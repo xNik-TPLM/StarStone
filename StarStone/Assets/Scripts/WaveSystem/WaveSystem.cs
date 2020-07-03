@@ -162,7 +162,7 @@ public class WaveSystem : MonoBehaviour
 
         //Wave failed state (Ran out of time)
         //If time runs out
-        if(WaveTimer < 0)
+        if(WaveTimer <= 0)
         {
             //End the wave
             m_hasWaveBegun = false;
