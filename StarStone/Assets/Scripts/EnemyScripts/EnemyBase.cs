@@ -89,6 +89,7 @@ public class EnemyBase : MonoBehaviour
         {
             //Decrement enemies on the map for the wave system and destroy the game object
             WaveSystem.EnemiesOnMap--;
+            WaveSystem.GeneratorTemperature -= 20;
             Destroy(gameObject);
         }
     }

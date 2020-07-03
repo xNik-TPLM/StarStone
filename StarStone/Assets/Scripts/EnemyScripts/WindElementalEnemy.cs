@@ -5,10 +5,14 @@ using UnityEngine;
 public class WindElementalEnemy : EnemyBase
 {
     private bool m_isPlayerInDetonationRange;
+    //private PlayerController m_player;
 
     private float m_detonationTime;
 
+    [Header("Wind Elemental Properties")]
     public float DetonationTimer;
+    public float DetonationDamage;
+    public float DetonationRadius;
 
     public override void EnemyDamaged(float damage, int projectileType)
     {
@@ -28,11 +32,16 @@ public class WindElementalEnemy : EnemyBase
         EnemyDetonation();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             m_isPlayerInDetonationRange = true;
+
+            if (m_detonationTime > DetonationTimer)
+            {
+                other.gameObject.GetComponent<PlayerController>().PlayerDamage(DetonationDamage);
+            }
         }
     }
 
@@ -45,8 +54,20 @@ public class WindElementalEnemy : EnemyBase
 
             if (m_detonationTime > DetonationTimer)
             {
-                CurrentHealth = -1;
+                CurrentHealth = 0;
             }
         }
+
+        /*if (m_isPlayerInDetonationRange == true)
+        {
+            isPlayerInRange = true;
+            m_detonationTime += Time.deltaTime;
+
+            if (m_detonationTime > DetonationTimer)
+            {
+                CurrentHealth = -1;
+                GetComponent<PlayerController>().PlayerDamage(DetonationDamage);
+            }
+        }*/
     }
 }

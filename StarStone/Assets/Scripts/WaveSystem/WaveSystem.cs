@@ -18,13 +18,16 @@ public class WaveSystem : MonoBehaviour
     //Float fields
     private float m_timeToSpawn; //This will time the spawining of the next enemy
     private float m_nextwaveTimer; //This will time when the next wave will begin
+    private float m_generatorOverheatTimer;
 
     //This integer field counts how many enemies have been spawned
     private int EnemiesSpawned; 
 
     //Static fields
     public static bool InIntermission; //This static boolean field will be used to check if the player is still in the intermission phase
+    public static bool IsGeneratorOverheating;
     public static float WaveTimer; //This static float field is to count down the time of the wave and to be used to show in the player's HUD
+    public static float GeneratorTemperature; 
 
     //Static integer fields
     public static int EnemiesOnMap; //This counts the amount of enemies currently on the map, which will be used to limit the amount of enemies on the map
@@ -38,6 +41,7 @@ public class WaveSystem : MonoBehaviour
     //Float properties
     public float SpawnRate; //This is the spawn rate at which the enmies will spawn in seconds
     public float WaveCooldown; //This is the time between waves
+    public float GeneratorOverheatTime;
 
     //This integer property is the max enemies that can be on the map
     public int MaxEnemiesOnMap; 
@@ -79,6 +83,7 @@ public class WaveSystem : MonoBehaviour
         BeginWave();
         WaveFinished();
         Intermission();
+        GeneratorState();
     }
 
     //This function handles the spawning of an enemy
@@ -108,8 +113,8 @@ public class WaveSystem : MonoBehaviour
             //Set the spawn rate that the enemies will spawn in and increment enemies spawned
             m_timeToSpawn = Time.time + 1 / SpawnRate;
             EnemiesSpawned++;
+            GeneratorTemperature += 20;
         }            
-
     }
 
     //This function handles the beginning of each wave
@@ -152,7 +157,6 @@ public class WaveSystem : MonoBehaviour
                 WaveNumberIndex++;
                 WaveTimer = waves[WaveNumberIndex].WaveTime;
                 m_hasWaveBegun = true;
-                
             }
         }
 
@@ -173,6 +177,24 @@ public class WaveSystem : MonoBehaviour
         if (waves[WaveNumberIndex].NextWaveIsIntermission == true)
         {
             InIntermission = true;
+        }
+    }
+
+    private void GeneratorState()
+    {
+        if(IsGeneratorOverheating == true)
+        {
+            m_generatorOverheatTimer += Time.deltaTime;
+
+            if(m_generatorOverheatTimer > GeneratorOverheatTime)
+            {
+                Debug.Log("Failed");
+                Time.timeScale = 0f;
+            }
+        }
+        else
+        {
+            m_generatorOverheatTimer = 0;
         }
     }
 }

@@ -37,9 +37,8 @@ public class PlayerController : MonoBehaviour
     public float PlayerJumpForce; //The force of Player's jump
     public float PlayerGravityForce; //The gravity force of the player
     public float GroundCheckRadius = 0.4f; //The radius to check if the player's still on the ground
-    public int maxHealth = 100;
-    public int currentHealth;
-    public int damage;
+    public float maxHealth = 100;
+    public float currentHealth;
 
     //Transform properties
     public Transform PlayerFeetPosition; //Position of the player's feet to check if player is grounded
@@ -52,18 +51,10 @@ public class PlayerController : MonoBehaviour
 
     public static Transform KnifeStartPosition;
 
-
-    //Only for WhiteBox scene
-    //private float m_playerNormalHeight;
-    //private float m_playerCrouchHeight;
-
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
-        //healthBar.SetMaxHealth(maxHealth);
-        //m_playerCrouchHeight = Player.transform.localScale.y / 2;
-        //m_playerNormalHeight = Player.transform.localScale.y;
     }
 
     // Update is called once per frame
@@ -129,11 +120,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 PlayerUI.shieldActive = true;
-                Debug.Log("Works!!!!!");
-                
-                currentHealth -= damage;
-                //healthBar.SetHealth(currentHealth);
-                
+                Debug.Log("Works!!!!!");                
             }
         }
     }
@@ -219,13 +206,20 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl))
         {
             CharacterController.height = 0.02f; // This makes the player shorter if they are crouching
-            //Player.transform.localScale = new Vector3(Player.transform.localScale.x, m_playerCrouchHeight, Player.transform.localScale.z);
 
         }
         else
         {
             CharacterController.height = 0.063f; // This returns the player to their normal height if they are not crouching
-            //Player.transform.localScale = new Vector3(Player.transform.localScale.x, m_playerNormalHeight, Player.transform.localScale.z);
         }
     }
+
+    //This function handles the player damage
+    //Worked By: Nikodem Hamrol
+    public void PlayerDamage(float damage)
+    {
+        currentHealth -= damage;
+    }
+
+
 }

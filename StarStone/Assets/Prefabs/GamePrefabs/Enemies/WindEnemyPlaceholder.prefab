@@ -131,13 +131,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5895c198e4f0fe547909580fa002876e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DetinationTimer: 2
   CurrentHealth: 100
   MaxHealth: 100
   EnemySpeed: 10
+  BurningTime: 0
+  BurnDamage: 0
   HealthBarUI: {fileID: 4282647412271146099}
   HealthBarSlider: {fileID: 9038548905602979533}
-  Target: {fileID: 0}
+  DetonationTimer: 1
+  DetonationDamage: 10
+  DetonationRadius: 5
 --- !u!65 &2450158184775920901
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -162,7 +165,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.040889386
+  m_Radius: 0.07
   m_Center: {x: -0.0000028709076, y: 0.01477505, z: -0.0016945362}
 --- !u!195 &2450158184775920900
 NavMeshAgent:
