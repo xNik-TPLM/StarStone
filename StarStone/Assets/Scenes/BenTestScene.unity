@@ -540,7 +540,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 5
   force: 700
-  nukeDamage: 5
+  nukeDamage: 100
+  timer: 5
 --- !u!54 &723138972
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -753,7 +754,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 5
   force: 700
-  nukeDamage: 5
+  nukeDamage: 100
+  timer: 5
 --- !u!65 &833580474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -801,9 +803,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae24d37fb0a36e141a4c32c646a5b475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 30
+  radius: 5
   force: 700
   nukeDamage: 500
+  timer: 5
 --- !u!4 &874379194 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7546639738728764489, guid: 60b5e663693a4374b96e44b9caa65eae,
@@ -1324,7 +1327,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 5
   force: 700
-  nukeDamage: 5
+  nukeDamage: 100
+  timer: 5
 --- !u!1 &1459224539
 GameObject:
   m_ObjectHideFlags: 0

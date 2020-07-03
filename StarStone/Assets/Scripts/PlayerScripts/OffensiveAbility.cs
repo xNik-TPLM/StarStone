@@ -14,6 +14,7 @@ public class OffensiveAbility : MonoBehaviour
     public float force = 700f; // This sets the amount of force that the objects within the radius will experience
     public float nukeDamage; // This sets the damage that the nuke has on enemies
     private EnemyBase m_enemy;
+    public float timer = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +25,17 @@ public class OffensiveAbility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
         // This checks whether the player has pressed the offensive ability key
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O) && timer <= 0)
         {
                 Explode(); // This runs the nuke function
+            timer = 5f;
         }
+        
     }
     void Explode()
     {
