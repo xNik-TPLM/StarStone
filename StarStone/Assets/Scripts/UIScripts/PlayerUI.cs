@@ -13,10 +13,11 @@ public class PlayerUI : MonoBehaviour
     public Text ammoDisplay; // This displays the current ammo left in the clip
     public Text maxAmmo; // This displays the maximum ammo that is left that the player has
     private WeaponBase m_weapon;
+    public float timer = 5f;
     public static bool shieldActive; // This checks if the shield is currently enabled
-    //public Slider shieldSlider;
     public Slider healthSlider; // This sets a reference for the health bar
     public Slider shieldSlider; // This sets a reference for the shield bar
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class PlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         // Once the player takes damage, they will lose health depending on whether the shield has been enabled or not
         if (Input.GetKeyDown(KeyCode.P))
         {

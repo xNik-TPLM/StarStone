@@ -32,7 +32,7 @@ public class OffensiveAbility : MonoBehaviour
         // This checks whether the player has pressed the offensive ability key
         if (Input.GetKeyDown(KeyCode.O) && timer <= 0)
         {
-                Explode(); // This runs the nuke function
+            Explode(); // This runs the nuke function
             timer = 5f;
         }
         
