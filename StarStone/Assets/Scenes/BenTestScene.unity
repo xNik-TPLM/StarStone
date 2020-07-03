@@ -121,6 +121,40 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &27273296 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6782540367815974748, guid: 60b5e663693a4374b96e44b9caa65eae,
+    type: 3}
+  m_PrefabInstance: {fileID: 3297118803544381311}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &27273297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27273296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d47efeba96ae84499ec0f19406e97cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoDisplay: {fileID: 1522034097}
+  maxAmmo: {fileID: 1546143395}
+  healthSlider: {fileID: 1053067280}
+  shieldSlider: {fileID: 769773895}
+--- !u!114 &27273298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27273296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e29a8c0ed93a1e4a9f606758159743e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &349939563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -492,6 +526,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 723138969}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &723138971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723138970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae24d37fb0a36e141a4c32c646a5b475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+  force: 700
+  nukeDamage: 5
 --- !u!54 &723138972
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -508,28 +557,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &729557742 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3192122521310926752, guid: 60b5e663693a4374b96e44b9caa65eae,
-    type: 3}
-  m_PrefabInstance: {fileID: 3297118803544381311}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &729557743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 729557742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d47efeba96ae84499ec0f19406e97cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammoDisplay: {fileID: 1522034097}
-  maxAmmo: {fileID: 1546143395}
-  healthSlider: {fileID: 1053067280}
-  shieldSlider: {fileID: 769773895}
 --- !u!1 &744739960
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +739,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1199946274}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &833580470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833580469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae24d37fb0a36e141a4c32c646a5b475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+  force: 700
+  nukeDamage: 5
 --- !u!65 &833580474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1268,6 +1310,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1251788308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251788305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae24d37fb0a36e141a4c32c646a5b475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+  force: 700
+  nukeDamage: 5
 --- !u!1 &1459224539
 GameObject:
   m_ObjectHideFlags: 0

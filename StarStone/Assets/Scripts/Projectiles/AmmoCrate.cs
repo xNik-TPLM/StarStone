@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class AmmoCrate : MonoBehaviour
 {
+    private WeaponBase m_weaponAdd;
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_weaponAdd = GetComponentInChildren<WeaponBase>();
     }
 
     // Update is called once per frame
@@ -19,8 +20,8 @@ public class AmmoCrate : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            GetComponent<WeaponBase>().MaxAmmo += 100;
-            gameObject.SetActive(false);
+            m_weaponAdd.MaxAmmo += 100;
+            //gameObject.SetActive(false);
         }
     }
 }

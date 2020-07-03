@@ -12,7 +12,7 @@ public class PlayerUI : MonoBehaviour
 {
     public Text ammoDisplay; // This displays the current ammo left in the clip
     public Text maxAmmo; // This displays the maximum ammo that is left that the player has
-
+    private WeaponBase m_weapon;
     public static bool shieldActive; // This checks if the shield is currently enabled
     //public Slider shieldSlider;
     public Slider healthSlider; // This sets a reference for the health bar
@@ -21,6 +21,7 @@ public class PlayerUI : MonoBehaviour
     void Start()
     {
         gameObject.SetActive(true); // This enables the Player UI
+        m_weapon = FindObjectOfType<WeaponBase>();
     }
 
     // Update is called once per frame
@@ -44,7 +45,8 @@ public class PlayerUI : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        ammoDisplay.text = GetComponent<WeaponBase>().CurrentAmmo.ToString(); // This displays the current ammo left in the clip as a part of the player's HUD
-        maxAmmo.text = GetComponent<WeaponBase>().MaxAmmo.ToString(); // This displays the maximum ammo left in the weapon as a part of the player's HUD
+
+        ammoDisplay.text = m_weapon.CurrentAmmo.ToString(); // This displays the current ammo left in the clip as a part of the player's HUD
+        maxAmmo.text = m_weapon.MaxAmmo.ToString(); // This displays the maximum ammo left in the weapon as a part of the player's HUD
     }
 }
