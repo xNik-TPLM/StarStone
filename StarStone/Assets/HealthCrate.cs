@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoCrate : MonoBehaviour
+public class HealthCrate : MonoBehaviour
 {
-    private WeaponBase m_weaponAdd;
-    public int ammoCrateValue;
+    private PlayerController m_player;
+    public int healthCrateValue;
     // Start is called before the first frame update
     void Start()
     {
-        m_weaponAdd = FindObjectOfType<WeaponBase>();
+        m_player = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class AmmoCrate : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            m_weaponAdd.MaxAmmo += ammoCrateValue;
+            m_player.currentHealth += healthCrateValue;
             gameObject.SetActive(false);
         }
     }

@@ -14,28 +14,66 @@ public class OffensiveAbility : MonoBehaviour
     public float force = 700f; // This sets the amount of force that the objects within the radius will experience
     public float nukeDamage; // This sets the damage that the nuke has on enemies
     private EnemyBase m_enemy;
-    public float timer = 5f;
+
+    private bool m_timerEnabled;
+    private float m_timer;
+    public float Timer;
 
     // Start is called before the first frame update
     void Start()
     {
         m_enemy = GetComponent<EnemyBase>();
+        m_timer = Timer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-        }
+        StopwatchCooldown();
+        TimerCooldown();
+        //if (timer > 0)
+        //{
+        //    timer -= Time.deltaTime;
+        //}
         // This checks whether the player has pressed the offensive ability key
-        if (Input.GetKeyDown(KeyCode.O) && timer <= 0)
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            Explode(); // This runs the nuke function
-            timer = 5f;
+            m_timerEnabled = true;
+            
         }
         
+    }
+    private void StopwatchCooldown()
+    {
+        //If something you want is enabled
+        if (m_timerEnabled == true)
+        {
+            m_timer += Time.deltaTime;
+
+            if (m_timer > Timer)
+            {
+                m_timerEnabled = false;
+                m_timer = 0;
+                //Do whatever
+                Explode(); // This runs the nuke function
+            }
+        }
+    }
+    private void TimerCooldown()
+    {
+        //If something you want is enabled
+        if (m_timerEnabled == true)
+        {
+            m_timer -= Time.deltaTime;
+
+            if (m_timer <= 0)
+            {
+                m_timerEnabled = false;
+                m_timer = Timer;
+                //Do whatever
+                Explode(); // This runs the nuke function
+            }
+        }
     }
     void Explode()
     {

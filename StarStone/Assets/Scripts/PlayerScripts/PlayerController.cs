@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
 
     public static Transform KnifeStartPosition;
-    public float timer = 5f;
+    //public float timer = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -69,10 +69,10 @@ public class PlayerController : MonoBehaviour
         Melee(); // This activates the player's melee attack
         ShieldActive(); // This checks if the player's shield is active
 
-        if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-        }
+        //if (timer > 0)
+        //{
+        //    timer -= Time.deltaTime;
+        //}
     }
 
     // Once the player presses the attack key, The knife will be enabled
@@ -87,10 +87,9 @@ public class PlayerController : MonoBehaviour
     // If the player uses the defensive ability, the player's shield will be enabled
     private void ShieldActive()
     {
-        if (Input.GetKeyDown(KeyCode.L) && timer <= 0)
+        if (Input.GetKeyDown(KeyCode.L))
         {
             playerShield.SetActive(true); // This enables the player's shield
-            timer = 5f;
         }
     }
 
