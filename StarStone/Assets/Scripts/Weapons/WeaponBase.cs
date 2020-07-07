@@ -26,14 +26,14 @@ public class WeaponBase : MonoBehaviour
     private int m_ammoDifference;
 
     //Weapon properties
-    //Float properties
-    public float FireRate; //Weapon fire rate
+    [Header("Ammunition")]
     public int CurrentAmmo; //Amount of ammo in the clip
     public int WeaponClipSize; //Weapon's clip size
     public int MaxAmmo; //Maximum ammo the weapon will have
 
-    //Boolean property that will check if the weapon is automatic or semi-automatic
-    public bool IsAutomatic;
+    [Header("Fire Rates")]
+    public bool IsAutomatic; //This will check if the weapon is automatic or semi-automatic
+    public float FireRate; //Weapon fire rate
 
     //Object references
     public GameObject WeaponProjectile; //Reference to the projectile that will be used to fire it out of the weapon
@@ -65,7 +65,7 @@ public class WeaponBase : MonoBehaviour
     protected GameObject SelectedProjectile;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         //Set current ammo as clip size and get reference 
         CurrentAmmo = WeaponClipSize;

@@ -10,7 +10,14 @@ using UnityEngine;
 public class PrototypeWeapon : WeaponBase
 {
     public GameObject FireProjectile;
+    public GameObject IceProjectile;
+    public GameObject WindProjectile;
     public GameObject EarthProjectile;
+
+    protected override void Start()
+    {
+        CurrentAmmo = 0;
+    }
 
     protected override void PlayerShooting()
     {
@@ -32,11 +39,11 @@ public class PrototypeWeapon : WeaponBase
         switch (InteractStarStone.StarStoneID)
         {            
             case 1:
-                WeaponProjectile = EarthProjectile;
+                WeaponProjectile = FireProjectile;
                 break;
 
-            case 2:
-                WeaponProjectile = FireProjectile;
+            case 4:
+                WeaponProjectile = EarthProjectile;
                 break;
         }
     }
