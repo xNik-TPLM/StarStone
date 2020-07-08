@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject primaryWeapon;
     public GameObject prototypeWeapon;
+    public GameObject gameOver;
 
     public static Transform KnifeStartPosition;
     //public float timer = 5f;
@@ -71,10 +72,10 @@ public class PlayerController : MonoBehaviour
         Melee(); // This activates the player's melee attack
         ShieldActive(); // This checks if the player's shield is active
 
-        //if (timer > 0)
-        //{
-        //    timer -= Time.deltaTime;
-        //}
+        if (currentHealth <= 0)
+        {
+            gameOver.SetActive(true);
+        }
     }
 
     // Once the player presses the attack key, The knife will be enabled
@@ -85,7 +86,6 @@ public class PlayerController : MonoBehaviour
             Knife.SetActive(true); // This enables the knife
             primaryWeapon.SetActive(false);
             prototypeWeapon.SetActive(false);
-
         }
     }
 
