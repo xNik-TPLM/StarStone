@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4434976330337218419}
   - component: {fileID: 1198082834154564943}
   - component: {fileID: -1914686548165017711}
-  - component: {fileID: 7860035280423787166}
+  - component: {fileID: 7618295130239245034}
   m_Layer: 0
   m_Name: PrototypeFireProjectile
   m_TagString: Untagged
@@ -90,7 +90,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2715922866524773295}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &7860035280423787166
+--- !u!114 &7618295130239245034
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,9 +120,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2715922866524773295}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5adae12c5acc44da92405bfb046c35, type: 3}
+  m_Script: {fileID: 11500000, guid: 3dc44a4f79cfcc44189c72dc245b616d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileDuration: 5
   ProjectileSpeed: 20
   ProjectileDamage: 10
+  BlastRadius: 10

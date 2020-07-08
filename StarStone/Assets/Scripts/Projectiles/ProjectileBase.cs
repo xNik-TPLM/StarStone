@@ -15,6 +15,8 @@ public class ProjectileBase : MonoBehaviour
     //This float will get the property value of a projectile duration and uses it to count down the life of a projectile
     private float m_projectileLifeTimer;
 
+    protected bool projectileDestroyed;
+
     //Projectile properties
     //Flaot properties
     public float ProjectileDuration; //This is the duration of each projectile that will get instantiated
@@ -44,18 +46,13 @@ public class ProjectileBase : MonoBehaviour
         }
     }
 
-    //Using the trigger for the projectile instead of "OnCollisionEnter", because there is no rigidbody on the bullet
-    /*private void OnTriggerEnter(Collider other)
-    {
-        //If the bullet enters the enemy collider then it will destroy the bullet
-        if (other.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);
-        }
-    }*/
-
+    //As the projectile base, this will check, if the projectile has collided with anyhting and it will destroy itself
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
+        if (collision.collider)
+        {   
+            Destroy(gameObject);
+            
+        }
     }
 }

@@ -38,9 +38,10 @@ public class WindElementalEnemy : EnemyBase
         {
             m_isPlayerInDetonationRange = true;
 
-            if (m_detonationTime > DetonationTimer)
+            if (m_detonationTime > (DetonationTimer - 0.1))
             {
                 other.gameObject.GetComponent<PlayerController>().PlayerDamage(DetonationDamage);
+                CurrentHealth = 0;
             }
         }
     }
@@ -57,17 +58,5 @@ public class WindElementalEnemy : EnemyBase
                 CurrentHealth = 0;
             }
         }
-
-        /*if (m_isPlayerInDetonationRange == true)
-        {
-            isPlayerInRange = true;
-            m_detonationTime += Time.deltaTime;
-
-            if (m_detonationTime > DetonationTimer)
-            {
-                CurrentHealth = -1;
-                GetComponent<PlayerController>().PlayerDamage(DetonationDamage);
-            }
-        }*/
     }
 }

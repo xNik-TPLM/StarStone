@@ -231,14 +231,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHealth: 100
   MaxHealth: 100
-  EnemySpeed: 0
+  MaxEnemySpeed: 5
   BurningTime: 0
+  FreezeTime: 0
   BurnDamage: 0
   HealthBarUI: {fileID: 1238655991550590856}
   HealthBarSlider: {fileID: 6282788082468310326}
-  FiringDistance: 0
-  startTimeBtwShots: 0
-  FireProjectile: {fileID: 0}
+  FiringDistance: 10
+  EnemyFireRate: 1
+  FireProjectile: {fileID: 6943983143378593260, guid: e6e80732108a0ba4387ee9ba0f78c6ef,
+    type: 3}
 --- !u!65 &603244638575752958
 BoxCollider:
   m_ObjectHideFlags: 0

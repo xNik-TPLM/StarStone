@@ -11,10 +11,26 @@ using UnityEngine.UI;
 
 public class EarthElementalEnemy : EnemyBase
 {
+    private float m_enemyFireRateTime;
+
+
+    public float FiringDistance;
+    public float EnemyFireRate;
+
     //Earth Elemental Properties
     //Float Properties
     [Header("Earth Elemental Properties")]
     public float RegeneratedHealth; //This is the amount of health points the enemy will regerenate per second
+    public GameObject ProjectileSpawnPoint;
+    public GameObject EarthBoulder;
+
+    protected override void Start()
+    {
+        base.Start();
+        m_enemyFireRateTime = EnemyFireRate;
+        m_enemyNavMesh.stoppingDistance = FiringDistance;
+    }
+
 
     //Override this function to add the regenerate health function
     protected override void EnemyHealth()
@@ -22,6 +38,38 @@ public class EarthElementalEnemy : EnemyBase
         base.EnemyHealth();
         RegenerateHealth();
     }
+
+    protected override void EnemyBehaviour()
+    {
+        base.EnemyBehaviour();
+        EarthElementalAttack();
+    }
+
+    //This function is overridden to deal different damage based on the elemental projectile
+    public override void EnemyDamaged(float damage, int projectileType)
+    {
+        base.EnemyDamaged(damage, projectileType);
+        switch(projectileType)
+        {
+            case 1:
+                CurrentHealth -= damage;
+                m_isEnemyBurning = true;
+                break;
+
+            case 2:
+                CurrentHealth -= damage;
+                m_isEnemyFrozen = true;
+                break;
+
+            case 3: 
+                CurrentHealth -= damage;
+                break;
+
+            case 4:
+                CurrentHealth -= damage;
+                break;
+        }
+    }    
     
     //This function will regenerate the enemy's health per second
     private void RegenerateHealth()
@@ -34,20 +82,26 @@ public class EarthElementalEnemy : EnemyBase
         }
     }
 
-    //This function is overridden to deal different damage based on the elemental projectile
-    public override void EnemyDamaged(float damage, int projectileType)
+    private void EarthElementalAttack()
     {
-        base.EnemyDamaged(damage, projectileType);
-        switch(projectileType)
+        if(Vector3.Distance(transform.position, Target.position) < FiringDistance)
         {
-            case 1:
-                CurrentHealth -= damage;
-                break;
+            isPlayerInRange = true;
+            transform.position = transform.position;
+        }
+        else
+        {
+            isPlayerInRange = false;
+        }
 
-            case 2:
-                CurrentHealth -= damage;
-                m_isEnemyBurning = true;
-                break;
+        if(m_enemyFireRateTime <=0 && isPlayerInRange)
+        {
+            Instantiate(EarthBoulder, ProjectileSpawnPoint.transform.position, ProjectileSpawnPoint.transform.rotation);
+            m_enemyFireRateTime = EnemyFireRate;
+        }
+        else
+        {
+            m_enemyFireRateTime -= Time.deltaTime;
         }
     }
 }

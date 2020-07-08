@@ -11,7 +11,7 @@ public class WeaponsSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetWeapon();    
     }
 
     // Update is called once per frame

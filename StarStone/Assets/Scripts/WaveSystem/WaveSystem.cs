@@ -68,6 +68,9 @@ public class WaveSystem : MonoBehaviour
         {
             SpawnPoints[i] = transform.GetChild(i).gameObject;
         }
+
+        WaveNumberIndex = 0;
+        WaveTimer = waves[0].WaveTime;
     }
 
     // Update is called once per frame
@@ -77,8 +80,6 @@ public class WaveSystem : MonoBehaviour
         {
             //Initiate the first wave by setting wave begun to true, the wave index to first wave, which is 0 on the array element and and timer to use the time of the first wave
             m_hasWaveBegun = true;
-            WaveNumberIndex = 0;
-            WaveTimer = waves[0].WaveTime;
             
             BeginWave();
             WaveFinished();
@@ -133,7 +134,7 @@ public class WaveSystem : MonoBehaviour
     private void BeginWave()
     {
         //if the wave has begun
-        if (m_hasWaveBegun == true && IsWaveSystemInitiated == true)
+        if (m_hasWaveBegun == true)
         {
             //Start the timer
             WaveTimer -= Time.deltaTime;

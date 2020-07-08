@@ -16,7 +16,7 @@ public class PrototypeWeapon : WeaponBase
 
     protected override void Start()
     {
-        CurrentAmmo = 0;
+
     }
 
     protected override void PlayerShooting()
@@ -40,6 +40,14 @@ public class PrototypeWeapon : WeaponBase
         {            
             case 1:
                 WeaponProjectile = FireProjectile;
+                break;
+
+            case 2:
+                WeaponProjectile = IceProjectile;
+                break;
+
+            case 3:
+                WeaponProjectile = WindProjectile;
                 break;
 
             case 4:

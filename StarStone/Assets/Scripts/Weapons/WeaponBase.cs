@@ -185,7 +185,7 @@ public class WeaponBase : MonoBehaviour
 
             if (EnemyTarget != null)
             {
-                EnemyTarget.EnemyDamaged(45, InteractStarStone.StarStoneID);
+                EnemyTarget.EnemyDamaged(45, 0);
             }
         }
     }
