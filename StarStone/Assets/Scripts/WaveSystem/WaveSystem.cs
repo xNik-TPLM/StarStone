@@ -21,9 +21,10 @@ public class WaveSystem : MonoBehaviour
     private float m_generatorOverheatTimer;
 
     //This integer field counts how many enemies have been spawned
-    private int EnemiesSpawned; 
+    private int EnemiesSpawned;
 
     //Static fields
+    public static bool IsWaveSystemInitiated;
     public static bool InIntermission; //This static boolean field will be used to check if the player is still in the intermission phase
     public static bool IsGeneratorOverheating;
     public static float WaveTimer; //This static float field is to count down the time of the wave and to be used to show in the player's HUD
@@ -72,19 +73,30 @@ public class WaveSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (IsWaveSystemInitiated == true)
         {
             //Initiate the first wave by setting wave begun to true, the wave index to first wave, which is 0 on the array element and and timer to use the time of the first wave
             m_hasWaveBegun = true;
             WaveNumberIndex = 0;
             WaveTimer = waves[0].WaveTime;
+            
+            BeginWave();
+            WaveFinished();
+            Intermission();
+            GeneratorState();
         }
 
-        BeginWave();
-        WaveFinished();
-        Intermission();
-        GeneratorState();
+
     }
+
+    private void SetSpawnPoints()
+    {
+        for (int i = 0; i < SpawnPoints.Length; i++)
+        {
+            SpawnPoints[i] = transform.GetChild(i).gameObject;
+        }
+    }
+
 
     //This function handles the spawning of an enemy
     private void SpawnEnemy()
@@ -121,7 +133,7 @@ public class WaveSystem : MonoBehaviour
     private void BeginWave()
     {
         //if the wave has begun
-        if (m_hasWaveBegun == true)
+        if (m_hasWaveBegun == true && IsWaveSystemInitiated == true)
         {
             //Start the timer
             WaveTimer -= Time.deltaTime;
@@ -188,7 +200,6 @@ public class WaveSystem : MonoBehaviour
 
             if(m_generatorOverheatTimer > GeneratorOverheatTime)
             {
-                Debug.Log("Failed");
                 Time.timeScale = 0f;
             }
         }

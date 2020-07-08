@@ -211,7 +211,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &108689138 stripped
 GameObject:
@@ -304,6 +304,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2661727993192402141, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661727993192402141, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -342,7 +352,7 @@ PrefabInstance:
     - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
@@ -384,10 +394,20 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -0.00084015605
       objectReference: {fileID: 0}
+    - target: {fileID: 6689183858547843410, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7493092024056437655, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
       propertyPath: m_Name
       value: IceStarStone
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251893016703826124, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9205385617349832523, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
@@ -460,7 +480,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &320479817
 GameObject:
@@ -534,6 +554,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2661727993192402141, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661727993192402141, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -572,7 +602,7 @@ PrefabInstance:
     - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
@@ -604,10 +634,20 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 0.02821256
       objectReference: {fileID: 0}
+    - target: {fileID: 6689183858547843410, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7493092024056437655, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
       propertyPath: m_Name
       value: EarthStarStone
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251893016703826124, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9205385617349832523, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
@@ -623,6 +663,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2661727993192402141, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661727993192402141, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -661,7 +711,7 @@ PrefabInstance:
     - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
@@ -703,10 +753,25 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -0.00084015605
       objectReference: {fileID: 0}
+    - target: {fileID: 6689183858547843410, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7493092024056437655, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
       propertyPath: m_Name
       value: WindStarStone
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862132548067283922, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251893016703826124, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9205385617349832523, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
@@ -722,6 +787,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2661727993192402141, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661727993192402141, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5883837077969480068, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -802,10 +877,25 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -0.00084015605
       objectReference: {fileID: 0}
+    - target: {fileID: 6689183858547843410, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7493092024056437655, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
       propertyPath: m_Name
       value: FireStarStone
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862132548067283922, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251893016703826124, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9205385617349832523, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
@@ -1323,7 +1413,7 @@ PrefabInstance:
     - target: {fileID: 6562528172232624355, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6836557706347718234, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
@@ -1408,11 +1498,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6426713038486686180, guid: eed808d64cd5e17418754b9397e969bc,
         type: 3}
-    - target: {fileID: 7749274828543511736, guid: 60b5e663693a4374b96e44b9caa65eae,
-        type: 3}
-      propertyPath: WeaponClipSize
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8041026485579920376, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_IsActive
@@ -1486,7 +1571,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1562745034
 GameObject:
@@ -1639,7 +1724,7 @@ Transform:
   - {fileID: 1054384849}
   - {fileID: 320479818}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1632138421
 GameObject:
@@ -1827,7 +1912,7 @@ Transform:
   m_LocalScale: {x: 10, y: 40, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1802537687
 GameObject:
@@ -1957,7 +2042,7 @@ Transform:
   m_LocalScale: {x: 9.785655, y: 9.785655, z: 9.785655}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1902318024
 GameObject:

@@ -44,13 +44,18 @@ public class ProjectileBase : MonoBehaviour
         }
     }
 
-    //Using the trigger for the projectile instead of "OnCollisioEnter", because there is no rigidbody on the bullet
-    private void OnTriggerEnter(Collider other)
+    //Using the trigger for the projectile instead of "OnCollisionEnter", because there is no rigidbody on the bullet
+    /*private void OnTriggerEnter(Collider other)
     {
         //If the bullet enters the enemy collider then it will destroy the bullet
         if (other.CompareTag("Enemy"))
         {
             Destroy(gameObject);
         }
+    }*/
+
+    protected virtual void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
     }
 }

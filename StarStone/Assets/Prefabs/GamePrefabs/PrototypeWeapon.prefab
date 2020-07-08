@@ -93,9 +93,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05afeb910d3da34e9cbb7e8f2ecb054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseHitscan: 0
   FireRate: 10
-  WeaponClipSize: 1
-  MaxAmmo: 10
+  CurrentAmmo: 0
+  WeaponClipSize: 10
+  MaxAmmo: 0
   IsAutomatic: 0
   WeaponProjectile: {fileID: 0}
   WeaponMuzzle: {fileID: 7029881734540371093}
@@ -107,7 +109,10 @@ MonoBehaviour:
   rotationalreturnspeed: 38
   RecoilRotation: {x: 10, y: 5, z: 7}
   RecoilKickBack: {x: 0.0015, y: 0, z: -0.0002}
-  FireProjectile: {fileID: 0}
+  FireProjectile: {fileID: 2715922866524773295, guid: e1fcb8d73dcabfb4ba2b0a2b77c58fa5,
+    type: 3}
+  EarthProjectile: {fileID: 6426713038486686180, guid: eed808d64cd5e17418754b9397e969bc,
+    type: 3}
 --- !u!1 &7029881734540371093
 GameObject:
   m_ObjectHideFlags: 0
