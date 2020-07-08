@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour
     public GameObject gameOver;
 
     public static Transform KnifeStartPosition;
-    //public float timer = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -71,10 +70,15 @@ public class PlayerController : MonoBehaviour
         PlayerLadder(); // This activates the player's movement on the ladder
         Melee(); // This activates the player's melee attack
         ShieldActive(); // This checks if the player's shield is active
+        GameOver(); // This checks whether the player has health left while playing
+    }
 
+    // This function will run if the player's health is fully depleted
+    private void GameOver()
+    {
         if (currentHealth <= 0)
         {
-            gameOver.SetActive(true);
+            gameOver.SetActive(true); // This enables the game over screen
         }
     }
 
