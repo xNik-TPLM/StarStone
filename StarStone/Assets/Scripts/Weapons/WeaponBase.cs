@@ -34,6 +34,7 @@ public class WeaponBase : MonoBehaviour
     [Header("Fire Rates")]
     public bool IsAutomatic; //This will check if the weapon is automatic or semi-automatic
     public float FireRate; //Weapon fire rate
+    public float WeaponDamage; //Weapon Damage
 
     //Object references
     public GameObject WeaponProjectile; //Reference to the projectile that will be used to fire it out of the weapon
@@ -185,7 +186,8 @@ public class WeaponBase : MonoBehaviour
 
             if (EnemyTarget != null)
             {
-                EnemyTarget.EnemyDamaged(45, 0);
+                EnemyTarget.EnemyDamaged(WeaponDamage, 0);
+                Debug.Log("Hit");
             }
         }
     }

@@ -46,13 +46,8 @@ public class ProjectileBase : MonoBehaviour
         }
     }
 
-    //As the projectile base, this will check, if the projectile has collided with anyhting and it will destroy itself
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider)
-        {   
-            Destroy(gameObject);
-            
-        }
+        Destroy(gameObject);
     }
 }

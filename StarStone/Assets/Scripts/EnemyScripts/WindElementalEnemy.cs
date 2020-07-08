@@ -19,9 +19,18 @@ public class WindElementalEnemy : EnemyBase
         base.EnemyDamaged(damage, projectileType);
         switch (projectileType)
         {
+            case 1:
+                CurrentHealth -= damage;
+                m_isEnemyBurning = true;
+                break;
+
             case 2:
                 CurrentHealth -= damage * 2;
                 m_isEnemyBurning = true;
+                break;
+
+            case 3:
+                CurrentHealth -= damage;
                 break;
         }
     }

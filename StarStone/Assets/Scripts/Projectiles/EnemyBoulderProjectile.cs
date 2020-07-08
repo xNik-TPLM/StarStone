@@ -24,7 +24,6 @@ public class EnemyBoulderProjectile : ProjectileBase
 
     protected override void OnCollisionEnter(Collision collision)
     {
-        base.OnCollisionEnter(collision);
         BoulderCollision();
     }
 }

@@ -125,5 +125,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileDuration: 5
   ProjectileSpeed: 20
-  ProjectileDamage: 10
+  ProjectileDamage: 40
   BlastRadius: 10

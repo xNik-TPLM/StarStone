@@ -71,19 +71,15 @@ public class PlayerUI : MonoBehaviour
         {
             shieldActive = true;
         }
-        if (shieldActive == true)
-        {
-
-            gameObject.SetActive(true);
-        }
 
         // Once the player takes damage, they will lose health depending on whether the shield has been enabled or not
-        if (Input.GetKeyDown(KeyCode.P) && shieldActive == true)
+        if (shieldActive == true)
         {
-                shieldSlider.value -= 0.1f; // This lowers the shield value once damage has been taken
+            shieldSlider.value = 100;
+            // This lowers the shield value once damage has been taken
             if (shieldSlider.value <= 0)
             {
-                m_playerHealth.currentHealth -= 10;
+                shieldActive = false;
             }
         }
 

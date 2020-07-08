@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileDuration: 5
   ProjectileSpeed: 10
-  ProjectileDamage: 15
+  ProjectileDamage: 30
   BlastRadius: 5
 --- !u!135 &4431052685191428890
 SphereCollider:

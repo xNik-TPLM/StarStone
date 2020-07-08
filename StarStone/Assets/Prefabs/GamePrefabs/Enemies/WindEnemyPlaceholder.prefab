@@ -131,11 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5895c198e4f0fe547909580fa002876e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 100
-  MaxHealth: 100
-  MaxEnemySpeed: 10
+  CurrentHealth: 0
+  MaxHealth: 70
+  MaxEnemySpeed: 15
   BurningTime: 5
-  FreezeTime: 5
+  FreezeTime: 3
   BurnDamage: 5
   HealthBarUI: {fileID: 4282647412271146099}
   HealthBarSlider: {fileID: 9038548905602979533}

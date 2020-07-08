@@ -12,21 +12,19 @@ public class PrototypeProjectile : ProjectileBase
         Collider[] collisionsDetected = Physics.OverlapSphere(transform.position, BlastRadius);
 
         foreach (Collider colliderDetected in collisionsDetected)
-        {           
-
+        {   
             EnemyBase enemyDetected = colliderDetected.GetComponent<EnemyBase>();
 
-            if (enemyDetected != null)
+            if (enemyDetected != null && colliderDetected.isTrigger == false)
             {
-                //Debug.Log(colliderDetected.gameObject.name);
                 enemyDetected.EnemyDamaged(ProjectileDamage, InteractStarStone.StarStoneID);
+                Debug.Log(ProjectileDamage);
             }
         }
     }
 
     protected override void OnCollisionEnter(Collision collision)
     {
-        base.OnCollisionEnter(collision);
         ProjectileCollision();
     }
 }
