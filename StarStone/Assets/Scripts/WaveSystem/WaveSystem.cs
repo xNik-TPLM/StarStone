@@ -28,7 +28,8 @@ public class WaveSystem : MonoBehaviour
     public static bool InIntermission; //This static boolean field will be used to check if the player is still in the intermission phase
     public static bool IsGeneratorOverheating;
     public static float WaveTimer; //This static float field is to count down the time of the wave and to be used to show in the player's HUD
-    public static float GeneratorTemperature; 
+    public static float GeneratorTemperature;
+    public static int WaveNumber;
 
     //Static integer fields
     public static int EnemiesOnMap; //This counts the amount of enemies currently on the map, which will be used to limit the amount of enemies on the map
@@ -80,14 +81,13 @@ public class WaveSystem : MonoBehaviour
         {
             //Initiate the first wave by setting wave begun to true, the wave index to first wave, which is 0 on the array element and and timer to use the time of the first wave
             m_hasWaveBegun = true;
+            WaveNumber = waves[WaveNumberIndex].WaveNumber;
             
             BeginWave();
             WaveFinished();
             Intermission();
             GeneratorState();
         }
-
-
     }
 
     private void SetSpawnPoints()
@@ -97,7 +97,6 @@ public class WaveSystem : MonoBehaviour
             SpawnPoints[i] = transform.GetChild(i).gameObject;
         }
     }
-
 
     //This function handles the spawning of an enemy
     private void SpawnEnemy()

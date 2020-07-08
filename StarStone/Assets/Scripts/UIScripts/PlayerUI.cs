@@ -91,6 +91,7 @@ public class PlayerUI : MonoBehaviour
         maxAmmo.text = m_weapon.MaxAmmo.ToString(); // This displays the maximum ammo left in the weapon as a part of the player's HUD
 
         //Nikodem Hamrol
+        UpdateWaveNumber();
         UpdateTimer();
         UpdateGeneratorSlider();
     }
@@ -126,6 +127,10 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    private void UpdateWaveNumber()
+    {
+        WaveStateText.text = "Wave: " + WaveSystem.WaveNumber.ToString();
+    }
 
     //This function will handle the time of the waves to display as text (Nikodem Hamrol)
     private void UpdateTimer()

@@ -276,7 +276,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 36, y: 33}
+  m_SizeDelta: {x: 130, y: 33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3916804381221406606
 CanvasRenderer:
@@ -318,7 +318,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 00
+  m_Text: 'Wave: 00'
 --- !u!1 &1466662430630182569
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,7 +793,7 @@ MonoBehaviour:
   - {x: 210, y: 210, z: 0}
   - {x: 240, y: 100, z: 0}
   - {x: 180, y: 0, z: 0}
-  WaveStateText: {fileID: 0}
+  WaveStateText: {fileID: 7935390616905818928}
   TimerText: {fileID: 7843505989468108352}
   OverheatingText: {fileID: 6066898256268464758}
   GeneratorTemperatureSlider: {fileID: 1618233766820217739}
