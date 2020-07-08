@@ -10,6 +10,8 @@ public class MeleeAttack : MonoBehaviour
 {
     Animator meleeAnimation; // This sets the reference to the melee attack animation
     public float MeleeDamage; // This is the damage of the knife per hit
+    public GameObject primaryWeapon;
+    public GameObject prototypeWeapon;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,8 @@ public class MeleeAttack : MonoBehaviour
     void Update()
     {
         MeleeAnimation(); // This calls the animation to run
+        
+
     }
 
     // This creates a collider which detects whether the knife has hit the enemy and then does damage accordingly
@@ -36,11 +40,14 @@ public class MeleeAttack : MonoBehaviour
     {
         // These set the melee attack animation to true or false depending on whether the player presses the attack key
         meleeAnimation.SetBool("MeleeAttack", true); // This will set the animation to run
-
+        
         if (meleeAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
+            primaryWeapon.SetActive(true);
+            prototypeWeapon.SetActive(true);
             meleeAnimation.SetBool("MeleeAttack", false); // This stops the animation from running once it has completed a cycle
             gameObject.SetActive(false); // This disables the knife from view once the animation has completed a cycle
+            
         }
     }      
 }

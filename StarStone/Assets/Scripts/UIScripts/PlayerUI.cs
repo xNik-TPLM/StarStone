@@ -38,24 +38,31 @@ public class PlayerUI : MonoBehaviour
         healthSlider.value = m_playerHealth.currentHealth / 100;
         StopwatchCooldown();
         TimerCooldown();
-        // Once the player takes damage, they will lose health depending on whether the shield has been enabled or not
-        if (Input.GetKeyDown(KeyCode.P))
+
+        if (Input.GetKeyDown(KeyCode.L))
         {
-            if (shieldSlider.value > 0)
-            {
-                shieldSlider.value -= 0.1f; // This lowers the shield value once damage has been taken
-            }
-            else
-            {
-                healthSlider.value -= 0.1f; // This lowers the health value once damage has been taken
-            }
+            shieldActive = true;
         }
         if (shieldActive == true)
         {
 
-            gameObject.SetActive(false);
+            gameObject.SetActive(true);
         }
 
+        // Once the player takes damage, they will lose health depending on whether the shield has been enabled or not
+        if (Input.GetKeyDown(KeyCode.P) && shieldActive == true)
+        {
+                shieldSlider.value -= 0.1f; // This lowers the shield value once damage has been taken
+            if (shieldSlider.value <= 0)
+            {
+                m_playerHealth.currentHealth -= 10;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.P) && shieldActive == false)
+        {
+            m_playerHealth.currentHealth -= 10; // This lowers the health value once damage has been taken
+        }
 
         ammoDisplay.text = m_weapon.CurrentAmmo.ToString(); // This displays the current ammo left in the clip as a part of the player's HUD
         maxAmmo.text = m_weapon.MaxAmmo.ToString(); // This displays the maximum ammo left in the weapon as a part of the player's HUD

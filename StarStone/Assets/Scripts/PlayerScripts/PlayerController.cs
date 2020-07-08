@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
     public GameObject Player; //Reference to the palyer model
     public LayerMask GroundType; //The layer in the scene, which is used to check if the player is on the ground
 
+    public GameObject primaryWeapon;
+    public GameObject prototypeWeapon;
 
     public static Transform KnifeStartPosition;
     //public float timer = 5f;
@@ -81,6 +83,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Knife.SetActive(true); // This enables the knife
+            primaryWeapon.SetActive(false);
+            prototypeWeapon.SetActive(false);
+
         }
     }
 
