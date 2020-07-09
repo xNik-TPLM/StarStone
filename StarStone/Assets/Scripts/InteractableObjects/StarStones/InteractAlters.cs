@@ -5,7 +5,6 @@ using UnityEngine;
 public class InteractAlters : MonoBehaviour
 {
     public static bool HasSigilInteracted;
-    private bool m_SigilDisabled;
 
     // Start is called before the first frame update
     void Start()

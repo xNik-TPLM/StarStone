@@ -13,7 +13,7 @@ public class PlayerUI : MonoBehaviour
     //Ben Smith's fields and properties
     public Text ammoDisplay; // This displays the current ammo left in the clip
     public Text maxAmmo; // This displays the maximum ammo that is left that the player has
-    private WeaponBase m_weapon;
+    //public WeaponBase m_weapon;
     private PlayerController m_playerHealth;
 
     private bool m_timerEnabled;
@@ -47,7 +47,7 @@ public class PlayerUI : MonoBehaviour
     {
         //Ben Smith
         gameObject.SetActive(true); // This enables the Player UI
-        m_weapon = FindObjectOfType<WeaponBase>();
+        //m_weapon = FindObjectOfType<WeaponBase>();
         m_playerHealth = FindObjectOfType<PlayerController>();
         m_timer = Timer;
 
@@ -67,7 +67,7 @@ public class PlayerUI : MonoBehaviour
         StopwatchCooldown();
         TimerCooldown();
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             shieldActive = true;
         }
@@ -83,8 +83,22 @@ public class PlayerUI : MonoBehaviour
             }
         }
 
-        ammoDisplay.text = m_weapon.CurrentAmmo.ToString(); // This displays the current ammo left in the clip as a part of the player's HUD
-        maxAmmo.text = m_weapon.MaxAmmo.ToString(); // This displays the maximum ammo left in the weapon as a part of the player's HUD
+        /*if (PlayerController.KnifeEnabled == false)
+        {
+            ammoDisplay.enabled = true;
+            maxAmmo.enabled = true;
+
+            ammoDisplay.text = FindObjectOfType<WeaponBase>().CurrentAmmo.ToString(); // This displays the current ammo left in the clip as a part of the player's HUD
+            maxAmmo.text = FindObjectOfType<WeaponBase>().MaxAmmo.ToString(); // This displays the maximum ammo left in the weapon as a part of the player's HUD
+        }
+        else
+        {
+            ammoDisplay.enabled = false;
+            maxAmmo.enabled = false;
+        }*/
+
+        ammoDisplay.text = FindObjectOfType<WeaponBase>().CurrentAmmo.ToString(); // This displays the current ammo left in the clip as a part of the player's HUD
+        maxAmmo.text = FindObjectOfType<WeaponBase>().MaxAmmo.ToString(); // This displays the maximum ammo left in the weapon as a part of the player's HUD
 
         //Nikodem Hamrol
         UpdateWaveNumber();

@@ -838,6 +838,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1895847105}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1622042074 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
+    type: 3}
+  m_PrefabInstance: {fileID: 1895847105}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622042072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d0656979b19b641911c64c6da42101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1767278781
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,22 +980,27 @@ PrefabInstance:
     - target: {fileID: 4247650201853915926, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4247650201853915926, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4247650201853915926, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: UseHitscan
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: MaxAmmo
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4841306710296598645, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
@@ -1088,7 +1105,17 @@ PrefabInstance:
     - target: {fileID: 8041026485579920376, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342743131885012412, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: m_weapon
+      value: 
+      objectReference: {fileID: 1622042074}
+    - target: {fileID: 8558817294421199429, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: radius
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8570450290866058428, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
@@ -1274,7 +1301,7 @@ MonoBehaviour:
   waves:
   - WaveNumber: 1
     NextWaveIsIntermission: 1
-    MaxEnemiesInWave: 1
+    MaxEnemiesInWave: 30
     RateToSpwanShooter: 5
     WaveTime: 120
   - WaveNumber: 2
@@ -1282,7 +1309,7 @@ MonoBehaviour:
     MaxEnemiesInWave: 10
     RateToSpwanShooter: 10
     WaveTime: 120
-  SpawnRate: 0.1
+  SpawnRate: 0.5
   WaveCooldown: 5
   GeneratorOverheatTime: 5
   MaxEnemiesOnMap: 15

@@ -25,6 +25,7 @@ public class PrototypeProjectile : ProjectileBase
 
     protected override void OnCollisionEnter(Collision collision)
     {
+        base.OnCollisionEnter(collision);
         ProjectileCollision();
     }
 }

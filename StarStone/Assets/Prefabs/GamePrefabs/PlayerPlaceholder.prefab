@@ -2504,6 +2504,11 @@ PrefabInstance:
       propertyPath: Knife
       value: 
       objectReference: {fileID: 9195779116005136097}
+    - target: {fileID: 5233771868464679553, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
+        type: 3}
+      propertyPath: MeleeDamage
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8908043011710900811, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
         type: 3}
       propertyPath: m_LocalPosition.y

@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
     // This function is called when the play button is clicked
     public void Play()
     {
-        SceneManager.LoadScene("BenTestScene");
+        SceneManager.LoadScene("WhiteBox");
     }
 
     // This function is called when the quit button is clicked

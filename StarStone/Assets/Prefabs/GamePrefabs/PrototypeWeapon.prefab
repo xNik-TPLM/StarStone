@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 743755807073303617}
   - component: {fileID: 2519397886453861574}
   m_Layer: 0
-  m_Name: FireWeapon
+  m_Name: PrototypeWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,11 +94,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UseHitscan: 0
-  FireRate: 10
   CurrentAmmo: 0
   WeaponClipSize: 10
   MaxAmmo: 0
   IsAutomatic: 0
+  FireRate: 10
+  WeaponDamage: 0
   WeaponProjectile: {fileID: 0}
   WeaponMuzzle: {fileID: 7029881734540371093}
   recoilPosition: {fileID: 0}
@@ -110,6 +111,10 @@ MonoBehaviour:
   RecoilRotation: {x: 10, y: 5, z: 7}
   RecoilKickBack: {x: 0.0015, y: 0, z: -0.0002}
   FireProjectile: {fileID: 2715922866524773295, guid: e1fcb8d73dcabfb4ba2b0a2b77c58fa5,
+    type: 3}
+  IceProjectile: {fileID: 2715922866524773295, guid: f3e7bd1bf9560c547bfab65df081bc80,
+    type: 3}
+  WindProjectile: {fileID: 2715922866524773295, guid: 9305333c4fb729c49a11b76e246274bd,
     type: 3}
   EarthProjectile: {fileID: 6426713038486686180, guid: eed808d64cd5e17418754b9397e969bc,
     type: 3}

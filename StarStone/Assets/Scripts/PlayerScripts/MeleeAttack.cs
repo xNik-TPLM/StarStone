@@ -47,7 +47,8 @@ public class MeleeAttack : MonoBehaviour
             prototypeWeapon.SetActive(true);
             meleeAnimation.SetBool("MeleeAttack", false); // This stops the animation from running once it has completed a cycle
             gameObject.SetActive(false); // This disables the knife from view once the animation has completed a cycle
-            
+
+            FindObjectOfType<WeaponsSelect>().SetWeapon();
         }
     }      
 }
