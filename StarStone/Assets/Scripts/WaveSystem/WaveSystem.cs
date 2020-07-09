@@ -14,6 +14,7 @@ public class WaveSystem : MonoBehaviour
     //Wave system fields
     //This boolean feild will be used to check if a wave has begun
     private bool m_hasWaveBegun;
+    private bool m_waveInProgress;
     
     //Float fields
     private float m_timeToSpawn; //This will time the spawining of the next enemy
@@ -77,25 +78,23 @@ public class WaveSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsWaveSystemInitiated == true)
+        if (IsWaveSystemInitiated == true || m_hasWaveBegun == true && InIntermission == false)
         {
             //Initiate the first wave by setting wave begun to true, the wave index to first wave, which is 0 on the array element and and timer to use the time of the first wave
             m_hasWaveBegun = true;
             WaveNumber = waves[WaveNumberIndex].WaveNumber;
-            
+
             BeginWave();
-            WaveFinished();
             Intermission();
+            WaveFinished();
             GeneratorState();
         }
-    }
 
-    private void SetSpawnPoints()
-    {
-        for (int i = 0; i < SpawnPoints.Length; i++)
+        /*if (waves[WaveNumberIndex].NextWaveIsIntermission == true && IsWaveSystemInitiated == true && m_hasWaveBegun == false)
         {
-            SpawnPoints[i] = transform.GetChild(i).gameObject;
-        }
+            InIntermission = true;
+            Intermission();
+        }*/
     }
 
     //This function handles the spawning of an enemy
@@ -133,7 +132,7 @@ public class WaveSystem : MonoBehaviour
     private void BeginWave()
     {
         //if the wave has begun
-        if (m_hasWaveBegun == true)
+        if (m_hasWaveBegun == true && InIntermission == false)
         {
             //Start the timer
             WaveTimer -= Time.deltaTime;
@@ -157,10 +156,16 @@ public class WaveSystem : MonoBehaviour
             //Wave has eneded and start the wave cooledown timer
             m_hasWaveBegun = false;
             m_nextwaveTimer += Time.deltaTime;
-            
+
+            if (waves[WaveNumberIndex].NextWaveIsIntermission == true && IsWaveSystemInitiated == true && m_hasWaveBegun == false)
+            {
+                InIntermission = true;
+                Intermission();
+            }
+
             //If the cooldown is finished if the player is not in an intermission phase
             if (m_nextwaveTimer > WaveCooldown && InIntermission == false)
-            {   
+            {
                 //Set the cooldown and enemies spawned to 0
                 m_nextwaveTimer = 0;
                 EnemiesSpawned = 0;
@@ -185,10 +190,11 @@ public class WaveSystem : MonoBehaviour
     //This function handles if intermission is active
     private void Intermission()
     {
-        //if the wave will have an intermission, then it will set intermission to true. This won't disable the current wave, because it is only checked when the wave is finished
-        if (waves[WaveNumberIndex].NextWaveIsIntermission == true)
+        Debug.Log("Intermission");
+        if (InteractAlters.HasSigilInteracted == true && InIntermission == true)
         {
-            InIntermission = true;
+            InIntermission = false;
+            Debug.Log("Start Next Wave");
         }
     }
 

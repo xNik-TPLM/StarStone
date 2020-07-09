@@ -1262,7 +1262,7 @@ MonoBehaviour:
     WaveTime: 120
   - WaveNumber: 2
     NextWaveIsIntermission: 1
-    MaxEnemiesInWave: 10
+    MaxEnemiesInWave: 2
     RateToSpwanShooter: 11
     WaveTime: 60
   - WaveNumber: 3
