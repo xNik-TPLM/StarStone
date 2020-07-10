@@ -60,6 +60,7 @@ public class WaveSystem : MonoBehaviour
     //This is a list of all elemental enemy prefabs that will be used to spawn onto the map. It was done this way, so that there is a reference to each enemy
     public GameObject WindElementalEnemy;
     public GameObject FireElementalEnemy;
+    public GameObject EarthElementalEnemy;
 
 
     // Start is called before the first frame update
@@ -104,7 +105,11 @@ public class WaveSystem : MonoBehaviour
         int SpawnPointID = Random.Range(0, SpawnPoints.Length);       
 
         //Check if the amount of enemies spawned is a remainder of rate to spawn a shooter is equal to the value to spawn a shooter. This will spawn a shooter enemy, which will be either ice or fire elemental
-        if ((EnemiesSpawned % waves[WaveNumberIndex].RateToSpwanShooter) + 1 == waves[WaveNumberIndex].RateToSpwanShooter)
+        if((EnemiesSpawned % waves[WaveNumberIndex].RateToSpawnMiniBoss) + 1 == waves[WaveNumberIndex].RateToSpawnMiniBoss)
+        {
+            EnemyToSpawn = EarthElementalEnemy; 
+        }
+        else if((EnemiesSpawned % waves[WaveNumberIndex].RateToSpwanShooter) + 1 == waves[WaveNumberIndex].RateToSpwanShooter)
         {
             EnemyToSpawn = FireElementalEnemy;
         }
