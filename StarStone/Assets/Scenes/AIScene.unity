@@ -1259,16 +1259,19 @@ MonoBehaviour:
     NextWaveIsIntermission: 0
     MaxEnemiesInWave: 30
     RateToSpwanShooter: 5
+    RateToSpawnMiniBoss: 0
     WaveTime: 120
   - WaveNumber: 2
     NextWaveIsIntermission: 1
     MaxEnemiesInWave: 2
     RateToSpwanShooter: 11
+    RateToSpawnMiniBoss: 0
     WaveTime: 60
   - WaveNumber: 3
     NextWaveIsIntermission: 0
     MaxEnemiesInWave: 15
     RateToSpwanShooter: 5
+    RateToSpawnMiniBoss: 0
     WaveTime: 90
   SpawnRate: 0.5
   WaveCooldown: 1
@@ -1282,6 +1285,8 @@ MonoBehaviour:
   WindElementalEnemy: {fileID: 4076921026306919797, guid: c02eb9eb012f5ae4dbb45340f058791a,
     type: 3}
   FireElementalEnemy: {fileID: 1354369888520148622, guid: 716d8ec84823d384fbd177019c55b18e,
+    type: 3}
+  EarthElementalEnemy: {fileID: 6339425347480717186, guid: 347bdac3c46b91c41ae791346e7cabd2,
     type: 3}
 --- !u!4 &1614280192
 Transform:
