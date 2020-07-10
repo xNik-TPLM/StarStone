@@ -23,8 +23,9 @@ public class PrototypeWeapon : WeaponBase
     {
         if (CurrentAmmo > 0)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetButtonDown("Fire1"))
             {
+                IsFiring = true;
                 GameObject projectile = Instantiate(WeaponProjectile);
                 CurrentAmmo -= 1;
                 projectile.transform.position = WeaponMuzzle.transform.position;

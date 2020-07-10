@@ -57,12 +57,6 @@ public class WeaponBase : MonoBehaviour
     private Vector3 positionalRecoil;
     private Vector3 Rotation;
 
-    //public EnemyBase EnemyTarget;
-
-    private bool fired;
-
-    private GameObject m_camera;
-
     protected GameObject SelectedProjectile;
 
     // Start is called before the first frame update
@@ -70,7 +64,6 @@ public class WeaponBase : MonoBehaviour
     {
         //Set current ammo as clip size and get reference 
         CurrentAmmo = WeaponClipSize;
-        m_camera = GameObject.Find("Main Camera");
     }
 
     void FixedUpdate()
@@ -121,10 +114,11 @@ public class WeaponBase : MonoBehaviour
 
             ///Semi-automatic weapon solution
             //If the player presses the left mouse button and if the player is not reloading
-            if(Input.GetMouseButtonDown(0) && m_isWeaponReloading == false)
+            if (Input.GetButtonDown("Fire1") && m_isWeaponReloading == false)
             {
                 //Instantiate a projectile and take away ammo by one
                 //SelectedProjectile = Instantiate(WeaponProjectile);
+                IsFiring = true;
                 CurrentAmmo -= 1;
 
                 //Initiate a raycast

@@ -33,7 +33,7 @@ public class CameraRecoilMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && GetComponentInChildren<WeaponBase>().CurrentAmmo > 0)
+        if (Input.GetButtonDown("Fire1") && GetComponentInChildren<WeaponBase>().CurrentAmmo > 0)
         {
             currentRotation += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
         }      

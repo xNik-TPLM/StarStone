@@ -28,7 +28,7 @@ public class OffensiveAbility : MonoBehaviour
     void Update()
     {
         // This checks whether the player has pressed the offensive ability key
-        if (Input.GetKeyDown(KeyCode.F) && m_timerEnabled == false)
+        if (Input.GetButtonDown("Offensive Ability") && m_timerEnabled == false)
         {
             m_timerEnabled = true;
             Explode();

@@ -52,7 +52,7 @@ public class InteractStarStone : MonoBehaviour
     {
         if (trigger.CompareTag("Player"))
         {
-            if (Input.GetKey(KeyCode.E) && m_isFullyCharged == true)
+            if (Input.GetButton("Interact") && m_isFullyCharged == true)
             {
                 if(WaveSystem.IsWaveSystemInitiated == false)
                 {

@@ -24,7 +24,7 @@ public class InteractAlters : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if(Input.GetKey(KeyCode.E) && WaveSystem.InIntermission == true)
+            if (Input.GetButtonDown("Interact") && WaveSystem.InIntermission == true)
             {
                 HasSigilInteracted = true;
             }

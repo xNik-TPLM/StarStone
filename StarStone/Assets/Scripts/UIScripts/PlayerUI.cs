@@ -51,6 +51,8 @@ public class PlayerUI : MonoBehaviour
         m_playerHealth = FindObjectOfType<PlayerController>();
         m_timer = Timer;
 
+        shieldSlider.maxValue = m_playerHealth.ShieldAmount;
+
 
         //Nikodem Hamrol
         //At Start, set the values for the slider's and disable the overheating text
@@ -67,34 +69,26 @@ public class PlayerUI : MonoBehaviour
         StopwatchCooldown();
         TimerCooldown();
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            shieldActive = true;
-        }
-
-        // Once the player takes damage, they will lose health depending on whether the shield has been enabled or not
         if (shieldActive == true)
         {
-            shieldSlider.value = 100;
-            // This lowers the shield value once damage has been taken
+            //shieldActive = true;
+            shieldSlider.value = PlayerController.ShieldHealth;
+
             if (shieldSlider.value <= 0)
             {
                 shieldActive = false;
             }
         }
 
-        /*if (PlayerController.KnifeEnabled == false)
+        // Once the player takes damage, they will lose health depending on whether the shield has been enabled or not
+        /*if (shieldActive == true)
         {
-            ammoDisplay.enabled = true;
-            maxAmmo.enabled = true;
-
-            ammoDisplay.text = FindObjectOfType<WeaponBase>().CurrentAmmo.ToString(); // This displays the current ammo left in the clip as a part of the player's HUD
-            maxAmmo.text = FindObjectOfType<WeaponBase>().MaxAmmo.ToString(); // This displays the maximum ammo left in the weapon as a part of the player's HUD
-        }
-        else
-        {
-            ammoDisplay.enabled = false;
-            maxAmmo.enabled = false;
+            shieldSlider.value = PlayerController.ShieldHealth;
+            // This lowers the shield value once damage has been taken
+            if (shieldSlider.value <= 0)
+            {
+                shieldActive = false;
+            }
         }*/
 
         ammoDisplay.text = FindObjectOfType<WeaponBase>().CurrentAmmo.ToString(); // This displays the current ammo left in the clip as a part of the player's HUD
