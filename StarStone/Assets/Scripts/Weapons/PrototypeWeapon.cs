@@ -14,9 +14,11 @@ public class PrototypeWeapon : WeaponBase
     public GameObject WindProjectile;
     public GameObject EarthProjectile;
 
+    public SoundFX m_sound;
+
     protected override void Start()
     {
-
+        m_sound = FindObjectOfType<SoundFX>();
     }
 
     protected override void PlayerShooting()
@@ -26,6 +28,7 @@ public class PrototypeWeapon : WeaponBase
             if (Input.GetButtonDown("Fire1"))
             {
                 IsFiring = true;
+                m_sound.PrototypeFire.Play();
                 GameObject projectile = Instantiate(WeaponProjectile);
                 CurrentAmmo -= 1;
                 projectile.transform.position = WeaponMuzzle.transform.position;

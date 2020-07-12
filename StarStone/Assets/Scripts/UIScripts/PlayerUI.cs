@@ -13,6 +13,7 @@ public class PlayerUI : MonoBehaviour
     //Ben Smith's fields and properties
     public Text ammoDisplay; // This displays the current ammo left in the clip
     public Text maxAmmo; // This displays the maximum ammo that is left that the player has
+
     //public WeaponBase m_weapon;
     private PlayerController m_playerHealth;
 

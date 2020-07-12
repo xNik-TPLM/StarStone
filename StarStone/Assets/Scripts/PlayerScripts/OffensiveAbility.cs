@@ -13,15 +13,18 @@ public class OffensiveAbility : MonoBehaviour
     public float radius = 5f; //  This sets the radius at which the nuke affects
     //public float force = 700f; // This sets the amount of force that the objects within the radius will experience
     public float nukeDamage; // This sets the damage that the nuke has on enemies
+    
 
     private bool m_timerEnabled;
     private float m_timer;
     public float NukeCooldownTime;
-
+    private SoundFX m_sound;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
-
+        m_sound = FindObjectOfType<SoundFX>();
     }
 
     // Update is called once per frame
@@ -31,6 +34,7 @@ public class OffensiveAbility : MonoBehaviour
         if (Input.GetButtonDown("Offensive Ability") && m_timerEnabled == false)
         {
             m_timerEnabled = true;
+            m_sound.Explosion.Play();
             Explode();
         }
 

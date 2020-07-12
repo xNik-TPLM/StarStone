@@ -11,6 +11,9 @@ using UnityEngine;
 
 public class WeaponBase : MonoBehaviour
 {
+    // Ben's SFX Reference
+    private SoundFX m_sound;
+
     //Private fields
     //Boolean field to chekc if the weapon is realodaing so that the player can't shoot, whilst realoding is happening
     private bool m_isWeaponReloading;
@@ -64,6 +67,8 @@ public class WeaponBase : MonoBehaviour
     {
         //Set current ammo as clip size and get reference 
         CurrentAmmo = WeaponClipSize;
+        // Ben's SFX Reference
+        m_sound = FindObjectOfType<SoundFX>();
     }
 
     void FixedUpdate()
@@ -119,6 +124,8 @@ public class WeaponBase : MonoBehaviour
                 //Instantiate a projectile and take away ammo by one
                 //SelectedProjectile = Instantiate(WeaponProjectile);
                 IsFiring = true;
+                m_sound.PrimaryFire.Play();
+                
                 CurrentAmmo -= 1;
 
                 //Initiate a raycast
