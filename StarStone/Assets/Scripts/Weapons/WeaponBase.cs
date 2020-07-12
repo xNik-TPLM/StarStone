@@ -149,17 +149,19 @@ public class WeaponBase : MonoBehaviour
         //If R key is pressed and if player is not already reloading
         if (Input.GetKeyDown(KeyCode.R) && m_isWeaponReloading == false)
         {
-            //Realoding is true, so it's in progress
+            //Reloading is true, so it's in progress
             m_isWeaponReloading = true;
+
+            
 
             //If current clip is not full
             if (CurrentAmmo < WeaponClipSize)
             {
                 //Set ammo difference, by subtracting the clip size by ammo in clip
                 m_ammoDifference = WeaponClipSize - CurrentAmmo;
-
+                
                 //If there's more ammo left
-                if(MaxAmmo > m_ammoDifference)
+                if (MaxAmmo > m_ammoDifference)
                 {
                     CurrentAmmo += m_ammoDifference; //Add the ammo difference to the current ammo, so that it's not bigger than the clip size
                     MaxAmmo -= m_ammoDifference; //Subtract max ammo by the ammo difference
@@ -171,8 +173,9 @@ public class WeaponBase : MonoBehaviour
                     MaxAmmo = 0;
                 }
 
-                //Once all of that is done, set realoding to false
+                //Once all of that is done, set reloading to false
                 m_isWeaponReloading = false;
+                m_sound.PrimaryHandling.Play();
             }
         }
     }
