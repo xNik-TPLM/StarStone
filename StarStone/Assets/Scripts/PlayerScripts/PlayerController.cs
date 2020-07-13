@@ -57,10 +57,13 @@ public class PlayerController : MonoBehaviour
 
     public static Transform KnifeStartPosition;
 
+    public SoundFX m_sound;
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        m_sound = FindObjectOfType<SoundFX>();
     }
 
     // Update is called once per frame
@@ -188,8 +191,17 @@ public class PlayerController : MonoBehaviour
         {
             m_moveInputX = Input.GetAxis("Horizontal"); // This allows the player to move horizontally with key presses
             m_moveInputZ = Input.GetAxis("Vertical"); // This allows the player to move vertically with key presses
+            
         }
-            Vector3 move = transform.right * m_moveInputX + transform.forward * m_moveInputZ; //  This sets a reference to the key presses so the player moves in the corresponding direction
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            m_sound.PlayerWalk.Play();
+        }
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            m_sound.PlayerWalk.Stop();
+        }
+        Vector3 move = transform.right * m_moveInputX + transform.forward * m_moveInputZ; //  This sets a reference to the key presses so the player moves in the corresponding direction
             CharacterController.Move(move * PlayerMovementSpeed * Time.deltaTime); // This sets the movement speed of the player when moving
             CharacterController.Move(m_playerVelocity * Time.deltaTime);  // This sets the speed of the player when jumping
     }
