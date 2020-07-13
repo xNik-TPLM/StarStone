@@ -34,16 +34,19 @@ public class EnemyBase : MonoBehaviour
 
     //Enemy properties    
     //Float properties
+    [Header("Health")]
     public float CurrentHealth; //This keeps track of how much health does the enemy have
     public float MaxHealth; //This sets the max health of an enemy
-    //public float EnemySpeed; //This sets the speed of our enemy
-    public float MaxEnemySpeed; 
+
+    [Header("Speed")]
+    public float MaxEnemySpeed; //This sets the max speed of our enemy
+
+    [Header("Elemental Effects")]
     public float BurningTime; //This sets the burning time of our enemy
-    public float FreezeTime; 
+    public int BurnDamage; //This sets the burning damage of our enemy
+    public float FreezeTime; //This sets the freeze time of our enemy
 
-    //This integer sets the burning damage of our enemy
-    public int BurnDamage; 
-
+    [Header("UI")]
     //Unity properties
     public GameObject HealthBarUI; //This is the reference to the canvas of our health bar so that we can deactivate it when health is full
     public Slider HealthBarSlider; //this is the reference to the slider, which change the value of the slider
@@ -127,7 +130,7 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    //This function will handle the burning of the enemy. It's protected so that it can be used on some child classes.
+    //This function will handle the burning of the enemy. It's private as it will be used for all enemies 
     private void EnemyBurning()
     {
         //If the enemy is burning
@@ -147,15 +150,20 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+    //This function will handle the freezing of the enemy. This function will be used on all enemies
     private void EnemyFreeze()
     {
+        //if the enemy is frozen
         if (m_isEnemyFrozen == true)
         {
+            //Set the enemy speed to 0 and start the timer
             m_enemySpeed = 0;
             m_enemyFreezeTimer += Time.deltaTime;
 
+            //Check if the timer is up
             if(m_enemyFreezeTimer > FreezeTime)
             {
+                //
                 m_isEnemyFrozen = false;
                 m_enemyFreezeTimer = 0;
                 m_enemySpeed = MaxEnemySpeed;
