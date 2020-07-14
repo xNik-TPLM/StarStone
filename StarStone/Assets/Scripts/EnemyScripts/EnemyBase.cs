@@ -50,7 +50,6 @@ public class EnemyBase : MonoBehaviour
     //Unity properties
     public GameObject HealthBarUI; //This is the reference to the canvas of our health bar so that we can deactivate it when health is full
     public Slider HealthBarSlider; //this is the reference to the slider, which change the value of the slider
-    
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -163,7 +162,7 @@ public class EnemyBase : MonoBehaviour
             //Check if the timer is up
             if(m_enemyFreezeTimer > FreezeTime)
             {
-                //
+                //Turn off freezing and set speed back to normal
                 m_isEnemyFrozen = false;
                 m_enemyFreezeTimer = 0;
                 m_enemySpeed = MaxEnemySpeed;

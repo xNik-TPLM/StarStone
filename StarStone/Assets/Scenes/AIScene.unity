@@ -885,6 +885,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1823128859363165534, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: recoilPosition
+      value: 
+      objectReference: {fileID: 1919668212}
+    - target: {fileID: 1823128859363165534, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: rotationalPoint
+      value: 
+      objectReference: {fileID: 1641425552}
+    - target: {fileID: 1823128859363165534, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: FireRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823128859363165534, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: WeaponDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2822920363389054985, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_AnchoredPosition.y

@@ -64,24 +64,22 @@ public class InteractStarStone : MonoBehaviour
                 {
                     case "FireStarStone":
                         StarStoneID = 1;
-                        WeaponID = 1;
                         break;
 
                     case "IceStarStone":
                         StarStoneID = 2;
-                        WeaponID = 1;
                         break;
 
                     case "WindStarStone":
                         StarStoneID = 3;
-                        WeaponID = 1;
                         break;
 
                     case "EarthStarStone":
                         StarStoneID = 4;
-                        WeaponID = 1;
                         break;
                 }
+
+                WeaponID = 2;
 
                 m_isFullyCharged = false;
                 m_enableCharging = true;

@@ -17,6 +17,8 @@ public class CameraRecoilMovement : MonoBehaviour
     private Vector3 currentRotation;
     private Vector3 Rotation;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +35,16 @@ public class CameraRecoilMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && GetComponentInChildren<WeaponBase>().CurrentAmmo > 0)
+        if (Input.GetButton("Fire1") && GetComponentInChildren<WeaponBase>().CurrentAmmo > 0 && GetComponentInChildren<WeaponBase>().IsAutomatic == true)
         {
             currentRotation += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
-        }      
+        }
+            
+        if (Input.GetButtonDown("Fire1") && GetComponentInChildren<WeaponBase>().CurrentAmmo > 0 && GetComponentInChildren<WeaponBase>().IsAutomatic == false)
+        {
+            currentRotation += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
+        }
+
+        
     }
 }

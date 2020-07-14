@@ -97,35 +97,35 @@ public class WeaponBase : MonoBehaviour
         {
             ///Automatic weapon solution
             //If player holds down the left mouse button and if it is time to fire and if the player is not reloading
-            /*if (Input.GetMouseButton(0) && Time.time >= m_fireTime && m_isWeaponReloading == false)
+            if (Input.GetButton("Fire1") && Time.time >= m_fireTime && m_isWeaponReloading == false && IsAutomatic == true)
             {
-                IsFiring = true;
-
-                SelectedProjectile = Instantiate(WeaponProjectile);
+                //SelectedProjectile = Instantiate(WeaponProjectile);
                 CurrentAmmo -= 1;
+                m_sound.PrimaryFire.Play();
 
                 //Use Muzzle's position and rotation to fire the projectile
-                SelectedProjectile.transform.position = WeaponMuzzle.transform.position;
-                SelectedProjectile.transform.rotation = WeaponMuzzle.transform.rotation;
-               
+                //SelectedProjectile.transform.position = WeaponMuzzle.transform.position;
+                //SelectedProjectile.transform.rotation = WeaponMuzzle.transform.rotation;
+
                 //Set the fire timer
+                HitDetection();
                 m_fireTime = Time.time + 1 / FireRate;
 
                 //Move camera for weapon recoil
 
                 rotationalRecoil += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
                 positionalRecoil += new Vector3(Random.Range(-RecoilKickBack.x, RecoilKickBack.x), Random.Range(-RecoilKickBack.y, RecoilKickBack.y), RecoilKickBack.z);
-            }*/
 
+            }
             ///Semi-automatic weapon solution
             //If the player presses the left mouse button and if the player is not reloading
-            if (Input.GetButtonDown("Fire1") && m_isWeaponReloading == false)
+            //if (Input.GetButtonDown("Fire1") && m_isWeaponReloading == false)
+            else if (Input.GetButtonDown("Fire1") && Time.time >= m_fireTime && m_isWeaponReloading == false && IsAutomatic == false)
             {
                 //Instantiate a projectile and take away ammo by one
                 //SelectedProjectile = Instantiate(WeaponProjectile);
-                IsFiring = true;
                 m_sound.PrimaryFire.Play();
-                
+
                 CurrentAmmo -= 1;
 
                 //Initiate a raycast

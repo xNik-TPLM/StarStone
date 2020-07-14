@@ -27,7 +27,6 @@ public class PrototypeWeapon : WeaponBase
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                IsFiring = true;
                 m_sound.PrototypeFire.Play();
                 GameObject projectile = Instantiate(WeaponProjectile);
                 CurrentAmmo -= 1;
