@@ -201,6 +201,30 @@ public class PlayerController : MonoBehaviour
         {
             m_sound.PlayerWalk.Stop();
         }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            m_sound.PlayerWalk.Play();
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            m_sound.PlayerWalk.Stop();
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            m_sound.PlayerWalk.Play();
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            m_sound.PlayerWalk.Stop();
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            m_sound.PlayerWalk.Play();
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            m_sound.PlayerWalk.Stop();
+        }
         Vector3 move = transform.right * m_moveInputX + transform.forward * m_moveInputZ; //  This sets a reference to the key presses so the player moves in the corresponding direction
             CharacterController.Move(move * PlayerMovementSpeed * Time.deltaTime); // This sets the movement speed of the player when moving
             CharacterController.Move(m_playerVelocity * Time.deltaTime);  // This sets the speed of the player when jumping
@@ -229,8 +253,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey("w") && Input.GetKey(KeyCode.LeftShift))
         {
+            //m_sound.PlayerRun.Play();
             transform.position += transform.TransformDirection(Vector3.forward) * Time.deltaTime * PlayerMovementSpeed * 2f;
         }
+        //if (Input.GetKeyUp("w") && Input.GetKeyUp(KeyCode.LeftShift))
+        //{
+        //    m_sound.PlayerRun.Stop();
+        //}
     }
     //This function controls the crouch
     private void PlayerCrouch()

@@ -9,4 +9,5 @@ public class SoundFX : MonoBehaviour
     public AudioSource PrimaryHandling;
     public AudioSource PrototypeFire;
     public AudioSource PlayerWalk;
+    public AudioSource PlayerRun;
 }
