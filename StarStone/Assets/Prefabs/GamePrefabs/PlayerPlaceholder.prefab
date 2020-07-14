@@ -2356,6 +2356,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6989485618890738874}
     m_Modifications:
+    - target: {fileID: -2768094269574926922, guid: 860691a7a884db44e8ca2d57449d2e61,
+        type: 3}
+      propertyPath: recoilPosition
+      value: 
+      objectReference: {fileID: 2117802646086677836}
+    - target: {fileID: -2768094269574926922, guid: 860691a7a884db44e8ca2d57449d2e61,
+        type: 3}
+      propertyPath: rotationalPoint
+      value: 
+      objectReference: {fileID: 6989485618890738874}
+    - target: {fileID: -2768094269574926922, guid: 860691a7a884db44e8ca2d57449d2e61,
+        type: 3}
+      propertyPath: RecoilKickBack.x
+      value: 0.006
+      objectReference: {fileID: 0}
+    - target: {fileID: -2768094269574926922, guid: 860691a7a884db44e8ca2d57449d2e61,
+        type: 3}
+      propertyPath: RecoilKickBack.z
+      value: -0.0006
+      objectReference: {fileID: 0}
+    - target: {fileID: -2768094269574926922, guid: 860691a7a884db44e8ca2d57449d2e61,
+        type: 3}
+      propertyPath: FireRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2768094269574926922, guid: 860691a7a884db44e8ca2d57449d2e61,
+        type: 3}
+      propertyPath: WeaponDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1740739795345265924, guid: 860691a7a884db44e8ca2d57449d2e61,
         type: 3}
       propertyPath: m_LocalRotation.x
