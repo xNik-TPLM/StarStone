@@ -84,11 +84,10 @@ public class PlayerUI : MonoBehaviour
     {
         //Ben Smith
         healthSlider.value = m_playerHealth.currentHealth/100;
+        shieldSlider.value = PlayerController.ShieldHealth;
 
         if (shieldActive == true && shieldCooldownActive == false)
         {
-            shieldSlider.value = PlayerController.ShieldHealth;
-
             shieldCooldownActive = true;
             m_shieldCooldownTimer = 0;
 
@@ -97,6 +96,8 @@ public class PlayerUI : MonoBehaviour
                 shieldActive = false;
             }
         }
+
+        Debug.Log(shieldActive);
 
         ammoDisplay.text = FindObjectOfType<WeaponBase>().CurrentAmmo.ToString() + " / " + FindObjectOfType<WeaponBase>().MaxAmmo.ToString(); //This displays the current ammo in the clip and maximum ammo left as a part of the player's HUD
 

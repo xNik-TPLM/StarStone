@@ -289,8 +289,5 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth -= damage;
         }
-        
     }
-
-
 }

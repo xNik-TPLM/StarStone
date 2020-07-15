@@ -978,6 +978,7 @@ MonoBehaviour:
   PrimaryHandling: {fileID: 2066967151}
   PrototypeFire: {fileID: 522001154}
   PlayerWalk: {fileID: 12321081}
+  PlayerRun: {fileID: 0}
 --- !u!4 &65893458
 Transform:
   m_ObjectHideFlags: 0
@@ -13583,6 +13584,16 @@ PrefabInstance:
       propertyPath: m_weapon
       value: 
       objectReference: {fileID: 1622042074}
+    - target: {fileID: 8342743131885012412, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: WaveTimerText
+      value: 
+      objectReference: {fileID: 1895847106}
+    - target: {fileID: 8342743131885012412, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: ShiedCooldownMaxTime
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8399359680510400983, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13670,6 +13681,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60b5e663693a4374b96e44b9caa65eae, type: 3}
+--- !u!114 &1895847106 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7843505989468108352, guid: 60b5e663693a4374b96e44b9caa65eae,
+    type: 3}
+  m_PrefabInstance: {fileID: 1895847105}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1917378530 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 60169afb2191e3d45ac6e6bc7208cf31,
@@ -14907,13 +14930,13 @@ MonoBehaviour:
     NextWaveIsIntermission: 1
     MaxEnemiesInWave: 30
     RateToSpwanShooter: 5
-    RateToSpawnMiniBoss: 0
+    RateToSpawnMiniBoss: 10
     WaveTime: 120
   - WaveNumber: 2
     NextWaveIsIntermission: 0
     MaxEnemiesInWave: 10
-    RateToSpwanShooter: 10
-    RateToSpawnMiniBoss: 0
+    RateToSpwanShooter: 9
+    RateToSpawnMiniBoss: 10
     WaveTime: 120
   SpawnRate: 0.5
   WaveCooldown: 5
@@ -14931,7 +14954,8 @@ MonoBehaviour:
     type: 3}
   FireElementalEnemy: {fileID: 1354369888520148622, guid: 716d8ec84823d384fbd177019c55b18e,
     type: 3}
-  EarthElementalEnemy: {fileID: 0}
+  EarthElementalEnemy: {fileID: 6339425347480717186, guid: 347bdac3c46b91c41ae791346e7cabd2,
+    type: 3}
 --- !u!1 &2117902853
 GameObject:
   m_ObjectHideFlags: 0

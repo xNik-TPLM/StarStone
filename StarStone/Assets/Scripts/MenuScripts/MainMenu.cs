@@ -27,13 +27,6 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("WhiteBox");
     }
 
-    //public void TheSequence()
-    //{
-        
-    //    //Menu.SetActive(false);
-        
-    //}
-
     // This function is called when the quit button is clicked
     public void Quit()
     {
