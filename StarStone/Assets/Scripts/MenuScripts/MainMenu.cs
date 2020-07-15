@@ -10,11 +10,29 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class MainMenu : MonoBehaviour
 {
+    public GameObject Menu;
+    public GameObject Cutscene;
+
     // This function is called when the play button is clicked
     public void Play()
     {
+        //TheSequence();
+        Cutscene.SetActive(true);
+        Menu.SetActive(false);
+        
+    }
+
+    public void LoadGame()
+    {
         SceneManager.LoadScene("WhiteBox");
     }
+
+    //public void TheSequence()
+    //{
+        
+    //    //Menu.SetActive(false);
+        
+    //}
 
     // This function is called when the quit button is clicked
     public void Quit()
