@@ -22,7 +22,6 @@ public class PrototypeProjectile : ProjectileBase
             if (enemyDetected != null && colliderDetected.isTrigger == false)
             {
                 enemyDetected.EnemyDamaged(ProjectileDamage, InteractStarStone.StarStoneID);
-                Debug.Log(ProjectileDamage);
             }
         }
     }

@@ -97,8 +97,6 @@ public class PlayerUI : MonoBehaviour
             }
         }
 
-        Debug.Log(shieldActive);
-
         ammoDisplay.text = FindObjectOfType<WeaponBase>().CurrentAmmo.ToString() + " / " + FindObjectOfType<WeaponBase>().MaxAmmo.ToString(); //This displays the current ammo in the clip and maximum ammo left as a part of the player's HUD
 
         //Nikodem Hamrol

@@ -233,13 +233,13 @@ MonoBehaviour:
   MaxHealth: 100
   MaxEnemySpeed: 10
   BurningTime: 0
-  FreezeTime: 0
   BurnDamage: 0
+  FreezeTime: 0
   HealthBarUI: {fileID: 1238655991550590856}
   HealthBarSlider: {fileID: 6282788082468310326}
-  FiringDistance: 10
+  FiringDistance: 20
   EnemyFireRate: 1
-  FireProjectile: {fileID: 6943983143378593260, guid: e6e80732108a0ba4387ee9ba0f78c6ef,
+  FireProjectile: {fileID: 6943983143378593260, guid: e05d995ed7886bf4dad598dd60a43f22,
     type: 3}
 --- !u!65 &603244638575752958
 BoxCollider:

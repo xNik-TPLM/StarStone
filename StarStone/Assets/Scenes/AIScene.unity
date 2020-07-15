@@ -1556,6 +1556,16 @@ PrefabInstance:
       propertyPath: PlayerMovementSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3297118803367451320, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: MaxBurningTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3297118803367451320, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: BurningDamage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4247650201853915926, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2187,9 +2197,9 @@ MonoBehaviour:
   waves:
   - WaveNumber: 1
     NextWaveIsIntermission: 0
-    MaxEnemiesInWave: 30
-    RateToSpwanShooter: 5
-    RateToSpawnMiniBoss: 20
+    MaxEnemiesInWave: 1
+    RateToSpwanShooter: 50
+    RateToSpawnMiniBoss: 1
     WaveTime: 120
   - WaveNumber: 2
     NextWaveIsIntermission: 1

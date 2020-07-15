@@ -966,7 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoDisplay: {fileID: 7154827776655114167}
-  ShiedCooldownMaxTime: 0
+  ShiedCooldownMaxTime: 10
   healthSlider: {fileID: 7078558871997608791}
   shieldSlider: {fileID: 5138125371775238831}
   MaxGeneratorTemperature: 300
@@ -1871,6 +1871,8 @@ MonoBehaviour:
   prototypeWeapon: {fileID: 6562528172232624355}
   gameOver: {fileID: 7226399006616703950}
   m_sound: {fileID: 0}
+  MaxBurningTime: 5
+  BurningDamage: 5
 --- !u!114 &8558817294421199429
 MonoBehaviour:
   m_ObjectHideFlags: 0

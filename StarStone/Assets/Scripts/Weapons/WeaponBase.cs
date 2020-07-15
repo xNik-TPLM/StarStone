@@ -120,7 +120,7 @@ public class WeaponBase : MonoBehaviour
             ///Semi-automatic weapon solution
             //If the player presses the left mouse button and if the player is not reloading
             //if (Input.GetButtonDown("Fire1") && m_isWeaponReloading == false)
-            else if (Input.GetButtonDown("Fire1") && Time.time >= m_fireTime && m_isWeaponReloading == false && IsAutomatic == false)
+            if (Input.GetButtonDown("Fire1") && Time.time >= m_fireTime && m_isWeaponReloading == false && IsAutomatic == false)
             {
                 //Instantiate a projectile and take away ammo by one
                 //SelectedProjectile = Instantiate(WeaponProjectile);

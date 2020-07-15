@@ -30,11 +30,16 @@ public class WindElementalEnemy : EnemyBase
 
             case 2:
                 CurrentHealth -= damage * 2;
-                m_isEnemyBurning = true;
+                m_isEnemyFrozen = true;
                 break;
 
             case 3:
                 CurrentHealth -= damage;
+                break;
+
+            case 4:
+                CurrentHealth -= damage;
+                m_playerReference.currentHealth += HealthToPlayer;
                 break;
         }
     }
@@ -53,7 +58,7 @@ public class WindElementalEnemy : EnemyBase
 
             if (m_detonationTime > (DetonationTimer - 0.1))
             {
-                other.gameObject.GetComponent<PlayerController>().PlayerDamage(DetonationDamage);
+                other.gameObject.GetComponent<PlayerController>().PlayerDamage(DetonationDamage, 0);
                 CurrentHealth = 0;
             }
         }

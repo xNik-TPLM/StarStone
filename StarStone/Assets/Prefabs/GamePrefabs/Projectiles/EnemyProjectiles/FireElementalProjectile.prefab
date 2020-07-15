@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3124834617035091401}
   - component: {fileID: 8674264851057709360}
   - component: {fileID: 4890586610634962172}
-  - component: {fileID: 649311720476267893}
+  - component: {fileID: -5252349537927295124}
   m_Layer: 2
-  m_Name: Bullet
+  m_Name: FireElementalProjectile
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: 4bc774fef4ca10e4384eb8ee7fe3cea8, type: 3}
+  - {fileID: 2100000, guid: bb742530bca59d24aabdcfdac5697f38, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,7 +95,7 @@ CapsuleCollider:
   m_Height: 1.2870598
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.41781902}
---- !u!114 &649311720476267893
+--- !u!114 &-5252349537927295124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,9 +104,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6943983143378593260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5adae12c5acc44da92405bfb046c35, type: 3}
+  m_Script: {fileID: 11500000, guid: 8075c6c1e7ce84647bce3f076e427a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileDuration: 1
   ProjectileSpeed: 100
-  ProjectileDamage: 1
+  ProjectileDamage: 15

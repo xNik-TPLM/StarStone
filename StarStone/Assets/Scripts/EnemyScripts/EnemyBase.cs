@@ -19,6 +19,8 @@ public class EnemyBase : MonoBehaviour
     private float m_enemyFreezeTimer;
 
     private float m_enemySpeed;
+
+    protected PlayerController m_playerReference;
     
     //Protected fields
     //protected booleans
@@ -43,8 +45,9 @@ public class EnemyBase : MonoBehaviour
 
     [Header("Elemental Effects")]
     public float BurningTime; //This sets the burning time of our enemy
-    public int BurnDamage; //This sets the burning damage of our enemy
+    public int BurningDamage; //This sets the burning damage of our enemy
     public float FreezeTime; //This sets the freeze time of our enemy
+    public float HealthToPlayer; //This the amount of health the enemy will give to the player when hit by an earth projectile
 
     [Header("UI")]
     //Unity properties
@@ -55,6 +58,7 @@ public class EnemyBase : MonoBehaviour
     protected virtual void Start()
     {
         m_enemyNavMesh = GetComponent<NavMeshAgent>(); //Get a reference to the navmesh agent component
+        m_playerReference = FindObjectOfType<PlayerController>();
         Target = GameObject.FindGameObjectWithTag("Player").transform; //Get the transform of our player to be used at destination for the AI
 
         //Set the enemy speed and health using the set properties
@@ -130,14 +134,14 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    //This function will handle the burning of the enemy. It's private as it will be used for all enemies 
+    //This function will handle the burning of the enemy. It's private as it will be used for all enemies as it is controlled by the boolean
     private void EnemyBurning()
     {
         //If the enemy is burning
         if(m_isEnemyBurning == true)
         {
             //Take away enemy's health and initiate burning timer
-            CurrentHealth -= BurnDamage * Time.deltaTime;
+            CurrentHealth -= BurningDamage * Time.deltaTime;
             m_enemyBurningTimer += Time.deltaTime;
 
             //The timer reaches the time of burning

@@ -21,13 +21,14 @@ public class EnemyBoulderProjectile : ProjectileBase
 
             if(playerDetected != null)
             {
-                playerDetected.PlayerDamage(ProjectileDamage);
+                playerDetected.PlayerDamage(ProjectileDamage, 0);
             }
         }
     }
 
     protected override void OnCollisionEnter(Collision collision)
     {
+        base.OnCollisionEnter(collision);
         BoulderCollision();
     }
 }

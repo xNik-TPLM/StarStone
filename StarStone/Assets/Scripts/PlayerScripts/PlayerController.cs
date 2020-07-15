@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// References: Brackeys. (2020). Unity Tutorial - How to make a HEALTH BAR in Unity! [online]. Available: https://www.youtube.com/watch?v=BLfNP4Sc_iA [Last Accessed 17th June 2020].
 /// This script handles the player's movement around the map and damage source
-/// Worked By: Ben Smith
+/// Worked By: Ben Smith & Nikodem Hamrol
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
@@ -59,6 +59,15 @@ public class PlayerController : MonoBehaviour
 
     public SoundFX m_sound;
 
+
+    //Nikodem Hamrol's fields and properties
+    private bool m_isPlayerBurning;
+    private float m_playerBurningTime;
+
+    [Header("Player Burning Properties")]
+    public float MaxBurningTime;
+    public float BurningDamage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +78,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Ben Smith's functions
         PlayerMove(); // This activates the player's movement
         PlayerJump(); // This activates the player's jump
         PlayerSprint(); // This activates the player's sprint
@@ -77,9 +87,12 @@ public class PlayerController : MonoBehaviour
         Melee(); // This activates the player's melee attack
         ShieldActive(); // This checks if the player's shield is active
         GameOver(); // This checks whether the player has health left while playing
+
+        //Nikodem Hamrol's function
+        PlayerBurning(); //This checks if the player is burning
     }
 
-    // This function will run if the player's health is fully depleted
+    // This function will run if the player's health is fully depleted (Ben Smith)
     private void GameOver()
     {
         if (currentHealth <= 0)
@@ -88,7 +101,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Once the player presses the attack key, The knife will be enabled
+    // Once the player presses the attack key, The knife will be enabled (Ben Smith)
     private void Melee()
     {
         if (Input.GetButtonDown("Melee"))
@@ -99,7 +112,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // If the player uses the defensive ability, the player's shield will be enabled
+    // If the player uses the defensive ability, the player's shield will be enabled (Ben Smith)
     private void ShieldActive()
     {
         if (Input.GetButtonDown("Defensive Ability") && PlayerUI.shieldActive == false && PlayerUI.shieldCooldownActive == false)
@@ -111,7 +124,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    //This checks if the player has collided with the ladder
+    //This checks if the player has collided with the ladder (Ben Smith)
     private void OnTriggerStay(Collider collision)
     {
         if (collision.CompareTag("LadderBottom"))
@@ -147,13 +160,13 @@ public class PlayerController : MonoBehaviour
             }
         }*/
     }
-    // Once the player is no longer on/using the ladder, they can longer press the 'use' key
+    // Once the player is no longer on/using the ladder, they can longer press the 'use' key (Ben Smith)
     private void OnTriggerExit(Collider collision)
     {
         m_ladderCollision = false;
     }
 
-    //This function controls the ladder climbing of the player
+    //This function controls the ladder climbing of the player (Ben Smith)
     private void PlayerLadder()
     {
         if (ladderBottom == true && ladderTop == false)
@@ -184,7 +197,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //This function controls movement of the player
+    //This function controls movement of the player (Ben Smith)
     private void PlayerMove()
     {
         if (m_ladderCollision == false)
@@ -226,11 +239,21 @@ public class PlayerController : MonoBehaviour
             m_sound.PlayerWalk.Stop();
         }
         Vector3 move = transform.right * m_moveInputX + transform.forward * m_moveInputZ; //  This sets a reference to the key presses so the player moves in the corresponding direction
+
+
+        if(InteractStarStone.WeaponID == 2 && InteractStarStone.StarStoneID == 3)
+        {
+            CharacterController.Move(move * (PlayerMovementSpeed * 2) * Time.deltaTime);
+        }
+        else
+        {
             CharacterController.Move(move * PlayerMovementSpeed * Time.deltaTime); // This sets the movement speed of the player when moving
-            CharacterController.Move(m_playerVelocity * Time.deltaTime);  // This sets the speed of the player when jumping
+        }            
+        
+        CharacterController.Move(m_playerVelocity * Time.deltaTime);  // This sets the speed of the player when jumping
     }
 
-    //This function controls the jumping of the player
+    //This function controls the jumping of the player (Ben Smith)
     private void PlayerJump()
     {
         m_isGrounded = Physics.CheckSphere(PlayerFeetPosition.position, GroundCheckRadius, GroundType); // This checks if the player is on the ground
@@ -248,7 +271,7 @@ public class PlayerController : MonoBehaviour
         m_playerVelocity.y += PlayerGravityForce * Time.deltaTime;
     }
 
-    //This function controls the sprint
+    //This function controls the sprint (Ben Smith)
     private void PlayerSprint()
     {
         if (Input.GetKey("w") && Input.GetKey(KeyCode.LeftShift))
@@ -261,7 +284,7 @@ public class PlayerController : MonoBehaviour
         //    m_sound.PlayerRun.Stop();
         //}
     }
-    //This function controls the crouch
+    //This function controls the crouch (Ben Smith)
     private void PlayerCrouch()
     {
         if (Input.GetKey(KeyCode.LeftControl))
@@ -275,9 +298,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //This function handles the player damage
-    //Worked By: Nikodem Hamrol
-    public void PlayerDamage(float damage)
+    //This function handles the player damage (Nikodem Hamrol)
+    public void PlayerDamage(float damage, int damageType)
     {
         //Check if the shield is active
         if(PlayerUI.shieldActive == true)
@@ -285,9 +307,35 @@ public class PlayerController : MonoBehaviour
             //If so, then it will take away the shield health, instead of the player's health
             ShieldHealth -= damage;
         }
-        else
+        else //else, take away player's health
         {
             currentHealth -= damage;
+
+            //Check if the player has been hit by enemy's fire projectile, which will enable player burning
+            if(damageType == 1)
+            {
+                m_isPlayerBurning = true;
+            }
+        }
+    }
+
+    //This function handles the burning of the player (Nikodem Hamrol)
+    private void PlayerBurning()
+    {
+        //If the player is burning
+        if(m_isPlayerBurning == true)
+        {
+            //Take away player's health and initiate burning timer
+            currentHealth -= BurningDamage * Time.deltaTime;
+            m_playerBurningTime += Time.deltaTime;
+
+            //If the timer reaches the max burning time
+            if(m_playerBurningTime > MaxBurningTime)
+            {
+                //Stop the bruning and set the timer back to 0;
+                m_isPlayerBurning = false;
+                m_playerBurningTime = 0;
+            }
         }
     }
 }

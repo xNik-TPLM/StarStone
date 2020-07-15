@@ -15,8 +15,6 @@ public class ProjectileBase : MonoBehaviour
     //This float will get the property value of a projectile duration and uses it to count down the life of a projectile
     private float m_projectileLifeTimer;
 
-    protected bool projectileDestroyed;
-
     //Projectile properties
     //Flaot properties
     public float ProjectileDuration; //This is the duration of each projectile that will get instantiated
