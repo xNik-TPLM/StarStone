@@ -1300,6 +1300,18 @@ Transform:
   m_Father: {fileID: 890171689}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1201160047 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7843505989468108352, guid: 60b5e663693a4374b96e44b9caa65eae,
+    type: 3}
+  m_PrefabInstance: {fileID: 1318931485}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1255131133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,6 +1626,11 @@ PrefabInstance:
       propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5514304952758034201, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5803716423178515917, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1628,6 +1645,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873275748550285862, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873275748550285862, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6261880753956865356, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
@@ -1769,6 +1796,16 @@ PrefabInstance:
       propertyPath: WaveStateText
       value: 
       objectReference: {fileID: 142064100}
+    - target: {fileID: 8342743131885012412, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: ShiedCooldownMaxTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342743131885012412, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: WaveTimerText
+      value: 
+      objectReference: {fileID: 1201160047}
     - target: {fileID: 8558817294421199429, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: NukeCooldownTime
@@ -1783,6 +1820,11 @@ PrefabInstance:
         type: 3}
       propertyPath: nukeDamage
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558817294421199429, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: NukeCooldownMaxTime
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8570450290866058428, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}

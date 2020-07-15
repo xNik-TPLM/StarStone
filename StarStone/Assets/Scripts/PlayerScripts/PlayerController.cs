@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
     // If the player uses the defensive ability, the player's shield will be enabled
     private void ShieldActive()
     {
-        if (Input.GetButtonDown("Defensive Ability"))
+        if (Input.GetButtonDown("Defensive Ability") && PlayerUI.shieldActive == false && PlayerUI.shieldCooldownActive == false)
         {
             //playerShield.SetActive(true); // This enables the player's shield
             ShieldHealth = ShieldAmount;
@@ -279,8 +279,10 @@ public class PlayerController : MonoBehaviour
     //Worked By: Nikodem Hamrol
     public void PlayerDamage(float damage)
     {
+        //Check if the shield is active
         if(PlayerUI.shieldActive == true)
         {
+            //If so, then it will take away the shield health, instead of the player's health
             ShieldHealth -= damage;
         }
         else

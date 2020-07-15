@@ -57,6 +57,7 @@ public class EnemyBase : MonoBehaviour
         m_enemyNavMesh = GetComponent<NavMeshAgent>(); //Get a reference to the navmesh agent component
         Target = GameObject.FindGameObjectWithTag("Player").transform; //Get the transform of our player to be used at destination for the AI
 
+        //Set the enemy speed and health using the set properties
         m_enemySpeed = MaxEnemySpeed;
         CurrentHealth = MaxHealth;
     }

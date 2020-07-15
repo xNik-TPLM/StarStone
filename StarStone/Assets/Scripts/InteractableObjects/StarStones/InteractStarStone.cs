@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Worked By: Nikodem Hamrol
+/// </summary>
+
 public class InteractStarStone : MonoBehaviour
 {
     private bool m_enableCharging;

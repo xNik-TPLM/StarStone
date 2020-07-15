@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Worked By: Nikodem Hamrol
+/// </summary>
 public class FireElementalEnemy : EnemyBase
 {
     //Fire elemental fields

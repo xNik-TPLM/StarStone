@@ -90,12 +90,6 @@ public class WaveSystem : MonoBehaviour
             WaveFinished();
             GeneratorState();
         }
-
-        /*if (waves[WaveNumberIndex].NextWaveIsIntermission == true && IsWaveSystemInitiated == true && m_hasWaveBegun == false)
-        {
-            InIntermission = true;
-            Intermission();
-        }*/
     }
 
     //This function handles the spawning of an enemy
@@ -104,12 +98,13 @@ public class WaveSystem : MonoBehaviour
         //This int is a random value of spawn points, that will be used to spawn the enemy at that point
         int SpawnPointID = Random.Range(0, SpawnPoints.Length);       
 
-        //Check if the amount of enemies spawned is a remainder of rate to spawn a shooter is equal to the value to spawn a shooter. This will spawn a shooter enemy, which will be either ice or fire elemental
+        //Check if the amount of enemies spawned is a remainder of rate to spawn a mini boss is equal to the value to spawn a mini boss. This will spawn a miniboss enemy, which will be earth elemental
         if((EnemiesSpawned % waves[WaveNumberIndex].RateToSpawnMiniBoss) + 1 == waves[WaveNumberIndex].RateToSpawnMiniBoss)
         {
             EnemyToSpawn = EarthElementalEnemy; 
         }
-        else if((EnemiesSpawned % waves[WaveNumberIndex].RateToSpwanShooter) + 1 == waves[WaveNumberIndex].RateToSpwanShooter)
+        //Check if the amount of enemies spawned is a remainder of rate to spawn a shooter is equal to the value to spawn a shooter. This will spawn a shooter enemy, which will be fire elemental
+        else if ((EnemiesSpawned % waves[WaveNumberIndex].RateToSpwanShooter) + 1 == waves[WaveNumberIndex].RateToSpwanShooter)
         {
             EnemyToSpawn = FireElementalEnemy;
         }
@@ -203,6 +198,7 @@ public class WaveSystem : MonoBehaviour
         }
     }
 
+    //This function handles the generator state, which mainly checks if it's overheating
     private void GeneratorState()
     {
         if(IsGeneratorOverheating == true)

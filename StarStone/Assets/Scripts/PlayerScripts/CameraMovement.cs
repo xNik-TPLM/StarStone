@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// This script handles camera movement and recoil that is controlled using the camera
-/// Worked By: Ben Smith & Nikodem Hamrol
+/// Worked By: Ben Smith
 /// </summary>
 
 public class CameraMovement : MonoBehaviour
@@ -15,7 +15,7 @@ public class CameraMovement : MonoBehaviour
     private float m_mouseMovementY;
 
     //This will rotate the camera only on the x axis, but will be used to move the camera up down as well
-    public float m_cameraRotationY; 
+    private float m_cameraRotationY; 
     
     //Properties
     //Float property which will control the mouse sensitivity

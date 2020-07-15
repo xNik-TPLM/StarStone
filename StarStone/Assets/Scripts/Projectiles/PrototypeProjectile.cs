@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Worked By: Nikodem Hamrol
+/// </summary>
+
 public class PrototypeProjectile : ProjectileBase
 {
     [Header("Prototype Projectile Properties")]

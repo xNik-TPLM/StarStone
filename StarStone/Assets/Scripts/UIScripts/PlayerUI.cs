@@ -11,37 +11,49 @@ using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour
 {
     //Ben Smith's fields and properties
-    public Text ammoDisplay; // This displays the current ammo left in the clip
-    public Text maxAmmo; // This displays the maximum ammo that is left that the player has
+    public Text ammoDisplay; // This displays the current ammo and max ammo of a weapon
 
     //public WeaponBase m_weapon;
     private PlayerController m_playerHealth;
 
-    private bool m_timerEnabled;
-    private float m_timer;
-    public float Timer;
+    public static bool shieldCooldownActive;
+
+    private float m_shieldCooldownTimer;
+    public float ShiedCooldownMaxTime;
 
     public static bool shieldActive; // This checks if the shield is currently enabled
     public Slider healthSlider; // This sets a reference for the health bar
     public Slider shieldSlider; // This sets a reference for the shield bar
-    [Space(20)]
-
+    [Space(10)]
 
     //Nikodem Hamrol's fields and properties
-    private int m_sliderColourIndex;
+    //These integers are used to change as indexes for the arrays of colours
+    private int m_temperatureColourIndex;
+    private int m_nukeCooldownColourIndex;
+    private int m_shieldCooldownColourIndex;
+
+    //Reference to the offesive ability script to access the nuke max time
+    private OffensiveAbility m_offensiveAbilityReference;
 
     [Header("Slider Temperature Properties")]
-    public float MaxGeneratorTemperature;
-    public int TemperatureStatesAmount;
-    public Vector3[] SliderColours;
+    public float MaxGeneratorTemperature; //This is to set the max value for the slider and to check if the generator will overheat
+    public int TemperatureStatesAmount;  //This is the amount of states the generatr has. This value makes it easier to calculate the middle states of the generator.
+    public Vector3[] SliderColours; //This array keeps the rgb values for the states of the generator temperature.
+    public Slider GeneratorTemperatureSlider; //This is used as reference to the generator slider, in order to update the value of it
+    public Image TemperatureFill; //This is used as reference to the image used to fill the slider, in order to change its colour
 
-    [Header("UI Components")]
-    public Text WaveStateText;
-    public Text TimerText;
-    public Text OverheatingText;
-    public Slider GeneratorTemperatureSlider;
-    public Image TemperatureFill;
+    [Header("Ability Cooldown Properties")]
+    //These the two images are used as reference to the cooldown image, in order to update the fill amount and the change the colour of the image
+    public Image NukeCooldownImage;
+    public Image ShieldCooldownImage;
 
+    //This array keeps track the rgba values for the cooldown states.
+    public Vector4[] AbilityReadyColour;
+
+    [Header("UI Text Components")]
+    public Text WaveStateText; //This text object will show the wave number and if they are in an intermission phase
+    public Text WaveTimerText; //This text object will show the time left for a wave to be completed
+    public Text OverheatingText; //This text object will indicate if the generator is overheating
 
     // Start is called before the first frame update
     void Start()
@@ -50,15 +62,20 @@ public class PlayerUI : MonoBehaviour
         gameObject.SetActive(true); // This enables the Player UI
         //m_weapon = FindObjectOfType<WeaponBase>();
         m_playerHealth = FindObjectOfType<PlayerController>();
-        m_timer = Timer;
 
         shieldSlider.maxValue = m_playerHealth.ShieldAmount;
 
 
         //Nikodem Hamrol
-        //At Start, set the values for the slider's and disable the overheating text
+        m_offensiveAbilityReference = FindObjectOfType<OffensiveAbility>(); //Set reference of the offensive ability, which is the nuke. This will be used to get the max cooldown time
+        
+        //We set these bools as active so that, the cooldown can start as soon as the game starts
+        OffensiveAbility.NukeEnabled = true;
+        shieldCooldownActive = true;
+
+
+        //At Start, set the max value for the generator slider and disable the overheating text
         GeneratorTemperatureSlider.maxValue = MaxGeneratorTemperature;
-        //GeneratorTemperatureSlider.value = WaveSystem.GeneratorTemperature;
         OverheatingText.enabled = false;
     }
 
@@ -67,13 +84,13 @@ public class PlayerUI : MonoBehaviour
     {
         //Ben Smith
         healthSlider.value = m_playerHealth.currentHealth/100;
-        StopwatchCooldown();
-        TimerCooldown();
 
-        if (shieldActive == true)
+        if (shieldActive == true && shieldCooldownActive == false)
         {
-            //shieldActive = true;
             shieldSlider.value = PlayerController.ShieldHealth;
+
+            shieldCooldownActive = true;
+            m_shieldCooldownTimer = 0;
 
             if (shieldSlider.value <= 0)
             {
@@ -81,57 +98,17 @@ public class PlayerUI : MonoBehaviour
             }
         }
 
-        // Once the player takes damage, they will lose health depending on whether the shield has been enabled or not
-        /*if (shieldActive == true)
-        {
-            shieldSlider.value = PlayerController.ShieldHealth;
-            // This lowers the shield value once damage has been taken
-            if (shieldSlider.value <= 0)
-            {
-                shieldActive = false;
-            }
-        }*/
-
-        ammoDisplay.text = FindObjectOfType<WeaponBase>().CurrentAmmo.ToString(); // This displays the current ammo left in the clip as a part of the player's HUD
-        maxAmmo.text = FindObjectOfType<WeaponBase>().MaxAmmo.ToString(); // This displays the maximum ammo left in the weapon as a part of the player's HUD
+        ammoDisplay.text = FindObjectOfType<WeaponBase>().CurrentAmmo.ToString() + " / " + FindObjectOfType<WeaponBase>().MaxAmmo.ToString(); //This displays the current ammo in the clip and maximum ammo left as a part of the player's HUD
 
         //Nikodem Hamrol
         UpdateWaveNumber();
         UpdateTimer();
+        UpdateNukeCooldown();
+        UpdateShieldCooldown();
         UpdateGeneratorSlider();
     }
-    private void StopwatchCooldown()
-    {
-        //If something you want is eneabled
-        if (m_timerEnabled == true)
-        {
-            m_timer += Time.deltaTime;
 
-            if (m_timer > Timer)
-            {
-                m_timerEnabled = false;
-                m_timer = 0;
-                //Do whatever
-            }
-        }
-    }
-    private void TimerCooldown()
-    {
-        //If something you want is eneabled
-        if (m_timerEnabled == true)
-        {
-            
-            m_timer -= Time.deltaTime;
-
-            if (m_timer <= 0)
-            {
-                m_timerEnabled = false;
-                m_timer = Timer;
-                //Do whatever
-            }
-        }
-    }
-
+    //This function will handle the indication of the wave number they're in and if they're in an intermission (Nikodem Hamrol)
     private void UpdateWaveNumber()
     {
         WaveStateText.text = "Wave: " + WaveSystem.WaveNumber.ToString();
@@ -145,22 +122,61 @@ public class PlayerUI : MonoBehaviour
         string timerMinutes = ((int)WaveSystem.WaveTimer / 60).ToString("00");
 
         //Set timer text
-        TimerText.text = timerMinutes + ":" + timerSeconds;
+        WaveTimerText.text = timerMinutes + ":" + timerSeconds;
     }
 
-    //this function will handle the temperature of the generator display
+    //This function will handle the cooldown display of the offensive ability (Nikodem Hamrol)
+    private void UpdateNukeCooldown()
+    {
+        //If the offensive ability is enabled
+        if(OffensiveAbility.NukeEnabled == true)
+        {
+            m_nukeCooldownColourIndex = 1; //Set colour of the progression ring to grey
+        }
+        else //if it is not enabled
+        {
+            m_nukeCooldownColourIndex = 0; //Set colour of the progression ring to yellow
+        }        
+        
+        NukeCooldownImage.fillAmount = OffensiveAbility.NukeCooldownTimer / m_offensiveAbilityReference.NukeCooldownMaxTime; //Update the image fill. Can't set max value of the fill amount, so we divide the cooldown timer by the max cooldown time
+        NukeCooldownImage.color = new Color(AbilityReadyColour[m_nukeCooldownColourIndex].w, AbilityReadyColour[m_nukeCooldownColourIndex].x, AbilityReadyColour[m_nukeCooldownColourIndex].y, AbilityReadyColour[m_nukeCooldownColourIndex].z); //Update the colour using indexes
+    }
+
+    //This function will handle the cooldown display of the defensive ability (Nikodem Hamrol)
+    private void UpdateShieldCooldown()
+    {
+        //If the cooldown is active and shield is deactivated
+        if (shieldCooldownActive == true && shieldActive == false)
+        {
+            //Start counting and set the colour of the progression ring to grey
+            m_shieldCooldownTimer += Time.deltaTime;
+            m_shieldCooldownColourIndex = 1;
+
+            //If shield 
+            if (m_shieldCooldownTimer > ShiedCooldownMaxTime)
+            {
+                shieldCooldownActive = false;
+                m_shieldCooldownColourIndex = 0;
+            }
+        }
+
+        ShieldCooldownImage.fillAmount = m_shieldCooldownTimer / ShiedCooldownMaxTime; //Update the image fill.
+        ShieldCooldownImage.color = new Color(AbilityReadyColour[m_shieldCooldownColourIndex].w, AbilityReadyColour[m_shieldCooldownColourIndex].x, AbilityReadyColour[m_shieldCooldownColourIndex].y, AbilityReadyColour[m_shieldCooldownColourIndex].z); //Update the colour using indexes
+    }
+
+    //this function will handle the temperature of the generator display (Nikodem Hamrol)
     private void UpdateGeneratorSlider()
     {
         GeneratorTemperatureSlider.value = WaveSystem.GeneratorTemperature;
 
         //Switch colours using the colour index
-        switch (m_sliderColourIndex)
+        switch (m_temperatureColourIndex)
         {
             case 0: //Green
                 //Check if the temperature is between 100 and 200
                 if (WaveSystem.GeneratorTemperature == Mathf.Clamp(WaveSystem.GeneratorTemperature, (MaxGeneratorTemperature / TemperatureStatesAmount), ((MaxGeneratorTemperature / TemperatureStatesAmount) * 2)))
                 {
-                    m_sliderColourIndex = 1; //Set colour to yellow
+                    m_temperatureColourIndex = 1; //Set colour to yellow
                 }
                 break;
 
@@ -168,12 +184,12 @@ public class PlayerUI : MonoBehaviour
                 //Check if the temperature is between 200 and 299, this avoids flashing of colours when it reaches max temperature
                 if (WaveSystem.GeneratorTemperature == Mathf.Clamp(WaveSystem.GeneratorTemperature, ((MaxGeneratorTemperature / TemperatureStatesAmount) * 2), MaxGeneratorTemperature - 1))
                 {
-                    m_sliderColourIndex = 2; //Set colour to Orange
+                    m_temperatureColourIndex = 2; //Set colour to Orange
                 }
                 //Check if the temperature is less than 100
                 else if (WaveSystem.GeneratorTemperature < (MaxGeneratorTemperature / TemperatureStatesAmount))
                 {
-                    m_sliderColourIndex = 0; //Set colour to Green
+                    m_temperatureColourIndex = 0; //Set colour to Green
                 }
                 break;
 
@@ -181,12 +197,12 @@ public class PlayerUI : MonoBehaviour
                 //Check if the temperature is max, which is 300
                 if (WaveSystem.GeneratorTemperature == MaxGeneratorTemperature)
                 {
-                    m_sliderColourIndex = 3; //Set colour to Red
+                    m_temperatureColourIndex = 3; //Set colour to Red
                 }
                 //Check if the temperature is between 100 and 200
                 else if (WaveSystem.GeneratorTemperature == Mathf.Clamp(WaveSystem.GeneratorTemperature, (MaxGeneratorTemperature / TemperatureStatesAmount), ((MaxGeneratorTemperature / TemperatureStatesAmount) * 2)))
                 {
-                    m_sliderColourIndex = 1; //Set colour to Yellow
+                    m_temperatureColourIndex = 1; //Set colour to Yellow
                 }
                 break;
 
@@ -197,9 +213,9 @@ public class PlayerUI : MonoBehaviour
 
                 //Check if the temperature is between 200 and 299
                 if (WaveSystem.GeneratorTemperature == Mathf.Clamp(WaveSystem.GeneratorTemperature, ((MaxGeneratorTemperature / TemperatureStatesAmount) * 2), MaxGeneratorTemperature - 1))
-                {   
+                {
                     //Set colour to Orange and disable overheating and hide the text
-                    m_sliderColourIndex = 2; 
+                    m_temperatureColourIndex = 2; 
                     WaveSystem.IsGeneratorOverheating = false;
                     OverheatingText.enabled = false;
                 }
@@ -207,6 +223,6 @@ public class PlayerUI : MonoBehaviour
         }
 
         //Update the colour everytime using the colour index
-        TemperatureFill.color = new Color(SliderColours[m_sliderColourIndex].x, SliderColours[m_sliderColourIndex].y, SliderColours[m_sliderColourIndex].z);
+        TemperatureFill.color = new Color(SliderColours[m_temperatureColourIndex].x, SliderColours[m_temperatureColourIndex].y, SliderColours[m_temperatureColourIndex].z);
     }
 }

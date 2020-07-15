@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// This sript deals with camera movement for recoil of the weapon.
 /// It is mainly attatched to the camera holder object, instead of the main camera object, because it the camera rotates on all axis, whereas the camera object roates only on the the x axis.
+/// Worked By: Nikodem Hamrol
 /// </summary>
 
 public class CameraRecoilMovement : MonoBehaviour

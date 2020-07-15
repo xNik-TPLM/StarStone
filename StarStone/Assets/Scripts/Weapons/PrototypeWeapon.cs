@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// This script is a child of the weapon base
 /// The prototype weapon 
+/// Worked By: Nikodem Hamrol
 /// </summary>
 
 public class PrototypeWeapon : WeaponBase

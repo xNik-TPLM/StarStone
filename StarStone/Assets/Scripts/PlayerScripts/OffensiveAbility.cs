@@ -15,9 +15,9 @@ public class OffensiveAbility : MonoBehaviour
     public float nukeDamage; // This sets the damage that the nuke has on enemies
     
 
-    private bool m_timerEnabled;
-    private float m_timer;
-    public float NukeCooldownTime;
+    public static bool NukeEnabled;
+    public static float NukeCooldownTimer;
+    public float NukeCooldownMaxTime;
     private SoundFX m_sound;
     
     
@@ -31,9 +31,10 @@ public class OffensiveAbility : MonoBehaviour
     void Update()
     {
         // This checks whether the player has pressed the offensive ability key
-        if (Input.GetButtonDown("Offensive Ability") && m_timerEnabled == false)
+        if (Input.GetButtonDown("Offensive Ability") && NukeEnabled == false)
         {
-            m_timerEnabled = true;
+            NukeCooldownTimer = 0;
+            NukeEnabled = true;
             m_sound.Explosion.Play();
             Explode();
         }
@@ -43,50 +44,16 @@ public class OffensiveAbility : MonoBehaviour
 
     private void NukeCooldown()
     {
-        if(m_timerEnabled == true)
+        if(NukeEnabled == true)
         {
-            m_timer += Time.deltaTime;
+            NukeCooldownTimer += Time.deltaTime;
 
-            if(m_timer > NukeCooldownTime)
+            if(NukeCooldownTimer > NukeCooldownMaxTime)
             {
-                m_timerEnabled = false;
-                m_timer = 0;
+                NukeEnabled = false;
             }
         }
     }
-
-    /*private void StopwatchCooldown()
-    {
-        //If something you want is enabled
-        if (m_timerEnabled == true)
-        {
-            m_timer += Time.deltaTime;
-
-            if (m_timer > Timer)
-            {
-                m_timerEnabled = false;
-                m_timer = 0;
-                //Do whatever
-                Explode(); // This runs the nuke function
-            }
-        }
-    }
-    private void TimerCooldown()
-    {
-        //If something you want is enabled
-        if (m_timerEnabled == true)
-        {
-            m_timer -= Time.deltaTime;
-
-            if (m_timer <= 0)
-            {
-                m_timerEnabled = false;
-                m_timer = Timer;
-                //Do whatever
-                Explode(); // This runs the nuke function
-            }
-        }
-    }*/
 
     void Explode()
     {
