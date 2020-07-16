@@ -50,10 +50,12 @@ public class PlayerUI : MonoBehaviour
     //This array keeps track the rgba values for the cooldown states.
     public Vector4[] AbilityReadyColour;
 
-    [Header("UI Text Components")]
+    [Header("UI Components")]
     public Text WaveStateText; //This text object will show the wave number and if they are in an intermission phase
     public Text WaveTimerText; //This text object will show the time left for a wave to be completed
     public Text OverheatingText; //This text object will indicate if the generator is overheating
+    public GameObject NukeAbilityIcon;
+    public GameObject ShieldAbilityIcon;
 
     // Start is called before the first frame update
     void Start()
@@ -105,6 +107,7 @@ public class PlayerUI : MonoBehaviour
         UpdateNukeCooldown();
         UpdateShieldCooldown();
         UpdateGeneratorSlider();
+        HUDDisplayingInTutorial();
     }
 
     //This function will handle the indication of the wave number they're in and if they're in an intermission (Nikodem Hamrol)
@@ -223,5 +226,25 @@ public class PlayerUI : MonoBehaviour
 
         //Update the colour everytime using the colour index
         TemperatureFill.color = new Color(SliderColours[m_temperatureColourIndex].x, SliderColours[m_temperatureColourIndex].y, SliderColours[m_temperatureColourIndex].z);
+    }
+
+
+    private void HUDDisplayingInTutorial()
+    {
+        if (TutorialController.InTutorialScene == true)
+        {
+            GeneratorTemperatureSlider.transform.position = new Vector3(-100,0,0);
+            WaveStateText.enabled = false;
+            WaveTimerText.enabled = false;
+
+            switch (TutorialController.CurrentDialogue)
+            {
+                case "Morning soldier. Welcome to this training facility, where we will test your capabilities with your new advancements.":
+                    ammoDisplay.enabled = false;
+                    NukeAbilityIcon.SetActive(false);
+                    ShieldAbilityIcon.SetActive(false);
+                    break;
+            }
+        }
     }
 }

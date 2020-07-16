@@ -984,8 +984,10 @@ MonoBehaviour:
   - {x: 240, y: 0, z: 1, w: 240}
   - {x: 255, y: 255, z: 0.6, w: 255}
   WaveStateText: {fileID: 7935390616905818928}
-  WaveTimerText: {fileID: 0}
+  WaveTimerText: {fileID: 7843505989468108352}
   OverheatingText: {fileID: 6066898256268464758}
+  NukeAbilityIcon: {fileID: 8607463443146474085}
+  ShieldAbilityIcon: {fileID: 2158967631346949694}
 --- !u!1 &3297118802594970126
 GameObject:
   m_ObjectHideFlags: 0
