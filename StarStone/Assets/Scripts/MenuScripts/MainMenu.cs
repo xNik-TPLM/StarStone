@@ -28,9 +28,16 @@ public class MainMenu : MonoBehaviour
         Menu.SetActive(false);
     }
 
+    // This function is called when the start cutscene has finished
     public void LoadGame()
     {
         SceneManager.LoadScene("WhiteBox");
+    }
+
+    // This function is called when the end cutscene has finished
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("GameMenu");
     }
 
     // This function is called when the quit button is clicked
