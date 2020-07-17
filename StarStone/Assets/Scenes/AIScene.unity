@@ -1092,6 +1092,7 @@ MonoBehaviour:
   PrototypeFire: {fileID: 915399828}
   PlayerWalk: {fileID: 1255131134}
   PlayerRun: {fileID: 374478499}
+  MenuTheme: {fileID: 0}
 --- !u!4 &890171689
 Transform:
   m_ObjectHideFlags: 0

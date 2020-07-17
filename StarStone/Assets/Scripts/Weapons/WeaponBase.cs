@@ -65,8 +65,12 @@ public class WeaponBase : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        //Set current ammo as clip size and get reference 
-        CurrentAmmo = WeaponClipSize;
+        //Set current ammo as clip size and get reference
+        if (!TutorialController.InTutorialScene)
+        {
+            CurrentAmmo = WeaponClipSize;
+        }
+
         // Ben's SFX Reference
         m_sound = FindObjectOfType<SoundFX>();
     }
@@ -97,7 +101,7 @@ public class WeaponBase : MonoBehaviour
         {
             ///Automatic weapon solution
             //If player holds down the left mouse button and if it is time to fire and if the player is not reloading
-            if (Input.GetButton("Fire1") && Time.time >= m_fireTime && m_isWeaponReloading == false && IsAutomatic == true)
+            if (Input.GetButton("Fire1") && Time.time >= m_fireTime && IsAutomatic == true)
             {
                 //SelectedProjectile = Instantiate(WeaponProjectile);
                 CurrentAmmo -= 1;
@@ -120,7 +124,7 @@ public class WeaponBase : MonoBehaviour
             ///Semi-automatic weapon solution
             //If the player presses the left mouse button and if the player is not reloading
             //if (Input.GetButtonDown("Fire1") && m_isWeaponReloading == false)
-            if (Input.GetButtonDown("Fire1") && Time.time >= m_fireTime && m_isWeaponReloading == false && IsAutomatic == false)
+            if (Input.GetButtonDown("Fire1") && Time.time >= m_fireTime && IsAutomatic == false)
             {
                 //Instantiate a projectile and take away ammo by one
                 //SelectedProjectile = Instantiate(WeaponProjectile);
@@ -147,13 +151,8 @@ public class WeaponBase : MonoBehaviour
     private void WeaponReload()
     {
         //If R key is pressed and if player is not already reloading
-        if (Input.GetKeyDown(KeyCode.R) && m_isWeaponReloading == false)
-        {
-            //Reloading is true, so it's in progress
-            m_isWeaponReloading = true;
-
-            
-
+        if (Input.GetKeyDown(KeyCode.R))
+        {            
             //If current clip is not full
             if (CurrentAmmo < WeaponClipSize)
             {
@@ -161,8 +160,9 @@ public class WeaponBase : MonoBehaviour
                 m_ammoDifference = WeaponClipSize - CurrentAmmo;
                 
                 //If there's more ammo left
-                if (MaxAmmo > m_ammoDifference)
+                if (MaxAmmo >= m_ammoDifference)
                 {
+                    m_sound.PrimaryHandling.Play();
                     CurrentAmmo += m_ammoDifference; //Add the ammo difference to the current ammo, so that it's not bigger than the clip size
                     MaxAmmo -= m_ammoDifference; //Subtract max ammo by the ammo difference
                 }
@@ -172,10 +172,6 @@ public class WeaponBase : MonoBehaviour
                     CurrentAmmo += MaxAmmo;
                     MaxAmmo = 0;
                 }
-
-                //Once all of that is done, set reloading to false
-                m_isWeaponReloading = false;
-                m_sound.PrimaryHandling.Play();
             }
         }
     }

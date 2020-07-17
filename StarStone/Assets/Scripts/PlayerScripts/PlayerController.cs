@@ -51,8 +51,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Player; //Reference to the palyer model
     public LayerMask GroundType; //The layer in the scene, which is used to check if the player is on the ground
 
-    public GameObject primaryWeapon;
-    public GameObject prototypeWeapon;
+    public GameObject WeaponHolder;
     public GameObject gameOver;
 
     public static Transform KnifeStartPosition;
@@ -90,6 +89,7 @@ public class PlayerController : MonoBehaviour
 
         //Nikodem Hamrol's function
         PlayerBurning(); //This checks if the player is burning
+        DisplayWeaponsTutorial();
     }
 
     // This function will run if the player's health is fully depleted (Ben Smith)
@@ -107,8 +107,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Melee"))
         {
             Knife.SetActive(true); // This enables the knife
-            primaryWeapon.SetActive(false);
-            prototypeWeapon.SetActive(false);
+            WeaponHolder.SetActive(false);
         }
     }
 
@@ -336,6 +335,14 @@ public class PlayerController : MonoBehaviour
                 m_isPlayerBurning = false;
                 m_playerBurningTime = 0;
             }
+        }
+    }
+
+    private void DisplayWeaponsTutorial()
+    {
+        if (TutorialController.InTutorialScene)
+        {
+
         }
     }
 }

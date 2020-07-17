@@ -102,7 +102,7 @@ public class EnemyBase : MonoBehaviour
         }
 
         //If enemy's current health is below or equla to 0 then 
-        if(CurrentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             //Decrement enemies on the map for the wave system and destroy the game object
             WaveSystem.EnemiesOnMap--;

@@ -244,6 +244,18 @@ public class PlayerUI : MonoBehaviour
                     NukeAbilityIcon.SetActive(false);
                     ShieldAbilityIcon.SetActive(false);
                     break;
+
+                case "Now load your weapon, either your rifle or the pistol and shoot the test dummy, or use your knife on it.":
+                    ammoDisplay.enabled = true;
+                    break;
+
+                case "Go ahead and use it on this test dummy.":
+                    NukeAbilityIcon.SetActive(true);
+                    break;
+
+                case "Can you activate it?":
+                    ShieldAbilityIcon.SetActive(true);
+                    break;
             }
         }
     }

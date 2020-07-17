@@ -61,8 +61,8 @@ public class EarthElementalEnemy : EnemyBase
                 m_isEnemyFrozen = true;
                 break;
 
-            case 3: 
-                CurrentHealth -= damage;
+            case 3:
+                CurrentHealth -= damage * 2;
                 break;
 
             case 4:

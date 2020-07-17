@@ -22,7 +22,16 @@ public class TutorialController : MonoBehaviour
     private bool m_hasPlayerJumped;
     private bool m_hasPlayerCrouched;
 
+    private bool m_hasPlayerLoadedWeapon;
+
+    private bool m_hasShieldActivated;
+
+    public static bool HasEnemyDied;
+
     private float m_dialogueDisplayTime;
+
+    private int m_amountOfEnemiesToSpawn;
+    private int m_indexText;
     
 
     public static string CurrentDialogue;
@@ -31,25 +40,24 @@ public class TutorialController : MonoBehaviour
 
 
     public static bool InTutorialScene;
-    public static bool DisplayStarStoneIcon;
-    public static bool DisplayAmmo;
-    public static bool EnableWeaponHolder;
-    public static bool DisplayAbilities;
 
     public static bool HasCameraMoved;
 
-
+    [Header("Dialogue Properties")]
     public float TimeDifferenceBetweenDialogues;
-
     public string[] Dialogue;
-
     public Text DialogueText;
 
     [Header("Pop-up Objects")]
     public GameObject CameraMovementPopUp;
     public GameObject PlayerMovementPopUp;
     public GameObject PlayerAdvancedMovementPopUp;
+    public GameObject PlayerSingleLinedPopUp;
+    public string[] SingleTextPopUpTexts;
+
     public GameObject PlayerShootingPopUp;
+    public GameObject PlayerNukePopUp;
+    public GameObject PlayerShieldPopUp;
 
     [Header("Text Components")]
     public Text TextW;
@@ -59,10 +67,20 @@ public class TutorialController : MonoBehaviour
     public Text TextSprint;
     public Text TextJump;
     public Text TextCrouch;
+    public Text TextSingleLinedTutorial;
+
+    [Header("Spawning Test Dummy Properties")]
+    public GameObject TestDummy;
+    public GameObject SpawnPoint;
+
+    [Header("Weapon Holder")]
+    public GameObject WeaponHolder;
 
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<WeaponBase>().CurrentAmmo = 0;
+
         InTutorialScene = true;
         m_dialogueEnabled = true;
 
@@ -82,6 +100,10 @@ public class TutorialController : MonoBehaviour
     {
         switch (CurrentDialogue)
         {
+            case "Morning soldier. Welcome to this training facility, where we will test your capabilities with your new advancements.":
+                WeaponHolder.SetActive(false);
+                break;
+
             case "Please could you look around for me":
 
                 m_dialogueEnabled = false;
@@ -108,7 +130,7 @@ public class TutorialController : MonoBehaviour
                 }
                 break;
 
-            case "Great work. How good are you with running, jumping, and crouching?":
+            case "Great. How good are you with running, jumping, and crouching?":
                 CheckPlayerAdvancedMovement();
                 m_dialogueEnabled = false;
                 PlayerAdvancedMovementPopUp.SetActive(true);
@@ -121,14 +143,56 @@ public class TutorialController : MonoBehaviour
                 }
                 break;
 
-            case "Now load your weapon, either your rifle or the pistol and shoot the enemy target.":
-                CheckPlayerShooting();
+            case "Now load your weapon, either your rifle or the pistol and shoot the test dummy, or use your knife on it.":
                 m_dialogueEnabled = false;
+                WeaponHolder.SetActive(true);
+                CheckPlayerShooting();
+                SpawnTestDummy();
 
+
+                if (HasEnemyDied == true)
+                {
+                    m_dialogueEnabled = true;
+                    PlayerShootingPopUp.SetActive(false);
+                    m_amountOfEnemiesToSpawn = 0;
+                    m_indexText += 1;
+                    m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
+                    HasEnemyDied = false;
+                }
+                break;
+
+            case "Go ahead and use it on this test dummy.":
+                m_dialogueEnabled = false;
+                PlayerSingleLinedPopUp.SetActive(true);
+                SpawnTestDummy();
+
+                if (HasEnemyDied == true)
+                {
+                    m_dialogueEnabled = true;
+                    PlayerSingleLinedPopUp.SetActive(false);
+                    m_amountOfEnemiesToSpawn = 0;
+                    m_indexText += 1;
+                    m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
+                    HasEnemyDied = false;
+                }
+                break;
+
+            case "Can you activate it?":
+                m_dialogueEnabled = false;
+                PlayerSingleLinedPopUp.SetActive(true);
+                CheckShieldActive();
+
+                if (m_hasShieldActivated == true)
+                {
+                    m_dialogueEnabled = true;
+                    PlayerSingleLinedPopUp.SetActive(false);
+                    m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
+                }
                 break;
         }
 
         NextDialogue();
+        TextSingleLinedTutorial.text = SingleTextPopUpTexts[m_indexText];
     }
 
     private void SetFirstDialogue()
@@ -223,7 +287,32 @@ public class TutorialController : MonoBehaviour
 
     private void CheckPlayerShooting()
     {
+        if (Input.GetKeyDown(KeyCode.R) && m_hasPlayerLoadedWeapon == false && InteractStarStone.WeaponID == 0 || InteractStarStone.WeaponID == 1)
+        {
+            PlayerSingleLinedPopUp.SetActive(false);
+            m_hasPlayerLoadedWeapon = true;
+        }
+        else if(m_hasPlayerLoadedWeapon == false)
+        {
+            PlayerSingleLinedPopUp.SetActive(true);
+        }
+    }
 
+    private void CheckShieldActive()
+    {
+        if(Input.GetButtonDown("Defensive Ability") && m_hasShieldActivated == false)
+        {
+            m_hasShieldActivated = true;
+        }
+    }
+
+    private void SpawnTestDummy()
+    {
+        if(m_dialogueEnabled == false && m_amountOfEnemiesToSpawn < 1)
+        {
+            Instantiate(TestDummy, SpawnPoint.transform.position, SpawnPoint.transform.rotation);
+            m_amountOfEnemiesToSpawn += 1;
+        }
     }
 
 }

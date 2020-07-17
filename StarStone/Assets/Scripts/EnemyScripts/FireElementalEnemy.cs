@@ -68,6 +68,7 @@ public class FireElementalEnemy : EnemyBase
 
             case 4:
                 CurrentHealth -= damage * 2;
+                m_playerReference.currentHealth += HealthToPlayer;
                 break;
         }
     }

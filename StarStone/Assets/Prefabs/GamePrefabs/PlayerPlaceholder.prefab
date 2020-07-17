@@ -1019,7 +1019,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1564515103104891275}
-  - {fileID: 5316114232908440818}
   m_Father: {fileID: 3042233089679981695}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1869,8 +1868,7 @@ MonoBehaviour:
   GroundType:
     serializedVersion: 2
     m_Bits: 256
-  primaryWeapon: {fileID: 1032987735157241578}
-  prototypeWeapon: {fileID: 6562528172232624355}
+  WeaponHolder: {fileID: 8399359680510400983}
   gameOver: {fileID: 7226399006616703950}
   m_sound: {fileID: 0}
   MaxBurningTime: 5
@@ -2459,6 +2457,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2117802646086677836}
+  - {fileID: 5316114232908440818}
   m_Father: {fileID: 3297118802594970123}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2793,12 +2792,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2034333064205647479}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1032987735157241578 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1328157252576528541, guid: 6ca3fe58d3097ed4e938a49ae27b7909,
-    type: 3}
-  m_PrefabInstance: {fileID: 2034333064205647479}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4672712093373032680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2924,22 +2917,22 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 3297118802594970123}
+    m_TransformParent: {fileID: 1564515103104891275}
     m_Modifications:
     - target: {fileID: 93929863628734261, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.02
+      value: 0.0055
       objectReference: {fileID: 0}
     - target: {fileID: 93929863628734261, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.008100003
+      value: 0.00089999754
       objectReference: {fileID: 0}
     - target: {fileID: 93929863628734261, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.005000002
+      value: -0.001999998
       objectReference: {fileID: 0}
     - target: {fileID: 93929863628734261, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
         type: 3}
@@ -3048,9 +3041,9 @@ PrefabInstance:
       objectReference: {fileID: 9195779116005136097}
     - target: {fileID: 5233771868464679553, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
         type: 3}
-      propertyPath: MeleeDamage
-      value: 200
-      objectReference: {fileID: 0}
+      propertyPath: WeaponHolder
+      value: 
+      objectReference: {fileID: 8399359680510400983}
     - target: {fileID: 8908043011710900811, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -3178,12 +3171,6 @@ PrefabInstance:
 --- !u!4 &7874985139208305392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2609227005248944782, guid: e08bb334b5386d24e9b20dc32874d53f,
-    type: 3}
-  m_PrefabInstance: {fileID: 5295185746700107902}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6562528172232624355 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1328157252576528541, guid: e08bb334b5386d24e9b20dc32874d53f,
     type: 3}
   m_PrefabInstance: {fileID: 5295185746700107902}
   m_PrefabAsset: {fileID: 0}

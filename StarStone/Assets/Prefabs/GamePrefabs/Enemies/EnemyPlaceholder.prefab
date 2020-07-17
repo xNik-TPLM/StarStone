@@ -196,7 +196,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f425a84b339550b4e969e40d8d7469ee, type: 2}
+  - {fileID: 2100000, guid: df7a3d50b75a86d4dae5a88227081374, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -229,15 +229,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da8f0ec56ef2f9469cd73849f901d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DetonationTimer: 0
   CurrentHealth: 0
   MaxHealth: 100
-  EnemySpeed: 0
-  BurnDamage: 0
+  MaxEnemySpeed: 0
   BurningTime: 0
+  BurningDamage: 0
+  FreezeTime: 0
+  HealthToPlayer: 0
   HealthBarUI: {fileID: 1832877923154584987}
   HealthBarSlider: {fileID: 6876950127229277989}
-  Target: {fileID: 0}
 --- !u!54 &1594079736916412073
 Rigidbody:
   m_ObjectHideFlags: 0
