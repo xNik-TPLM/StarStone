@@ -49,6 +49,7 @@ public class TutorialController : MonoBehaviour
     public GameObject CameraMovementPopUp;
     public GameObject PlayerMovementPopUp;
     public GameObject PlayerAdvancedMovementPopUp;
+    public GameObject PlayerShootingPopUp;
 
     [Header("Text Components")]
     public Text TextW;
@@ -121,6 +122,8 @@ public class TutorialController : MonoBehaviour
                 break;
 
             case "Now load your weapon, either your rifle or the pistol and shoot the enemy target.":
+                CheckPlayerShooting();
+                m_dialogueEnabled = false;
 
                 break;
         }
@@ -216,6 +219,11 @@ public class TutorialController : MonoBehaviour
         {
             m_advancedMovementCompleted = true;
         }
+    }
+
+    private void CheckPlayerShooting()
+    {
+
     }
 
 }

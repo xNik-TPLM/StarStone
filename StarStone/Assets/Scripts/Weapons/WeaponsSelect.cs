@@ -20,7 +20,7 @@ public class WeaponsSelect : MonoBehaviour
         int previousWeapon = InteractStarStone.WeaponID; // This sets a reference for the previous weapon used
 
         // If the player scrolls the mouse wheel upwards, the previous weapon ID will be collected and the player will switch to that weapon
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        /*if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             if (InteractStarStone.WeaponID >= transform.childCount - 1)
             {
@@ -42,7 +42,24 @@ public class WeaponsSelect : MonoBehaviour
             {
                 InteractStarStone.WeaponID--;
             }
+        }*/
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            InteractStarStone.WeaponID = 0;
+
         }
+
+        if(Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount >= 2)
+        {
+            InteractStarStone.WeaponID = 1;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount >= 3)
+        {
+            InteractStarStone.WeaponID = 2;
+        }        
+        
         if (previousWeapon != InteractStarStone.WeaponID)
         {
             SetWeapon();
