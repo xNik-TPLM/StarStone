@@ -249,7 +249,7 @@ public class PlayerController : MonoBehaviour
         {
             m_sound.PlayerWalk.Stop();
         }
-        Vector3 move = transform.right * m_moveInputX * PlayerMovementSpeed + transform.forward * m_moveInputZ; //  This sets a reference to the key presses so the player moves in the corresponding direction
+        Vector3 move = transform.right * m_moveInputX + transform.forward * m_moveInputZ; //  This sets a reference to the key presses so the player moves in the corresponding direction
 
 
         if(InteractStarStone.WeaponID == 2 && InteractStarStone.StarStoneID == 3)
