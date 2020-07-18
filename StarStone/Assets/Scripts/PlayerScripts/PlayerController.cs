@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     public static Transform KnifeStartPosition;
 
-    public SoundFX m_sound;
+    private SoundFX m_sound;
 
 
     //Nikodem Hamrol's fields and properties
@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // This function will run if the player pauses the game (Ben Smith)
     public void PauseMenu()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

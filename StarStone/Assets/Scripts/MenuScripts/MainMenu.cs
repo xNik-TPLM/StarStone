@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject Menu;
     public GameObject Cutscene;
-    public SoundFX m_sound;
+    private SoundFX m_sound;
 
     //Start is called before the first frame update
     void Start()
