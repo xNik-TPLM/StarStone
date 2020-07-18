@@ -17,11 +17,8 @@ public class PrototypeWeapon : WeaponBase
     public GameObject WindProjectile;
     public GameObject EarthProjectile;
 
-    public SoundFX m_sound;
-
     protected override void Start()
     {
-        m_sound = FindObjectOfType<SoundFX>();
     }
 
     protected override void PlayerShooting()

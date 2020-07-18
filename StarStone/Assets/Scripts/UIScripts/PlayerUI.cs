@@ -99,7 +99,10 @@ public class PlayerUI : MonoBehaviour
             }
         }
 
-        ammoDisplay.text = FindObjectOfType<WeaponBase>().CurrentAmmo.ToString() + " / " + FindObjectOfType<WeaponBase>().MaxAmmo.ToString(); //This displays the current ammo in the clip and maximum ammo left as a part of the player's HUD
+        if (FindObjectOfType<WeaponBase>() != null)
+        {
+            ammoDisplay.text = FindObjectOfType<WeaponBase>().CurrentAmmo.ToString() + " / " + FindObjectOfType<WeaponBase>().MaxAmmo.ToString(); //This displays the current ammo in the clip and maximum ammo left as a part of the player's HUD
+        }
 
         //Nikodem Hamrol
         UpdateWaveNumber();

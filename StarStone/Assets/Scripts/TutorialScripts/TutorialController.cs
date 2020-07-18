@@ -98,101 +98,104 @@ public class TutorialController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (CurrentDialogue)
+        if (InTutorialScene == true)
         {
-            case "Morning soldier. Welcome to this training facility, where we will test your capabilities with your new advancements.":
-                WeaponHolder.SetActive(false);
-                break;
+            switch (CurrentDialogue)
+            {
+                case "Morning soldier. Welcome to this training facility, where we will test your capabilities with your new advancements.":
+                    WeaponHolder.SetActive(false);
+                    break;
 
-            case "Please could you look around for me":
+                case "Please could you look around for me":
 
-                m_dialogueEnabled = false;
-                CameraMovementPopUp.SetActive(true);
+                    m_dialogueEnabled = false;
+                    CameraMovementPopUp.SetActive(true);
 
-                if (HasCameraMoved == true)
-                {
-                    m_dialogueEnabled = true;
-                    CameraMovementPopUp.SetActive(false);
-                    m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
-                }
-                break;
+                    if (HasCameraMoved == true)
+                    {
+                        m_dialogueEnabled = true;
+                        CameraMovementPopUp.SetActive(false);
+                        m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
+                    }
+                    break;
 
-            case "Good. Now we need to test your leg work, could you start walking around?":
-                CheckPlayerMovement();
-                m_dialogueEnabled = false;
-                PlayerMovementPopUp.SetActive(true);
+                case "Good. Now we need to test your leg work, could you start walking around?":
+                    CheckPlayerMovement();
+                    m_dialogueEnabled = false;
+                    PlayerMovementPopUp.SetActive(true);
 
-                if(m_movementCompleted == true)
-                {
-                    m_dialogueEnabled = true;
-                    PlayerMovementPopUp.SetActive(false);
-                    m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
-                }
-                break;
+                    if (m_movementCompleted == true)
+                    {
+                        m_dialogueEnabled = true;
+                        PlayerMovementPopUp.SetActive(false);
+                        m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
+                    }
+                    break;
 
-            case "Great. How good are you with running, jumping, and crouching?":
-                CheckPlayerAdvancedMovement();
-                m_dialogueEnabled = false;
-                PlayerAdvancedMovementPopUp.SetActive(true);
+                case "Great. How good are you with running, jumping, and crouching?":
+                    CheckPlayerAdvancedMovement();
+                    m_dialogueEnabled = false;
+                    PlayerAdvancedMovementPopUp.SetActive(true);
 
-                if (m_advancedMovementCompleted == true)
-                {
-                    m_dialogueEnabled = true;
-                    PlayerAdvancedMovementPopUp.SetActive(false);
-                    m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
-                }
-                break;
+                    if (m_advancedMovementCompleted == true)
+                    {
+                        m_dialogueEnabled = true;
+                        PlayerAdvancedMovementPopUp.SetActive(false);
+                        m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
+                    }
+                    break;
 
-            case "Now load your weapon, either your rifle or the pistol and shoot the test dummy, or use your knife on it.":
-                m_dialogueEnabled = false;
-                WeaponHolder.SetActive(true);
-                CheckPlayerShooting();
-                SpawnTestDummy();
+                case "Now load your weapon, either your rifle or the pistol and shoot the test dummy, or use your knife on it.":
+                    m_dialogueEnabled = false;
+                    WeaponHolder.SetActive(true);
+                    CheckPlayerShooting();
+                    SpawnTestDummy();
 
 
-                if (HasEnemyDied == true)
-                {
-                    m_dialogueEnabled = true;
-                    PlayerShootingPopUp.SetActive(false);
-                    m_amountOfEnemiesToSpawn = 0;
-                    m_indexText += 1;
-                    m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
-                    HasEnemyDied = false;
-                }
-                break;
+                    if (HasEnemyDied == true)
+                    {
+                        m_dialogueEnabled = true;
+                        PlayerShootingPopUp.SetActive(false);
+                        m_amountOfEnemiesToSpawn = 0;
+                        m_indexText += 1;
+                        m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
+                        HasEnemyDied = false;
+                    }
+                    break;
 
-            case "Go ahead and use it on this test dummy.":
-                m_dialogueEnabled = false;
-                PlayerSingleLinedPopUp.SetActive(true);
-                SpawnTestDummy();
+                case "Go ahead and use it on this test dummy.":
+                    m_dialogueEnabled = false;
+                    PlayerSingleLinedPopUp.SetActive(true);
+                    SpawnTestDummy();
 
-                if (HasEnemyDied == true)
-                {
-                    m_dialogueEnabled = true;
-                    PlayerSingleLinedPopUp.SetActive(false);
-                    m_amountOfEnemiesToSpawn = 0;
-                    m_indexText += 1;
-                    m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
-                    HasEnemyDied = false;
-                }
-                break;
+                    if (HasEnemyDied == true)
+                    {
+                        m_dialogueEnabled = true;
+                        PlayerSingleLinedPopUp.SetActive(false);
+                        m_amountOfEnemiesToSpawn = 0;
+                        m_indexText += 1;
+                        m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
+                        HasEnemyDied = false;
+                    }
+                    break;
 
-            case "Can you activate it?":
-                m_dialogueEnabled = false;
-                PlayerSingleLinedPopUp.SetActive(true);
-                CheckShieldActive();
+                case "Can you activate it?":
+                    m_dialogueEnabled = false;
+                    PlayerSingleLinedPopUp.SetActive(true);
+                    CheckShieldActive();
 
-                if (m_hasShieldActivated == true)
-                {
-                    m_dialogueEnabled = true;
-                    PlayerSingleLinedPopUp.SetActive(false);
-                    m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
-                }
-                break;
+                    if (m_hasShieldActivated == true)
+                    {
+                        m_dialogueEnabled = true;
+                        PlayerSingleLinedPopUp.SetActive(false);
+                        m_dialogueDisplayTime = TimeDifferenceBetweenDialogues;
+                    }
+                    break;
+            }
+
+            NextDialogue();
+            TextSingleLinedTutorial.text = SingleTextPopUpTexts[m_indexText];
         }
-
-        NextDialogue();
-        TextSingleLinedTutorial.text = SingleTextPopUpTexts[m_indexText];
     }
 
     private void SetFirstDialogue()

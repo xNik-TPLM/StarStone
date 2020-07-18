@@ -12,7 +12,7 @@ using UnityEngine;
 public class WeaponBase : MonoBehaviour
 {
     // Ben's SFX Reference
-    private SoundFX m_sound;
+    protected SoundFX m_sound;
 
     //Private fields
     //Boolean field to chekc if the weapon is realodaing so that the player can't shoot, whilst realoding is happening
@@ -97,7 +97,7 @@ public class WeaponBase : MonoBehaviour
     protected virtual void PlayerShooting()
     {
         //If there is ammo left
-        if (CurrentAmmo > 0)
+        if (CurrentAmmo > 0 && !PauseMenu.IsGamePaused)
         {
             ///Automatic weapon solution
             //If player holds down the left mouse button and if it is time to fire and if the player is not reloading

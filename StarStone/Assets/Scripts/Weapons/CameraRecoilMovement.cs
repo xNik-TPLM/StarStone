@@ -36,16 +36,17 @@ public class CameraRecoilMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1") && GetComponentInChildren<WeaponBase>().CurrentAmmo > 0 && GetComponentInChildren<WeaponBase>().IsAutomatic == true)
+        if (PauseMenu.IsGamePaused == false && GetComponentInChildren<WeaponBase>() != null)
         {
-            currentRotation += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
-        }
-            
-        if (Input.GetButtonDown("Fire1") && GetComponentInChildren<WeaponBase>().CurrentAmmo > 0 && GetComponentInChildren<WeaponBase>().IsAutomatic == false)
-        {
-            currentRotation += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
-        }
+            if (Input.GetButton("Fire1") && GetComponentInChildren<WeaponBase>().CurrentAmmo > 0 && GetComponentInChildren<WeaponBase>().IsAutomatic == true)
+            {
+                currentRotation += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
+            }
 
-        
+            if (Input.GetButtonDown("Fire1") && GetComponentInChildren<WeaponBase>().CurrentAmmo > 0 && GetComponentInChildren<WeaponBase>().IsAutomatic == false)
+            {
+                currentRotation += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
+            }
+        }
     }
 }

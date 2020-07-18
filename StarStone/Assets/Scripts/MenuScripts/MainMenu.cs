@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
     // This function is called when the play button is clicked
     public void Play()
     {
-        //TheSequence();
+        PauseMenu.UnFreezeGame();
         Cutscene.SetActive(true);
         Menu.SetActive(false);
         m_sound.MenuTheme.Stop();

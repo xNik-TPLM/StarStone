@@ -86,12 +86,11 @@ public class PlayerController : MonoBehaviour
         PlayerLadder(); // This activates the player's movement on the ladder
         Melee(); // This activates the player's melee attack
         ShieldActive(); // This checks if the player's shield is active
-        PauseMenu();
+        PauseGame();
         GameOver(); // This checks whether the player has health left while playing
 
         //Nikodem Hamrol's function
         PlayerBurning(); //This checks if the player is burning
-        DisplayWeaponsTutorial();
     }
 
     // This function will run if the player's health is fully depleted (Ben Smith)
@@ -104,13 +103,22 @@ public class PlayerController : MonoBehaviour
     }
 
     // This function will run if the player pauses the game (Ben Smith)
-    public void PauseMenu()
+    public void PauseGame()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0;
-            pauseMenu.SetActive(true);
+            if (PauseMenu.IsGamePaused == false)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                PauseMenu.FreezeGame();
+                pauseMenu.SetActive(true);
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                PauseMenu.UnFreezeGame();
+                pauseMenu.SetActive(false); // This will resume the game
+            }
         }
     }
 
@@ -301,13 +309,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            if (m_isGrounded = true)
+            if (m_isGrounded == true)
             {
                 CharacterController.height = 0.02f; // This makes the player shorter if they are crouching
                 PlayerMovementSpeed = 5;
             }
-            
-
         }
         else
         {
@@ -354,14 +360,6 @@ public class PlayerController : MonoBehaviour
                 m_isPlayerBurning = false;
                 m_playerBurningTime = 0;
             }
-        }
-    }
-
-    private void DisplayWeaponsTutorial()
-    {
-        if (TutorialController.InTutorialScene)
-        {
-
         }
     }
 }
