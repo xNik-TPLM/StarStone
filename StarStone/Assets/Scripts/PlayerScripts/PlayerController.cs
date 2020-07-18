@@ -107,6 +107,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
             pauseMenu.SetActive(true);
         }
     }

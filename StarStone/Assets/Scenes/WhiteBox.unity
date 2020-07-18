@@ -3204,7 +3204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &406589451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3299,8 +3299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ebdbb2ed274544fa6da85fdcb24fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
-  Cutscene: {fileID: 0}
+  pauseMenu: {fileID: 406589450}
+  Cutscene: {fileID: 111981690}
   m_sound: {fileID: 0}
 --- !u!1 &452625977
 GameObject:
@@ -10504,7 +10504,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.57254905}
+    m_HighlightedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
     m_PressedColor: {r: 0, g: 0, b: 0, a: 0.7294118}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}

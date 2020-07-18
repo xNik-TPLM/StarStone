@@ -23,6 +23,7 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToGame()
     {
         pauseMenu.SetActive(false); // This will resume the game
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // This function is called when the retry button is clicked
