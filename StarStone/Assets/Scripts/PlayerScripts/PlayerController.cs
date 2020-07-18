@@ -237,7 +237,7 @@ public class PlayerController : MonoBehaviour
         {
             m_sound.PlayerWalk.Stop();
         }
-        Vector3 move = transform.right * m_moveInputX + transform.forward * m_moveInputZ; //  This sets a reference to the key presses so the player moves in the corresponding direction
+        Vector3 move = transform.right * m_moveInputX * PlayerMovementSpeed + transform.forward * m_moveInputZ; //  This sets a reference to the key presses so the player moves in the corresponding direction
 
 
         if(InteractStarStone.WeaponID == 2 && InteractStarStone.StarStoneID == 3)
@@ -288,12 +288,18 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            CharacterController.height = 0.02f; // This makes the player shorter if they are crouching
+            if (m_isGrounded = true)
+            {
+                CharacterController.height = 0.02f; // This makes the player shorter if they are crouching
+                PlayerMovementSpeed = 5;
+            }
+            
 
         }
         else
         {
             CharacterController.height = 0.063f; // This returns the player to their normal height if they are not crouching
+            PlayerMovementSpeed = 10;
         }
     }
 

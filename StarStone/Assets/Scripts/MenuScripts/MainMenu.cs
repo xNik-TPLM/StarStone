@@ -26,6 +26,8 @@ public class MainMenu : MonoBehaviour
         //TheSequence();
         Cutscene.SetActive(true);
         Menu.SetActive(false);
+        m_sound.MenuTheme.Stop();
+        m_sound.CutsceneTheme.Play();
     }
 
     // This function is called when the start cutscene has finished

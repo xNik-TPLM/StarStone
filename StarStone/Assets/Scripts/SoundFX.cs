@@ -11,4 +11,5 @@ public class SoundFX : MonoBehaviour
     public AudioSource PlayerWalk;
     public AudioSource PlayerRun;
     public AudioSource MenuTheme;
+    public AudioSource CutsceneTheme;
 }

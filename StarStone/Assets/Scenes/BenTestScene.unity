@@ -281,6 +281,8 @@ MonoBehaviour:
   WaveStateText: {fileID: 0}
   WaveTimerText: {fileID: 0}
   OverheatingText: {fileID: 0}
+  NukeAbilityIcon: {fileID: 0}
+  ShieldAbilityIcon: {fileID: 0}
 --- !u!1 &111609017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,7 +1609,7 @@ GameObject:
   - component: {fileID: 1245019475}
   m_Layer: 8
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3442,8 +3444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MeleeDamage: 10
-  primaryWeapon: {fileID: 0}
-  prototypeWeapon: {fileID: 0}
+  WeaponHolder: {fileID: 0}
 --- !u!95 &8296172667502683293
 Animator:
   serializedVersion: 3
