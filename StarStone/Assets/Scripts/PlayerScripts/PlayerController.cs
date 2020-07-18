@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     //public static bool meleeActive; //This bool checks whether the player is melee attacking
     public GameObject Knife; //This sets the reference to the melee weapon
     public GameObject playerShield;
+    public GameObject pauseMenu;
 
     //Float fields
     //These floats will get the reference of axis of where the player will move.
@@ -85,6 +86,7 @@ public class PlayerController : MonoBehaviour
         PlayerLadder(); // This activates the player's movement on the ladder
         Melee(); // This activates the player's melee attack
         ShieldActive(); // This checks if the player's shield is active
+        PauseMenu();
         GameOver(); // This checks whether the player has health left while playing
 
         //Nikodem Hamrol's function
@@ -98,6 +100,14 @@ public class PlayerController : MonoBehaviour
         if (currentHealth <= 0)
         {
             gameOver.SetActive(true); // This enables the game over screen
+        }
+    }
+
+    public void PauseMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenu.SetActive(true);
         }
     }
 
