@@ -19,7 +19,8 @@ public class OffensiveAbility : MonoBehaviour
     public static float NukeCooldownTimer;
     public float NukeCooldownMaxTime;
     private SoundFX m_sound;
-    
+    public GameObject explosionVFX;
+
     
     // Start is called before the first frame update
     void Start()
@@ -58,7 +59,7 @@ public class OffensiveAbility : MonoBehaviour
     void Explode()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius); // This puts all of the objects affected by the nuke into an array
-        
+        Instantiate(explosionVFX, transform.position, transform.rotation);
         // For each object in the array, the nuke will apply a force to
         foreach (Collider nearbyObject in colliders)
         {

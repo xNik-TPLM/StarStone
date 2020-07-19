@@ -14229,6 +14229,11 @@ PrefabInstance:
       propertyPath: radius
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8558817294421199429, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: explosionVFX
+      value: 
+      objectReference: {fileID: 131164, guid: 3c5f4e32698bdb04eaed647f60310510, type: 3}
     - target: {fileID: 8570450290866058428, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_LocalPosition.z

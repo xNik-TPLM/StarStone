@@ -18,6 +18,8 @@ public class WindElementalEnemy : EnemyBase
     public float DetonationDamage;
     public float DetonationRadius;
 
+    public GameObject explosionVFX;
+
     public override void EnemyDamaged(float damage, int projectileType)
     {
         base.EnemyDamaged(damage, projectileType);
@@ -73,6 +75,7 @@ public class WindElementalEnemy : EnemyBase
 
             if (m_detonationTime > DetonationTimer)
             {
+                Instantiate(explosionVFX, transform.position, transform.rotation);
                 CurrentHealth = 0;
             }
         }
