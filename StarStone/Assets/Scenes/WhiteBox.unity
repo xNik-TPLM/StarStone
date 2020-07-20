@@ -14064,6 +14064,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 41.7
       objectReference: {fileID: 0}
+    - target: {fileID: 7475872068552127411, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1830669045}
+    - target: {fileID: 7475872068552127411, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetVolume
+      objectReference: {fileID: 0}
     - target: {fileID: 7546639738728764489, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_LocalPosition.x
