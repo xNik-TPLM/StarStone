@@ -15,10 +15,10 @@ public class PlayerController : MonoBehaviour
     private bool m_isGrounded;
     private bool m_ladderCollision;
 
-    //public static bool meleeActive; //This bool checks whether the player is melee attacking
+    // Public Game Objects
     public GameObject Knife; //This sets the reference to the melee weapon
-    public GameObject playerShield;
-    public GameObject pauseMenu;
+    public GameObject playerShield; // This sets the reference to the player's shield
+    public GameObject pauseMenu; // This sets the reference to the pause menu canvas
 
     //Float fields
     //These floats will get the reference of axis of where the player will move.
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         PlayerLadder(); // This activates the player's movement on the ladder
         Melee(); // This activates the player's melee attack
         ShieldActive(); // This checks if the player's shield is active
-        PauseGame();
+        PauseGame(); // This function activates the pause menu and stops the game
         GameOver(); // This checks whether the player has health left while playing
 
         //Nikodem Hamrol's function
@@ -109,15 +109,15 @@ public class PlayerController : MonoBehaviour
         {
             if (PauseMenu.IsGamePaused == false)
             {
-                Cursor.lockState = CursorLockMode.None;
-                PauseMenu.FreezeGame();
+                Cursor.lockState = CursorLockMode.None; // This allows the player to use the pause menu
+                PauseMenu.FreezeGame(); // This stops the game running temporarily
                 pauseMenu.SetActive(true);
             }
             else
             {
-                Cursor.lockState = CursorLockMode.Locked;
-                PauseMenu.UnFreezeGame();
-                pauseMenu.SetActive(false); // This will resume the game
+                Cursor.lockState = CursorLockMode.Locked; // This hides and recentres the cursor so the player can continue the game
+                PauseMenu.UnFreezeGame(); // This allows the game to run again
+                pauseMenu.SetActive(false); // This will resume the game by disabling the pause menu
             }
         }
     }
@@ -171,15 +171,8 @@ public class PlayerController : MonoBehaviour
         {
             ladderTop = false;
         }
-        /*if (collision.CompareTag("StarStone"))
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                PlayerUI.shieldActive = true;
-                Debug.Log("Works!!!!!");                
-            }
-        }*/
     }
+
     // Once the player is no longer on/using the ladder, they can longer press the 'use' key (Ben Smith)
     private void OnTriggerExit(Collider collision)
     {
@@ -226,6 +219,8 @@ public class PlayerController : MonoBehaviour
             m_moveInputZ = Input.GetAxis("Vertical"); // This allows the player to move vertically with key presses
             
         }
+
+        // These statements check if the movement keys are pressed and plays and stops the walk sound effect accordingly
         if (Input.GetKeyDown(KeyCode.W))
         {
             m_sound.PlayerWalk.Play();
@@ -258,10 +253,10 @@ public class PlayerController : MonoBehaviour
         {
             m_sound.PlayerWalk.Stop();
         }
+
         Vector3 move = transform.right * m_moveInputX + transform.forward * m_moveInputZ; //  This sets a reference to the key presses so the player moves in the corresponding direction
 
-
-        if(InteractStarStone.WeaponID == 2 && InteractStarStone.StarStoneID == 3)
+        if (InteractStarStone.WeaponID == 2 && InteractStarStone.StarStoneID == 3)
         {
             CharacterController.Move(move * (PlayerMovementSpeed * 2) * Time.deltaTime);
         }
