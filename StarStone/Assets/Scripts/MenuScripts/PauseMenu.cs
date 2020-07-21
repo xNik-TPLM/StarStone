@@ -36,6 +36,7 @@ public class PauseMenu : MonoBehaviour
     // This function is called when the retry button is clicked
     public void RetryGame()
     {
+        ResetLevel();
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name); // This will reload the game from the start
         UnFreezeGame(); 
@@ -45,6 +46,7 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("GameMenu"); // This will take the player back to the main menu
+        ResetLevel();
 
         if (TutorialController.InTutorialScene)
         {
@@ -64,5 +66,14 @@ public class PauseMenu : MonoBehaviour
     {
         IsGamePaused = false;
         Time.timeScale = 1;
+    }
+
+    private void ResetLevel()
+    {
+        for(int i = 0; i < WaveSystem.EnemiesOnMap; i++)
+        {
+            EnemyBase enemy = FindObjectOfType<EnemyBase>();
+            Destroy(enemy.gameObject);
+        }
     }
 }

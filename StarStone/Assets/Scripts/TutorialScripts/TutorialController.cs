@@ -82,6 +82,7 @@ public class TutorialController : MonoBehaviour
         FindObjectOfType<WeaponBase>().CurrentAmmo = 0;
 
         InTutorialScene = true;
+        HasCameraMoved = false;
         m_dialogueEnabled = true;
 
         m_dialogues = new Queue<string>();

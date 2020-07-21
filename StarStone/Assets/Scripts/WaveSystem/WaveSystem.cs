@@ -31,8 +31,6 @@ public class WaveSystem : MonoBehaviour
     public static float WaveTimer; //This static float field is to count down the time of the wave and to be used to show in the player's HUD
     public static float GeneratorTemperature;
     public static int WaveNumber;
-
-    //Static integer fields
     public static int EnemiesOnMap; //This counts the amount of enemies currently on the map, which will be used to limit the amount of enemies on the map
     public static int WaveNumberIndex; //This is the index for the waves array, which were all the data is stored
 
@@ -66,6 +64,16 @@ public class WaveSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        IsWaveSystemInitiated = false;
+        InIntermission = false;
+        IsGeneratorOverheating = false;
+        GeneratorTemperature = 0;
+        EnemiesOnMap = 0;
+        WaveNumberIndex = 0;
+
+
+        m_hasWaveBegun = false;
+
         //Go through each child of the WaveSystem object to get all spawn points
         for(int i = 0; i< SpawnPoints.Length; i++)
         {
@@ -86,7 +94,6 @@ public class WaveSystem : MonoBehaviour
             WaveNumber = waves[WaveNumberIndex].WaveNumber;
 
             BeginWave();
-            Intermission();
             WaveFinished();
             GeneratorState();
         }
@@ -174,6 +181,7 @@ public class WaveSystem : MonoBehaviour
                 WaveNumberIndex++;
                 WaveTimer = waves[WaveNumberIndex].WaveTime;
                 m_hasWaveBegun = true;
+                InteractAlters.HasSigilInteracted = false;
             }
         }
 
@@ -190,11 +198,11 @@ public class WaveSystem : MonoBehaviour
     //This function handles if intermission is active
     private void Intermission()
     {
-        Debug.Log("Intermission");
+        Debug.Log(InIntermission + " " + m_hasWaveBegun);
         if (InteractAlters.HasSigilInteracted == true && InIntermission == true)
         {
             InIntermission = false;
-            Debug.Log("Start Next Wave");
+            InteractAlters.HasSigilInteracted = false;
         }
     }
 
@@ -213,6 +221,14 @@ public class WaveSystem : MonoBehaviour
         else
         {
             m_generatorOverheatTimer = 0;
+        }
+    }
+
+    private void GameEndState()
+    {
+        if(InteractAlters.HasAllSigilsActivated == true)
+        {
+
         }
     }
 }

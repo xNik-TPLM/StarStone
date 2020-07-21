@@ -8,18 +8,29 @@ using UnityEngine;
 
 public class InteractAlters : MonoBehaviour
 {
+    private bool m_hasWindSigilInteracted;
+    private bool m_hasFireSigilInteracted;
+    private bool m_hasIceSigilInteracted;
+    private bool m_hasEarthSigilInteracted;
+
     public static bool HasSigilInteracted;
+    public static bool HasAllSigilsActivated;
+
+    public GameObject StarStone;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        InteractAlters.HasAllSigilsActivated = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(m_hasWindSigilInteracted && m_hasFireSigilInteracted && m_hasIceSigilInteracted && m_hasEarthSigilInteracted)
+        {
+            HasAllSigilsActivated = true;
+        }
     }
 
 
@@ -28,10 +39,75 @@ public class InteractAlters : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            PlayerUI.PopUpControlsEnabled = true;
+            PlayerUI.PopUpControlsText = "Press [F] to Interact";
+
             if (Input.GetButtonDown("Interact") && WaveSystem.InIntermission == true)
             {
-                HasSigilInteracted = true;
+                switch (gameObject.name)
+                {
+                    case "WindStarStoneAlter":
+                        m_hasWindSigilInteracted = true;
+                        StarStone.SetActive(true);
+                        HasSigilInteracted = true;
+                        break;
+
+                    case "FireStarStoneAlter":
+                        if(m_hasWindSigilInteracted == true)
+                        {
+                            m_hasFireSigilInteracted = true;
+                            StarStone.SetActive(true);
+                            HasSigilInteracted = true;
+                        }
+                        else
+                        {
+                            PlayerUI.PopUpMessageEnabled = true;
+                            PlayerUI.PopUpMessageText = "You must activate the Wind Starstone first, before activating this one";
+                        }
+                        break;
+
+                    case "IceStarStoneAlter":
+                        if(m_hasFireSigilInteracted == true)
+                        {
+                            m_hasIceSigilInteracted = true;
+                            StarStone.SetActive(true);
+                            HasSigilInteracted = true;
+                        }
+                        else
+                        {
+                            PlayerUI.PopUpMessageEnabled = true;
+                            PlayerUI.PopUpMessageText = "You must activate the Fire Starstone first, before activating this one";
+                        }
+                        break;
+
+                    case "EarthStarStoneAlter":
+                        if(m_hasIceSigilInteracted == true)
+                        {
+                            m_hasEarthSigilInteracted = true;
+                            StarStone.SetActive(true);
+                            HasSigilInteracted = true;
+                        }
+                        else
+                        {
+                            PlayerUI.PopUpMessageEnabled = true;
+                            PlayerUI.PopUpMessageText = "You must activate the Ice Starstone first, before activating this one";
+                        }
+                        break;
+                }
             }
+            else if(Input.GetButtonDown("Interact") && WaveSystem.InIntermission == false)
+            {
+                PlayerUI.PopUpMessageEnabled = true;
+                PlayerUI.PopUpMessageText = "You must be in intermission to interact with the sigils";
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerUI.PopUpControlsEnabled = false;
         }
     }
 }

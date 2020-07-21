@@ -28,6 +28,7 @@ public class OffensiveAbility : MonoBehaviour
     void Start()
     {
         m_sound = FindObjectOfType<SoundFX>(); // This sets the reference to the sound effects script
+        NukeCooldownTimer = 0;
     }
 
     // Update is called once per frame

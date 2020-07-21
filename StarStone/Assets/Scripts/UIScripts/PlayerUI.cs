@@ -27,6 +27,8 @@ public class PlayerUI : MonoBehaviour
     [Space(10)]
 
     //Nikodem Hamrol's fields and properties
+    private float m_popUpMessageDisplayTime; 
+
     //These integers are used to change as indexes for the arrays of colours
     private int m_temperatureColourIndex;
     private int m_nukeCooldownColourIndex;
@@ -34,6 +36,12 @@ public class PlayerUI : MonoBehaviour
 
     //Reference to the offesive ability script to access the nuke max time
     private OffensiveAbility m_offensiveAbilityReference;
+
+    public static string PopUpMessageText;
+    public static string PopUpControlsText;
+    public static bool PopUpMessageEnabled;
+    public static bool PopUpControlsEnabled;
+
 
     [Header("Slider Temperature Properties")]
     public float MaxGeneratorTemperature; //This is to set the max value for the slider and to check if the generator will overheat
@@ -54,6 +62,9 @@ public class PlayerUI : MonoBehaviour
     public Text WaveStateText; //This text object will show the wave number and if they are in an intermission phase
     public Text WaveTimerText; //This text object will show the time left for a wave to be completed
     public Text OverheatingText; //This text object will indicate if the generator is overheating
+    public Text PopUpControls;
+    public Text PopUpMessage;
+    public float PopUpMessageMaxDisplayTime;
     public GameObject NukeAbilityIcon;
     public GameObject ShieldAbilityIcon;
 
@@ -96,6 +107,7 @@ public class PlayerUI : MonoBehaviour
             if (shieldSlider.value <= 0)
             {
                 shieldActive = false;
+                shieldCooldownActive = true;
             }
         }
 
@@ -105,12 +117,41 @@ public class PlayerUI : MonoBehaviour
         }
 
         //Nikodem Hamrol
+        UpdatePopUpMessage();
         UpdateWaveNumber();
         UpdateTimer();
         UpdateNukeCooldown();
         UpdateShieldCooldown();
         UpdateGeneratorSlider();
         HUDDisplayingInTutorial();
+    }
+
+    private void UpdatePopUpMessage()
+    {
+        if(PopUpControlsEnabled == true)
+        {
+            PopUpControls.text = PopUpControlsText;
+            PopUpControls.enabled = true;
+        }
+        else
+        {
+            PopUpControls.enabled = false;
+        }
+
+        if (PopUpMessageEnabled == true)
+        {
+            PopUpMessage.text = PopUpMessageText;
+            PopUpMessage.enabled = true;
+
+            m_popUpMessageDisplayTime += Time.deltaTime;
+            
+            if(m_popUpMessageDisplayTime > PopUpMessageMaxDisplayTime)
+            {
+                PopUpMessageEnabled = false;
+                m_popUpMessageDisplayTime = 0;
+                PopUpMessage.enabled = false;
+            }
+        }
     }
 
     //This function will handle the indication of the wave number they're in and if they're in an intermission (Nikodem Hamrol)

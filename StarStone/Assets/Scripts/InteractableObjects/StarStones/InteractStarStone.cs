@@ -39,6 +39,9 @@ public class InteractStarStone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        InteractStarStone.WeaponID = 0;
+        InteractStarStone.StarStoneID = 0;
+
         ChargingSlider.maxValue = MaxChargeTime;
         m_chargeTimer = MaxChargeTime;
         m_isFullyCharged = true;
@@ -62,7 +65,6 @@ public class InteractStarStone : MonoBehaviour
                 {
                     WaveSystem.IsWaveSystemInitiated = true;
                 }
-
 
                 switch (gameObject.name)
                 {
