@@ -10,8 +10,11 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class MainMenu : MonoBehaviour
 {
+    // Public GameObjects to set references to the menu and cutscene
     public GameObject Menu;
     public GameObject Cutscene;
+    
+    // Reference for the sound script
     private SoundFX m_sound;
 
     //Start is called before the first frame update
@@ -23,9 +26,11 @@ public class MainMenu : MonoBehaviour
     // This function is called when the play button is clicked
     public void Play()
     {
-        PauseMenu.UnFreezeGame();
-        Cutscene.SetActive(true);
-        Menu.SetActive(false);
+        PauseMenu.UnFreezeGame(); // This resets time to pass at the normal rate
+        Cutscene.SetActive(true); // This enables the cutscene canvas
+        Menu.SetActive(false); // This disables the main menu
+
+        // These stop the main menu theme and play the cutscene theme
         m_sound.MenuTheme.Stop();
         m_sound.CutsceneTheme.Play();
     }
@@ -46,6 +51,6 @@ public class MainMenu : MonoBehaviour
     public void Quit()
     {
         Debug.Log("Quit!");
-        Application.Quit();
+        Application.Quit(); // This will quit the game
     }
 }
