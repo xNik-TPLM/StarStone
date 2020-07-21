@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    //Float feilds 
+    //Float fields 
     //These 2 floats will detect the mouse movement on the x and y axis
     private float m_mouseMovementX;
     private float m_mouseMovementY;

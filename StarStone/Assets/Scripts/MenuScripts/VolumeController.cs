@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+///// <summary>
+///// This script handles the volume slider in the options menu
+///// Worked By: Ben Smith
+///// </summary>
 public class VolumeController : MonoBehaviour
 {
-    public AudioSource Theme;
-    private float musicVolume = 0.3f;
+    public AudioSource Theme; // This sets the reference to the audio
+    private float musicVolume = 0.3f; // This sets a starting volume
 
     // Start is called before the first frame update
     void Start()
     {
-        Theme = GetComponent<AudioSource>();
+        Theme = GetComponent<AudioSource>(); // This allows the theme to be access in the game
     }
 
     // Update is called once per frame
     void Update()
     {
-        Theme.volume = musicVolume;
+        Theme.volume = musicVolume; 
     }
 
     public void SetVolume(float vol)
     {
-        musicVolume = vol;
+        musicVolume = vol; // This links the slider value to the music volume
     }
 }

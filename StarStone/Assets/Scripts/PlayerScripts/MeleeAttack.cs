@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This script handles the melee attack that player uses with the knife
+/// This script handles the melee attack that the player uses with the knife
 /// Worked By: Ben Smith
 /// </summary>
 public class MeleeAttack : MonoBehaviour
 {
     Animator meleeAnimation; // This sets the reference to the melee attack animation
     public float MeleeDamage; // This is the damage of the knife per hit
-    public GameObject WeaponHolder;
+    public GameObject WeaponHolder; // This sets the reference to the weapon holder
 
     // Start is called before the first frame update
     void Start()

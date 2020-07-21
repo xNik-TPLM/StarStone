@@ -12,8 +12,8 @@ public class OffensiveAbility : MonoBehaviour
     // Public float variables
     public float radius = 5f; //  This sets the radius at which the nuke affects
     public float nukeDamage; // This sets the damage that the nuke has on enemies
-    public static float NukeCooldownTimer;
-    public float NukeCooldownMaxTime;
+    public static float NukeCooldownTimer; // This sets the cooldown of the nuke
+    public float NukeCooldownMaxTime; // This checks if the nuke can be used
 
     // Public bools
     public static bool NukeEnabled; // This checks whether the nuke has been used
@@ -42,7 +42,7 @@ public class OffensiveAbility : MonoBehaviour
             Explode(); // This calls the Explode function
         }
 
-        NukeCooldown();
+        NukeCooldown(); // This calls the NukeCooldown function
     }
 
     // This sets the nuke cooldown so it can only be used every set time period
