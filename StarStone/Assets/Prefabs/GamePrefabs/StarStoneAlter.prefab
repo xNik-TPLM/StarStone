@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae11caa8b485a1d4bbd7602c77e3f87b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StarStone: {fileID: 5988530204240588387}
+  StarStoneAlters: {fileID: 0}
 --- !u!1001 &2322280070522763114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -257,6 +259,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bb9c8fd9f8129843891d8816c27c1b5, type: 3}
+--- !u!1 &5988530204240588387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 4bb9c8fd9f8129843891d8816c27c1b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2322280070522763114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7296061903240158320 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 4bb9c8fd9f8129843891d8816c27c1b5,

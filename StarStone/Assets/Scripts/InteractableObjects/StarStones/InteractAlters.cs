@@ -8,10 +8,10 @@ using UnityEngine;
 
 public class InteractAlters : MonoBehaviour
 {
-    private bool m_hasWindSigilInteracted;
-    private bool m_hasFireSigilInteracted;
-    private bool m_hasIceSigilInteracted;
-    private bool m_hasEarthSigilInteracted;
+    public static bool m_hasWindSigilInteracted;
+    public static bool m_hasFireSigilInteracted;
+    public static bool m_hasIceSigilInteracted;
+    public static bool m_hasEarthSigilInteracted;
 
     public static bool HasSigilInteracted;
     public static bool HasAllSigilsActivated;
@@ -21,7 +21,7 @@ public class InteractAlters : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InteractAlters.HasAllSigilsActivated = false;
+       HasAllSigilsActivated = false;
     }
 
     // Update is called once per frame
@@ -47,13 +47,16 @@ public class InteractAlters : MonoBehaviour
                 switch (gameObject.name)
                 {
                     case "WindStarStoneAlter":
-                        m_hasWindSigilInteracted = true;
-                        StarStone.SetActive(true);
-                        HasSigilInteracted = true;
+                        if (m_hasWindSigilInteracted == false)
+                        {
+                            m_hasWindSigilInteracted = true;
+                            StarStone.SetActive(true);
+                            HasSigilInteracted = true;
+                        }
                         break;
 
                     case "FireStarStoneAlter":
-                        if(m_hasWindSigilInteracted == true)
+                        if(m_hasWindSigilInteracted == true && m_hasFireSigilInteracted == false)
                         {
                             m_hasFireSigilInteracted = true;
                             StarStone.SetActive(true);
@@ -67,7 +70,7 @@ public class InteractAlters : MonoBehaviour
                         break;
 
                     case "IceStarStoneAlter":
-                        if(m_hasFireSigilInteracted == true)
+                        if(m_hasFireSigilInteracted == true && m_hasIceSigilInteracted == false)
                         {
                             m_hasIceSigilInteracted = true;
                             StarStone.SetActive(true);
@@ -81,7 +84,7 @@ public class InteractAlters : MonoBehaviour
                         break;
 
                     case "EarthStarStoneAlter":
-                        if(m_hasIceSigilInteracted == true)
+                        if(m_hasIceSigilInteracted == true && m_hasEarthSigilInteracted == false)
                         {
                             m_hasEarthSigilInteracted = true;
                             StarStone.SetActive(true);

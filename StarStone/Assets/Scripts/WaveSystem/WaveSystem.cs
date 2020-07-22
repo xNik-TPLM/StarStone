@@ -198,7 +198,7 @@ public class WaveSystem : MonoBehaviour
     //This function handles if intermission is active
     private void Intermission()
     {
-        Debug.Log(InIntermission + " " + m_hasWaveBegun);
+        //Debug.Log(InIntermission + " " + m_hasWaveBegun);
         if (InteractAlters.HasSigilInteracted == true && InIntermission == true)
         {
             InIntermission = false;

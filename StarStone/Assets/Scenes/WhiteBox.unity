@@ -997,7 +997,7 @@ Transform:
   - {fileID: 522001155}
   - {fileID: 12321082}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &83046901
 GameObject:
@@ -1314,7 +1314,7 @@ RectTransform:
   - {fileID: 247980415}
   - {fileID: 1290987289}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2925,7 +2925,7 @@ PrefabInstance:
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.71
+      value: -1.7100067
       objectReference: {fileID: 0}
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
@@ -2935,12 +2935,12 @@ PrefabInstance:
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.21
+      value: -1.2099991
       objectReference: {fileID: 0}
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
@@ -2950,7 +2950,7 @@ PrefabInstance:
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
@@ -2960,7 +2960,7 @@ PrefabInstance:
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
@@ -2984,9 +2984,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2322280071670369734, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
-      propertyPath: StarStone
+      propertyPath: StarStoneAlters
       value: 
-      objectReference: {fileID: 1670746210}
+      objectReference: {fileID: 0}
     - target: {fileID: 5415400916887025223, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6248,7 +6248,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: abfb674f1ee35c84aa3d383c20dd410e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: abfb674f1ee35c84aa3d383c20dd410e,
         type: 3}
@@ -8951,7 +8951,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1279256978
 GameObject:
@@ -11188,12 +11188,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1642426573}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1670746210 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5988530204240588387, guid: 0f98fad058b693b42b29b98691b7a4eb,
-    type: 3}
-  m_PrefabInstance: {fileID: 425434730}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1687841747
 GameObject:
   m_ObjectHideFlags: 0
@@ -12515,7 +12509,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1830669045
 MonoBehaviour:
@@ -14575,12 +14569,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!1 &1930981111 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5988530204240588387, guid: 0f98fad058b693b42b29b98691b7a4eb,
-    type: 3}
-  m_PrefabInstance: {fileID: 2322280070754862241}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1937743184 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 26183ea731bb8a24fbc477e6e4f9f404,
@@ -15938,7 +15926,7 @@ MonoBehaviour:
     WaveTime: 120
   - WaveNumber: 2
     NextWaveIsIntermission: 1
-    MaxEnemiesInWave: 10
+    MaxEnemiesInWave: 1
     RateToSpwanShooter: 10
     RateToSpawnMiniBoss: 11
     WaveTime: 120
@@ -22888,7 +22876,7 @@ PrefabInstance:
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
@@ -22898,7 +22886,7 @@ PrefabInstance:
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
@@ -22908,7 +22896,7 @@ PrefabInstance:
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2322280071670369732, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
@@ -22932,9 +22920,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2322280071670369734, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
-      propertyPath: StarStone
+      propertyPath: StarStoneAlters
       value: 
-      objectReference: {fileID: 1930981111}
+      objectReference: {fileID: 0}
     - target: {fileID: 5988530204240588387, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
       propertyPath: m_IsActive
