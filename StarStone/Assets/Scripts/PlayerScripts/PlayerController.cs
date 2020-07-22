@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
         }
         if (ladderBottom == false && ladderTop == false)
         {
-            PlayerGravityForce = -9.81f;
+            PlayerGravityForce = -20f;
         }
     }
 
@@ -313,7 +313,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             CharacterController.height = 0.063f; // This returns the player to their normal height if they are not crouching
-            PlayerMovementSpeed = 10;
+            PlayerMovementSpeed = 6;
         }
     }
 
