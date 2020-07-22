@@ -2910,7 +2910,7 @@ PrefabInstance:
     - target: {fileID: 2322280071670369733, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
       propertyPath: m_Name
-      value: ' IceStarStoneAlter'
+      value: IceStarStoneAlter
       objectReference: {fileID: 0}
     - target: {fileID: 2322280071670369734, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
@@ -3043,6 +3043,38 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6606501483488557099, guid: 975a55675b3971e42b5e167c68d7a390, type: 3}
+--- !u!1 &348289300 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: abfb674f1ee35c84aa3d383c20dd410e,
+    type: 3}
+  m_PrefabInstance: {fileID: 713546141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &348289302
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348289300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.7913527, y: 5.776581, z: 2.867089}
+  m_Center: {x: -1.8957374, y: -0.8317194, z: 0.05282557}
+--- !u!114 &348289303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348289300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e605e79d0b5da5f4a8df6c8c4d0756da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EndingCutscene: {fileID: 111981690}
 --- !u!1 &355794804
 GameObject:
   m_ObjectHideFlags: 0

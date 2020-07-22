@@ -36,6 +36,8 @@ public class InteractAlters : MonoBehaviour
         {
             HasAllSigilsActivated = true;
         }
+
+        Debug.Log(m_hasWindSigilInteracted + ", " + m_hasFireSigilInteracted + ", " + m_hasIceSigilInteracted + ", " + m_hasEarthSigilInteracted);
     }
 
     private void OnTriggerStay(Collider other)
@@ -65,7 +67,7 @@ public class InteractAlters : MonoBehaviour
                             StarStone.SetActive(true);
                             HasSigilInteracted = true;
                         }
-                        else
+                        else if(m_hasWindSigilInteracted == false)
                         {
                             PlayerUI.PopUpMessageEnabled = true;
                             PlayerUI.PopUpMessageText = "You must activate the Wind Starstone first, before activating this one";
@@ -79,7 +81,7 @@ public class InteractAlters : MonoBehaviour
                             StarStone.SetActive(true);
                             HasSigilInteracted = true;
                         }
-                        else
+                        else if(m_hasFireSigilInteracted == false)
                         {
                             PlayerUI.PopUpMessageEnabled = true;
                             PlayerUI.PopUpMessageText = "You must activate the Fire Starstone first, before activating this one";
@@ -93,7 +95,7 @@ public class InteractAlters : MonoBehaviour
                             StarStone.SetActive(true);
                             HasSigilInteracted = true;
                         }
-                        else
+                        else if(m_hasIceSigilInteracted == false)
                         {
                             PlayerUI.PopUpMessageEnabled = true;
                             PlayerUI.PopUpMessageText = "You must activate the Ice Starstone first, before activating this one";
