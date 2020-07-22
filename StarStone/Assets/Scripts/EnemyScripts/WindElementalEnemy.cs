@@ -52,7 +52,7 @@ public class WindElementalEnemy : EnemyBase
         EnemyDetonation();
     }
 
-    private void OnTriggerStay(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -75,8 +75,12 @@ public class WindElementalEnemy : EnemyBase
 
             if (m_detonationTime > DetonationTimer)
             {
-                Instantiate(explosionVFX, transform.position, transform.rotation);
                 CurrentHealth = 0;
+            }
+
+            if(CurrentHealth <= 0)
+            {
+                Instantiate(explosionVFX, transform.position, transform.rotation);
             }
         }
     }

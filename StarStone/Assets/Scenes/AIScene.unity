@@ -1093,6 +1093,7 @@ MonoBehaviour:
   PlayerWalk: {fileID: 1255131134}
   PlayerRun: {fileID: 374478499}
   MenuTheme: {fileID: 0}
+  CutsceneTheme: {fileID: 0}
 --- !u!4 &890171689
 Transform:
   m_ObjectHideFlags: 0
@@ -2198,9 +2199,9 @@ MonoBehaviour:
   waves:
   - WaveNumber: 1
     NextWaveIsIntermission: 0
-    MaxEnemiesInWave: 1
+    MaxEnemiesInWave: 20
     RateToSpwanShooter: 50
-    RateToSpawnMiniBoss: 1
+    RateToSpawnMiniBoss: 50
     WaveTime: 120
   - WaveNumber: 2
     NextWaveIsIntermission: 1

@@ -21,7 +21,12 @@ public class InteractAlters : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       HasAllSigilsActivated = false;
+        m_hasWindSigilInteracted = false;
+        m_hasFireSigilInteracted = false;
+        m_hasIceSigilInteracted = false;
+        m_hasEarthSigilInteracted = false;
+
+        HasAllSigilsActivated = false;
     }
 
     // Update is called once per frame
@@ -32,8 +37,6 @@ public class InteractAlters : MonoBehaviour
             HasAllSigilsActivated = true;
         }
     }
-
-
 
     private void OnTriggerStay(Collider other)
     {
