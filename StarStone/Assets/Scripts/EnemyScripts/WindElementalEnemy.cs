@@ -62,6 +62,7 @@ public class WindElementalEnemy : EnemyBase
             {
                 other.gameObject.GetComponent<PlayerController>().PlayerDamage(DetonationDamage, 0);
                 CurrentHealth = 0;
+                Instantiate(explosionVFX, transform.position, transform.rotation);
             }
         }
     }
@@ -76,10 +77,6 @@ public class WindElementalEnemy : EnemyBase
             if (m_detonationTime > DetonationTimer)
             {
                 CurrentHealth = 0;
-            }
-
-            if (CurrentHealth <= 0)
-            {
                 Instantiate(explosionVFX, transform.position, transform.rotation);
             }
         }

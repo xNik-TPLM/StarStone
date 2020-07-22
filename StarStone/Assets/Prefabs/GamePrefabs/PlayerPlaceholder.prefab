@@ -4037,7 +4037,7 @@ MonoBehaviour:
   radius: 5
   nukeDamage: 200
   NukeCooldownMaxTime: 30
-  explosionVFX: {fileID: 0}
+  explosionVFX: {fileID: 131164, guid: 3c5f4e32698bdb04eaed647f60310510, type: 3}
 --- !u!1 &6868855796025749240
 GameObject:
   m_ObjectHideFlags: 0

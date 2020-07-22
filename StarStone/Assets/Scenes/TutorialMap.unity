@@ -1628,10 +1628,12 @@ MonoBehaviour:
     to your loadout."
   - "We\u2019ve added an ability that can cause extreme damage to your enemy within
     the proximity."
+  - Remember these features are used for a certain amount of time.
   - Go ahead and use it on this test dummy.
   - Amazing. We also added shield ability to block off some damage.
   - Can you activate it?
-  - Remember these features are used for a certain amount of time.
+  - "Great. I\u2019m really surprised with this training session. We can now say,
+    that you are ready, but come back whenever you wish soldier."
   - "Amazing. I\u2019m really surprised with this training session. We can now say,
     that you are ready, but come back whenever you wish soldier."
   DialogueText: {fileID: 653132722}
