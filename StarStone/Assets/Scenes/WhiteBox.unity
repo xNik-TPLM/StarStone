@@ -16603,25 +16603,25 @@ MonoBehaviour:
   waves:
   - WaveNumber: 1
     NextWaveIsIntermission: 1
-    MaxEnemiesInWave: 1
+    MaxEnemiesInWave: 30
     RateToSpwanShooter: 11
     RateToSpawnMiniBoss: 11
     WaveTime: 120
   - WaveNumber: 2
     NextWaveIsIntermission: 1
-    MaxEnemiesInWave: 1
+    MaxEnemiesInWave: 50
     RateToSpwanShooter: 10
     RateToSpawnMiniBoss: 11
     WaveTime: 120
   - WaveNumber: 3
     NextWaveIsIntermission: 1
-    MaxEnemiesInWave: 1
+    MaxEnemiesInWave: 70
     RateToSpwanShooter: 5
     RateToSpawnMiniBoss: 11
     WaveTime: 120
   - WaveNumber: 4
     NextWaveIsIntermission: 1
-    MaxEnemiesInWave: 1
+    MaxEnemiesInWave: 90
     RateToSpwanShooter: 5
     RateToSpawnMiniBoss: 10
     WaveTime: 120
