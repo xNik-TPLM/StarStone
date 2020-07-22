@@ -47,6 +47,12 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("GameMenu");
     }
 
+    // This function is called when the tutorial button is clicked
+    public void Tutorial()
+    {
+        SceneManager.LoadScene("TutorialMap");
+    }
+
     // This function is called when the quit button is clicked
     public void Quit()
     {

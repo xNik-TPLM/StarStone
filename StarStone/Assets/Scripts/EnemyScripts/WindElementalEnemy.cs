@@ -75,7 +75,7 @@ public class WindElementalEnemy : EnemyBase
 
             if (m_detonationTime > DetonationTimer)
             {
-                Instantiate(explosionVFX, transform.position, transform.rotation);
+                Instantiate(explosionVFX, transform.position, Quaternion.identity);
                 CurrentHealth = 0;
             }
         }
