@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private bool ladderBottom; //Collider to check if the player has entered to move up ladder
     private bool ladderTop; //Collider to check if the player has entered to move down ladder
+    private bool ladderTop2;
     public float ladderSpeed; //Speed of the player moving on the ladder
 
     //Player properties
@@ -174,6 +175,15 @@ public class PlayerController : MonoBehaviour
         {
             ladderTop = false;
         }
+
+        if (collision.CompareTag("LadderTop2"))
+        {
+            ladderTop2 = true; // This checks if the player is at the top of the ladder so the player can move in the right direction
+        }
+        else
+        {
+            ladderTop2 = false;
+        }
     }
 
     // Once the player is no longer on/using the ladder, they can longer press the 'use' key (Ben Smith)
@@ -200,11 +210,18 @@ public class PlayerController : MonoBehaviour
         //        transform.Translate(Vector3.forward * ladderSpeed * Time.deltaTime); // This makes sure the player is on the ladder before using it
         //    }
         //}
-        if (ladderTop == true && ladderBottom == false)
+        if (ladderTop == true && ladderBottom == false && ladderTop2 == false)
         {
-            transform.Translate(Vector3.forward * ladderSpeed * Time.deltaTime);
+            PlayerGravityForce = 0;
+            transform.Translate(Vector3.forward * 5 * ladderSpeed * Time.deltaTime);
         }
-            if (transform.position.y >= LadderTopTransform.position.y)
+        if (ladderTop2 == true)
+        {
+            PlayerGravityForce = 0;
+            transform.Translate(Vector3.up * -ladderSpeed * Time.deltaTime);
+        }
+
+        if (transform.position.y >= LadderTopTransform.position.y)
         {
             ladderBottom = false;
         }
