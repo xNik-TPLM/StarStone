@@ -191,16 +191,20 @@ public class PlayerController : MonoBehaviour
             PlayerGravityForce = 0;
             transform.Translate(Vector3.up * ladderSpeed * Time.deltaTime); // This moves the player up the ladder
         }
-        if (ladderTop == true && ladderBottom == false && transform.position.x >= LadderTopTransform.position.x)
+        //if (ladderTop == true && ladderBottom == false && transform.position.x >= LadderTopTransform.position.x)
+        //{
+        //    PlayerGravityForce = 0;
+        //    transform.Translate(Vector3.up * -ladderSpeed * Time.deltaTime); // This moves the player down the ladder
+        //    if (transform.position.x > LadderTopTransform.position.x)
+        //    {
+        //        transform.Translate(Vector3.forward * ladderSpeed * Time.deltaTime); // This makes sure the player is on the ladder before using it
+        //    }
+        //}
+        if (ladderTop == true && ladderBottom == false)
         {
-            PlayerGravityForce = 0;
-            transform.Translate(Vector3.up * -ladderSpeed * Time.deltaTime); // This moves the player down the ladder
-            if (transform.position.x > LadderTopTransform.position.x)
-            {
-                transform.Translate(Vector3.forward * ladderSpeed * Time.deltaTime); // This makes sure the player is on the ladder before using it
-            }
+            transform.Translate(Vector3.forward * ladderSpeed * Time.deltaTime);
         }
-        if (transform.position.y >= LadderTopTransform.position.y)
+            if (transform.position.y >= LadderTopTransform.position.y)
         {
             ladderBottom = false;
         }
