@@ -535,16 +535,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHealth: 0
-  MaxHealth: 100
+  MaxHealth: 200
   MaxEnemySpeed: 5
   BurningTime: 4
+  BurningDamage: 0
   FreezeTime: 0
-  BurnDamage: 10
+  HealthToPlayer: 0
   HealthBarUI: {fileID: 6053135828857695876}
   HealthBarSlider: {fileID: 1297436372702616634}
   FiringDistance: 10
-  EnemyFireRate: 10
-  RegeneratedHealth: 2
+  EnemyFireRate: 2
+  RegeneratedHealth: 3
   ProjectileSpawnPoint: {fileID: 2407358114255914750}
   EarthBoulder: {fileID: 2038676579407875711, guid: 1254e29f8982bcf49883bd506a43a5a5,
     type: 3}

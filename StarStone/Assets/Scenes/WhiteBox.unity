@@ -7071,6 +7071,11 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 0.6986302
       objectReference: {fileID: 0}
+    - target: {fileID: 9026820683249240448, guid: 1690eb7d2c09e4a4dbe1d822705b7b75,
+        type: 3}
+      propertyPath: ammoCrateValue
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1690eb7d2c09e4a4dbe1d822705b7b75, type: 3}
 --- !u!1 &1005834743
