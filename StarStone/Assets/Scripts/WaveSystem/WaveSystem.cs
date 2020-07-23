@@ -44,7 +44,9 @@ public class WaveSystem : MonoBehaviour
     public float GeneratorOverheatTime;
 
     //This integer property is the max enemies that can be on the map
-    public int MaxEnemiesOnMap; 
+    public int MaxEnemiesOnMap;
+
+    public GameObject GameOver;
     
 
     [Header("Spawn Points")]
@@ -189,7 +191,8 @@ public class WaveSystem : MonoBehaviour
         {
             //End the wave
             m_hasWaveBegun = false;
-            Debug.Log("Failed");
+            PauseMenu.FreezeGame();
+            GameOver.SetActive(true);
         }
     }
 
@@ -212,7 +215,9 @@ public class WaveSystem : MonoBehaviour
 
             if(m_generatorOverheatTimer > GeneratorOverheatTime)
             {
-                Time.timeScale = 0f;
+                m_hasWaveBegun = false;
+                PauseMenu.FreezeGame();
+                GameOver.SetActive(true);
             }
         }
         else

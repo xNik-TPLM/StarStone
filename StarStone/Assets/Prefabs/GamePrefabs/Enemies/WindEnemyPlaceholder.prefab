@@ -135,9 +135,9 @@ MonoBehaviour:
   MaxHealth: 70
   MaxEnemySpeed: 15
   BurningTime: 5
-  BurningDamage: 0
+  BurningDamage: 5
   FreezeTime: 3
-  HealthToPlayer: 0
+  HealthToPlayer: 5
   HealthBarUI: {fileID: 4282647412271146099}
   HealthBarSlider: {fileID: 9038548905602979533}
   DetonationTimer: 1

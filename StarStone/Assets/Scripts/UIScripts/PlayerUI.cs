@@ -77,6 +77,7 @@ public class PlayerUI : MonoBehaviour
         m_playerHealth = FindObjectOfType<PlayerController>();
 
         shieldSlider.maxValue = m_playerHealth.ShieldAmount;
+        m_shieldCooldownTimer = ShiedCooldownMaxTime;
 
 
         //Nikodem Hamrol
@@ -101,9 +102,11 @@ public class PlayerUI : MonoBehaviour
 
         if (shieldActive == true && shieldCooldownActive == false)
         {
+            m_shieldCooldownColourIndex = 1;
+
             if (shieldSlider.value <= 0)
-            {   shieldCooldownActive = true;
-                shieldActive = false;
+            {   shieldActive = false;
+                shieldCooldownActive = true;
                 m_shieldCooldownTimer = 0;
             }
         }
@@ -193,7 +196,6 @@ public class PlayerUI : MonoBehaviour
         {
             //Start counting and set the colour of the progression ring to grey
             m_shieldCooldownTimer += Time.deltaTime;
-            m_shieldCooldownColourIndex = 1;
 
             //If shield 
             if (m_shieldCooldownTimer > ShiedCooldownMaxTime)

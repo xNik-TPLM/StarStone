@@ -13,7 +13,7 @@ public class ProjectileBase : MonoBehaviour
 {
     //Projectile field
     //This float will get the property value of a projectile duration and uses it to count down the life of a projectile
-    private float m_projectileLifeTimer;
+    protected float m_projectileLifeTimer;
 
     //Projectile properties
     //Flaot properties
@@ -22,14 +22,14 @@ public class ProjectileBase : MonoBehaviour
     public float ProjectileDamage; //The damage the that the projectile will deal to the target
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         //Set the the timer using the duration property
         m_projectileLifeTimer = ProjectileDuration;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         //Set the direction of the projectile which will be travelling
         transform.position += transform.forward * ProjectileSpeed * Time.deltaTime;

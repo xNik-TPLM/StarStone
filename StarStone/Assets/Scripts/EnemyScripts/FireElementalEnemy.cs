@@ -16,6 +16,7 @@ public class FireElementalEnemy : EnemyBase
 
 
     public GameObject FireProjectile;
+    public GameObject ProjectileSpawnPoint;
 
     protected override void Start()
     {
@@ -39,7 +40,7 @@ public class FireElementalEnemy : EnemyBase
 
         if(m_enemyFireRateTime <= 0 && isPlayerInRange)
         {
-            Instantiate(FireProjectile, transform.position, transform.rotation);
+            Instantiate(FireProjectile, ProjectileSpawnPoint.transform.position, Target.rotation);
             m_enemyFireRateTime = EnemyFireRate;
         }
         else

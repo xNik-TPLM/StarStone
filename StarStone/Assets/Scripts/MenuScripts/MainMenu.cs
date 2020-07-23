@@ -21,6 +21,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         m_sound = FindObjectOfType<SoundFX>();
+        m_sound.MenuTheme.Play();
     }
 
     // This function is called when the play button is clicked

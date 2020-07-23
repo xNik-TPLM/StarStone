@@ -33,8 +33,7 @@ public class AmmoCrate : MonoBehaviour
                 HasAmmoRefilled = true;
                 m_weaponAdd.MaxAmmo += ammoCrateValue;
             }
-
-            if (Input.GetButtonDown("Interact") && HasAmmoRefilled == true)
+            else if (Input.GetButtonDown("Interact") && HasAmmoRefilled == true)
             {
                 PlayerUI.PopUpMessageEnabled = true;
                 PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[0];

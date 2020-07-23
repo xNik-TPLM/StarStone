@@ -1240,6 +1240,12 @@ Transform:
   m_Father: {fileID: 890171689}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &988351230 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3297118803590164208, guid: 60b5e663693a4374b96e44b9caa65eae,
+    type: 3}
+  m_PrefabInstance: {fileID: 1318931485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1054384848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,6 +1574,16 @@ PrefabInstance:
       propertyPath: BurningDamage
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3297118803367451320, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: LadderTopTransform
+      value: 
+      objectReference: {fileID: 988351230}
+    - target: {fileID: 3297118803367451320, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: LadderBottomTransform
+      value: 
+      objectReference: {fileID: 988351230}
     - target: {fileID: 4247650201853915926, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2199,8 +2215,8 @@ MonoBehaviour:
   waves:
   - WaveNumber: 1
     NextWaveIsIntermission: 0
-    MaxEnemiesInWave: 20
-    RateToSpwanShooter: 50
+    MaxEnemiesInWave: 1
+    RateToSpwanShooter: 1
     RateToSpawnMiniBoss: 50
     WaveTime: 120
   - WaveNumber: 2

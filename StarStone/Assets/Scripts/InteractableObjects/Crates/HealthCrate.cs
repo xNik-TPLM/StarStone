@@ -41,8 +41,7 @@ public class HealthCrate : MonoBehaviour
                     m_player.currentHealth = m_player.maxHealth;
                 }
             }
-
-            if (Input.GetButtonDown("Interact") && HealthKitUsed == true)
+            else if (Input.GetButtonDown("Interact") && HealthKitUsed == true)
             {
                 PlayerUI.PopUpMessageEnabled = true;
                 PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[0];

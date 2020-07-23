@@ -195,7 +195,6 @@ public class PlayerController : MonoBehaviour
     //This function controls the ladder climbing of the player (Ben Smith)
     private void PlayerLadder()
     {
-        Debug.Log(ladderBottom);
         if (ladderBottom == true && ladderTop == false)
         {
             PlayerGravityForce = 0;
