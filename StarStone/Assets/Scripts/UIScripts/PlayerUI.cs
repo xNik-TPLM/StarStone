@@ -101,13 +101,10 @@ public class PlayerUI : MonoBehaviour
 
         if (shieldActive == true && shieldCooldownActive == false)
         {
-            shieldCooldownActive = true;
-            m_shieldCooldownTimer = 0;
-
             if (shieldSlider.value <= 0)
-            {
+            {   shieldCooldownActive = true;
                 shieldActive = false;
-                shieldCooldownActive = true;
+                m_shieldCooldownTimer = 0;
             }
         }
 

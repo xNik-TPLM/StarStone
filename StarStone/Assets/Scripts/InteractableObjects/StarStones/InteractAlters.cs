@@ -16,6 +16,7 @@ public class InteractAlters : MonoBehaviour
     public static bool HasSigilInteracted;
     public static bool HasAllSigilsActivated;
 
+    public InteractionText InteractionText;
     public GameObject StarStone;
 
     // Start is called before the first frame update
@@ -36,8 +37,6 @@ public class InteractAlters : MonoBehaviour
         {
             HasAllSigilsActivated = true;
         }
-
-        Debug.Log(m_hasWindSigilInteracted + ", " + m_hasFireSigilInteracted + ", " + m_hasIceSigilInteracted + ", " + m_hasEarthSigilInteracted);
     }
 
     private void OnTriggerStay(Collider other)
@@ -45,7 +44,7 @@ public class InteractAlters : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerUI.PopUpControlsEnabled = true;
-            PlayerUI.PopUpControlsText = "Press [F] to Interact";
+            PlayerUI.PopUpControlsText = InteractionText.InteractControlsText;
 
             if (Input.GetButtonDown("Interact") && WaveSystem.InIntermission == true)
             {
@@ -70,7 +69,7 @@ public class InteractAlters : MonoBehaviour
                         else if(m_hasWindSigilInteracted == false)
                         {
                             PlayerUI.PopUpMessageEnabled = true;
-                            PlayerUI.PopUpMessageText = "You must activate the Wind Starstone first, before activating this one";
+                            PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[1];
                         }
                         break;
 
@@ -84,7 +83,7 @@ public class InteractAlters : MonoBehaviour
                         else if(m_hasFireSigilInteracted == false)
                         {
                             PlayerUI.PopUpMessageEnabled = true;
-                            PlayerUI.PopUpMessageText = "You must activate the Fire Starstone first, before activating this one";
+                            PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[2];
                         }
                         break;
 
@@ -98,7 +97,7 @@ public class InteractAlters : MonoBehaviour
                         else if(m_hasIceSigilInteracted == false)
                         {
                             PlayerUI.PopUpMessageEnabled = true;
-                            PlayerUI.PopUpMessageText = "You must activate the Ice Starstone first, before activating this one";
+                            PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[3];
                         }
                         break;
                 }
@@ -106,7 +105,7 @@ public class InteractAlters : MonoBehaviour
             else if(Input.GetButtonDown("Interact") && WaveSystem.InIntermission == false)
             {
                 PlayerUI.PopUpMessageEnabled = true;
-                PlayerUI.PopUpMessageText = "You must be in intermission to interact with the sigils";
+                PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[0];
             }
         }
     }

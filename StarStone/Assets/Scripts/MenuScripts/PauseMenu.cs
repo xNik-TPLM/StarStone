@@ -47,6 +47,7 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene("GameMenu"); // This will take the player back to the main menu
         ResetLevel();
+        UnFreezeGame();
 
         if (TutorialController.InTutorialScene)
         {

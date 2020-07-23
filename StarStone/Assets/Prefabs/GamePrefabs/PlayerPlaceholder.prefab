@@ -4004,7 +4004,7 @@ MonoBehaviour:
   playerShield: {fileID: 8041026485579920376}
   pauseMenu: {fileID: 2935839137570746789}
   m_playerVelocity: {x: 0, y: 0, z: 0}
-  ladderSpeed: 0
+  ladderSpeed: 10
   PlayerMovementSpeed: 10
   PlayerJumpForce: 3
   PlayerGravityForce: -9.81
@@ -4020,6 +4020,8 @@ MonoBehaviour:
     m_Bits: 256
   WeaponHolder: {fileID: 8399359680510400983}
   gameOver: {fileID: 3175149891254623954}
+  LadderTopTransform: {fileID: 0}
+  LadderBottomTransform: {fileID: 0}
   MaxBurningTime: 5
   BurningDamage: 5
 --- !u!114 &8558817294421199429

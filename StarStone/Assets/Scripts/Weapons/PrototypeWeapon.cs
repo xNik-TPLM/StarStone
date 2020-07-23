@@ -19,6 +19,7 @@ public class PrototypeWeapon : WeaponBase
 
     protected override void Start()
     {
+        m_sound = FindObjectOfType<SoundFX>();
     }
 
     protected override void PlayerShooting()

@@ -55,6 +55,9 @@ public class PlayerController : MonoBehaviour
     public GameObject WeaponHolder;
     public GameObject gameOver;
 
+    public Transform LadderTopTransform;
+    public Transform LadderBottomTransform;
+
     public static Transform KnifeStartPosition;
 
     private SoundFX m_sound;
@@ -182,25 +185,26 @@ public class PlayerController : MonoBehaviour
     //This function controls the ladder climbing of the player (Ben Smith)
     private void PlayerLadder()
     {
+        Debug.Log(ladderBottom);
         if (ladderBottom == true && ladderTop == false)
         {
             PlayerGravityForce = 0;
             transform.Translate(Vector3.up * ladderSpeed * Time.deltaTime); // This moves the player up the ladder
         }
-        if (ladderTop == true && ladderBottom == false && transform.position.x >= 17.5f)
+        if (ladderTop == true && ladderBottom == false && transform.position.x >= LadderTopTransform.position.x)
         {
             PlayerGravityForce = 0;
             transform.Translate(Vector3.up * -ladderSpeed * Time.deltaTime); // This moves the player down the ladder
-            if (transform.position.x > 18.2f)
+            if (transform.position.x > LadderTopTransform.position.x)
             {
                 transform.Translate(Vector3.forward * ladderSpeed * Time.deltaTime); // This makes sure the player is on the ladder before using it
             }
         }
-        if (transform.position.y >= 10.0f)
+        if (transform.position.y >= LadderTopTransform.position.y)
         {
             ladderBottom = false;
         }
-        if (transform.position.y <= 2.0f)
+        if (transform.position.y <= LadderTopTransform.position.y)
         {
             ladderTop = false;
         }

@@ -153,6 +153,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae11caa8b485a1d4bbd7602c77e3f87b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteractionText:
+    InteractControlsText: Press [F] to Activate Sigil
+    InteractPopUpMessages:
+    - You must be in intermission phase to interact with the sigils
+    - You must activate the Wind Starstone first, before activating this sigil
+    - You must activate the Fire Starstone first, before activating this sigil
+    - You must activate the Ice Starstone first, before activating this sigil
   StarStone: {fileID: 5988530204240588387}
 --- !u!64 &4583319725710643807
 MeshCollider:

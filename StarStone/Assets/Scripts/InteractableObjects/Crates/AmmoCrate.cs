@@ -9,21 +9,45 @@ using UnityEngine;
 public class AmmoCrate : MonoBehaviour
 {
     private WeaponBase m_weaponAdd; // Sets the reference to the weapon script
+    public static bool HasAmmoRefilled;
+    public InteractionText InteractionText;
     public int ammoCrateValue; // This sets the ammo value the player receives once picked up
 
     // Start is called before the first frame update
     void Start()
     {
+        HasAmmoRefilled = false;
         m_weaponAdd = FindObjectOfType<WeaponBase>();
     }
 
     // This checks whether the player has picked up the crate
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerStay(Collider other)
     {
-        if (collider.CompareTag("Player"))
+        if(other.CompareTag("Player"))
         {
-            m_weaponAdd.MaxAmmo += ammoCrateValue;
-            gameObject.SetActive(false); // This disables the crate
+            PlayerUI.PopUpControlsEnabled = true;
+            PlayerUI.PopUpControlsText = InteractionText.InteractControlsText;
+
+            if (Input.GetButtonDown("Interact") && HasAmmoRefilled == false)
+            {
+                HasAmmoRefilled = true;
+                m_weaponAdd.MaxAmmo += ammoCrateValue;
+            }
+
+            if (Input.GetButtonDown("Interact") && HasAmmoRefilled == true)
+            {
+                PlayerUI.PopUpMessageEnabled = true;
+                PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[0];
+            }
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerUI.PopUpControlsEnabled = false;
+        }
+    }
+
 }

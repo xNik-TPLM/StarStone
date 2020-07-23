@@ -14,7 +14,6 @@ public class WaveSystem : MonoBehaviour
     //Wave system fields
     //This boolean feild will be used to check if a wave has begun
     private bool m_hasWaveBegun;
-    private bool m_waveInProgress;
     
     //Float fields
     private float m_timeToSpawn; //This will time the spawining of the next enemy
@@ -70,9 +69,6 @@ public class WaveSystem : MonoBehaviour
         GeneratorTemperature = 0;
         EnemiesOnMap = 0;
         WaveNumberIndex = 0;
-
-
-        m_hasWaveBegun = false;
 
         //Go through each child of the WaveSystem object to get all spawn points
         for(int i = 0; i< SpawnPoints.Length; i++)
@@ -182,6 +178,8 @@ public class WaveSystem : MonoBehaviour
                 WaveTimer = waves[WaveNumberIndex].WaveTime;
                 m_hasWaveBegun = true;
                 InteractAlters.HasSigilInteracted = false;
+                HealthCrate.HealthKitUsed = false;
+                AmmoCrate.HasAmmoRefilled = false;
             }
         }
 
@@ -220,14 +218,6 @@ public class WaveSystem : MonoBehaviour
         else
         {
             m_generatorOverheatTimer = 0;
-        }
-    }
-
-    private void GameEndState()
-    {
-        if(InteractAlters.HasAllSigilsActivated == true)
-        {
-
         }
     }
 }
