@@ -13305,6 +13305,16 @@ PrefabInstance:
       propertyPath: LadderTopTransform
       value: 
       objectReference: {fileID: 872402069}
+    - target: {fileID: 3297118803367451320, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: PlayerGravityForce
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3297118803367451320, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: PlayerMovementSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3297118803590164209, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -15393,25 +15403,25 @@ MonoBehaviour:
   waves:
   - WaveNumber: 1
     NextWaveIsIntermission: 1
-    MaxEnemiesInWave: 2
+    MaxEnemiesInWave: 30
     RateToSpwanShooter: 31
     RateToSpawnMiniBoss: 31
     WaveTime: 120
   - WaveNumber: 2
     NextWaveIsIntermission: 1
-    MaxEnemiesInWave: 4
+    MaxEnemiesInWave: 50
     RateToSpwanShooter: 10
     RateToSpawnMiniBoss: 51
     WaveTime: 120
   - WaveNumber: 3
     NextWaveIsIntermission: 1
-    MaxEnemiesInWave: 6
+    MaxEnemiesInWave: 60
     RateToSpwanShooter: 5
     RateToSpawnMiniBoss: 11
     WaveTime: 120
   - WaveNumber: 4
     NextWaveIsIntermission: 1
-    MaxEnemiesInWave: 8
+    MaxEnemiesInWave: 70
     RateToSpwanShooter: 5
     RateToSpawnMiniBoss: 10
     WaveTime: 120
