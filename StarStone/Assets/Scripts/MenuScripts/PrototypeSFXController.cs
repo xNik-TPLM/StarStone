@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+///// <summary>
+///// This script handles the volume slider in the options menu
+///// Worked By: Ben Smith
+///// </summary>
 public class PrototypeSFXController : MonoBehaviour
 {
     public AudioSource Explosion; // This sets the reference to the audio
