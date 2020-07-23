@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SFXController : MonoBehaviour
+public class WalkSFXController : MonoBehaviour
 {
     public AudioSource Walk; // This sets the reference to the audio
     private float sfxVolume = 0.8f; // This sets a starting volume
