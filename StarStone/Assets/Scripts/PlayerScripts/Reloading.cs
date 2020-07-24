@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Reloading : MonoBehaviour
 {
-    Animator reloadAnimation;
-    private PlayerController m_playerController;
+    public Animator reloadAnimation;
 
     // Start is called before the first frame update
     void Start()
     {
-        reloadAnimation = GetComponent<Animator>();
-        m_playerController = GetComponent<PlayerController>();
+        //reloadAnimation = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,23 +20,26 @@ public class Reloading : MonoBehaviour
 
     public void ReloadCheck()
     {
-        if (m_playerController.isReloading)
+        if (WeaponBase.m_isWeaponReloading == true)
         {
             ReloadAnimation();
+        }
+        if (WeaponBase.m_isWeaponReloading == false)
+        {
+            StopReloadAnimation();
         }
     }
 
     public void ReloadAnimation()
     {
-        reloadAnimation.SetBool("Reload", true);   
+        reloadAnimation.SetBool("Reloading", true);
     }
 
     public void StopReloadAnimation()
     {
         if (reloadAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
-            reloadAnimation.SetBool("Reload", false); // This stops the animation from running once it has completed a cycle
-            //isReloading = false;
+            reloadAnimation.SetBool("Reloading", false);
         }
     }
 }

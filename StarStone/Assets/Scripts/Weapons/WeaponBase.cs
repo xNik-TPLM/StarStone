@@ -16,7 +16,7 @@ public class WeaponBase : MonoBehaviour
 
     //Private fields
     //Boolean field to chekc if the weapon is realodaing so that the player can't shoot, whilst realoding is happening
-    private bool m_isWeaponReloading;
+    public static bool m_isWeaponReloading;
 
     public static bool IsFiring;
 
@@ -152,7 +152,7 @@ public class WeaponBase : MonoBehaviour
     {
         //If R key is pressed and if player is not already reloading
         if (Input.GetKeyDown(KeyCode.R))
-        {            
+        {
             //If current clip is not full
             if (CurrentAmmo < WeaponClipSize)
             {
@@ -162,13 +162,14 @@ public class WeaponBase : MonoBehaviour
                 //If there's more ammo left
                 if (MaxAmmo >= m_ammoDifference)
                 {
+                    m_isWeaponReloading = true;
                     m_sound.PrimaryHandling.Play();
                     CurrentAmmo += m_ammoDifference; //Add the ammo difference to the current ammo, so that it's not bigger than the clip size
                     MaxAmmo -= m_ammoDifference; //Subtract max ammo by the ammo difference
                 }
                 else //If there's no ammo left
                 {
-                    //Add the remaing ammo and set max ammo to 0
+                    //Add the remaining ammo and set max ammo to 0
                     CurrentAmmo += MaxAmmo;
                     MaxAmmo = 0;
                 }
