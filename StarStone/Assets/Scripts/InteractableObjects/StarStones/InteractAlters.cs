@@ -55,68 +55,82 @@ public class InteractAlters : MonoBehaviour
         //Check if the object is tagged as player
         if (other.CompareTag("Player"))
         {
-            //Set the text and display it
+            //Set the controls text and display it on the screen
             PlayerUI.PopUpControlsText = InteractionText.InteractControlsText;
             PlayerUI.PopUpControlsEnabled = true;            
 
             //If the player pressed the "interact" button and the player is in the intermission phase
             if (Input.GetButtonDown("Interact") && WaveSystem.InIntermission == true)
             {
-
+                //The activation of sigils will be based on the names of the game object
                 switch (gameObject.name)
                 {
                     case "WindStarStoneAlter":
+                        //If the wind sigil hasn't been activated
                         if (HasWindSigilInteracted == false)
                         {
+                            //The wind sigil has been interacted, which will initiate the next wave and show the wind starstone
+                            HasSigilInteracted = true;
                             HasWindSigilInteracted = true;
                             StarStone.SetActive(true);
-                            HasSigilInteracted = true;
+                            
                         }
                         break;
 
                     case "FireStarStoneAlter":
+                        //If the wind sigil has been interacted but the fire sigil hasn't
                         if(HasWindSigilInteracted == true && HasFireSigilInteracted == false)
                         {
+                            //The fire sigil has been interacted, which will initiate the next wave and show the fire starstone
+                            HasSigilInteracted = true;
                             HasFireSigilInteracted = true;
                             StarStone.SetActive(true);
-                            HasSigilInteracted = true;
                         }
+                        //If the wind sigil has still not been activated
                         else if(HasWindSigilInteracted == false)
                         {
+                            //It will pop up a message to activate the wind sigil first
                             PlayerUI.PopUpMessageEnabled = true;
                             PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[1];
                         }
                         break;
 
                     case "IceStarStoneAlter":
-                        if(HasFireSigilInteracted == true && HasIceSigilInteracted == false)
+                        //If the fire sigil has been interacted but the ice sigil hasn't
+                        if (HasFireSigilInteracted == true && HasIceSigilInteracted == false)
                         {
                             HasIceSigilInteracted = true;
                             StarStone.SetActive(true);
                             HasSigilInteracted = true;
                         }
-                        else if(HasFireSigilInteracted == false)
+                        //If the fire sigil has still not been activated
+                        else if (HasFireSigilInteracted == false)
                         {
+                            //It will pop up a message to activate the fire sigil first
                             PlayerUI.PopUpMessageEnabled = true;
                             PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[2];
                         }
                         break;
 
                     case "EarthStarStoneAlter":
-                        if(HasIceSigilInteracted == true && HasEarthSigilInteracted == false)
+                        //If the ice sigil has been interacted but the earth sigil hasn't
+                        if (HasIceSigilInteracted == true && HasEarthSigilInteracted == false)
                         {
                             HasEarthSigilInteracted = true;
                             StarStone.SetActive(true);
                             HasSigilInteracted = true;
                         }
-                        else if(HasIceSigilInteracted == false)
+                        //If the ice sigil has still not been activated
+                        else if (HasIceSigilInteracted == false)
                         {
+                            //It will pop up a message to activate the ice sigil first
                             PlayerUI.PopUpMessageEnabled = true;
                             PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[3];
                         }
                         break;
                 }
             }
+            //If the player is not in the intermission phase, it will pop a message that they can't interact with it
             else if(Input.GetButtonDown("Interact") && WaveSystem.InIntermission == false)
             {
                 PlayerUI.PopUpMessageEnabled = true;
@@ -125,6 +139,7 @@ public class InteractAlters : MonoBehaviour
         }
     }
 
+    //When the player leaves the box trigger, it will hide the controls pop up
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))

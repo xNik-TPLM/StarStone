@@ -91,13 +91,15 @@ public class WeaponBase : MonoBehaviour
         //Run the shooting function
         PlayerShooting();
         WeaponReload();
+
+        Debug.Log(m_isWeaponReloading);
     }
 
     //This function handles when the player shoots their weapon
     protected virtual void PlayerShooting()
     {
         //If there is ammo left
-        if (CurrentAmmo > 0 && !PauseMenu.IsGamePaused)
+        if (CurrentAmmo > 0 && !PauseMenu.IsGamePaused && m_isWeaponReloading == false)
         {
             ///Automatic weapon solution
             //If player holds down the left mouse button and if it is time to fire and if the player is not reloading
@@ -151,28 +153,29 @@ public class WeaponBase : MonoBehaviour
     private void WeaponReload()
     {
         //If R key is pressed and if player is not already reloading
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && MaxAmmo != 0)
         {
             //If current clip is not full
             if (CurrentAmmo < WeaponClipSize)
             {
                 //Set ammo difference, by subtracting the clip size by ammo in clip
                 m_ammoDifference = WeaponClipSize - CurrentAmmo;
-                
+
                 //If there's more ammo left
                 if (MaxAmmo >= m_ammoDifference)
                 {
                     m_isWeaponReloading = true;
-                    m_sound.PrimaryHandling.Play();
                     CurrentAmmo += m_ammoDifference; //Add the ammo difference to the current ammo, so that it's not bigger than the clip size
                     MaxAmmo -= m_ammoDifference; //Subtract max ammo by the ammo difference
                 }
                 else //If there's no ammo left
                 {
+                    m_isWeaponReloading = true;
                     //Add the remaining ammo and set max ammo to 0
                     CurrentAmmo += MaxAmmo;
                     MaxAmmo = 0;
                 }
+                m_sound.PrimaryHandling.Play();  
             }
         }
     }

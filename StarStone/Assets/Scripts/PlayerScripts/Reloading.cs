@@ -15,12 +15,26 @@ public class Reloading : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ReloadCheck();
+        if (WeaponBase.m_isWeaponReloading == true)
+        {
+            reloadAnimation.SetBool("Reloading", true);
+
+            if (reloadAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            {
+                WeaponBase.m_isWeaponReloading = false;
+            }
+        }
+        else
+        {
+            reloadAnimation.SetBool("Reloading", false);
+        }
+
+
     }
 
-    public void ReloadCheck()
+    /*public void ReloadCheck()
     {
-        if (WeaponBase.m_isWeaponReloading == true)
+        /*if (WeaponBase.m_isWeaponReloading == true)
         {
             ReloadAnimation();
         }
@@ -28,11 +42,22 @@ public class Reloading : MonoBehaviour
         {
             StopReloadAnimation();
         }
+
+
+
+
     }
 
     public void ReloadAnimation()
     {
         reloadAnimation.SetBool("Reloading", true);
+
+        if (reloadAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        {
+            reloadAnimation.SetBool("Reloading", false);
+            WeaponBase.m_isWeaponReloading = false;
+        }
+
     }
 
     public void StopReloadAnimation()
@@ -41,5 +66,5 @@ public class Reloading : MonoBehaviour
         {
             reloadAnimation.SetBool("Reloading", false);
         }
-    }
+    }*/
 }

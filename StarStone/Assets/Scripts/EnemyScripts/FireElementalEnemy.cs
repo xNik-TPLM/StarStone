@@ -32,6 +32,7 @@ public class FireElementalEnemy : EnemyBase
         {
             isPlayerInRange = true;
             transform.position = transform.position;
+            transform.LookAt(Target.position);
         }
         else
         {
@@ -40,7 +41,7 @@ public class FireElementalEnemy : EnemyBase
 
         if(m_enemyFireRateTime <= 0 && isPlayerInRange)
         {
-            Instantiate(FireProjectile, ProjectileSpawnPoint.transform.position, Target.rotation);
+            Instantiate(FireProjectile, ProjectileSpawnPoint.transform.position, transform.rotation);
             m_enemyFireRateTime = EnemyFireRate;
         }
         else

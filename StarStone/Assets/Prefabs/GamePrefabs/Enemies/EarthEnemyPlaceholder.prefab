@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6399320532099347254}
   m_Layer: 0
-  m_Name: ProjectileSpawnPoint
+  m_Name: BoulderSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -543,10 +543,10 @@ MonoBehaviour:
   HealthToPlayer: 0
   HealthBarUI: {fileID: 6053135828857695876}
   HealthBarSlider: {fileID: 1297436372702616634}
+  RegeneratedHealth: 3
   FiringDistance: 10
   EnemyFireRate: 2
-  RegeneratedHealth: 3
-  ProjectileSpawnPoint: {fileID: 2407358114255914750}
+  BoulderSpawnPoint: {fileID: 2407358114255914750}
   EarthBoulder: {fileID: 2038676579407875711, guid: 1254e29f8982bcf49883bd506a43a5a5,
     type: 3}
 --- !u!65 &5579606125717743602

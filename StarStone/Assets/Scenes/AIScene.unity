@@ -2216,8 +2216,8 @@ MonoBehaviour:
   - WaveNumber: 1
     NextWaveIsIntermission: 0
     MaxEnemiesInWave: 1
-    RateToSpwanShooter: 1
-    RateToSpawnMiniBoss: 50
+    RateToSpwanShooter: 50
+    RateToSpawnMiniBoss: 1
     WaveTime: 120
   - WaveNumber: 2
     NextWaveIsIntermission: 1
@@ -2235,6 +2235,7 @@ MonoBehaviour:
   WaveCooldown: 1
   GeneratorOverheatTime: 5
   MaxEnemiesOnMap: 15
+  GameOver: {fileID: 0}
   SpawnPoints:
   - {fileID: 0}
   - {fileID: 0}
