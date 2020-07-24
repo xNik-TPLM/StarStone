@@ -20494,18 +20494,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 530616680}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &535263115 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3297118803367451320, guid: 60b5e663693a4374b96e44b9caa65eae,
-    type: 3}
-  m_PrefabInstance: {fileID: 1895847105}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88fc69c5b01fca04aa314ba7b1b4ed27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &537560047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21257,7 +21245,26 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1895847105}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &552351007
+--- !u!95 &552351007
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552351006}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6c38d602e8f365c41b68550e2874aafe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &552351009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -21269,26 +21276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b3d6adf41129844eaf9292ab86d3ec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player: {fileID: 535263115}
---- !u!95 &552351009
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 552351006}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5fd59d249e986f7429d74c91515e5750, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  reloadAnimation: {fileID: 552351007}
 --- !u!1 &554309112 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: ab8534fb24fd01c469647d269f21c582,
@@ -21845,10 +21833,20 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5644864814187661328, guid: de9a9f7d15ebec941ab9ba10ecc9f47f,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6763928924153947253, guid: de9a9f7d15ebec941ab9ba10ecc9f47f,
         type: 3}
       propertyPath: m_Name
       value: Ladder
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428799216974336357, guid: de9a9f7d15ebec941ab9ba10ecc9f47f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: 7747621127479449190, guid: de9a9f7d15ebec941ab9ba10ecc9f47f,
         type: 3}
@@ -61875,6 +61873,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d0656979b19b641911c64c6da42101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1622042077
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622042072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1622075565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71618,7 +71635,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_reload
       value: 
-      objectReference: {fileID: 552351007}
+      objectReference: {fileID: 0}
     - target: {fileID: 3297118803590164209, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_StaticEditorFlags
