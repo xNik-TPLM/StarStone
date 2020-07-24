@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     public float ShieldAmount = 50;
 
     public static float ShieldHealth;
+    public bool isReloading = false;
 
     //Transform properties
     public Transform PlayerFeetPosition; //Position of the player's feet to check if player is grounded
@@ -63,7 +64,6 @@ public class PlayerController : MonoBehaviour
 
     private SoundFX m_sound;
 
-
     //Nikodem Hamrol's fields and properties
     private bool m_isPlayerBurning;
     private float m_playerBurningTime;
@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth = maxHealth;
         m_sound = FindObjectOfType<SoundFX>();
+        //m_reload = GetComponent<Reloading>();
     }
 
     // Update is called once per frame
@@ -132,7 +133,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Melee"))
         {
             Knife.SetActive(true); // This enables the knife
+            //m_reload.ReloadAnimation();
             WeaponHolder.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            isReloading = true;
         }
     }
 
@@ -216,10 +222,9 @@ public class PlayerController : MonoBehaviour
         }
         if (ladderTop2 == true)
         {
-            PlayerGravityForce = 0;
-            transform.Translate(Vector3.up * -ladderSpeed * Time.deltaTime);
+            //PlayerGravityForce = -5f;
+            transform.Translate(Vector3.down * -ladderSpeed * Time.deltaTime);
         }
-
         if (transform.position.y >= LadderTopTransform.position.y)
         {
             ladderBottom = false;

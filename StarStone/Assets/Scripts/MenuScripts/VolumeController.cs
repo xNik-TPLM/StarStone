@@ -9,7 +9,7 @@ using UnityEngine;
 public class VolumeController : MonoBehaviour
 {
     public AudioSource Theme; // This sets the reference to the audio
-    private float musicVolume = 0.1f; // This sets a starting volume
+    private float musicVolume = 0.5f; // This sets a starting volume
 
     // Start is called before the first frame update
     void Start()

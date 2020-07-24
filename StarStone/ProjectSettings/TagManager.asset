@@ -12,6 +12,7 @@ TagManager:
   - Knife
   - StarStone
   - AmmoCrate
+  - LadderTop2
   layers:
   - Default
   - TransparentFX
