@@ -639,6 +639,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &558358947 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3297118803590164208, guid: 60b5e663693a4374b96e44b9caa65eae,
+    type: 3}
+  m_PrefabInstance: {fileID: 1961847480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &560370797
 GameObject:
   m_ObjectHideFlags: 0
@@ -2427,6 +2433,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3297118803367451320, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: LadderTopTransform
+      value: 
+      objectReference: {fileID: 558358947}
+    - target: {fileID: 3297118803367451320, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: LadderBottomTransform
+      value: 
+      objectReference: {fileID: 558358947}
     - target: {fileID: 3609561417430918001, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_LocalPosition.z

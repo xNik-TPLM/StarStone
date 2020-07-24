@@ -3,70 +3,85 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// This script is how the player will interact with the alters in the "God Rooms" in order to progress through the game.
 /// Worked By: Nikodem Hamrol
 /// </summary>
 
 public class InteractAlters : MonoBehaviour
 {
-    public static bool m_hasWindSigilInteracted;
-    public static bool m_hasFireSigilInteracted;
-    public static bool m_hasIceSigilInteracted;
-    public static bool m_hasEarthSigilInteracted;
+    //These public static booleans will check if each elemental alter sigils have been interacted already.
+    //We do not use it as private as it doesnt pass on the statement to toher alters.
+    public static bool HasWindSigilInteracted;
+    public static bool HasFireSigilInteracted;
+    public static bool HasIceSigilInteracted;
+    public static bool HasEarthSigilInteracted;
 
+    //This is to check if one sigil has been interacted already, which will allow for next wave initiation
     public static bool HasSigilInteracted;
+
+    //This is to check if all sigils have been activated, which allow the player to use the power switch
     public static bool HasAllSigilsActivated;
 
+    [Tooltip("This is a reference to the interction text script, which allow to add control text and any pop up messages")]
     public InteractionText InteractionText;
+    [Tooltip("This is for the starstone object inside tha alter prefab")]
     public GameObject StarStone;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_hasWindSigilInteracted = false;
-        m_hasFireSigilInteracted = false;
-        m_hasIceSigilInteracted = false;
-        m_hasEarthSigilInteracted = false;
-
+        //Set all these values to false, when starting
+        HasWindSigilInteracted = false;
+        HasFireSigilInteracted = false;
+        HasIceSigilInteracted = false;
+        HasEarthSigilInteracted = false;
+        HasSigilInteracted = false;
         HasAllSigilsActivated = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(m_hasWindSigilInteracted && m_hasFireSigilInteracted && m_hasIceSigilInteracted && m_hasEarthSigilInteracted)
+        //This will check if all sigils have been activated, which will set the boolean to true and it will allow the player to use the power switch
+        if(HasWindSigilInteracted && HasFireSigilInteracted && HasIceSigilInteracted && HasEarthSigilInteracted)
         {
             HasAllSigilsActivated = true;
         }
     }
 
+    //When a player enters and stays within the sigils, box trigger
     private void OnTriggerStay(Collider other)
     {
+        //Check if the object is tagged as player
         if (other.CompareTag("Player"))
         {
-            PlayerUI.PopUpControlsEnabled = true;
+            //Set the text and display it
             PlayerUI.PopUpControlsText = InteractionText.InteractControlsText;
+            PlayerUI.PopUpControlsEnabled = true;            
 
+            //If the player pressed the "interact" button and the player is in the intermission phase
             if (Input.GetButtonDown("Interact") && WaveSystem.InIntermission == true)
             {
+
                 switch (gameObject.name)
                 {
                     case "WindStarStoneAlter":
-                        if (m_hasWindSigilInteracted == false)
+                        if (HasWindSigilInteracted == false)
                         {
-                            m_hasWindSigilInteracted = true;
+                            HasWindSigilInteracted = true;
                             StarStone.SetActive(true);
                             HasSigilInteracted = true;
                         }
                         break;
 
                     case "FireStarStoneAlter":
-                        if(m_hasWindSigilInteracted == true && m_hasFireSigilInteracted == false)
+                        if(HasWindSigilInteracted == true && HasFireSigilInteracted == false)
                         {
-                            m_hasFireSigilInteracted = true;
+                            HasFireSigilInteracted = true;
                             StarStone.SetActive(true);
                             HasSigilInteracted = true;
                         }
-                        else if(m_hasWindSigilInteracted == false)
+                        else if(HasWindSigilInteracted == false)
                         {
                             PlayerUI.PopUpMessageEnabled = true;
                             PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[1];
@@ -74,13 +89,13 @@ public class InteractAlters : MonoBehaviour
                         break;
 
                     case "IceStarStoneAlter":
-                        if(m_hasFireSigilInteracted == true && m_hasIceSigilInteracted == false)
+                        if(HasFireSigilInteracted == true && HasIceSigilInteracted == false)
                         {
-                            m_hasIceSigilInteracted = true;
+                            HasIceSigilInteracted = true;
                             StarStone.SetActive(true);
                             HasSigilInteracted = true;
                         }
-                        else if(m_hasFireSigilInteracted == false)
+                        else if(HasFireSigilInteracted == false)
                         {
                             PlayerUI.PopUpMessageEnabled = true;
                             PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[2];
@@ -88,13 +103,13 @@ public class InteractAlters : MonoBehaviour
                         break;
 
                     case "EarthStarStoneAlter":
-                        if(m_hasIceSigilInteracted == true && m_hasEarthSigilInteracted == false)
+                        if(HasIceSigilInteracted == true && HasEarthSigilInteracted == false)
                         {
-                            m_hasEarthSigilInteracted = true;
+                            HasEarthSigilInteracted = true;
                             StarStone.SetActive(true);
                             HasSigilInteracted = true;
                         }
-                        else if(m_hasIceSigilInteracted == false)
+                        else if(HasIceSigilInteracted == false)
                         {
                             PlayerUI.PopUpMessageEnabled = true;
                             PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[3];
