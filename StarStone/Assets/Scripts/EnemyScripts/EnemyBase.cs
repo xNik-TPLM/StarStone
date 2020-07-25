@@ -14,56 +14,65 @@ using UnityEngine.AI;
 public class EnemyBase : MonoBehaviour
 {
     //Enemy fields
-    //This float is the duration of bruning that will be checked if it reaches the "Burning Time" property
-    private float m_enemyBurningTimer;
-    private float m_enemyFreezeTimer;
+    //Float fields
+    private float m_enemyBurningTime; //This float will be counting up the time of burning
+    private float m_enemyFreezeTime; //This float will be counting up the time of freezing
+    private float m_enemySpeed; //This is the current speed the enemy will go.
 
-    private float m_enemySpeed;
-
-    protected PlayerController m_playerReference;
-    
     //Protected fields
     //protected booleans
-    protected bool isPlayerInRange; //This will check if the enemy is in range with the player for detonation, or shooting
-    protected bool m_isEnemyBurning; //This will check if the enemy is burning   
-    protected bool m_isEnemyFrozen; 
-    
+    protected bool m_isPlayerInRange; //This will check if the enemy is in range with the player for detonation, or shooting
+    protected bool m_isEnemyBurning; //This will be activated when the an enemy is hit with a fire projectile and will be used to set 
+    protected bool m_isEnemyFrozen;
+
+    //This protected float keeps track of how much health does the enemy have
+    protected float m_enemyCurrentHealth;
+
     //This transform will get the location of the player so that the AI will know what their target is
-    protected Transform Target;
+    protected Transform m_playerTarget;
 
     //This navmesh agent will be used as reference to the component in our enemy object
     protected NavMeshAgent m_enemyNavMesh;
 
+    //The player controller reference will be used to give health to the player when the enemy is hit by an earth projectile
+    protected PlayerController m_playerReference;
+
     //Enemy properties    
     //Float properties
-    [Header("Health")]
-    public float CurrentHealth; //This keeps track of how much health does the enemy have
+    [Header("Health Properties")]
+    [Tooltip("The maximum health the enemy will have")]
     public float MaxHealth; //This sets the max health of an enemy
 
-    [Header("Speed")]
+    [Header("Speed Properties")]
+    [Tooltip("The maximum speed the enemy will move around the map")]
     public float MaxEnemySpeed; //This sets the max speed of our enemy
 
-    [Header("Elemental Effects")]
-    public float BurningTime; //This sets the burning time of our enemy
-    public int BurningDamage; //This sets the burning damage of our enemy
-    public float FreezeTime; //This sets the freeze time of our enemy
-    public float HealthToPlayer; //This the amount of health the enemy will give to the player when hit by an earth projectile
-
     [Header("UI")]
-    //Unity properties
     public GameObject HealthBarUI; //This is the reference to the canvas of our health bar so that we can deactivate it when health is full
     public Slider HealthBarSlider; //this is the reference to the slider, which change the value of the slider
+
+    [Header("Elemental Effects")]
+    [Tooltip("This is the maximum time the enemy will burn for")]
+    public float MaxBurningTime; //This sets the burning time of our enemy
+    [Tooltip("This the amount of damage that burning will deal per second")]
+    public int BurningDamage; //This sets the burning damage per second of our enemy
+    [Tooltip("This is the maximum time for enemy being frozen")]
+    public float MaxFreezeTime; //This sets the freeze time of our enemy
+    [Tooltip("The amount of health given to the player when hit by the earth projectile")]
+    public float HealthToPlayer; //This the amount of health the enemy will give to the player when hit by an earth projectile
+    
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        m_enemyNavMesh = GetComponent<NavMeshAgent>(); //Get a reference to the navmesh agent component
+        //Get a reference to the navmesh agent component, player controller, and player's position
+        m_enemyNavMesh = GetComponent<NavMeshAgent>(); 
         m_playerReference = FindObjectOfType<PlayerController>();
-        Target = GameObject.FindGameObjectWithTag("Player").transform; //Get the transform of our player to be used at destination for the AI
+        m_playerTarget = GameObject.FindGameObjectWithTag("Player").transform; //Get the transform of our player to be used at destination for the AI
 
         //Set the enemy speed and health using the set properties
         m_enemySpeed = MaxEnemySpeed;
-        CurrentHealth = MaxHealth;
+        m_enemyCurrentHealth = MaxHealth;
     }
 
     // Update is called once per frame
@@ -78,7 +87,7 @@ public class EnemyBase : MonoBehaviour
     //This function returns the health to display it on the enemy's health bar
     private float ReturnHealth()
     {
-        return CurrentHealth / MaxHealth;
+        return m_enemyCurrentHealth / MaxHealth;
     }
 
     //This function will handle everything to do with health and display it
@@ -87,24 +96,24 @@ public class EnemyBase : MonoBehaviour
         HealthBarSlider.value = ReturnHealth(); //Use the returned float to display it on the health bar
 
         //If enemy's current health is smaller than max health
-        if (CurrentHealth < MaxHealth)
+        if (m_enemyCurrentHealth < MaxHealth)
         {
             //Display health bar
             HealthBarUI.SetActive(true);
         }
 
         //If enemy's current health is greater than max health
-        if (CurrentHealth >= MaxHealth)
+        if (m_enemyCurrentHealth >= MaxHealth)
         {
             //Hide the health bar and set current health as max health
             HealthBarUI.SetActive(false);
-            CurrentHealth = MaxHealth;
+            m_enemyCurrentHealth = MaxHealth;
         }
 
         //If enemy's current health is below or equla to 0 then 
-        if (CurrentHealth <= 0)
+        if (m_enemyCurrentHealth <= 0)
         {
-            //Decrement enemies on the map for the wave system and destroy the game object
+            //Decrement enemies on the map for the wave system, reduce the generator temperature and destroy the game object
             WaveSystem.EnemiesOnMap--;
             WaveSystem.GeneratorTemperature -= 20;
             Destroy(gameObject);
@@ -117,7 +126,7 @@ public class EnemyBase : MonoBehaviour
         //if it's a normal projectile then deal normal damage
         if(projectileType == 0)
         {
-            CurrentHealth -= damage;
+            m_enemyCurrentHealth -= damage;
         }
     }
 
@@ -125,12 +134,12 @@ public class EnemyBase : MonoBehaviour
     protected virtual void EnemyBehaviour()
     {
         m_enemyNavMesh.speed = m_enemySpeed; //Set speed for the Navmesh agent. Using the speed property to set the navmesh will be simpler, instead of scrolling through a load of navmesh agent properties
-        Vector3 targetPosition = Target.position; //Set the target position to the position of the player
+        Vector3 m_playerTargetPosition = m_playerTarget.position; //Set the m_playerTarget position to the position of the player
 
         //If the player is not in range, then set the destination of the player's location
-        if(isPlayerInRange == false)
+        if(m_isPlayerInRange == false)
         {
-            m_enemyNavMesh.SetDestination(targetPosition);
+            m_enemyNavMesh.SetDestination(m_playerTargetPosition);
         }
     }
 
@@ -141,15 +150,15 @@ public class EnemyBase : MonoBehaviour
         if(m_isEnemyBurning == true)
         {
             //Take away enemy's health and initiate burning timer
-            CurrentHealth -= BurningDamage * Time.deltaTime;
-            m_enemyBurningTimer += Time.deltaTime;
+            m_enemyCurrentHealth -= BurningDamage * Time.deltaTime;
+            m_enemyBurningTime += Time.deltaTime;
 
             //The timer reaches the time of burning
-            if(m_enemyBurningTimer > BurningTime)
+            if(m_enemyBurningTime > MaxBurningTime)
             {
                 //stop the burning and set the timer back to 0
                 m_isEnemyBurning = false;
-                m_enemyBurningTimer = 0;
+                m_enemyBurningTime = 0;
             }
         }
     }
@@ -162,14 +171,14 @@ public class EnemyBase : MonoBehaviour
         {
             //Set the enemy speed to 0 and start the timer
             m_enemySpeed = 0;
-            m_enemyFreezeTimer += Time.deltaTime;
+            m_enemyFreezeTime += Time.deltaTime;
 
             //Check if the timer is up
-            if(m_enemyFreezeTimer > FreezeTime)
+            if(m_enemyFreezeTime > MaxFreezeTime)
             {
                 //Turn off freezing and set speed back to normal
                 m_isEnemyFrozen = false;
-                m_enemyFreezeTimer = 0;
+                m_enemyFreezeTime = 0;
                 m_enemySpeed = MaxEnemySpeed;
             }
         }

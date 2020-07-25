@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 5878543961469191352}
   - component: {fileID: 191475539165870145}
   - component: {fileID: 5416311808397460237}
-  - component: {fileID: -6691711594676195500}
+  - component: {fileID: 1606510802908025572}
   m_Layer: 0
   m_Name: TestDummy
   m_TagString: Enemy
@@ -229,7 +229,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04607644, y: 0.061215468, z: 0.008171767}
   m_Center: {x: -0.0000028768554, y: 0.014775044, z: -2.6245751e-17}
---- !u!114 &-6691711594676195500
+--- !u!114 &1606510802908025572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,19 +238,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1915322805880769693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd5262b488ba2454faeca9e2d9802324, type: 3}
+  m_Script: {fileID: 11500000, guid: 2da8f0ec56ef2f9469cd73849f901d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 0
   MaxHealth: 70
   MaxEnemySpeed: 0
-  BurningTime: 0
-  BurningDamage: 0
-  FreezeTime: 0
-  HealthToPlayer: 0
   HealthBarUI: {fileID: 1832877923154584987}
   HealthBarSlider: {fileID: 6876950127229277989}
-  RegeneratedHealth: 0
+  MaxBurningTime: 0
+  BurningDamage: 0
+  MaxFreezeTime: 0
+  HealthToPlayer: 0
 --- !u!1 &7771744781390869246
 GameObject:
   m_ObjectHideFlags: 0

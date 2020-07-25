@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     public float PlayerGravityForce; //The gravity force of the player
     public float GroundCheckRadius = 0.4f; //The radius to check if the player's still on the ground
     public float maxHealth = 100;
-    public float currentHealth;
+    public float m_enemyCurrentHealth;
     public float ShieldAmount = 50;
 
     public static float ShieldHealth;
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        m_enemyCurrentHealth = maxHealth;
         m_sound = FindObjectOfType<SoundFX>();
         //m_reload = GetComponent<Reloading>();
     }
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
     // This function will run if the player's health is fully depleted (Ben Smith)
     private void GameOver()
     {
-        if (currentHealth <= 0)
+        if (m_enemyCurrentHealth <= 0)
         {
             gameOver.SetActive(true); // This enables the game over screen
         }
@@ -357,7 +357,7 @@ public class PlayerController : MonoBehaviour
         }
         else //else, take away player's health
         {
-            currentHealth -= damage;
+            m_enemyCurrentHealth -= damage;
 
             //Check if the player has been hit by enemy's fire projectile, which will enable player burning
             if(damageType == 1)
@@ -374,7 +374,7 @@ public class PlayerController : MonoBehaviour
         if(m_isPlayerBurning == true)
         {
             //Take away player's health and initiate burning timer
-            currentHealth -= BurningDamage * Time.deltaTime;
+            m_enemyCurrentHealth -= BurningDamage * Time.deltaTime;
             m_playerBurningTime += Time.deltaTime;
 
             //If the timer reaches the max burning time
