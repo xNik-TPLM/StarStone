@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class EnemyFireProjectile : ProjectileBase
 {
-    private Transform m_playerm_playerTarget;
+    private Transform m_playerTarget;
 
-    private Vector3 m_m_playerTargetPosition;
+    private Vector3 m_targetPosition;
 
     protected override void Start()
     {
         base.Start();
 
-        m_playerm_playerTarget = FindObjectOfType<PlayerController>().transform;
+        m_playerTarget = FindObjectOfType<PlayerController>().transform;
 
-        m_m_playerTargetPosition = new Vector3(m_playerm_playerTarget.position.x, m_playerm_playerTarget.position.y, m_playerm_playerTarget.position.z);
+        m_targetPosition = new Vector3(m_playerTarget.position.x, m_playerTarget.position.y, m_playerTarget.position.z);
     }
 
     protected override void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, m_m_playerTargetPosition, ProjectileSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, m_targetPosition, ProjectileSpeed * Time.deltaTime);
 
         //Count down the life of the projectile
         m_projectileLifeTimer -= Time.deltaTime;

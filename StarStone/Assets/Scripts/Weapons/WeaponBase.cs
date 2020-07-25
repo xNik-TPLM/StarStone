@@ -186,11 +186,11 @@ public class WeaponBase : MonoBehaviour
         //Initiate raycast from the weapon muzzle and point it forward and get the information on the object hit from 
         if (Physics.Raycast(WeaponMuzzle.transform.position, WeaponMuzzle.transform.forward, out RaycastHit m_raycastHitDetector, 100) && UseHitscan == true)
         {
-            EnemyBase Enemym_playerTarget = m_raycastHitDetector.transform.GetComponent<EnemyBase>();
+            EnemyBase EnemyTarget = m_raycastHitDetector.transform.GetComponent<EnemyBase>();
 
-            if (Enemym_playerTarget != null)
+            if (EnemyTarget != null)
             {
-                Enemym_playerTarget.EnemyDamaged(WeaponDamage, 0);
+                EnemyTarget.EnemyDamaged(WeaponDamage, 0);
                 Debug.Log("Hit");
             }
         }

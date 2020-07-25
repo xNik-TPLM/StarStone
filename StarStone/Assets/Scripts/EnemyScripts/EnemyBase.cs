@@ -134,7 +134,7 @@ public class EnemyBase : MonoBehaviour
     protected virtual void EnemyBehaviour()
     {
         m_enemyNavMesh.speed = m_enemySpeed; //Set speed for the Navmesh agent. Using the speed property to set the navmesh will be simpler, instead of scrolling through a load of navmesh agent properties
-        Vector3 m_playerTargetPosition = m_playerTarget.position; //Set the m_playerTarget position to the position of the player
+        Vector3 m_playerTargetPosition = m_playerTarget.position; //Set the target position to the position of the player
 
         //If the player is not in range, then set the destination of the player's location
         if(m_isPlayerInRange == false)

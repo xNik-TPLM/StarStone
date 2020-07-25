@@ -84,7 +84,7 @@ public class FireElementalEnemy : EnemyBase
 
             case 4: //Earth projectile will deal double damage, as fire is weak to earth and will give the player some health
                 m_enemyCurrentHealth -= damage * 2;
-                m_playerReference.m_enemyCurrentHealth += HealthToPlayer;
+                m_playerReference.currentHealth += HealthToPlayer;
                 break;
         }
     }

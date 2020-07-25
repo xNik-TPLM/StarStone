@@ -46,7 +46,7 @@ public class WindElementalEnemy : EnemyBase
 
             case 4: //Earth projectile will deal normal damage and will give the player some health
                 m_enemyCurrentHealth -= damage;
-                m_playerReference.m_enemyCurrentHealth += HealthToPlayer;
+                m_playerReference.currentHealth += HealthToPlayer;
                 break;
         }
     }

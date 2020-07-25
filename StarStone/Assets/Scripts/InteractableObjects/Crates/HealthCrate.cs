@@ -28,17 +28,17 @@ public class HealthCrate : MonoBehaviour
             PlayerUI.PopUpControlsEnabled = true;
             PlayerUI.PopUpControlsText = InteractionText.InteractControlsText;
 
-            if (Input.GetButtonDown("Interact") && HealthKitUsed == false && m_player.m_enemyCurrentHealth != m_player.maxHealth)
+            if (Input.GetButtonDown("Interact") && HealthKitUsed == false && m_player.currentHealth != m_player.maxHealth)
             {
                 HealthKitUsed = true;
 
-                if (m_player.m_enemyCurrentHealth < 50)
+                if (m_player.currentHealth < 50)
                 {
-                    m_player.m_enemyCurrentHealth += healthCrateValue;
+                    m_player.currentHealth += healthCrateValue;
                 }
                 else
                 {
-                    m_player.m_enemyCurrentHealth = m_player.maxHealth;
+                    m_player.currentHealth = m_player.maxHealth;
                 }
             }
             else if (Input.GetButtonDown("Interact") && HealthKitUsed == true)

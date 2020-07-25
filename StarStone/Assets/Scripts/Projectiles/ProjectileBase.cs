@@ -19,7 +19,7 @@ public class ProjectileBase : MonoBehaviour
     //Flaot properties
     public float ProjectileDuration; //This is the duration of each projectile that will get instantiated
     public float ProjectileSpeed; //The speed of the projectile
-    public float ProjectileDamage; //The damage the that the projectile will deal to the m_playerTarget
+    public float ProjectileDamage; //The damage the that the projectile will deal to the target
 
     // Start is called before the first frame update
     protected virtual void Start()

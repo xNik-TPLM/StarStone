@@ -9,7 +9,7 @@ namespace DigitalRuby.PyroParticles
     public class LoopingAudioSource
     {
         public AudioSource AudioSource { get; private set; }
-        public float m_playerTargetVolume { get; private set; }
+        public float TargetVolume { get; private set; }
 
         private float startMultiplier;
         private float stopMultiplier;
@@ -25,7 +25,7 @@ namespace DigitalRuby.PyroParticles
                 AudioSource.Stop();
             }
 
-            m_playerTargetVolume = 1.0f;
+            TargetVolume = 1.0f;
 
             this.startMultiplier = currentMultiplier = startMultiplier;
             this.stopMultiplier = stopMultiplier;
@@ -33,10 +33,10 @@ namespace DigitalRuby.PyroParticles
 
         public void Play()
         {
-            Play(m_playerTargetVolume);
+            Play(TargetVolume);
         }
 
-        public void Play(float m_playerTargetVolume)
+        public void Play(float targetVolume)
         {
             if (AudioSource != null && !AudioSource.isPlaying)
             {
@@ -44,14 +44,14 @@ namespace DigitalRuby.PyroParticles
                 AudioSource.Play();
                 currentMultiplier = startMultiplier;
             }
-            m_playerTargetVolume = m_playerTargetVolume;
+            TargetVolume = targetVolume;
         }
 
         public void Stop()
         {
             if (AudioSource != null && AudioSource.isPlaying)
             {
-                m_playerTargetVolume = 0.0f;
+                TargetVolume = 0.0f;
                 currentMultiplier = stopMultiplier;
             }
         }
@@ -59,7 +59,7 @@ namespace DigitalRuby.PyroParticles
         public void Update()
         {
             if (AudioSource != null && AudioSource.isPlaying &&
-                (AudioSource.volume = Mathf.Lerp(AudioSource.volume, m_playerTargetVolume, Time.deltaTime / currentMultiplier)) == 0.0f)
+                (AudioSource.volume = Mathf.Lerp(AudioSource.volume, TargetVolume, Time.deltaTime / currentMultiplier)) == 0.0f)
             {
                 AudioSource.Stop();
             }

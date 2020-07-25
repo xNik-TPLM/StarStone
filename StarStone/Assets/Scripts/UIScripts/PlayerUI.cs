@@ -97,7 +97,7 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
         //Ben Smith
-        healthSlider.value = m_playerHealth.m_enemyCurrentHealth/100;
+        healthSlider.value = m_playerHealth.currentHealth/100;
         shieldSlider.value = PlayerController.ShieldHealth;
 
         if (shieldActive == true && shieldCooldownActive == false)
