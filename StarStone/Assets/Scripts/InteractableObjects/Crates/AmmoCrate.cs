@@ -10,7 +10,7 @@ public class AmmoCrate : MonoBehaviour
 {
     private WeaponBase m_weaponAdd; // Sets the reference to the weapon script
     public static bool HasAmmoRefilled;
-    public InteractionText InteractionText;
+    public InteractionTextData InteractionText;
     public int ammoCrateValue; // This sets the ammo value the player receives once picked up
 
     // Start is called before the first frame update

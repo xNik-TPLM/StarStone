@@ -23,7 +23,7 @@ public class InteractAlters : MonoBehaviour
     public static bool HasAllSigilsActivated;
 
     [Tooltip("This is a reference to the interction text script, which allow to add control text and any pop up messages")]
-    public InteractionText InteractionText;
+    public InteractionTextData InteractionText;
     [Tooltip("This is for the starstone object inside tha alter prefab")]
     public GameObject StarStone;
 

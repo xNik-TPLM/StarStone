@@ -10,7 +10,7 @@ public class HealthCrate : MonoBehaviour
 {
     private PlayerController m_player; // Sets the reference to the player script
     public static bool HealthKitUsed;
-    public InteractionText InteractionText;
+    public InteractionTextData InteractionText;
     public int healthCrateValue; // This sets the health value the player receives once picked up
 
     // Start is called before the first frame update
