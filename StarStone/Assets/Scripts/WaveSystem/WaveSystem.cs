@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This script controls the waves throughout the game.
@@ -46,7 +47,7 @@ public class WaveSystem : MonoBehaviour
     //This integer property is the max enemies that can be on the map
     public int MaxEnemiesOnMap;
 
-    public GameObject GameOver;
+    public GameObject GameOverScreen;
     
 
     [Header("Spawn Points")]
@@ -190,9 +191,10 @@ public class WaveSystem : MonoBehaviour
         if(WaveTimer <= 0)
         {
             //End the wave
-            m_hasWaveBegun = false;
+            GameOver();
+            /*m_hasWaveBegun = false;
             PauseMenu.FreezeGame();
-            GameOver.SetActive(true);
+            GameOverScreen.SetActive(true);*/
         }
     }
 
@@ -211,18 +213,50 @@ public class WaveSystem : MonoBehaviour
     {
         if(IsGeneratorOverheating == true)
         {
-            m_generatorOverheatTimer += Time.deltaTime;
+            StartCoroutine(OverheatGenerator());
+
+            /*m_generatorOverheatTimer += Time.deltaTime;
 
             if(m_generatorOverheatTimer > GeneratorOverheatTime)
             {
-                m_hasWaveBegun = false;
-                PauseMenu.FreezeGame();
-                GameOver.SetActive(true);
-            }
+
+            }*/
         }
         else
         {
+            StopCoroutine(OverheatGenerator());
+            
             m_generatorOverheatTimer = 0;
+        }
+    }
+
+    public void GameOver()
+    {   
+        m_hasWaveBegun = false;
+        GameOverScreen.SetActive(true);
+        PlayerController.ControlsEnabled = false;
+        DestroyAllEnemies();
+        StartCoroutine(LoadMainMenu());
+    }
+
+    private IEnumerator OverheatGenerator()
+    {
+        yield return new WaitForSeconds(GeneratorOverheatTime);
+        GameOver();
+    }
+
+    private IEnumerator LoadMainMenu()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("GameMenu");
+    }
+
+    public void DestroyAllEnemies()
+    {
+        for (int i = 0; i < EnemiesOnMap; i++)
+        {
+            EnemyBase enemy = FindObjectOfType<EnemyBase>();
+            Destroy(enemy.gameObject);
         }
     }
 }

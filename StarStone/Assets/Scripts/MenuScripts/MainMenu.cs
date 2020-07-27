@@ -22,6 +22,7 @@ public class MainMenu : MonoBehaviour
     {
         m_sound = FindObjectOfType<SoundFX>();
         m_sound.MenuTheme.Play();
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // This function is called when the play button is clicked
@@ -30,6 +31,7 @@ public class MainMenu : MonoBehaviour
         PauseMenu.UnFreezeGame(); // This resets time to pass at the normal rate
         Cutscene.SetActive(true); // This enables the cutscene canvas
         Menu.SetActive(false); // This disables the main menu
+        PlayerController.ControlsEnabled = true;
 
         // These stop the main menu theme and play the cutscene theme
         m_sound.MenuTheme.Stop();
@@ -52,6 +54,7 @@ public class MainMenu : MonoBehaviour
     public void Tutorial()
     {
         SceneManager.LoadScene("TutorialMap");
+        PlayerController.ControlsEnabled = true;
     }
 
     // This function is called when the quit button is clicked

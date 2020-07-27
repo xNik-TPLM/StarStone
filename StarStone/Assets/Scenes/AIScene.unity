@@ -213,12 +213,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &108689138 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9195779116005136097, guid: 60b5e663693a4374b96e44b9caa65eae,
-    type: 3}
-  m_PrefabInstance: {fileID: 1318931485}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &142064100 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7935390616905818928, guid: 60b5e663693a4374b96e44b9caa65eae,
@@ -1556,11 +1550,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3297118803367451320, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
-      propertyPath: Knife
-      value: 
-      objectReference: {fileID: 108689138}
-    - target: {fileID: 3297118803367451320, guid: 60b5e663693a4374b96e44b9caa65eae,
-        type: 3}
       propertyPath: PlayerMovementSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -1584,6 +1573,11 @@ PrefabInstance:
       propertyPath: LadderBottomTransform
       value: 
       objectReference: {fileID: 988351230}
+    - target: {fileID: 3297118803367451320, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: maxHealth
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 4247650201853915926, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2215,9 +2209,9 @@ MonoBehaviour:
   waves:
   - WaveNumber: 1
     NextWaveIsIntermission: 0
-    MaxEnemiesInWave: 1
-    RateToSpwanShooter: 50
-    RateToSpawnMiniBoss: 1
+    MaxEnemiesInWave: 50
+    RateToSpwanShooter: 2
+    RateToSpawnMiniBoss: 3
     WaveTime: 120
   - WaveNumber: 2
     NextWaveIsIntermission: 1

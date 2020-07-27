@@ -80,8 +80,9 @@ public class EnemyBase : MonoBehaviour
     {
         EnemyHealth();
         EnemyBehaviour();
-        EnemyBurning();
-        EnemyFreeze();
+        CheckingElementalDamage();
+        //EnemyBurning();
+        //EnemyFreeze();
     }
 
     //This function returns the health to display it on the enemy's health bar
@@ -143,11 +144,39 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+    private void CheckingElementalDamage()
+    {
+        if (m_isEnemyBurning == true)
+        {
+            StartCoroutine(EnemyBurning());
+        }
+
+        if(m_isEnemyFrozen == true)
+        {
+            StartCoroutine(EnemyFreezing());
+        }
+    }
+
+    private IEnumerator EnemyBurning()
+    {
+        Debug.Log("enemy burning");
+        m_enemyCurrentHealth -= BurningDamage * Time.deltaTime;
+        yield return new WaitForSeconds(MaxBurningTime);
+        m_isEnemyBurning = false;
+    }
+
+    private IEnumerator EnemyFreezing()
+    {
+        m_enemySpeed = 0;
+        yield return new WaitForSeconds(MaxFreezeTime);
+        m_isEnemyFrozen = false;
+    }
+
     //This function will handle the burning of the enemy. It's private as it will be used for all enemies as it is controlled by the boolean
-    private void EnemyBurning()
+    /*private void EnemyBurning()
     {
         //If the enemy is burning
-        if(m_isEnemyBurning == true)
+        /*if(m_isEnemyBurning == true)
         {
             //Take away enemy's health and initiate burning timer
             m_enemyCurrentHealth -= BurningDamage * Time.deltaTime;
@@ -161,10 +190,10 @@ public class EnemyBase : MonoBehaviour
                 m_enemyBurningTime = 0;
             }
         }
-    }
+    }*/
 
     //This function will handle the freezing of the enemy. This function will be used on all enemies
-    private void EnemyFreeze()
+    /*private void EnemyFreeze()
     {
         //if the enemy is frozen
         if (m_isEnemyFrozen == true)
@@ -182,5 +211,5 @@ public class EnemyBase : MonoBehaviour
                 m_enemySpeed = MaxEnemySpeed;
             }
         }
-    }
+    }*/
 }

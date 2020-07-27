@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 5907357315304100358}
   - component: {fileID: 603244638575752958}
   - component: {fileID: 603244638575752959}
+  - component: {fileID: -543944915303429358}
   m_Layer: 0
   m_Name: FireEnemyPlaceholder
   m_TagString: Enemy
@@ -240,9 +241,9 @@ MonoBehaviour:
   HealthToPlayer: 5
   FiringDistance: 20
   EnemyMaxTimeToFire: 1
+  ProjectileSpawnPoint: {fileID: 1792855983247392011}
   FireProjectile: {fileID: 6943983143378593260, guid: e05d995ed7886bf4dad598dd60a43f22,
     type: 3}
-  ProjectileSpawnPoint: {fileID: 1792855983247392011}
 --- !u!65 &603244638575752958
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -278,6 +279,22 @@ NavMeshAgent:
   m_BaseOffset: 0.015
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &-543944915303429358
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354369888520148622}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &1792855983247392011
 GameObject:
   m_ObjectHideFlags: 0

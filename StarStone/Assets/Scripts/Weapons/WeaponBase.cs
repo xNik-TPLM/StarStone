@@ -91,8 +91,6 @@ public class WeaponBase : MonoBehaviour
         //Run the shooting function
         PlayerShooting();
         WeaponReload();
-
-        Debug.Log(m_isWeaponReloading);
     }
 
     //This function handles when the player shoots their weapon

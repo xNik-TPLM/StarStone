@@ -5110,6 +5110,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   ShieldAmount: 50
+  isReloading: 0
   PlayerFeetPosition: {fileID: 3297118803590164208}
   CharacterController: {fileID: 3297118803367451317}
   Player: {fileID: 6836557706347718234}

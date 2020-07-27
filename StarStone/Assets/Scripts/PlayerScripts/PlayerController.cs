@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     public float currentHealth;
     public float ShieldAmount = 50;
 
+    public static bool ControlsEnabled;
     public static float ShieldHealth;
     public bool isReloading = false;
 
@@ -64,6 +65,8 @@ public class PlayerController : MonoBehaviour
 
     private SoundFX m_sound;
 
+    private WaveSystem m_waveSystem;
+
     //Nikodem Hamrol's fields and properties
     private bool m_isPlayerBurning;
     private float m_playerBurningTime;
@@ -75,23 +78,28 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ControlsEnabled = true;
         currentHealth = maxHealth;
         m_sound = FindObjectOfType<SoundFX>();
         //m_reload = GetComponent<Reloading>();
+        m_waveSystem = FindObjectOfType<WaveSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //Ben Smith's functions
-        PlayerMove(); // This activates the player's movement
-        PlayerJump(); // This activates the player's jump
-        PlayerSprint(); // This activates the player's sprint
-        PlayerCrouch(); // This activates the player's crouch
-        PlayerLadder(); // This activates the player's movement on the ladder
-        Melee(); // This activates the player's melee attack
-        ShieldActive(); // This checks if the player's shield is active
-        PauseGame(); // This function activates the pause menu and stops the game
+        if (ControlsEnabled == true)
+        {
+            PlayerMove(); // This activates the player's movement
+            PlayerJump(); // This activates the player's jump
+            PlayerSprint(); // This activates the player's sprint
+            PlayerCrouch(); // This activates the player's crouch
+            PlayerLadder(); // This activates the player's movement on the ladder
+            Melee(); // This activates the player's melee attack
+            ShieldActive(); // This checks if the player's shield is active
+            PauseGame(); // This function activates the pause menu and stops the game
+        }
         GameOver(); // This checks whether the player has health left while playing
 
         //Nikodem Hamrol's function
@@ -103,7 +111,8 @@ public class PlayerController : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            gameOver.SetActive(true); // This enables the game over screen
+            m_waveSystem.GameOver();
+            //gameOver.SetActive(true); // This enables the game over screen
         }
     }
 

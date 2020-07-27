@@ -109,7 +109,8 @@ public class InteractStarStone : MonoBehaviour
                 m_enableCharging = true;
                 m_starstoneChargeTime = 0;
 
-                //Give ammo to the prototype weapon
+                //Set the weapon to the prototype weapon and give ammo to the prototype weapon
+                FindObjectOfType<WeaponsSelect>().SetWeapon();
                 FindObjectOfType<PrototypeWeapon>().CurrentAmmo = AmmoToGive;
             }
         }

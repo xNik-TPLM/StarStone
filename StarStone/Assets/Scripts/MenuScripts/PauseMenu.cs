@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class PauseMenu : MonoBehaviour
 {
+    private WaveSystem m_waveSystem;
+
     // Public bool which checks if the game is paused
     public static bool IsGamePaused;
 
@@ -23,6 +25,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         m_sound = FindObjectOfType<SoundFX>();
+        m_waveSystem = FindObjectOfType<WaveSystem>();
     }
 
     // This function is called when the resume button is clicked
@@ -36,7 +39,7 @@ public class PauseMenu : MonoBehaviour
     // This function is called when the retry button is clicked
     public void RetryGame()
     {
-        ResetLevel();
+        m_waveSystem.DestroyAllEnemies();
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name); // This will reload the game from the start
         UnFreezeGame(); 
@@ -46,7 +49,7 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("GameMenu"); // This will take the player back to the main menu
-        ResetLevel();
+        m_waveSystem.DestroyAllEnemies();
         UnFreezeGame();
 
         if (TutorialController.InTutorialScene)
@@ -58,6 +61,7 @@ public class PauseMenu : MonoBehaviour
     // FreezeGame will set all of objects relient on time to stop moving
     public static void FreezeGame()
     {
+        PlayerController.ControlsEnabled = false;
         IsGamePaused = true;
         Time.timeScale = 0;
     }
@@ -65,16 +69,8 @@ public class PauseMenu : MonoBehaviour
     // UnFreezeGame will continue the game by resuming time back to it's normal speed
     public static void UnFreezeGame()
     {
+        PlayerController.ControlsEnabled = true;
         IsGamePaused = false;
         Time.timeScale = 1;
-    }
-
-    private void ResetLevel()
-    {
-        for(int i = 0; i < WaveSystem.EnemiesOnMap; i++)
-        {
-            EnemyBase enemy = FindObjectOfType<EnemyBase>();
-            Destroy(enemy.gameObject);
-        }
     }
 }
