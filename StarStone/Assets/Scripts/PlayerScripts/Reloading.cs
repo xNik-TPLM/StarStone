@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This script handles the player's reload animation
+/// Worked By: Ben Smith
+/// </summary>
 public class Reloading : MonoBehaviour
 {
     public Animator reloadAnimation;
@@ -9,7 +13,7 @@ public class Reloading : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //reloadAnimation = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -28,43 +32,5 @@ public class Reloading : MonoBehaviour
         {
             reloadAnimation.SetBool("Reloading", false);
         }
-
-
     }
-
-    /*public void ReloadCheck()
-    {
-        /*if (WeaponBase.m_isWeaponReloading == true)
-        {
-            ReloadAnimation();
-        }
-        if (WeaponBase.m_isWeaponReloading == false)
-        {
-            StopReloadAnimation();
-        }
-
-
-
-
-    }
-
-    public void ReloadAnimation()
-    {
-        reloadAnimation.SetBool("Reloading", true);
-
-        if (reloadAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-        {
-            reloadAnimation.SetBool("Reloading", false);
-            WeaponBase.m_isWeaponReloading = false;
-        }
-
-    }
-
-    public void StopReloadAnimation()
-    {
-        if (reloadAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-        {
-            reloadAnimation.SetBool("Reloading", false);
-        }
-    }*/
 }
