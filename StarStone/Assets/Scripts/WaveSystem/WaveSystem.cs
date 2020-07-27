@@ -211,21 +211,17 @@ public class WaveSystem : MonoBehaviour
     //This function handles the generator state, which mainly checks if it's overheating
     private void GeneratorState()
     {
-        if(IsGeneratorOverheating == true)
+        if (IsGeneratorOverheating == true)
         {
-            StartCoroutine(OverheatGenerator());
+            m_generatorOverheatTimer += Time.deltaTime;
 
-            /*m_generatorOverheatTimer += Time.deltaTime;
-
-            if(m_generatorOverheatTimer > GeneratorOverheatTime)
+            if (m_generatorOverheatTimer > GeneratorOverheatTime)
             {
-
-            }*/
+                GameOver();
+            }
         }
         else
         {
-            StopCoroutine(OverheatGenerator());
-            
             m_generatorOverheatTimer = 0;
         }
     }
@@ -237,12 +233,6 @@ public class WaveSystem : MonoBehaviour
         PlayerController.ControlsEnabled = false;
         DestroyAllEnemies();
         StartCoroutine(LoadMainMenu());
-    }
-
-    private IEnumerator OverheatGenerator()
-    {
-        yield return new WaitForSeconds(GeneratorOverheatTime);
-        GameOver();
     }
 
     private IEnumerator LoadMainMenu()
