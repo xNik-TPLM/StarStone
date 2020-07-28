@@ -15,6 +15,8 @@ public class WindElementalEnemy : EnemyBase
     private bool m_detonationEnabled;
     private float m_detonationTime; //This float is the time of detonation which will count up until it reaches max detonation time
 
+    private List<GameObject> m_enemiesInDetonationZone = new List<GameObject>();
+
     [Header("Wind Elemental Properties")]
     [Tooltip("This is the maximum time for detonation")]
     public float MaxDetonationTime; //This is the max timebefore the enemy will detonate
@@ -78,21 +80,16 @@ public class WindElementalEnemy : EnemyBase
                 Instantiate(ExplosionVFX, transform.position, transform.rotation);
                 m_detonationEnabled = false;
             }
-
-            //If detonation time is up. The "-0.1" is there so that it can deal damage to the player a frame before the enemy gets destroyed
-            /*if (m_detonationTime > (MaxDetonationTime - 0.1))
-            {
-                //Deal damage to the player and set health to 0, which will destroy the enemy and spawn the visual effect
-                other.gameObject.GetComponent<PlayerController>().PlayerDamage(DetonationDamage, 0);
-                m_enemyCurrentHealth = 0;
-                Instantiate(explosionVFX, transform.position, transform.rotation);
-            }*/
         }
     }
 
     //This function will handle the detonation of the enemy
     private void EnemyDetonation()
     {
+
+
+
+
         //If the player is in detonation range
         /*if (m_isPlayerInDetonationRange == true)
         {
@@ -118,8 +115,11 @@ public class WindElementalEnemy : EnemyBase
             StartCoroutine(DamagingDetonation());
             yield return new WaitForSeconds(MaxDetonationTime);
 
-            m_enemyCurrentHealth = 0;
-            Instantiate(ExplosionVFX, transform.position, transform.rotation);
+            if(gameObject != null)
+            {
+                m_enemyCurrentHealth = 0;
+                Instantiate(ExplosionVFX, transform.position, transform.rotation);
+            }
         }
     }
 

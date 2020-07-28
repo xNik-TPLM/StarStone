@@ -1576,7 +1576,7 @@ PrefabInstance:
     - target: {fileID: 3297118803367451320, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: maxHealth
-      value: 10000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4247650201853915926, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
@@ -2210,8 +2210,8 @@ MonoBehaviour:
   - WaveNumber: 1
     NextWaveIsIntermission: 0
     MaxEnemiesInWave: 50
-    RateToSpwanShooter: 2
-    RateToSpawnMiniBoss: 3
+    RateToSpwanShooter: 51
+    RateToSpawnMiniBoss: 51
     WaveTime: 120
   - WaveNumber: 2
     NextWaveIsIntermission: 1
@@ -2225,11 +2225,11 @@ MonoBehaviour:
     RateToSpwanShooter: 5
     RateToSpawnMiniBoss: 0
     WaveTime: 90
-  SpawnRate: 0.5
+  SpawnRate: 1
   WaveCooldown: 1
   GeneratorOverheatTime: 5
   MaxEnemiesOnMap: 15
-  GameOver: {fileID: 0}
+  GameOverScreen: {fileID: 0}
   SpawnPoints:
   - {fileID: 0}
   - {fileID: 0}

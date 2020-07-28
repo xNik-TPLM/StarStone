@@ -157,9 +157,16 @@ MonoBehaviour:
     InteractControlsText: Press [F] to Activate Sigil
     InteractPopUpMessages:
     - You must be in intermission phase to interact with the sigils
+    - You've already activated the Wind Alter, you now must activate the Fire Alter
+      next
     - You must activate the Wind Starstone first, before activating this sigil
+    - You've already activated the Fire Alter, you now must activate the Ice Alter
+      next
     - You must activate the Fire Starstone first, before activating this sigil
+    - You've already activated the Ice Alter, you now must activate the Earth Alter
+      next
     - You must activate the Ice Starstone first, before activating this sigil
+    - You've already activated the Earth Alter, you now must turn off the generator
   StarStone: {fileID: 5988530204240588387}
 --- !u!64 &4583319725710643807
 MeshCollider:

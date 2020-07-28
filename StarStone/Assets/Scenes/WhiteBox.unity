@@ -17175,6 +17175,16 @@ PrefabInstance:
       propertyPath: StarStoneAlters
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2322280071670369734, guid: 0f98fad058b693b42b29b98691b7a4eb,
+        type: 3}
+      propertyPath: InteractionText.InteractPopUpMessages.Array.data[8]
+      value: You must activate the Fire Starstone first, before activating this sigil
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322280071670369734, guid: 0f98fad058b693b42b29b98691b7a4eb,
+        type: 3}
+      propertyPath: InteractionText.InteractPopUpMessages.Array.data[9]
+      value: You must activate the Ice Starstone first, before activating this sigil
+      objectReference: {fileID: 0}
     - target: {fileID: 5415400916887025223, guid: 0f98fad058b693b42b29b98691b7a4eb,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -18940,6 +18950,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 466824138506266502, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: InteractionText.InteractControlsText
+      value: Press [F] to grab Fire projectiles
       objectReference: {fileID: 0}
     - target: {fileID: 2661727993192402141, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
@@ -21509,44 +21524,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1871909107583035693, guid: 5ab3a94772515f54284799d4f8a1d2a6, type: 3}
---- !u!1 &552351006 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6782540367815974748, guid: 60b5e663693a4374b96e44b9caa65eae,
-    type: 3}
-  m_PrefabInstance: {fileID: 1895847105}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &552351007
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 552351006}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6c38d602e8f365c41b68550e2874aafe, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &552351009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 552351006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b3d6adf41129844eaf9292ab86d3ec7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reloadAnimation: {fileID: 552351007}
 --- !u!1 &554309112 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: ab8534fb24fd01c469647d269f21c582,
@@ -29458,162 +29435,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1871909107583035693, guid: ab8534fb24fd01c469647d269f21c582, type: 3}
---- !u!1 &778416588
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 778416589}
-  - component: {fileID: 778416591}
-  - component: {fileID: 778416590}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &778416589
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778416588}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_Children: []
-  m_Father: {fileID: 1290987289}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18, y: -11}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &778416590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778416588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Cutscene
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 1
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 0.8078432, g: 0.8078432, b: 0.8078432, a: 1}
-    bottomLeft: {r: 0.31764707, g: 0.31764707, b: 0.31764707, a: 1}
-    bottomRight: {r: 0.3647059, g: 0.3647059, b: 0.3647059, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_outlineColor:
-    serializedVersion: 2
-    rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 1
-  m_textAlignment: 257
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
-  m_linkedTextComponent: {fileID: 0}
-  m_isLinkedTextComponent: 0
-  m_isTextTruncated: 0
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_ignoreRectMaskCulling: 0
-  m_ignoreCulling: 1
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_VertexBufferAutoSizeReduction: 1
-  m_firstVisibleCharacter: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 29.498953, w: 0}
-  m_textInfo:
-    textComponent: {fileID: 778416590}
-    characterCount: 8
-    spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
-    linkCount: 0
-    lineCount: 1
-    pageCount: 1
-    materialCount: 1
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
-  m_subTextObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &778416591
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778416588}
-  m_CullTransparentMesh: 0
 --- !u!1 &780851409 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: f60409ac35ca1374a916626c369ed7ae,
@@ -36121,6 +35942,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 466824138506266502, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: InteractionText.InteractControlsText
+      value: Press [F] to grab Wind projectiles
       objectReference: {fileID: 0}
     - target: {fileID: 2661727993192402141, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
@@ -50224,8 +50050,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 477, y: -337}
-  m_SizeDelta: {x: 300, y: 150}
+  m_AnchoredPosition: {x: 408, y: -264}
+  m_SizeDelta: {x: 500, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1280522667
 MonoBehaviour:
@@ -50696,7 +50522,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1280522666}
-  - {fileID: 778416589}
+  - {fileID: 2080527418}
   m_Father: {fileID: 111981694}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -62728,25 +62554,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d0656979b19b641911c64c6da42101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1622042077
+--- !u!95 &1622042077 stripped
 Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5858862413739935043, guid: 60b5e663693a4374b96e44b9caa65eae,
+    type: 3}
+  m_PrefabInstance: {fileID: 1895847105}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622042072}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1622075565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63120,6 +62933,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1871909107583035693, guid: ab8534fb24fd01c469647d269f21c582, type: 3}
+--- !u!95 &1633814345 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5536089121415330306, guid: 60b5e663693a4374b96e44b9caa65eae,
+    type: 3}
+  m_PrefabInstance: {fileID: 1895847105}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1637758191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72261,6 +72080,11 @@ PrefabInstance:
       propertyPath: m_textInfo.characterCount
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 527895061594920091, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 621575273661091972, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -72426,6 +72250,16 @@ PrefabInstance:
       propertyPath: m_firstOverflowCharacterIndex
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1823128859363165534, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: reloadAnimation
+      value: 
+      objectReference: {fileID: 1633814345}
+    - target: {fileID: 1823128859363165534, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: WeaponAnimator
+      value: 
+      objectReference: {fileID: 1633814345}
     - target: {fileID: 1838916853079657445, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -72791,6 +72625,16 @@ PrefabInstance:
       propertyPath: MaxAmmo
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: reloadAnimation
+      value: 
+      objectReference: {fileID: 1622042077}
+    - target: {fileID: 4299046254906867783, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: WeaponAnimator
+      value: 
+      objectReference: {fileID: 1622042077}
     - target: {fileID: 4318870224189816608, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -72911,6 +72755,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5858862413739935043, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6c38d602e8f365c41b68550e2874aafe, type: 2}
     - target: {fileID: 5963883238074528594, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
       propertyPath: m_IsActive
@@ -73105,6 +72954,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989485618890738874, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989485618890738874, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989485618890738874, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989485618890738874, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989485618890738874, guid: 60b5e663693a4374b96e44b9caa65eae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7144903242686271244, guid: 60b5e663693a4374b96e44b9caa65eae,
         type: 3}
@@ -77532,7 +77406,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 80.18747, w: -31.626137}
+  m_margin: {x: -52.09615, y: 0, z: -1.5334042, w: -31.626137}
   m_textInfo:
     textComponent: {fileID: 1989159226}
     characterCount: 9
@@ -77540,7 +77414,7 @@ MonoBehaviour:
     spaceCount: 1
     wordCount: 2
     linkCount: 0
-    lineCount: 2
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -80527,6 +80401,11 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 466824138506266502, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: InteractionText.InteractControlsText
+      value: Press [F] to grab Earth projectiles
+      objectReference: {fileID: 0}
     - target: {fileID: 2661727993192402141, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -80654,6 +80533,93 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d278df7bdbfa16a4a9954817e2d4d831, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58e896e53a5241f4eb2cdf94aef3db39, type: 3}
+--- !u!1 &2080527417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2080527418}
+  - component: {fileID: 2080527420}
+  - component: {fileID: 2080527419}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2080527418
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080527417}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1290987289}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_SizeDelta: {x: 600, y: 500}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2080527419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080527417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 188
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Back Story:\r\n\nAfter the generator being finally shut down, it was time
+    to return home empty handed. The generator soon started to collapse on itself
+    leaving no trace of the Starstones behind. Arriving back to royal palace, explaining
+    to your King that it was dangerous to retrieve the Starstone to England, but
+    he laughed with irony of things you experienced. You also told that you shut
+    down the generator that was powering the Starstones, which destroyed them. The
+    King stripped away your rank and banished you to Australia where, you would spend
+    the rest of your life there. Even though banishment was a severe punishment,
+    but you treated it as a reward as you were able to live the rest of your life
+    in peace.\u201D\n\n"
+--- !u!222 &2080527420
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080527417}
+  m_CullTransparentMesh: 0
 --- !u!1001 &2080723150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81762,19 +81728,19 @@ MonoBehaviour:
     MaxEnemiesInWave: 50
     RateToSpwanShooter: 10
     RateToSpawnMiniBoss: 51
-    WaveTime: 120
+    WaveTime: 180
   - WaveNumber: 3
     NextWaveIsIntermission: 1
     MaxEnemiesInWave: 60
     RateToSpwanShooter: 5
     RateToSpawnMiniBoss: 11
-    WaveTime: 120
+    WaveTime: 210
   - WaveNumber: 4
     NextWaveIsIntermission: 1
     MaxEnemiesInWave: 70
     RateToSpwanShooter: 5
     RateToSpawnMiniBoss: 10
-    WaveTime: 120
+    WaveTime: 240
   SpawnRate: 0.5
   WaveCooldown: 5
   GeneratorOverheatTime: 5
@@ -82157,6 +82123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 466824138506266502, guid: 58e896e53a5241f4eb2cdf94aef3db39,
+        type: 3}
+      propertyPath: InteractionText.InteractControlsText
+      value: Press [F] to grab Ice projectiles
       objectReference: {fileID: 0}
     - target: {fileID: 2661727993192402141, guid: 58e896e53a5241f4eb2cdf94aef3db39,
         type: 3}

@@ -28,7 +28,7 @@ public class HealthCrate : MonoBehaviour
             PlayerUI.PopUpControlsEnabled = true;
             PlayerUI.PopUpControlsText = InteractionText.InteractControlsText;
 
-            if (Input.GetButtonDown("Interact") && HealthKitUsed == false && m_player.currentHealth != m_player.maxHealth)
+            if (Input.GetButton("Interact") && HealthKitUsed == false && m_player.currentHealth != m_player.maxHealth)
             {
                 HealthKitUsed = true;
 
@@ -41,7 +41,7 @@ public class HealthCrate : MonoBehaviour
                     m_player.currentHealth = m_player.maxHealth;
                 }
             }
-            else if (Input.GetButtonDown("Interact") && HealthKitUsed == true)
+            else if (Input.GetButton("Interact") && HealthKitUsed == true)
             {
                 PlayerUI.PopUpMessageEnabled = true;
                 PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[0];

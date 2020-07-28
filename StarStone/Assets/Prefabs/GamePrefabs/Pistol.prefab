@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7310291219471396658}
   - component: {fileID: 3913582217241301963}
   - component: {fileID: -2768094269574926922}
+  - component: {fileID: 868329812835865322}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -111,6 +112,25 @@ MonoBehaviour:
   rotationalreturnspeed: 38
   RecoilRotation: {x: 10, y: 5, z: 7}
   RecoilKickBack: {x: 0.015, y: 0, z: -0.2}
+--- !u!95 &868329812835865322
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347019249056360215}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6c38d602e8f365c41b68550e2874aafe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6364208167604007348
 GameObject:
   m_ObjectHideFlags: 0

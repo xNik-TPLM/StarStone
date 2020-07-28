@@ -37,6 +37,8 @@ public class InteractStarStone : MonoBehaviour
     public int AmmoToGive; //The amount of ammo the starstone will give to the prototype weapon
 
     [Header("UI Properties")]
+    [Tooltip("This is a reference to the interction text script, which allow to add control text and any pop up messages")]
+    public InteractionTextData InteractionText; //This script reference will make all the data available for editing in the inspector to set controls message and pop up message
     [Tooltip("Colours in RGB that represent the each starstone")]
     public Vector3[] ChargeColours; //This array will hold different colours that will represent each starstone
     [Tooltip("This is the slider that is attached to the Starstone")]

@@ -23,9 +23,9 @@ public class InteractAlters : MonoBehaviour
     public static bool HasAllSigilsActivated;
 
     [Tooltip("This is a reference to the interction text script, which allow to add control text and any pop up messages")]
-    public InteractionTextData InteractionText;
+    public InteractionTextData InteractionText; //This script reference will make all the data available for editing in the inspector to set controls message and pop up message
     [Tooltip("This is for the starstone object inside tha alter prefab")]
-    public GameObject StarStone;
+    public GameObject StarStone; //The starstone object is sed as visual feedback that the starstone has been interacted
 
     // Start is called before the first frame update
     void Start()
@@ -73,7 +73,12 @@ public class InteractAlters : MonoBehaviour
                             HasSigilInteracted = true;
                             HasWindSigilInteracted = true;
                             StarStone.SetActive(true);
-                            
+                        }
+                        else //If this sigil has been interacted
+                        {
+                            //Pop up a message to tell that the player has already interacted this Starstone and activate the next one
+                            PlayerUI.PopUpMessageEnabled = true;
+                            PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[1];
                         }
                         break;
 
@@ -86,12 +91,21 @@ public class InteractAlters : MonoBehaviour
                             HasFireSigilInteracted = true;
                             StarStone.SetActive(true);
                         }
+
                         //If the wind sigil has still not been activated
-                        else if(HasWindSigilInteracted == false)
+                        if(HasWindSigilInteracted == false)
                         {
                             //It will pop up a message to activate the wind sigil first
                             PlayerUI.PopUpMessageEnabled = true;
-                            PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[1];
+                            PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[2];
+                        }
+
+                        //If this sigil has been interacted
+                        if (HasFireSigilInteracted == true)
+                        {
+                            //Pop up a message to tell that the player has already interacted this Starstone and activate the next one
+                            PlayerUI.PopUpMessageEnabled = true;
+                            PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[3];
                         }
                         break;
 
@@ -103,12 +117,21 @@ public class InteractAlters : MonoBehaviour
                             StarStone.SetActive(true);
                             HasSigilInteracted = true;
                         }
+
                         //If the fire sigil has still not been activated
-                        else if (HasFireSigilInteracted == false)
+                        if (HasFireSigilInteracted == false)
                         {
                             //It will pop up a message to activate the fire sigil first
                             PlayerUI.PopUpMessageEnabled = true;
-                            PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[2];
+                            PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[4];
+                        }
+
+                        //If this sigil has been interacted
+                        if (HasIceSigilInteracted == true)
+                        {
+                            //Pop up a message to tell that the player has already interacted this Starstone and activate the next one
+                            PlayerUI.PopUpMessageEnabled = true;
+                            PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[5];
                         }
                         break;
 
@@ -120,13 +143,23 @@ public class InteractAlters : MonoBehaviour
                             StarStone.SetActive(true);
                             HasSigilInteracted = true;
                         }
+
                         //If the ice sigil has still not been activated
-                        else if (HasIceSigilInteracted == false)
+                        if (HasIceSigilInteracted == false)
                         {
                             //It will pop up a message to activate the ice sigil first
                             PlayerUI.PopUpMessageEnabled = true;
-                            PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[3];
+                            PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[6];
                         }
+
+                        //If this sigil has been interacted
+                        if(HasEarthSigilInteracted == true)
+                        {
+                            //Pop up a message to tell that the player has already interacted this Starstone and activate the next one
+                            PlayerUI.PopUpMessageEnabled = true;
+                            PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[7];
+                        }
+
                         break;
                 }
             }

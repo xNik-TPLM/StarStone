@@ -442,6 +442,10 @@ MonoBehaviour:
   MaxChargeTime: 60
   ChargeRate: 0.75
   AmmoToGive: 10
+  InteractionText:
+    InteractControlsText: 'Press [F] to grab '
+    InteractPopUpMessages:
+    - This is Starstone isn't charged up yet
   ChargeColours:
   - {x: 180, y: 0, z: 0}
   - {x: 0, y: 0, z: 180}

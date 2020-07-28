@@ -8,7 +8,6 @@ using UnityEngine;
 ///// </summary>
 public class AmmoCrate : MonoBehaviour
 {
-    private WeaponBase m_weaponAdd; // Sets the reference to the weapon script
     public static bool HasAmmoRefilled;
     public InteractionTextData InteractionText;
     public int ammoCrateValue; // This sets the ammo value the player receives once picked up
@@ -17,7 +16,6 @@ public class AmmoCrate : MonoBehaviour
     void Start()
     {
         HasAmmoRefilled = false;
-        m_weaponAdd = FindObjectOfType<WeaponBase>();
     }
 
     // This checks whether the player has picked up the crate
@@ -31,7 +29,7 @@ public class AmmoCrate : MonoBehaviour
             if (Input.GetButtonDown("Interact") && HasAmmoRefilled == false)
             {
                 HasAmmoRefilled = true;
-                m_weaponAdd.MaxAmmo += ammoCrateValue;
+                FindObjectOfType<WeaponBase>().MaxAmmo += ammoCrateValue;
             }
             else if (Input.GetButtonDown("Interact") && HasAmmoRefilled == true)
             {

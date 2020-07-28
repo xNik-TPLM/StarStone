@@ -39,6 +39,8 @@ public class WeaponBase : MonoBehaviour
     public float FireRate; //Weapon fire rate
     public float WeaponDamage; //Weapon Damage
 
+    public Animator WeaponAnimator;
+
     //Object references
     public GameObject WeaponProjectile; //Reference to the projectile that will be used to fire it out of the weapon
     public GameObject WeaponMuzzle; //Reference to the weapon muzzle that will be used to get the position of where the projectile will spawn
@@ -88,9 +90,16 @@ public class WeaponBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Run the shooting function
-        PlayerShooting();
-        WeaponReload();
+        if (PlayerController.ControlsEnabled == true)
+        {
+            //Run the shooting function
+            PlayerShooting();
+            WeaponReload();
+
+            
+        }
+        
+        Debug.Log(IsFiring);
     }
 
     //This function handles when the player shoots their weapon
@@ -104,8 +113,11 @@ public class WeaponBase : MonoBehaviour
             if (Input.GetButton("Fire1") && Time.time >= m_fireTime && IsAutomatic == true)
             {
                 //SelectedProjectile = Instantiate(WeaponProjectile);
+                IsFiring = true;
                 CurrentAmmo -= 1;
                 m_sound.PrimaryFire.Play();
+
+                Debug.Log("Firing");
 
                 //Use Muzzle's position and rotation to fire the projectile
                 //SelectedProjectile.transform.position = WeaponMuzzle.transform.position;
@@ -119,15 +131,16 @@ public class WeaponBase : MonoBehaviour
 
                 rotationalRecoil += new Vector3(-RecoilRotation.x, Random.Range(-RecoilRotation.y, RecoilRotation.y), Random.Range(-RecoilRotation.z, RecoilRotation.z));
                 positionalRecoil += new Vector3(Random.Range(-RecoilKickBack.x, RecoilKickBack.x), Random.Range(-RecoilKickBack.y, RecoilKickBack.y), RecoilKickBack.z);
-
             }
+
             ///Semi-automatic weapon solution
             //If the player presses the left mouse button and if the player is not reloading
             //if (Input.GetButtonDown("Fire1") && m_isWeaponReloading == false)
-            if (Input.GetButtonDown("Fire1") && Time.time >= m_fireTime && IsAutomatic == false)
+            if (Input.GetButtonDown("Fire1") && IsAutomatic == false)
             {
                 //Instantiate a projectile and take away ammo by one
                 //SelectedProjectile = Instantiate(WeaponProjectile);
+                IsFiring = true;
                 m_sound.PrimaryFire.Play();
 
                 CurrentAmmo -= 1;
@@ -145,37 +158,53 @@ public class WeaponBase : MonoBehaviour
                 positionalRecoil += new Vector3(Random.Range(-RecoilKickBack.x, RecoilKickBack.x), Random.Range(-RecoilKickBack.y, RecoilKickBack.y), RecoilKickBack.z);
             }
         }
+
+        if (Input.GetButtonUp("Fire1"))
+        {
+            IsFiring = false;
+        }
     }
 
     //This function handles the reloading of a weapon
     private void WeaponReload()
     {
         //If R key is pressed and if player is not already reloading
-        if (Input.GetKeyDown(KeyCode.R) && MaxAmmo != 0)
+        if (Input.GetKeyDown(KeyCode.R) && IsFiring == false && MaxAmmo != 0)
         {
             //If current clip is not full
             if (CurrentAmmo < WeaponClipSize)
             {
+                StartCoroutine(Reloading());
                 //Set ammo difference, by subtracting the clip size by ammo in clip
                 m_ammoDifference = WeaponClipSize - CurrentAmmo;
 
                 //If there's more ammo left
                 if (MaxAmmo >= m_ammoDifference)
                 {
-                    m_isWeaponReloading = true;
                     CurrentAmmo += m_ammoDifference; //Add the ammo difference to the current ammo, so that it's not bigger than the clip size
                     MaxAmmo -= m_ammoDifference; //Subtract max ammo by the ammo difference
                 }
                 else //If there's no ammo left
                 {
-                    m_isWeaponReloading = true;
                     //Add the remaining ammo and set max ammo to 0
                     CurrentAmmo += MaxAmmo;
                     MaxAmmo = 0;
                 }
-                m_sound.PrimaryHandling.Play();  
             }
         }
+    }
+
+    private IEnumerator Reloading()
+    {
+        m_isWeaponReloading = true;
+        
+        WeaponAnimator.SetBool("Reloading", true);
+
+        yield return new WaitForSeconds(0.5f);
+        
+        WeaponAnimator.SetBool("Reloading", false);
+        m_sound.PrimaryHandling.Play();
+        m_isWeaponReloading = false;
     }
 
     //This function handles the raycast initiation

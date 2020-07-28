@@ -126,6 +126,16 @@ public class PlayerUI : MonoBehaviour
         HUDDisplayingInTutorial();
     }
 
+    private IEnumerator PopUpMessages()
+    {
+        PopUpMessage.text = PopUpMessageText;
+        PopUpMessage.enabled = true;
+
+        yield return new WaitForSeconds(PopUpMessageMaxDisplayTime);
+        PopUpMessageEnabled = false;
+        PopUpMessage.enabled = false;
+    }
+
     private void UpdatePopUpMessage()
     {
         if(PopUpControlsEnabled == true)
@@ -140,7 +150,9 @@ public class PlayerUI : MonoBehaviour
 
         if (PopUpMessageEnabled == true)
         {
-            PopUpMessage.text = PopUpMessageText;
+            StartCoroutine(PopUpMessages());
+
+            /*PopUpMessage.text = PopUpMessageText;
             PopUpMessage.enabled = true;
 
             m_popUpMessageDisplayTime += Time.deltaTime;
@@ -150,7 +162,7 @@ public class PlayerUI : MonoBehaviour
                 PopUpMessageEnabled = false;
                 m_popUpMessageDisplayTime = 0;
                 PopUpMessage.enabled = false;
-            }
+            }*/
         }
     }
 
