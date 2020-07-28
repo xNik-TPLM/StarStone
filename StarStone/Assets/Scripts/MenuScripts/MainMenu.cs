@@ -13,9 +13,13 @@ public class MainMenu : MonoBehaviour
     // Public GameObjects to set references to the menu and cutscene
     public GameObject Menu;
     public GameObject Cutscene;
+    public GameObject EndingText;
+    public GameObject CreditsText;
     
     // Reference for the sound script
     private SoundFX m_sound;
+
+    private int m_cutsceneSwitcher = 1;
 
     //Start is called before the first frame update
     void Start()
@@ -23,6 +27,34 @@ public class MainMenu : MonoBehaviour
         m_sound = FindObjectOfType<SoundFX>();
         m_sound.MenuTheme.Play();
         Cursor.lockState = CursorLockMode.None;
+        //m_cutsceneSwitcher = 1;
+    }
+
+    void Update()
+    {
+        if (WaveSystem.GameCompleted == true)
+        {
+            if (EndingText != null && CreditsText != null)
+            {
+                switch (m_cutsceneSwitcher)
+                {
+                    case 1:
+                        EndingText.SetActive(true);
+                        CreditsText.SetActive(false);
+                        break;
+
+                    case 2:
+                        EndingText.SetActive(false);
+                        CreditsText.SetActive(true);
+                        break;
+
+                    case 3:
+                        WaveSystem.GameCompleted = false;
+                        SceneManager.LoadScene("GameMenu");
+                        break;
+                }
+            }
+        }
     }
 
     // This function is called when the play button is clicked
@@ -53,6 +85,7 @@ public class MainMenu : MonoBehaviour
     // This function is called when the tutorial button is clicked
     public void Tutorial()
     {
+        PauseMenu.UnFreezeGame();
         SceneManager.LoadScene("TutorialMap");
         PlayerController.ControlsEnabled = true;
     }
@@ -62,5 +95,10 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Quit!");
         Application.Quit(); // This will quit the game
+    }
+
+    public void Next()
+    {
+        m_cutsceneSwitcher++;
     }
 }

@@ -31,10 +31,12 @@ public class PowerSwitch : MonoBehaviour
             PlayerUI.PopUpControlsEnabled = true;
             PlayerUI.PopUpControlsText = "Press [F] To Turn Off The Generator";
 
-            if (Input.GetButtonDown("Interact") && InteractAlters.HasAllSigilsActivated == true)
+            //if (Input.GetButtonDown("Interact") && InteractAlters.HasAllSigilsActivated == true)
+            if (Input.GetButtonDown("Interact"))
             {
                 Cursor.lockState = CursorLockMode.None;
                 EndingCutscene.SetActive(true);
+                WaveSystem.GameCompleted = true;
                 PauseMenu.FreezeGame();
             }
         }
