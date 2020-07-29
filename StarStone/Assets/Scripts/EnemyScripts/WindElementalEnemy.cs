@@ -11,11 +11,8 @@ using UnityEngine;
 public class WindElementalEnemy : EnemyBase
 {
     //Wind elemental enemy fields
-    private bool m_isPlayerInDetonationRange; //This boolean will chekc if the player has entered the trigger sphere to enable countdown for detonation
-    private bool m_detonationEnabled;
-    private float m_detonationTime; //This float is the time of detonation which will count up until it reaches max detonation time
-
-    private List<GameObject> m_enemiesInDetonationZone = new List<GameObject>();
+    //This boolean checks if detonation is enabled, which will detonatie enemy dealing damage to the player, if it's in the area.
+    private bool m_detonationEnabled; 
 
     [Header("Wind Elemental Properties")]
     [Tooltip("This is the maximum time for detonation")]
@@ -60,7 +57,6 @@ public class WindElementalEnemy : EnemyBase
     protected override void EnemyBehaviour()
     {
         base.EnemyBehaviour();
-        EnemyDetonation();
     }
 
     //When a player enters and stays within the enemy's sphere collider
@@ -69,63 +65,47 @@ public class WindElementalEnemy : EnemyBase
         //Check if the object is tagged as player
         if (other.CompareTag("Player"))
         {
-            //Set detonation to true, which will enable detonation timer
-            m_isPlayerInDetonationRange = true;
+            //Start detonation coroutine
             StartCoroutine(Detonation());
 
+            //If detonation is enable
             if(m_detonationEnabled == true)
             {
+                //damage the player and disable detonation, to stop potential duplicated damage
                 other.gameObject.GetComponent<PlayerController>().PlayerDamage(DetonationDamage, 0);
-                m_enemyCurrentHealth = 0;
-                Instantiate(ExplosionVFX, transform.position, transform.rotation);
                 m_detonationEnabled = false;
             }
         }
     }
 
-    //This function will handle the detonation of the enemy
-    private void EnemyDetonation()
-    {
-
-
-
-
-        //If the player is in detonation range
-        /*if (m_isPlayerInDetonationRange == true)
-        {
-            //It will stop the enemy, by setting player range to true, and start counting detonation time
-            m_isPlayerInRange = true;
-            m_detonationTime += Time.deltaTime;
-
-            //Check if deontation time is bigger than max detonation time
-            if (m_detonationTime > MaxDetonationTime)
-            {
-                //Set enemy's health to 0 and spawn the visual effect
-                m_enemyCurrentHealth = 0;
-                Instantiate(explosionVFX, transform.position, transform.rotation);
-            }
-        }*/
-    }
-
+    //This coroutine will handle the detonation of the enemy
     private IEnumerator Detonation()
     {
-        if (m_isPlayerInDetonationRange == true)
-        {
-            m_isPlayerInRange = true;
-            StartCoroutine(DamagingDetonation());
-            yield return new WaitForSeconds(MaxDetonationTime);
+        //if the player has entered the enemy's trigger, it will stop the enemy and start the damaging coroutine
+        m_isPlayerInRange = true;
+        StartCoroutine(DamagingDetonation());
 
-            if(gameObject != null)
-            {
-                m_enemyCurrentHealth = 0;
-                Instantiate(ExplosionVFX, transform.position, transform.rotation);
-            }
+        //Wait until detonation tme runs out
+        yield return new WaitForSeconds(MaxDetonationTime);
+
+        //If the the enemy is not yet destroyed, kill the enemy and instantiate the explosion visual effect
+        if (gameObject != null)
+        {
+            m_enemyCurrentHealth = 0;
+            Instantiate(ExplosionVFX, transform.position, transform.rotation);
         }
     }
 
+    //This coroutine will detonate before normal detonation, in case the player is still inside the trigger
     private IEnumerator DamagingDetonation()
     {
+        //Wait the same amount of time, but a frame before
         yield return new WaitForSeconds(MaxDetonationTime - 0.1f);
+
+        //Enable detonation, kill the enemy and instantiate the explosion visual effect
         m_detonationEnabled = true;
+        m_enemyCurrentHealth = 0;
+        Instantiate(ExplosionVFX, transform.position, transform.rotation);
+
     }
 }

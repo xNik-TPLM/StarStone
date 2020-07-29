@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 
 public class InteractAlters : MonoBehaviour
-{
+{ 
     //These public static booleans will check if each elemental alter sigils have been interacted already.
     //We do not use it as private as it doesnt pass on the statement to toher alters.
     public static bool HasWindSigilInteracted;
@@ -49,7 +49,7 @@ public class InteractAlters : MonoBehaviour
         }
     }
 
-    //When a player enters and stays within the sigils, box trigger
+    //When a player enters and stays within a sigils, box trigger
     private void OnTriggerStay(Collider other)
     {
         //Check if the object is tagged as player
@@ -159,15 +159,14 @@ public class InteractAlters : MonoBehaviour
                             PlayerUI.PopUpMessageEnabled = true;
                             PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[7];
                         }
-
                         break;
                 }
             }
             //If the player is not in the intermission phase, it will pop a message that they can't interact with it
             else if(Input.GetButtonDown("Interact") && WaveSystem.InIntermission == false)
             {
-                PlayerUI.PopUpMessageEnabled = true;
                 PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[0];
+                PlayerUI.PopUpMessageEnabled = true;
             }
         }
     }

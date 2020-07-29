@@ -17,8 +17,11 @@ public class ProjectileBase : MonoBehaviour
 
     //Projectile properties
     //Flaot properties
+    [Tooltip("This is duration of the projectile can be on scene in seconds")]
     public float ProjectileDuration; //This is the duration of each projectile that will get instantiated
+    [Tooltip("This is the speed the projectile can travel")]
     public float ProjectileSpeed; //The speed of the projectile
+    [Tooltip("This is the amount of damage a projectile can deal")]
     public float ProjectileDamage; //The damage the that the projectile will deal to the target
 
     // Start is called before the first frame update
@@ -44,6 +47,7 @@ public class ProjectileBase : MonoBehaviour
         }
     }
 
+    //This will check if the projectile has hit anything and it will destroy itself
     protected virtual void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);

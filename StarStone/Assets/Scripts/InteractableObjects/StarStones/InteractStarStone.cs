@@ -68,17 +68,32 @@ public class InteractStarStone : MonoBehaviour
         ChargingStarStone();
     }
 
-    //When the player enters the box trigger of the starstone, it wlll start the wave system and give the representative elemental projectile from the Starstone they interacted
+    //When a player enters and stays within a Starstone, box trigger
     private void OnTriggerStay(Collider trigger)
     {
         //Check the tag for the player
         if (trigger.CompareTag("Player"))
         {
+            //Set controls text and display it on screen
+            PlayerUI.PopUpControlsText = InteractionText.InteractControlsText;
+            PlayerUI.PopUpControlsEnabled = true;
+
             //When the player interacts with it and if the Starstone fully charged
-            if (Input.GetButton("Interact") && m_isFullyCharged == true)
+            if (Input.GetButtonDown("Interact") && m_isFullyCharged == true)
             {
-                //Initiate the waves
-                if(WaveSystem.IsWaveSystemInitiated == false)
+                //This coroutine will delay the pop up message, as it will avoid the chance of the message enabling when pressing
+                IEnumerator DelayPopUpMessage()
+                {
+                    //Wait until the player let's go of the interact button to set the charging to false
+                    yield return new WaitUntil(() => Input.GetButtonUp("Interact"));
+                    m_isFullyCharged = false;
+                }
+
+                //Start the delay coroutine
+                StartCoroutine(DelayPopUpMessage());
+
+                //Initiate the waves, if they're not active already
+                if (WaveSystem.IsWaveSystemInitiated == false)
                 {
                     WaveSystem.IsWaveSystemInitiated = true;
                 }
@@ -107,7 +122,6 @@ public class InteractStarStone : MonoBehaviour
                 WeaponID = 2;
 
                 //eanble charging as teh starstone is no longer fully charged adn charge time to 0
-                m_isFullyCharged = false;
                 m_enableCharging = true;
                 m_starstoneChargeTime = 0;
 
@@ -115,6 +129,22 @@ public class InteractStarStone : MonoBehaviour
                 FindObjectOfType<WeaponsSelect>().SetWeapon();
                 FindObjectOfType<PrototypeWeapon>().CurrentAmmo = AmmoToGive;
             }
+
+            //When the player interacts with the Starstone and its still not charged then display the pop up mssage that says its not charged
+            if(Input.GetButton("Interact") && m_isFullyCharged == false)
+            {
+                PlayerUI.PopUpMessageEnabled = true;
+                PlayerUI.PopUpMessageText = InteractionText.InteractPopUpMessages[0];
+            }
+        }
+    }
+
+    //When the player leaves the trigger box it will hide the controls 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerUI.PopUpControlsEnabled = false;
         }
     }
 

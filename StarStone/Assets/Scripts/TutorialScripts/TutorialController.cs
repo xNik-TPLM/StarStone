@@ -4,85 +4,118 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
+/// This is script is the controller of tutorial scene
 /// Worked By: Nikodem Hamrol
 /// </summary>
 
 public class TutorialController : MonoBehaviour
 {
-    private bool m_dialogueEnabled;
+    //Tutorial Controller fields
+    //Boolean fields
+    private bool m_dialogueEnabled; //This boolean is used to check if the dialogue can carry on
 
+    //These booleans are used to check if all movement keys have been used
     private bool m_movementCompleted;
     private bool m_hasPlayerMovedForward;
     private bool m_hasPlayerMovedLeft;
     private bool m_hasPlayerMovedRight;
     private bool m_hasPlayerMovedBack;
 
+    //These booleans are used to check if all advanced movment keys have been used
     private bool m_advancedMovementCompleted;
     private bool m_hasPlayerSprinted;
     private bool m_hasPlayerJumped;
     private bool m_hasPlayerCrouched;
 
+    //This boolean is to check if the player has loaded on of their weapons
     private bool m_hasPlayerLoadedWeapon;
 
+    //This boolean is to check if the player has used the shield
     private bool m_hasShieldActivated;
 
-    public static bool HasEnemyDied;
-
+    //This float is the time that the dialogue will be displayed for
     private float m_dialogueDisplayTime;
 
-    private int m_amountOfEnemiesToSpawn;
-    private int m_indexText;
-    
+    //Integer fields
+    private int m_amountOfEnemiesToSpawn; //This is amount of enemies to spawn on the map
+    private int m_indexText; //This is the index to change on signle pop up tutorials
 
+    //This is the queue for the dialogue in the tutorial
+    private Queue<string> m_dialogues;
+    
+    //Public static fields
+    //Static booleans
+    public static bool InTutorialScene; //This is to check if the player is the tutorial map, which is used to disable some HUD elements and other objects
+    public static bool HasCameraMoved; //This is to check if the player has moved their camera
+    public static bool HasEnemyDied; //This is to check if the test dummy has died
+
+    //This static string is used as a checker for the dialogue in other scripts, like to enable certain HUD elements
     public static string CurrentDialogue;
 
-    private Queue<string> m_dialogues;
-
-
-    public static bool InTutorialScene;
-
-    public static bool HasCameraMoved;
-
+    //Tutotial properties
     [Header("Dialogue Properties")]
-    public float TimeDifferenceBetweenDialogues;
-    public string[] Dialogue;
-    public Text DialogueText;
+    [Tooltip("This is the difference between dialogues")]
+    public float TimeDifferenceBetweenDialogues; //This is the time betweeen the current dialogue text and the next one
+    [Tooltip("This array stores all of the dialogue that needs to be displayed")]
+    public string[] Dialogue; //This array stores all of the dialogue to be displayed, which will be put into the queue
+    [Tooltip("This the text object, which will display the dialogue")]
+    public Text DialogueText; //The text object will display the dialogue onto the screen
 
     [Header("Pop-up Objects")]
+    [Tooltip("This is an object that is used to display the Camera tutorial")]
     public GameObject CameraMovementPopUp;
+    [Tooltip("This is an object that is used to display the Movement tutorial")]
     public GameObject PlayerMovementPopUp;
+    [Tooltip("This is an object that is used to display the Advanced Movement tutorial")]
     public GameObject PlayerAdvancedMovementPopUp;
-    public GameObject PlayerSingleLinedPopUp;
-    public string[] SingleTextPopUpTexts;
-
+    [Tooltip("This is an object that is used to display any Shooting tutorial")]
     public GameObject PlayerShootingPopUp;
+    [Tooltip("This is an object that is used to display any Nuke tutorial")]
     public GameObject PlayerNukePopUp;
-    public GameObject PlayerShieldPopUp;
+    [Tooltip("This is an object that is used to display any Shield tutorial")]
+    public GameObject PlayerShieldPopUp;    
+    [Tooltip("This is an object that is used to display any Single Lined tutorial")]
+    public GameObject PlayerSingleLinedPopUp;    
 
     [Header("Text Components")]
+    [Tooltip("Text that shows forward movement controls")]
     public Text TextW;
+    [Tooltip("Text that shows left movement controls")]
     public Text TextA;
+    [Tooltip("Text that shows backward movement controls")]
     public Text TextS;
+    [Tooltip("Text that shows right movement controls")]
     public Text TextD;
+    [Tooltip("Text that shows sprint controls")]
     public Text TextSprint;
+    [Tooltip("Text that shows jump controls")]
     public Text TextJump;
+    [Tooltip("Text that shows crouch movement")]
     public Text TextCrouch;
-    public Text TextSingleLinedTutorial;
+    [Tooltip("Text that shows single lined controls")]
+    public Text TextSingleLinedTutorial;    
+    [Tooltip("This is the array that stores tutorials for single lined tutorials")]
+    public string[] SingleTextPopUpTexts;
 
     [Header("Spawning Test Dummy Properties")]
+    [Tooltip("The test dummy prefab to spawn")]
     public GameObject TestDummy;
+    [Tooltip("The location where the test dummy will spawn")]
     public GameObject SpawnPoint;
 
     [Header("Weapon Holder")]
+    [Tooltip("The player's weapon holder")]
     public GameObject WeaponHolder;
 
     // Start is called before the first frame update
     void Start()
     {
+
         FindObjectOfType<WeaponBase>().CurrentAmmo = 0;
 
         InTutorialScene = true;
         HasCameraMoved = false;
+        HasEnemyDied = false;
         m_dialogueEnabled = true;
 
         m_dialogues = new Queue<string>();
@@ -228,6 +261,7 @@ public class TutorialController : MonoBehaviour
 
     private void EndDialogue()
     {
+        Debug.Log("End");
         InTutorialScene = false;
     }
 
@@ -318,5 +352,4 @@ public class TutorialController : MonoBehaviour
             m_amountOfEnemiesToSpawn += 1;
         }
     }
-
 }

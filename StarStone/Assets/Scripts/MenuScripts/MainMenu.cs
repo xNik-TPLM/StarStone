@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
     // Reference for the sound script
     private SoundFX m_sound;
 
-    private int m_cutsceneSwitcher = 1;
+    private int m_cutsceneSwitcher;
 
     //Start is called before the first frame update
     void Start()
@@ -27,7 +27,6 @@ public class MainMenu : MonoBehaviour
         m_sound = FindObjectOfType<SoundFX>();
         m_sound.MenuTheme.Play();
         Cursor.lockState = CursorLockMode.None;
-        //m_cutsceneSwitcher = 1;
     }
 
     void Update()
@@ -64,6 +63,7 @@ public class MainMenu : MonoBehaviour
         Cutscene.SetActive(true); // This enables the cutscene canvas
         Menu.SetActive(false); // This disables the main menu
         PlayerController.ControlsEnabled = true;
+        m_cutsceneSwitcher = 1;
 
         // These stop the main menu theme and play the cutscene theme
         m_sound.MenuTheme.Stop();

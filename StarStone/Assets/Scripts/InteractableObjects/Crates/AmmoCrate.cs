@@ -46,5 +46,4 @@ public class AmmoCrate : MonoBehaviour
             PlayerUI.PopUpControlsEnabled = false;
         }
     }
-
 }

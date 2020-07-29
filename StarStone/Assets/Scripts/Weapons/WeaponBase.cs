@@ -77,6 +77,12 @@ public class WeaponBase : MonoBehaviour
         m_sound = FindObjectOfType<SoundFX>();
     }
 
+    void OnEnable()
+    {
+        WeaponAnimator.SetBool("Reloading", false);
+        m_isWeaponReloading = false;
+    }
+
     void FixedUpdate()
     {
         rotationalRecoil = Vector3.Lerp(rotationalRecoil, Vector3.zero, rotationalreturnspeed * Time.deltaTime);
@@ -98,8 +104,6 @@ public class WeaponBase : MonoBehaviour
 
             
         }
-        
-        Debug.Log(IsFiring);
     }
 
     //This function handles when the player shoots their weapon

@@ -39,7 +39,11 @@ public class PauseMenu : MonoBehaviour
     // This function is called when the retry button is clicked
     public void RetryGame()
     {
-        m_waveSystem.DestroyAllEnemies();
+        if (m_waveSystem != null)
+        {
+            m_waveSystem.DestroyAllEnemies();
+        }
+
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name); // This will reload the game from the start
         UnFreezeGame(); 

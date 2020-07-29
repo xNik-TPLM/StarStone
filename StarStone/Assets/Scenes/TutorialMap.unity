@@ -1605,7 +1605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b60e1a6a4aa25b45ad1bd41915290c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeDifferenceBetweenDialogues: 5
+  TimeDifferenceBetweenDialogues: 7
   Dialogue:
   - Morning soldier. Welcome to this training facility, where we will test your capabilities
     with your new advancements.
@@ -1615,10 +1615,11 @@ MonoBehaviour:
   - Good. Now we need to test your leg work, could you start walking around?
   - Great. How good are you with running, jumping, and crouching?
   - Excellent. Now it's time to get to the fun stuff.
-  - You have 3 weapons. An semi-automatic rifle (1), an automatic pistol (2), and
+  - You have 3 weapons. A semi-automatic rifle (1), an automatic pistol (2), and
     a prototype weapon (3), which uses the power of the Starstones. Also you have
     knife (C).
-  - It's our latest invention, but only The BAME Team can use this, so lucky you.
+  - The prototype weapon is our latest invention, but only The BAME Team can use
+    this, so lucky you.
   - Now load your weapon, either your rifle or the pistol and shoot the test dummy,
     or use your knife on it.
   - Perfect. Now we will demonstrate what the Starstones do. So far, we only discovered
@@ -1646,14 +1647,10 @@ MonoBehaviour:
   CameraMovementPopUp: {fileID: 1886692953}
   PlayerMovementPopUp: {fileID: 143955519}
   PlayerAdvancedMovementPopUp: {fileID: 1610772100}
-  PlayerSingleLinedPopUp: {fileID: 1773757985}
-  SingleTextPopUpTexts:
-  - R to Reload
-  - Q for Nuke
-  - E for Shield
   PlayerShootingPopUp: {fileID: 541219805}
   PlayerNukePopUp: {fileID: 1224399994}
   PlayerShieldPopUp: {fileID: 2138050106}
+  PlayerSingleLinedPopUp: {fileID: 1773757985}
   TextW: {fileID: 1465008184}
   TextA: {fileID: 1647831681}
   TextS: {fileID: 1621349442}
@@ -1662,6 +1659,10 @@ MonoBehaviour:
   TextJump: {fileID: 560370799}
   TextCrouch: {fileID: 362419087}
   TextSingleLinedTutorial: {fileID: 1109651037}
+  SingleTextPopUpTexts:
+  - R to Reload
+  - Q for Nuke
+  - E for Shield
   TestDummy: {fileID: 1915322805880769693, guid: c2c321a3a98326a4aaab4328676f51d8,
     type: 3}
   SpawnPoint: {fileID: 472600880}

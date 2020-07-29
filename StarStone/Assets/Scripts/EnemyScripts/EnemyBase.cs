@@ -14,16 +14,14 @@ using UnityEngine.AI;
 public class EnemyBase : MonoBehaviour
 {
     //Enemy fields
-    //Float fields
-    private float m_enemyBurningTime; //This float will be counting up the time of burning
-    private float m_enemyFreezeTime; //This float will be counting up the time of freezing
-    private float m_enemySpeed; //This is the current speed the enemy will go.
+    //This float field is the current speed the enemy will go.
+    private float m_enemySpeed;
 
     //Protected fields
     //protected booleans
     protected bool m_isPlayerInRange; //This will check if the enemy is in range with the player for detonation, or shooting
-    protected bool m_isEnemyBurning; //This will be activated when the an enemy is hit with a fire projectile and will be used to set 
-    protected bool m_isEnemyFrozen;
+    protected bool m_isEnemyBurning; //This will be activated when the an enemy is hit with a fire projectile and will be used to enable burning
+    protected bool m_isEnemyFrozen; //This will be activated when the an enemy is hit with an ice projectile and will be used to enable freezing
 
     //This protected float keeps track of how much health does the enemy have
     protected float m_enemyCurrentHealth;
@@ -81,8 +79,6 @@ public class EnemyBase : MonoBehaviour
         EnemyHealth();
         EnemyBehaviour();
         CheckingElementalDamage();
-        //EnemyBurning();
-        //EnemyFreeze();
     }
 
     //This function returns the health to display it on the enemy's health bar
@@ -144,72 +140,37 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+    //This function will check if any of the elemental damage is enabled
     private void CheckingElementalDamage()
     {
+        //If burning is enabled, it will start a coroutine to apply burning dmage to the enemy
         if (m_isEnemyBurning == true)
         {
             StartCoroutine(EnemyBurning());
         }
 
-        if(m_isEnemyFrozen == true)
+        //If freezing is enabled, it will start a coroutine to stun the enemy
+        if (m_isEnemyFrozen == true)
         {
             StartCoroutine(EnemyFreezing());
         }
     }
 
+    //This coroutine will burn the enemy at given time
     private IEnumerator EnemyBurning()
     {
-        Debug.Log("enemy burning");
+        //Take away enemy's health and wait until burning time runs out, which will disable burning
         m_enemyCurrentHealth -= BurningDamage * Time.deltaTime;
         yield return new WaitForSeconds(MaxBurningTime);
         m_isEnemyBurning = false;
     }
 
+    //This coroutine will freeze the enemy at given time
     private IEnumerator EnemyFreezing()
     {
+        //Stop enemy from moving and wait until freezing time runs out, which will disable freezing
         m_enemySpeed = 0;
         yield return new WaitForSeconds(MaxFreezeTime);
         m_isEnemyFrozen = false;
     }
-
-    //This function will handle the burning of the enemy. It's private as it will be used for all enemies as it is controlled by the boolean
-    /*private void EnemyBurning()
-    {
-        //If the enemy is burning
-        /*if(m_isEnemyBurning == true)
-        {
-            //Take away enemy's health and initiate burning timer
-            m_enemyCurrentHealth -= BurningDamage * Time.deltaTime;
-            m_enemyBurningTime += Time.deltaTime;
-
-            //The timer reaches the time of burning
-            if(m_enemyBurningTime > MaxBurningTime)
-            {
-                //stop the burning and set the timer back to 0
-                m_isEnemyBurning = false;
-                m_enemyBurningTime = 0;
-            }
-        }
-    }*/
-
-    //This function will handle the freezing of the enemy. This function will be used on all enemies
-    /*private void EnemyFreeze()
-    {
-        //if the enemy is frozen
-        if (m_isEnemyFrozen == true)
-        {
-            //Set the enemy speed to 0 and start the timer
-            m_enemySpeed = 0;
-            m_enemyFreezeTime += Time.deltaTime;
-
-            //Check if the timer is up
-            if(m_enemyFreezeTime > MaxFreezeTime)
-            {
-                //Turn off freezing and set speed back to normal
-                m_isEnemyFrozen = false;
-                m_enemyFreezeTime = 0;
-                m_enemySpeed = MaxEnemySpeed;
-            }
-        }
-    }*/
 }

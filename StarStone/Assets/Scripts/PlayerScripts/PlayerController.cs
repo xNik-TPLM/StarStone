@@ -69,7 +69,6 @@ public class PlayerController : MonoBehaviour
 
     //Nikodem Hamrol's fields and properties
     private bool m_isPlayerBurning;
-    private float m_playerBurningTime;
 
     [Header("Player Burning Properties")]
     public float MaxBurningTime;
@@ -103,7 +102,7 @@ public class PlayerController : MonoBehaviour
         GameOver(); // This checks whether the player has health left while playing
 
         //Nikodem Hamrol's function
-        PlayerBurning(); //This checks if the player is burning
+        PlayerBurningChecker(); //This checks if the player is burning
     }
 
     // This function will run if the player's health is fully depleted (Ben Smith)
@@ -376,23 +375,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //This function handles the burning of the player (Nikodem Hamrol)
-    private void PlayerBurning()
+    //This coroutine handles the burning of the player, by dealing burning damage and waits until time's up
+    private IEnumerator PlayerBurning()
+    {
+        //Deal burning damage per second
+        currentHealth -= BurningDamage * Time.deltaTime;
+
+        //Wait until time reaches max burning time, which disable burning
+        yield return new WaitForSeconds(MaxBurningTime);
+        m_isPlayerBurning = false;
+    }
+
+    //This function will check if player burning is active, which start the coroutine (Nikodem Hamrol)
+    private void PlayerBurningChecker()
     {
         //If the player is burning
         if(m_isPlayerBurning == true)
         {
-            //Take away player's health and initiate burning timer
-            currentHealth -= BurningDamage * Time.deltaTime;
-            m_playerBurningTime += Time.deltaTime;
-
-            //If the timer reaches the max burning time
-            if(m_playerBurningTime > MaxBurningTime)
-            {
-                //Stop the bruning and set the timer back to 0;
-                m_isPlayerBurning = false;
-                m_playerBurningTime = 0;
-            }
+            StartCoroutine(PlayerBurning());
         }
     }
 }

@@ -14,9 +14,6 @@ public class CameraMovement : MonoBehaviour
     private float m_mouseMovementX;
     private float m_mouseMovementY;
 
-    //This is the time for the player to move the camera in the tutorial map (Nikodem Hamrol)
-    private float m_timeForCameraMovement;
-
     //This will rotate the camera only on the x axis, but will be used to move the camera up down as well
     private float m_cameraRotationY; 
     
@@ -50,19 +47,24 @@ public class CameraMovement : MonoBehaviour
         Player.Rotate(Vector3.up * m_mouseMovementX);
 
 
-        ///Nikodem Hamrol's code
+        //Nikodem Hamrol's code
         //Check if the player is in the tutorial scene and if the dialogue is on to check camera movement
-        if(TutorialController.InTutorialScene == true && TutorialController.CurrentDialogue == "Please could you look around for me")
+        if (TutorialController.InTutorialScene == true && TutorialController.CurrentDialogue == "Please could you look around for me")
         {
-            //Initiate timer, which will mitigate the the skip of the dialogue, if the player moved the camera already
-            m_timeForCameraMovement += Time.deltaTime;
+            StartCoroutine(TutorialCmaeraMovementChecker());
+        }
+    }
 
-            //Check if the camera has moved and if the timer reached 3 seconds
-            if(m_cameraRotationY > 0 && m_timeForCameraMovement > 3)
-            {
-                //As the camera has been moved it will continue to the next dialogue
-                TutorialController.HasCameraMoved = true;
-            }
+    //This coroutine will check if the camera has been moved (Nikodem Hamrol)
+    private IEnumerator TutorialCmaeraMovementChecker()
+    {
+        //Wait 3 seconds
+        yield return new WaitForSeconds(3);
+
+        //Check if the the camera has moved, which will continue to the next dialogue in the tutorial
+        if (m_cameraRotationY > 0)
+        {
+            TutorialController.HasCameraMoved = true;
         }
     }
 }
