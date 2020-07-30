@@ -117,8 +117,8 @@ public class PlayerUI : MonoBehaviour
         }
 
         //Nikodem Hamrol
-        UpdatePopUpMessage();
-        UpdateWaveNumber();
+        UpdatePopUpMessages();
+        UpdateGameState();
         UpdateTimer();
         UpdateNukeCooldown();
         UpdateShieldCooldown();
@@ -126,50 +126,81 @@ public class PlayerUI : MonoBehaviour
         HUDDisplayingInTutorial();
     }
 
-    private IEnumerator PopUpMessages()
+    //This coroutine is used to display pop up messages for certain amount of time
+    private IEnumerator PopUpMessagesDisplayTime()
     {
+        //Display the text and wait until time for displaying is up
         PopUpMessage.text = PopUpMessageText;
         PopUpMessage.enabled = true;
-
         yield return new WaitForSeconds(PopUpMessageMaxDisplayTime);
+
+        //Then hide the text
         PopUpMessageEnabled = false;
         PopUpMessage.enabled = false;
     }
 
-    private void UpdatePopUpMessage()
+    //This function is to update the HUD with displaying the controls and messages to the player
+    private void UpdatePopUpMessages()
     {
+        //If the controls pop up can be displayed
         if(PopUpControlsEnabled == true)
         {
+            //Set the text and display it on screen
             PopUpControls.text = PopUpControlsText;
             PopUpControls.enabled = true;
         }
-        else
+        else //else, hide it
         {
             PopUpControls.enabled = false;
         }
 
+        //If pop up message can be dispalyed then, start the coroutine to display the message at given time
         if (PopUpMessageEnabled == true)
         {
-            StartCoroutine(PopUpMessages());
-
-            /*PopUpMessage.text = PopUpMessageText;
-            PopUpMessage.enabled = true;
-
-            m_popUpMessageDisplayTime += Time.deltaTime;
-            
-            if(m_popUpMessageDisplayTime > PopUpMessageMaxDisplayTime)
-            {
-                PopUpMessageEnabled = false;
-                m_popUpMessageDisplayTime = 0;
-                PopUpMessage.enabled = false;
-            }*/
+            StartCoroutine(PopUpMessagesDisplayTime());
         }
     }
 
     //This function will handle the indication of the wave number they're in and if they're in an intermission (Nikodem Hamrol)
-    private void UpdateWaveNumber()
+    private void UpdateGameState()
     {
-        WaveStateText.text = "Wave: " + WaveSystem.WaveNumber.ToString();
+        switch (WaveSystem.GameStateIndex)
+        {
+            case 0:
+                WaveStateText.text = "Use one of the Starstones that surrounds the generator";
+                WaveTimerText.enabled = false;
+                break;
+
+            case 1:                
+                WaveStateText.text = "Wave: " + WaveSystem.WaveNumber.ToString();
+                WaveTimerText.enabled = true;
+                break;
+
+            case 2:
+                switch (InteractAlters.AlterActivatedIndex)
+                {
+                    case 1:
+                        WaveStateText.text = "Activate the Wind alter, using its sigil";
+                        break;
+
+                    case 2:
+                        WaveStateText.text = "Activate the Fire alter, using its sigil";
+                        break;
+
+                    case 3:
+                        WaveStateText.text = "Activate the Ice alter, using its sigil";
+                        break;
+
+                    case 4:
+                        WaveStateText.text = "Activate the Earth alter, using its sigil";
+                        break;
+
+                    case 5:
+                        WaveStateText.text = "Turn off the generator using the power switch";
+                        break;
+                }
+                break;
+        }
     }
 
     //This function will handle the time of the waves to display as text (Nikodem Hamrol)

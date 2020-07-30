@@ -6,6 +6,7 @@ using UnityEngine;
 /// This script is a child to the enemy base.
 /// This is a Wind Elemental enemy. Its faster than any other enemy and it attacks by detonating on when the player is within the proximity
 /// Worked By: Nikodem Hamrol
+/// References: Digital Ruby (Johnson, J.). (2018). Fire & Spell Effects. [online]. Available: https://assetstore.unity.com/packages/vfx/particles/fire-explosions/fire-spell-effects-36825 [Last accessed 19th July 2020].
 /// </summary>
 
 public class WindElementalEnemy : EnemyBase

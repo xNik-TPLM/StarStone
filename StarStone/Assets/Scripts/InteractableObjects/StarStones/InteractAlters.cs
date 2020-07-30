@@ -22,6 +22,9 @@ public class InteractAlters : MonoBehaviour
     //This is to check if all sigils have been activated, which allow the player to use the power switch
     public static bool HasAllSigilsActivated;
 
+    //This will be used to display the text of wha alter to activate
+    public static int AlterActivatedIndex;
+
     [Tooltip("This is a reference to the interction text script, which allow to add control text and any pop up messages")]
     public InteractionTextData InteractionText; //This script reference will make all the data available for editing in the inspector to set controls message and pop up message
     [Tooltip("This is for the starstone object inside tha alter prefab")]
@@ -37,6 +40,9 @@ public class InteractAlters : MonoBehaviour
         HasEarthSigilInteracted = false;
         HasSigilInteracted = false;
         HasAllSigilsActivated = false;
+
+        //Set this index to 1 as the wind alter should be the first one to activated
+        AlterActivatedIndex = 1;
     }
 
     // Update is called once per frame
@@ -47,6 +53,8 @@ public class InteractAlters : MonoBehaviour
         {
             HasAllSigilsActivated = true;
         }
+
+        Debug.Log(AlterActivatedIndex);
     }
 
     //When a player enters and stays within a sigils, box trigger
@@ -73,8 +81,13 @@ public class InteractAlters : MonoBehaviour
                             HasSigilInteracted = true;
                             HasWindSigilInteracted = true;
                             StarStone.SetActive(true);
+
+                            //It will set the text back to the wave number and increment the alter activated index to display the text to activate the next alter, for the next time that player's in the intermission phase
+                            WaveSystem.GameStateIndex = 1;
+                            AlterActivatedIndex++;
                         }
-                        else //If this sigil has been interacted
+                        //If this sigil has been interacted
+                        else if(HasWindSigilInteracted == true && HasSigilInteracted == false) 
                         {
                             //Pop up a message to tell that the player has already interacted this Starstone and activate the next one
                             PlayerUI.PopUpMessageEnabled = true;
@@ -84,12 +97,14 @@ public class InteractAlters : MonoBehaviour
 
                     case "FireStarStoneAlter":
                         //If the wind sigil has been interacted but the fire sigil hasn't
-                        if(HasWindSigilInteracted == true && HasFireSigilInteracted == false)
+                        if(HasWindSigilInteracted == true)
                         {
                             //The fire sigil has been interacted, which will initiate the next wave and show the fire starstone
                             HasSigilInteracted = true;
                             HasFireSigilInteracted = true;
                             StarStone.SetActive(true);
+                            WaveSystem.GameStateIndex = 1;
+                            AlterActivatedIndex++;
                         }
 
                         //If the wind sigil has still not been activated
@@ -101,7 +116,7 @@ public class InteractAlters : MonoBehaviour
                         }
 
                         //If this sigil has been interacted
-                        if (HasFireSigilInteracted == true)
+                        if (HasFireSigilInteracted == true && HasSigilInteracted == false)
                         {
                             //Pop up a message to tell that the player has already interacted this Starstone and activate the next one
                             PlayerUI.PopUpMessageEnabled = true;
@@ -114,8 +129,10 @@ public class InteractAlters : MonoBehaviour
                         if (HasFireSigilInteracted == true && HasIceSigilInteracted == false)
                         {
                             HasIceSigilInteracted = true;
-                            StarStone.SetActive(true);
                             HasSigilInteracted = true;
+                            StarStone.SetActive(true);
+                            WaveSystem.GameStateIndex = 1;
+                            AlterActivatedIndex++;
                         }
 
                         //If the fire sigil has still not been activated
@@ -127,7 +144,7 @@ public class InteractAlters : MonoBehaviour
                         }
 
                         //If this sigil has been interacted
-                        if (HasIceSigilInteracted == true)
+                        if (HasIceSigilInteracted == true && HasSigilInteracted == false)
                         {
                             //Pop up a message to tell that the player has already interacted this Starstone and activate the next one
                             PlayerUI.PopUpMessageEnabled = true;
@@ -140,8 +157,10 @@ public class InteractAlters : MonoBehaviour
                         if (HasIceSigilInteracted == true && HasEarthSigilInteracted == false)
                         {
                             HasEarthSigilInteracted = true;
-                            StarStone.SetActive(true);
                             HasSigilInteracted = true;
+                            StarStone.SetActive(true);
+                            WaveSystem.GameStateIndex = 1;
+                            AlterActivatedIndex++;
                         }
 
                         //If the ice sigil has still not been activated
@@ -153,7 +172,7 @@ public class InteractAlters : MonoBehaviour
                         }
 
                         //If this sigil has been interacted
-                        if(HasEarthSigilInteracted == true)
+                        if(HasEarthSigilInteracted == true && HasSigilInteracted == false)
                         {
                             //Pop up a message to tell that the player has already interacted this Starstone and activate the next one
                             PlayerUI.PopUpMessageEnabled = true;

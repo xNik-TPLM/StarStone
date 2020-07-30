@@ -55,7 +55,7 @@ public class TutorialController : MonoBehaviour
 
     //Tutotial properties
     [Header("Dialogue Properties")]
-    [Tooltip("This is the difference between dialogues")]
+    [Tooltip("This is the time difference between dialogues")]
     public float TimeDifferenceBetweenDialogues; //This is the time betweeen the current dialogue text and the next one
     [Tooltip("This array stores all of the dialogue that needs to be displayed")]
     public string[] Dialogue; //This array stores all of the dialogue to be displayed, which will be put into the queue

@@ -34,6 +34,7 @@ public class WaveSystem : MonoBehaviour
     public static int WaveNumber;
     public static int EnemiesOnMap; //This counts the amount of enemies currently on the map, which will be used to limit the amount of enemies on the map
     public static int WaveNumberIndex; //This is the index for the waves array, which were all the data is stored
+    public static int GameStateIndex; //This is the state that the game is, which will dispaly the text to what the game state matches to
     
 
     //Wave system properties
@@ -75,6 +76,7 @@ public class WaveSystem : MonoBehaviour
         GeneratorTemperature = 0;
         EnemiesOnMap = 0;
         WaveNumberIndex = 0;
+        GameStateIndex = 0;
         
 
         //Go through each child of the WaveSystem object to get all spawn points
@@ -144,6 +146,8 @@ public class WaveSystem : MonoBehaviour
         //if the wave has begun
         if (m_hasWaveBegun == true && InIntermission == false)
         {
+            GameStateIndex = 1;
+
             //Start the timer
             WaveTimer -= Time.deltaTime;
 
@@ -170,15 +174,18 @@ public class WaveSystem : MonoBehaviour
             if (waves[WaveNumberIndex].NextWaveIsIntermission == true && IsWaveSystemInitiated == true && m_hasWaveBegun == false)
             {
                 InIntermission = true;
+                GameStateIndex = 2;
                 Intermission();
             }
 
             //If the cooldown is finished if the player is not in an intermission phase
-            if (m_nextwaveTimer > WaveCooldown && InIntermission == false)
+            if (m_nextwaveTimer > WaveCooldown && InIntermission == false && InteractAlters.HasAllSigilsActivated == false)
             {
+                Debug.Log("next wave");
                 //Set the cooldown and enemies spawned to 0
                 m_nextwaveTimer = 0;
                 EnemiesSpawned = 0;
+                
 
                 //Increment the wave index, set the timer to the next wave's time and start the wave
                 WaveNumberIndex++;
@@ -196,9 +203,6 @@ public class WaveSystem : MonoBehaviour
         {
             //End the wave
             GameOver();
-            /*m_hasWaveBegun = false;
-            PauseMenu.FreezeGame();
-            GameOverScreen.SetActive(true);*/
         }
     }
 
@@ -208,7 +212,6 @@ public class WaveSystem : MonoBehaviour
         if (InteractAlters.HasSigilInteracted == true && InIntermission == true && InteractAlters.HasAllSigilsActivated == false)
         {
             InIntermission = false;
-            InteractAlters.HasSigilInteracted = false;
         }
     }
 
