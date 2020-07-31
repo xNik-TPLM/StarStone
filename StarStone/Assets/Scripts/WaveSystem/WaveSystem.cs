@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 /// This script controls the waves throughout the game.
 /// It cotnrols beginning state, where enemies start to spawn. The completion of the wave to initate the next wave or fail the wave, and if the intermission phase of the game
 /// Worked by: Nikodem Hamrol
-/// References: 
+/// References: Single Sapling Games. (2019). Wave System - FPS Game In Unity - Part 63 [online]. Available: https://www.youtube.com/watch?v=gtVQDqFdabs [Last Accessed 29th July 2020].
 /// </summary>
 
 public class WaveSystem : MonoBehaviour
@@ -39,36 +39,41 @@ public class WaveSystem : MonoBehaviour
 
     //Wave system properties
     [Header("Waves")]
+    [Tooltip("This array is the data for each wave, entering the size of the array, will add more waves")]
     public WavesData[] waves; //This array takes all of the data that a wave has, which will be used to define what each wave is
-    [Space(10)]
-
-    //Float properties
-    public float SpawnRate; //This is the spawn rate at which the enmies will spawn in seconds
-    public float WaveCooldown; //This is the time between waves
-    public float GeneratorOverheatTime;
-
-    //This integer property is the max enemies that can be on the map
-    public int MaxEnemiesOnMap;
-
-    public GameObject GameOverScreen;
-    
 
     [Header("Spawn Points")]
+    [Tooltip("These are the spawn points on the map. Make sure you add the spawn points into this array, which must correspond to the amount of the points on the map")]
     public GameObject[] SpawnPoints; //This an array of all spawnn points on the map
-    [Space(10)]
 
+    [Header("General Wave Properties")]
+    [Tooltip("This is the rate that the enemies will spawn in")]
+    public float SpawnRate; //This is the spawn rate at which the enmies will spawn in seconds
+    [Tooltip("This is the time to initiate the next wave")]
+    public float WaveCooldown; //This is the time between waves
+    [Tooltip("This is the maximum time the generator can overheat, before ending the game in failure")]
+    public float GeneratorOverheatTime; //Max time the generator can overheat for
+    [Tooltip("This is the amount of enemies that is allowed on the map")]
+    public int MaxEnemiesOnMap; //Max enemies that can be on the map
+    [Tooltip("The game over screen object, when the player fails")]
+    public GameObject GameOverScreen;
+    
     [Header("Enemy Types")]
+    [Tooltip("The enemy that will spawn. Only for debugging")]
     public GameObject EnemyToSpawn; //This game object is the enemy that will be spawned on the map
 
     //This is a list of all elemental enemy prefabs that will be used to spawn onto the map. It was done this way, so that there is a reference to each enemy
+    [Tooltip("The wind enemy prefab")]
     public GameObject WindElementalEnemy;
+    [Tooltip("The fire enemy prefab")]
     public GameObject FireElementalEnemy;
+    [Tooltip("The earth enemy prefab")]
     public GameObject EarthElementalEnemy;
-
 
     // Start is called before the first frame update
     void Start()
     {
+        //Reset the public static fields to false and 0
         IsWaveSystemInitiated = false;
         InIntermission = false;
         IsGeneratorOverheating = false;
@@ -78,13 +83,13 @@ public class WaveSystem : MonoBehaviour
         WaveNumberIndex = 0;
         GameStateIndex = 0;
         
-
         //Go through each child of the WaveSystem object to get all spawn points
         for(int i = 0; i< SpawnPoints.Length; i++)
         {
             SpawnPoints[i] = transform.GetChild(i).gameObject;
         }
 
+        //Set the wave index to 0 and use the first wave's timer at the start
         WaveNumberIndex = 0;
         WaveTimer = waves[0].WaveTime;
     }
@@ -92,6 +97,8 @@ public class WaveSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //These 3 function will only if the wave system is initiated or if has begun and if the not in intermission.
+        //So if the player is in intermission, is will not run these functions
         if (IsWaveSystemInitiated == true || m_hasWaveBegun == true && InIntermission == false)
         {
             //Initiate the first wave by setting wave begun to true, the wave index to first wave, which is 0 on the array element and and timer to use the time of the first wave
@@ -146,6 +153,7 @@ public class WaveSystem : MonoBehaviour
         //if the wave has begun
         if (m_hasWaveBegun == true && InIntermission == false)
         {
+            //Set the game state index 1, which will display the wave number and timer
             GameStateIndex = 1;
 
             //Start the timer
@@ -171,8 +179,10 @@ public class WaveSystem : MonoBehaviour
             m_hasWaveBegun = false;
             m_nextwaveTimer += Time.deltaTime;
 
-            if (waves[WaveNumberIndex].NextWaveIsIntermission == true && IsWaveSystemInitiated == true && m_hasWaveBegun == false)
+            //Check if the wave has intermission and if the wave is initiated and the waves have not begun
+            if (waves[WaveNumberIndex].IsIntermissionWave == true && IsWaveSystemInitiated == true && m_hasWaveBegun == false)
             {
+                //Set that the player is in intermission, display the alter to activate as the game state is set to 2
                 InIntermission = true;
                 GameStateIndex = 2;
                 Intermission();
@@ -181,12 +191,10 @@ public class WaveSystem : MonoBehaviour
             //If the cooldown is finished if the player is not in an intermission phase
             if (m_nextwaveTimer > WaveCooldown && InIntermission == false && InteractAlters.HasAllSigilsActivated == false)
             {
-                Debug.Log("next wave");
                 //Set the cooldown and enemies spawned to 0
                 m_nextwaveTimer = 0;
                 EnemiesSpawned = 0;
                 
-
                 //Increment the wave index, set the timer to the next wave's time and start the wave
                 WaveNumberIndex++;
                 WaveTimer = waves[WaveNumberIndex].WaveTime;
@@ -198,7 +206,7 @@ public class WaveSystem : MonoBehaviour
         }
 
         //Wave failed state (Ran out of time)
-        //If time runs out
+        //If time runs out in the wave
         if(WaveTimer <= 0)
         {
             //End the wave
@@ -209,6 +217,7 @@ public class WaveSystem : MonoBehaviour
     //This function handles if intermission is active
     private void Intermission()
     {
+        //Check if a sigil has been interacted and if the intermission is still active and if the all sigils haven't been activated yet, which will set the intermission to false and start the next wave
         if (InteractAlters.HasSigilInteracted == true && InIntermission == true && InteractAlters.HasAllSigilsActivated == false)
         {
             InIntermission = false;
@@ -218,23 +227,28 @@ public class WaveSystem : MonoBehaviour
     //This function handles the generator state, which mainly checks if it's overheating
     private void GeneratorState()
     {
+        //If the generator is overheating, then start counting the time
         if (IsGeneratorOverheating == true)
         {
             m_generatorOverheatTimer += Time.deltaTime;
 
+            //If the timer is above the overheat time, it will end the game
             if (m_generatorOverheatTimer > GeneratorOverheatTime)
             {
                 GameOver();
             }
         }
-        else
+        else //If the generator has stopped overheating, which iis was done by the player killing an enemy, it will set the timer back to 0 
         {
             m_generatorOverheatTimer = 0;
         }
     }
 
+    //This function will run the game over state of the game
     public void GameOver()
     {   
+        //Stop spawning enemies, show the game over screen, disable the player controls, destroy all enemies, and start the coroutine, which will load the main menu
+        //The reason the freeze function isn't called, it's because it will not run the coroutine
         m_hasWaveBegun = false;
         GameOverScreen.SetActive(true);
         PlayerController.ControlsEnabled = false;
@@ -242,18 +256,28 @@ public class WaveSystem : MonoBehaviour
         StartCoroutine(LoadMainMenu());
     }
 
+    //This coroutine will run when the game over is active, which will load the main menu.
     private IEnumerator LoadMainMenu()
     {
+        //Wait 5 seconds, then load the main menu
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene("GameMenu");
     }
 
+    //This function will destroy every enemy on the map
     public void DestroyAllEnemies()
     {
+        //This loop will run up to the amount of enemies on the map
         for (int i = 0; i < EnemiesOnMap; i++)
         {
+            //Get every enemy, by finding the enemy base component
             EnemyBase enemy = FindObjectOfType<EnemyBase>();
-            Destroy(enemy.gameObject);
+
+            //If the enemy still exists, then destroy it
+            if (enemy != null)
+            {
+                Destroy(enemy.gameObject);
+            }
         }
     }
 }

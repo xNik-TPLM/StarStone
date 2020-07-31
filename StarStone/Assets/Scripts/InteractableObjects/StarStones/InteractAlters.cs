@@ -53,8 +53,6 @@ public class InteractAlters : MonoBehaviour
         {
             HasAllSigilsActivated = true;
         }
-
-        Debug.Log(AlterActivatedIndex);
     }
 
     //When a player enters and stays within a sigils, box trigger

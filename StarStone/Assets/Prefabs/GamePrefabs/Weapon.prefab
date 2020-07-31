@@ -94,24 +94,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d0656979b19b641911c64c6da42101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseHitscan: 0
   CurrentAmmo: 0
   WeaponClipSize: 0
   MaxAmmo: 0
   IsAutomatic: 0
+  UseHitscan: 0
   FireRate: 0
   WeaponDamage: 0
+  WeaponPositionPoint: {fileID: 0}
+  WeaponRotationPoint: {fileID: 0}
+  PositionalRecoilSpeed: 8
+  RotationalRecoilSpeed: 8
+  PositionalReturnSpeed: 18
+  RotationalReturnSpeed: 38
+  RecoilKickBackMaxRange: {x: 0.006, y: 0, z: -0.0006}
+  RecoilRotationMaxRange: {x: 10, y: 5, z: 7}
   WeaponAnimator: {fileID: 5581573430288087860}
-  WeaponProjectile: {fileID: 0}
   WeaponMuzzle: {fileID: 7029881734540371093}
-  recoilPosition: {fileID: 0}
-  rotationalPoint: {fileID: 0}
-  positionalrecoilspeed: 8
-  rotationalrecoilspeed: 8
-  positionalreturnspeed: 18
-  rotationalreturnspeed: 38
-  RecoilRotation: {x: 10, y: 5, z: 7}
-  RecoilKickBack: {x: 0.0015, y: 0, z: -0.0002}
 --- !u!95 &5581573430288087860
 Animator:
   serializedVersion: 3
@@ -122,7 +121,7 @@ Animator:
   m_GameObject: {fileID: 1328157252576528541}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6c38d602e8f365c41b68550e2874aafe, type: 2}
+  m_Controller: {fileID: 9100000, guid: ccdbb7b69788e7941bfee1bfd15487ca, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

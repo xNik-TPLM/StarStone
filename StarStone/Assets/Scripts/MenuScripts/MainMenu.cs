@@ -31,7 +31,6 @@ public class MainMenu : MonoBehaviour
         PauseMenu.UnFreezeGame(); // This resets time to pass at the normal rate
         Cutscene.SetActive(true); // This enables the cutscene canvas
         Menu.SetActive(false); // This disables the main menu
-        PlayerController.ControlsEnabled = true;
 
         // These stop the main menu theme and play the cutscene theme
         m_sound.MenuTheme.Stop();

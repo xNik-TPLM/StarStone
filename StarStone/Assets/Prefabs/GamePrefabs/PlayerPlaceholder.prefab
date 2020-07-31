@@ -1411,9 +1411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebad2ee51deb0c446b8cb3640e4a99b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 6
-  returnSpeed: 25
-  RecoilRotation: {x: 2, y: 2, z: 2}
+  RotationSpeed: 6
+  ReturnSpeed: 10
+  RecoilRotationMaxRange: {x: 2, y: 2, z: 2}
 --- !u!1 &1862584331027248703
 GameObject:
   m_ObjectHideFlags: 0
@@ -4945,9 +4945,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6989485618890738874}
-  - component: {fileID: 6914835408073415514}
   - component: {fileID: 3232717784260162535}
-  - component: {fileID: 527895061594920091}
   m_Layer: 0
   m_Name: WeaponRotationPoint
   m_TagString: Untagged
@@ -4962,7 +4960,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6782540367815974748}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.0040299986}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4972,25 +4970,6 @@ Transform:
   m_Father: {fileID: 2117802646086677836}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &6914835408073415514
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6782540367815974748}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6c38d602e8f365c41b68550e2874aafe, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &3232717784260162535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5003,19 +4982,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85047f3450debb247b9a2210a61d2df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &527895061594920091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6782540367815974748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b3d6adf41129844eaf9292ab86d3ec7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reloadAnimation: {fileID: 6914835408073415514}
 --- !u!1 &6836557706347718234
 GameObject:
   m_ObjectHideFlags: 0
@@ -6455,6 +6421,16 @@ PrefabInstance:
       propertyPath: UseHitscan
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2851377721164807728, guid: 6ca3fe58d3097ed4e938a49ae27b7909,
+        type: 3}
+      propertyPath: WeaponPositionPoint
+      value: 
+      objectReference: {fileID: 2117802646086677836}
+    - target: {fileID: 2851377721164807728, guid: 6ca3fe58d3097ed4e938a49ae27b7909,
+        type: 3}
+      propertyPath: WeaponRotationPoint
+      value: 
+      objectReference: {fileID: 6989485618890738874}
     - target: {fileID: 6991691930648844957, guid: 6ca3fe58d3097ed4e938a49ae27b7909,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6520,26 +6496,16 @@ PrefabInstance:
       propertyPath: reloadAnimation
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1740739795345265924, guid: 860691a7a884db44e8ca2d57449d2e61,
+    - target: {fileID: -2768094269574926922, guid: 860691a7a884db44e8ca2d57449d2e61,
         type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740739795345265924, guid: 860691a7a884db44e8ca2d57449d2e61,
+      propertyPath: WeaponPositionPoint
+      value: 
+      objectReference: {fileID: 2117802646086677836}
+    - target: {fileID: -2768094269574926922, guid: 860691a7a884db44e8ca2d57449d2e61,
         type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740739795345265924, guid: 860691a7a884db44e8ca2d57449d2e61,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740739795345265924, guid: 860691a7a884db44e8ca2d57449d2e61,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: WeaponRotationPoint
+      value: 
+      objectReference: {fileID: 6989485618890738874}
     - target: {fileID: 1740739795345265924, guid: 860691a7a884db44e8ca2d57449d2e61,
         type: 3}
       propertyPath: m_RootOrder
@@ -6754,15 +6720,15 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4915398034560546713, guid: 7a1036c4aa08d814a8d33cf0ecf19071, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7a1036c4aa08d814a8d33cf0ecf19071, type: 3}
---- !u!4 &5316114232908440818 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 93929863628734261, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
-    type: 3}
-  m_PrefabInstance: {fileID: 5227294934020905927}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9195779116005136097 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3969621180237925670, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
+    type: 3}
+  m_PrefabInstance: {fileID: 5227294934020905927}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5316114232908440818 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 93929863628734261, guid: 7a1036c4aa08d814a8d33cf0ecf19071,
     type: 3}
   m_PrefabInstance: {fileID: 5227294934020905927}
   m_PrefabAsset: {fileID: 0}
@@ -6786,6 +6752,16 @@ PrefabInstance:
     - target: {fileID: 2519397886453861574, guid: e08bb334b5386d24e9b20dc32874d53f,
         type: 3}
       propertyPath: rotationalPoint
+      value: 
+      objectReference: {fileID: 6989485618890738874}
+    - target: {fileID: 2519397886453861574, guid: e08bb334b5386d24e9b20dc32874d53f,
+        type: 3}
+      propertyPath: WeaponPositionPoint
+      value: 
+      objectReference: {fileID: 2117802646086677836}
+    - target: {fileID: 2519397886453861574, guid: e08bb334b5386d24e9b20dc32874d53f,
+        type: 3}
+      propertyPath: WeaponRotationPoint
       value: 
       objectReference: {fileID: 6989485618890738874}
     - target: {fileID: 2609227005248944782, guid: e08bb334b5386d24e9b20dc32874d53f,

@@ -24,11 +24,8 @@ public class PlayerUI : MonoBehaviour
     public static bool shieldActive; // This checks if the shield is currently enabled
     public Slider healthSlider; // This sets a reference for the health bar
     public Slider shieldSlider; // This sets a reference for the shield bar
-    [Space(10)]
 
     //Nikodem Hamrol's fields and properties
-    private float m_popUpMessageDisplayTime; 
-
     //These integers are used to change as indexes for the arrays of colours
     private int m_temperatureColourIndex;
     private int m_nukeCooldownColourIndex;
@@ -62,11 +59,11 @@ public class PlayerUI : MonoBehaviour
     public Text WaveStateText; //This text object will show the wave number and if they are in an intermission phase
     public Text WaveTimerText; //This text object will show the time left for a wave to be completed
     public Text OverheatingText; //This text object will indicate if the generator is overheating
-    public Text PopUpControls;
-    public Text PopUpMessage;
-    public float PopUpMessageMaxDisplayTime;
-    public GameObject NukeAbilityIcon;
-    public GameObject ShieldAbilityIcon;
+    public Text PopUpControls; //This text object will show the controls on objects that player will interact with
+    public Text PopUpMessage; //This text object will show the message, if the player can't yet interact with the object
+    public float PopUpMessageMaxDisplayTime; //This is the max time that the pop up message will be displayed for
+    public GameObject NukeAbilityIcon; //This is the UI for the nuke, which contains the slider and icon
+    public GameObject ShieldAbilityIcon; //This is the UI for the shield, which contains the slider and icon
 
     // Start is called before the first frame update
     void Start()
@@ -86,7 +83,6 @@ public class PlayerUI : MonoBehaviour
         //We set these bools as active so that, the cooldown can start as soon as the game starts
         OffensiveAbility.NukeEnabled = true;
         shieldCooldownActive = true;
-
 
         //At Start, set the max value for the generator slider and disable the overheating text
         GeneratorTemperatureSlider.maxValue = MaxGeneratorTemperature;
@@ -126,7 +122,7 @@ public class PlayerUI : MonoBehaviour
         HUDDisplayingInTutorial();
     }
 
-    //This coroutine is used to display pop up messages for certain amount of time
+    //This coroutine is used to display pop up messages for certain amount of time (Nikodem Hamrol)
     private IEnumerator PopUpMessagesDisplayTime()
     {
         //Display the text and wait until time for displaying is up
@@ -139,7 +135,7 @@ public class PlayerUI : MonoBehaviour
         PopUpMessage.enabled = false;
     }
 
-    //This function is to update the HUD with displaying the controls and messages to the player
+    //This function is to update the HUD with displaying the controls and messages to the player (Nikodem Hamrol)
     private void UpdatePopUpMessages()
     {
         //If the controls pop up can be displayed
@@ -161,41 +157,42 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    //This function will handle the indication of the wave number they're in and if they're in an intermission (Nikodem Hamrol)
+    //This function will handle the indication text of the game state the player is in (Nikodem Hamrol)
     private void UpdateGameState()
     {
+        //Switch between game states
         switch (WaveSystem.GameStateIndex)
         {
-            case 0:
+            case 0: //Before the waves are initiated, which will also hide the timer
                 WaveStateText.text = "Use one of the Starstones that surrounds the generator";
                 WaveTimerText.enabled = false;
                 break;
 
-            case 1:                
+            case 1: //When waves are initiated, which will show the wave number and show the timer         
                 WaveStateText.text = "Wave: " + WaveSystem.WaveNumber.ToString();
                 WaveTimerText.enabled = true;
                 break;
 
-            case 2:
+            case 2: //This is when the player is in the intermission, which the player will be tasked to activate the alters
                 switch (InteractAlters.AlterActivatedIndex)
                 {
-                    case 1:
+                    case 1: //Activate the wind alter
                         WaveStateText.text = "Activate the Wind alter, using its sigil";
                         break;
 
-                    case 2:
+                    case 2: //Activate the fire alter
                         WaveStateText.text = "Activate the Fire alter, using its sigil";
                         break;
 
-                    case 3:
+                    case 3: //Activate the ice alter
                         WaveStateText.text = "Activate the Ice alter, using its sigil";
                         break;
 
-                    case 4:
+                    case 4: //Activate the earth alter
                         WaveStateText.text = "Activate the Earth alter, using its sigil";
                         break;
 
-                    case 5:
+                    case 5: //Activate the power switch
                         WaveStateText.text = "Turn off the generator using the power switch";
                         break;
                 }
@@ -314,31 +311,38 @@ public class PlayerUI : MonoBehaviour
         TemperatureFill.color = new Color(SliderColours[m_temperatureColourIndex].x, SliderColours[m_temperatureColourIndex].y, SliderColours[m_temperatureColourIndex].z);
     }
 
-
+    //This function will handle the UI displaying throughout the tutorial phase (Nikodem Hamrol)
     private void HUDDisplayingInTutorial()
     {
+        //If the player is int he tutorial scene
         if (TutorialController.InTutorialScene == true)
         {
+            //Move the temperature bar out of the screen and disable the wave state text and wave time text
             GeneratorTemperatureSlider.transform.position = new Vector3(-100,0,0);
             WaveStateText.enabled = false;
             WaveTimerText.enabled = false;
 
+            //Switch between the dialogue in the tutorial
             switch (TutorialController.CurrentDialogue)
             {
+                //On the first dialogue, disable the ammo, nuke and shield UI
                 case "Morning soldier. Welcome to this training facility, where we will test your capabilities with your new advancements.":
                     ammoDisplay.enabled = false;
                     NukeAbilityIcon.SetActive(false);
                     ShieldAbilityIcon.SetActive(false);
                     break;
 
+                //On the shooting tutorial, show the ammo UI
                 case "Now load your weapon, either your rifle or the pistol and shoot the test dummy, or use your knife on it.":
                     ammoDisplay.enabled = true;
                     break;
 
+                //On the nuke tutorial, show the nuke UI
                 case "Go ahead and use it on this test dummy.":
                     NukeAbilityIcon.SetActive(true);
                     break;
 
+                //On the shield tutorial, show the shield UI
                 case "Can you activate it?":
                     ShieldAbilityIcon.SetActive(true);
                     break;

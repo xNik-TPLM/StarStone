@@ -93,23 +93,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05afeb910d3da34e9cbb7e8f2ecb054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseHitscan: 0
   CurrentAmmo: 0
   WeaponClipSize: 10
   MaxAmmo: 0
   IsAutomatic: 0
   FireRate: 10
   WeaponDamage: 0
-  WeaponProjectile: {fileID: 0}
+  UseHitscan: 0
+  WeaponPositionPoint: {fileID: 0}
+  WeaponRotationPoint: {fileID: 0}
+  PositionalRecoilSpeed: 8
+  RotationalRecoilSpeed: 8
+  PositionalReturnSpeed: 18
+  RotationalReturnSpeed: 38
+  RecoilKickBackMaxRange: {x: 0.006, y: 0, z: -0.0006}
+  RecoilRotationMaxRange: {x: 10, y: 5, z: 7}
+  WeaponAnimator: {fileID: 0}
   WeaponMuzzle: {fileID: 7029881734540371093}
-  recoilPosition: {fileID: 0}
-  rotationalPoint: {fileID: 0}
-  positionalrecoilspeed: 8
-  rotationalrecoilspeed: 8
-  positionalreturnspeed: 18
-  rotationalreturnspeed: 38
-  RecoilRotation: {x: 10, y: 5, z: 7}
-  RecoilKickBack: {x: 0.0015, y: 0, z: -0.0002}
   FireProjectile: {fileID: 2715922866524773295, guid: e1fcb8d73dcabfb4ba2b0a2b77c58fa5,
     type: 3}
   IceProjectile: {fileID: 2715922866524773295, guid: f3e7bd1bf9560c547bfab65df081bc80,
