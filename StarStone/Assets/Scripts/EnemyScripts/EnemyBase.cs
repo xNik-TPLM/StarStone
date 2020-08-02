@@ -35,8 +35,7 @@ public class EnemyBase : MonoBehaviour
     //The player controller reference will be used to give health to the player when the enemy is hit by an earth projectile
     protected PlayerController m_playerReference;
 
-    //Enemy properties    
-    //Float properties
+    //Enemy properties
     [Header("Health Properties")]
     [Tooltip("The maximum health the enemy will have")]
     public float MaxHealth; //This sets the max health of an enemy
@@ -46,7 +45,9 @@ public class EnemyBase : MonoBehaviour
     public float MaxEnemySpeed; //This sets the max speed of our enemy
 
     [Header("UI")]
+    [Tooltip("The canvas that is attached to enemy")]
     public GameObject HealthBarUI; //This is the reference to the canvas of our health bar so that we can deactivate it when health is full
+    [Tooltip("The Slider that is attached to the enemy's canvas")]
     public Slider HealthBarSlider; //this is the reference to the slider, which change the value of the slider
 
     [Header("Elemental Effects")]

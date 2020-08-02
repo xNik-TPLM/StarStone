@@ -13,6 +13,7 @@ public class FireElementalEnemy : EnemyBase
     //This float is the time that enemy will shot the projectile
     private float m_enemyTimeToFire;
     
+    //Fire enemy properties
     [Header("Fire Elemental Enemy Properties")]
     [Tooltip("This is the distance the enemy can its projectile at the player")]
     public float FiringDistance; //This is the distance between the player and the enemy, which will allow the enemy to shoot at the player

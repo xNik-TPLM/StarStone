@@ -231,12 +231,12 @@ public class WeaponBase : MonoBehaviour
         if (Physics.Raycast(WeaponMuzzle.transform.position, WeaponMuzzle.transform.forward, out RaycastHit m_raycastHitDetector, 100) && UseHitscan == true)
         {
             //Set the enemy for the raycast should mainly detect
-            EnemyBase EnemyTarget = m_raycastHitDetector.transform.GetComponent<EnemyBase>();
+            EnemyBase enemyTarget = m_raycastHitDetector.transform.GetComponent<EnemyBase>();
 
             //If the enemy target exists, then apply damage
-            if (EnemyTarget != null)
+            if (enemyTarget != null)
             {
-                EnemyTarget.EnemyDamaged(WeaponDamage, 0);
+                enemyTarget.EnemyDamaged(WeaponDamage, 0);
             }
         }
     }

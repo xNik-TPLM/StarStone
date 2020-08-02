@@ -2250,15 +2250,15 @@ MonoBehaviour:
     RateToSpwanShooter: 5
     RateToSpawnMiniBoss: 0
     WaveTime: 90
+  SpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   SpawnRate: 1
   WaveCooldown: 1
   GeneratorOverheatTime: 5
   MaxEnemiesOnMap: 15
   GameOverScreen: {fileID: 0}
-  SpawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   EnemyToSpawn: {fileID: 0}
   WindElementalEnemy: {fileID: 4076921026306919797, guid: c02eb9eb012f5ae4dbb45340f058791a,
     type: 3}

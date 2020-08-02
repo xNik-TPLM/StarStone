@@ -11,10 +11,11 @@ using UnityEngine;
 
 public class PrototypeWeapon : WeaponBase
 {
-    //Prototype Weapon fields
+    //Prototype Wwapon fields
     //This float is the fire rate of the projectiles that will spawn
     private float m_fireRate;
 
+    //Prototype weapon properties
     [Header("Elemental Projectiles")]
     [Tooltip("This is the projectile that prototype weapon is currenty using. Only for debugging")]
     public GameObject ProjectileToFire; //This game object is the projectile that will be fired
@@ -60,7 +61,7 @@ public class PrototypeWeapon : WeaponBase
             //When the player fires on semi-automatic mode of the prototype weapon, which any Starstone other than the wind
             if (Input.GetButtonDown("Fire1") && IsAutomatic == false)
             {
-                //Play the firing sound, instantiate the projectile and decrement ammo by ammo
+                //Play the firing sound, instantiate the projectile and decrement ammo by one
                 m_soundReference.PrototypeFire.Play();
                 GameObject projectile = Instantiate(ProjectileToFire);
                 CurrentAmmo -= 1;

@@ -19,19 +19,19 @@ public class WaveSystem : MonoBehaviour
     //Float fields
     private float m_timeToSpawn; //This will time the spawining of the next enemy
     private float m_nextwaveTimer; //This will time when the next wave will begin
-    private float m_generatorOverheatTimer;
+    private float m_generatorOverheatTimer; 
 
     //This integer field counts how many enemies have been spawned
     private int EnemiesSpawned;
 
     //Static fields
-    public static bool IsWaveSystemInitiated;
-    public static bool InIntermission; //This static boolean field will be used to check if the player is still in the intermission phase
-    public static bool IsGeneratorOverheating;
-    public static bool GameCompleted;
+    public static bool IsWaveSystemInitiated; //This static boolean field will be used to check if the player has initated the wave system
+    public static bool InIntermission; //This will be used to check if the player is still in the intermission phase
+    public static bool IsGeneratorOverheating; //This will check if the generator is overheating, which will start the overheating timer and change the Ui elements to represent that
+    public static bool GameCompleted; //Ths will chec if the payer has completed the game successfullyk
     public static float WaveTimer; //This static float field is to count down the time of the wave and to be used to show in the player's HUD
-    public static float GeneratorTemperature;
-    public static int WaveNumber;
+    public static float GeneratorTemperature; //This will be used to set the generator temperature on the slider, based on the amount of enemies on the map
+    public static int WaveNumber; //This will use the wave number in from the wave data, so that it can be displayed
     public static int EnemiesOnMap; //This counts the amount of enemies currently on the map, which will be used to limit the amount of enemies on the map
     public static int WaveNumberIndex; //This is the index for the waves array, which were all the data is stored
     public static int GameStateIndex; //This is the state that the game is, which will dispaly the text to what the game state matches to

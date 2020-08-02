@@ -12,7 +12,7 @@ using UnityEngine;
 public class WindElementalEnemy : EnemyBase
 {
     //Wind elemental enemy fields
-    //This boolean checks if detonation is enabled, which will detonatie enemy dealing damage to the player, if it's in the area.
+    //This boolean checks if detonation is enabled, which will detonate the enemy dealing damage to the player, if it's in the area.
     private bool m_detonationEnabled; 
 
     [Header("Wind Elemental Properties")]
@@ -52,12 +52,6 @@ public class WindElementalEnemy : EnemyBase
                 m_playerReference.currentHealth += HealthToPlayer;
                 break;
         }
-    }
-
-    //This function is overridden to add a behaviour relating to this enemy type which is the detonation
-    protected override void EnemyBehaviour()
-    {
-        base.EnemyBehaviour();
     }
 
     //When a player enters and stays within the enemy's sphere collider

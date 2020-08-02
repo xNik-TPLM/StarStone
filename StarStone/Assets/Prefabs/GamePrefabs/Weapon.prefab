@@ -105,8 +105,8 @@ MonoBehaviour:
   WeaponRotationPoint: {fileID: 0}
   PositionalRecoilSpeed: 8
   RotationalRecoilSpeed: 8
-  PositionalReturnSpeed: 18
-  RotationalReturnSpeed: 38
+  PositionalReturnSpeed: 15
+  RotationalReturnSpeed: 15
   RecoilKickBackMaxRange: {x: 0.006, y: 0, z: -0.0006}
   RecoilRotationMaxRange: {x: 10, y: 5, z: 7}
   WeaponAnimator: {fileID: 5581573430288087860}

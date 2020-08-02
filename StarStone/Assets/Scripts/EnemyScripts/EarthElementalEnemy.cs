@@ -15,7 +15,6 @@ public class EarthElementalEnemy : EnemyBase
     private float m_enemyTimeToFire;
 
     //Earth Elemental Properties
-    //Float Properties
     [Header("Earth Elemental Enemy Properties")]
     [Tooltip("This is the amount health the enemy will be regenerated per second")]
     public float RegeneratedHealth; //This is the amount of health the enemy will regerenate per second

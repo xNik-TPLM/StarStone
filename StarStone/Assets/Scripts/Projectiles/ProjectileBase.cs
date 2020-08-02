@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// This script is a base script for projectiles in the game.
-/// It will mainly check collision against objects, such as enemies. It also holds properties, such as projectile speed and damage.
+/// It will mainly check collision against objects, such as enemies and the player. It also holds properties, such as projectile speed and damage.
 /// Worked By: Nikodem Hamrol
 /// References: Gabriel Aguiar Prod. (2018). Unity 2018 - Game VFX - Projectile/Bullet Raycast Tutorial [online]. Available: https://www.youtube.com/watch?v=xenW67bXTgM [Last Accessed 9th June June 2020].
 /// </summary>
