@@ -66,6 +66,8 @@ public class WindElementalEnemy : EnemyBase
             {
                 //damage the player and disable detonation, to stop potential duplicated damage
                 other.gameObject.GetComponent<PlayerController>().PlayerDamage(DetonationDamage, 0);
+                m_enemyCurrentHealth = 0;
+                Instantiate(ExplosionVFX, transform.position, transform.rotation);
                 m_detonationEnabled = false;
             }
         }
@@ -97,8 +99,5 @@ public class WindElementalEnemy : EnemyBase
 
         //Enable detonation, kill the enemy and instantiate the explosion visual effect
         m_detonationEnabled = true;
-        m_enemyCurrentHealth = 0;
-        Instantiate(ExplosionVFX, transform.position, transform.rotation);
-
     }
 }
