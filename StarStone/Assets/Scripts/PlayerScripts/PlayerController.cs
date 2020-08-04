@@ -230,7 +230,6 @@ public class PlayerController : MonoBehaviour
         }
         if (ladderTop2 == true)
         {
-            //PlayerGravityForce = -5f;
             transform.Translate(Vector3.down * -ladderSpeed * Time.deltaTime);
         }
         if (transform.position.y >= LadderTopTransform.position.y)
