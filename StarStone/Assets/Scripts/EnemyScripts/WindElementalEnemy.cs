@@ -20,8 +20,6 @@ public class WindElementalEnemy : EnemyBase
     public float MaxDetonationTime; //This is the max timebefore the enemy will detonate
     [Tooltip("This is the damage it will deal to the player after detonation")]
     public float DetonationDamage; //This is the damage after detonation
-    [Tooltip("This is the radius of detection for detonation")]
-    public float DetonationRadius;
     [Tooltip("This is the visual special effect to be used fro detonation")]
     public GameObject ExplosionVFX; //This is the vfx that will activate after enemy's detonation
 
