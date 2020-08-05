@@ -214,15 +214,6 @@ public class PlayerController : MonoBehaviour
             PlayerGravityForce = 0;
             transform.Translate(Vector3.up * ladderSpeed * Time.deltaTime); // This moves the player up the ladder
         }
-        //if (ladderTop == true && ladderBottom == false && transform.position.x >= LadderTopTransform.position.x)
-        //{
-        //    PlayerGravityForce = 0;
-        //    transform.Translate(Vector3.up * -ladderSpeed * Time.deltaTime); // This moves the player down the ladder
-        //    if (transform.position.x > LadderTopTransform.position.x)
-        //    {
-        //        transform.Translate(Vector3.forward * ladderSpeed * Time.deltaTime); // This makes sure the player is on the ladder before using it
-        //    }
-        //}
         if (ladderTop == true && ladderBottom == false && ladderTop2 == false)
         {
             PlayerGravityForce = 0;
@@ -327,13 +318,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey("w") && Input.GetKey(KeyCode.LeftShift))
         {
-            //m_sound.PlayerRun.Play();
             transform.position += transform.TransformDirection(Vector3.forward) * Time.deltaTime * PlayerMovementSpeed * 2f;
         }
-        //if (Input.GetKeyUp("w") && Input.GetKeyUp(KeyCode.LeftShift))
-        //{
-        //    m_sound.PlayerRun.Stop();
-        //}
     }
     //This function controls the crouch (Ben Smith)
     private void PlayerCrouch()

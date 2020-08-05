@@ -11,19 +11,24 @@ using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour
 {
     //Ben Smith's fields and properties
+    [Header("Ammo Display")]
+    [Tooltip("This displays the text")]
     public Text ammoDisplay; // This displays the current ammo and max ammo of a weapon
 
-    //public WeaponBase m_weapon;
-    private PlayerController m_playerHealth;
-
-    public static bool shieldCooldownActive;
-
+    [Header("Shield Slider And Properties")]
+    public Slider shieldSlider; // This sets a reference for the shield bar
+    [Tooltip("This sets a timer for the defensive ability")]
     private float m_shieldCooldownTimer;
     public float ShiedCooldownMaxTime;
-
+    [Tooltip("This checks whether the shield has been used and whether the player can use it")]
+    public static bool shieldCooldownActive;
     public static bool shieldActive; // This checks if the shield is currently enabled
+
+    [Header("Health Slider And Properties")]
+    [Tooltip("This sets the players health")]
     public Slider healthSlider; // This sets a reference for the health bar
-    public Slider shieldSlider; // This sets a reference for the shield bar
+    private PlayerController m_playerHealth;
+
 
     //Nikodem Hamrol's fields and properties
     //These integers are used to change as indexes for the arrays of colours
@@ -96,6 +101,7 @@ public class PlayerUI : MonoBehaviour
         healthSlider.value = m_playerHealth.currentHealth/100;
         shieldSlider.value = PlayerController.ShieldHealth;
 
+        // This function checks the defensive abilty and allows the player to use it when the cooldown has finished
         if (shieldActive == true && shieldCooldownActive == false)
         {
             m_shieldCooldownColourIndex = 1;
