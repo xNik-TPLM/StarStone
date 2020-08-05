@@ -10,15 +10,20 @@ using UnityEngine;
 public class OffensiveAbility : MonoBehaviour
 {
     // Public float variables
+    [Header("Offensive Ability Properties")]
+    [Tooltip("Radius of the Offensive Ability")]
     public float radius = 5f; //  This sets the radius at which the nuke affects
+    [Tooltip("Damage of the Offensive Ability")]
     public float nukeDamage; // This sets the damage that the nuke has on enemies
+    [Tooltip("Timer of the Offensive Ability")]
     public static float NukeCooldownTimer; // This sets the cooldown of the nuke
     public float NukeCooldownMaxTime; // This checks if the nuke can be used
-
     // Public bools
+    [Tooltip("Check to see if the offensive ability has been used")]
     public static bool NukeEnabled; // This checks whether the nuke has been used
 
     // Public GameObjects
+    [Header("Game Objects")]
     public GameObject explosionVFX; // This sets the reference to the explosion visual effect
 
     // Private variables

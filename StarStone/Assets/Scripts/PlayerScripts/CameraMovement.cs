@@ -15,13 +15,15 @@ public class CameraMovement : MonoBehaviour
     private float m_mouseMovementY;
 
     //This will rotate the camera only on the x axis, but will be used to move the camera up down as well
-    private float m_cameraRotationY; 
-    
+    private float m_cameraRotationY;
+
     //Properties
     //Float property which will control the mouse sensitivity
+    [Tooltip("Mouse Sensitivity")]
     public float m_mouseSensitivity = 200f;
 
     //Reference to the player character
+    [Tooltip("Player Reference")]
     public Transform Player;
 
     // Start is called before the first frame update
