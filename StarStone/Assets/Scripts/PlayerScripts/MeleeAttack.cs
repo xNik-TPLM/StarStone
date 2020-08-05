@@ -8,8 +8,12 @@ using UnityEngine;
 /// </summary>
 public class MeleeAttack : MonoBehaviour
 {
+    
     Animator meleeAnimation; // This sets the reference to the melee attack animation
+    [Header("Knife Properties")]
+    [Tooltip("Knife Damage")]
     public float MeleeDamage; // This is the damage of the knife per hit
+    [Tooltip("Knife Object")]
     public GameObject WeaponHolder; // This sets the reference to the weapon holder
 
     // Start is called before the first frame update

@@ -10,59 +10,73 @@ using UnityEngine;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
-    //Private fields
-    //This bool will check if the player is on the ground
-    private bool m_isGrounded;
-    private bool m_ladderCollision;
-
-    // Public Game Objects
+    [Header("Knife Properties")]
+    [Tooltip("Knife")]
     public GameObject Knife; //This sets the reference to the melee weapon
-    public GameObject playerShield; // This sets the reference to the player's shield
-    public GameObject pauseMenu; // This sets the reference to the pause menu canvas
+    [Tooltip("Knife Position")]
+    public static Transform KnifeStartPosition;
 
+    [Header("Ladder Properties")]
+    public Transform LadderTopTransform;
+    public Transform LadderBottomTransform;
+    private bool m_ladderCollision;
+    private bool ladderBottom; //Collider to check if the player has entered to move up ladder
+    private bool ladderTop; //Collider to check if the player has entered to move down ladder
+    private bool ladderTop2; //Collider to check if the player has entered to move down ladder
+    [Tooltip("Ladder speed")]
+    public float ladderSpeed; //Speed of the player moving on the ladder
+
+    //Player properties
     //Float fields
+    [Header("Player Movement And Properties")]
+    [Tooltip("Player Velocity")]
+    public Vector3 m_playerVelocity;
+    [Tooltip("Player Shield")]
+    public GameObject playerShield; // This sets the reference to the player's shield
+    [Tooltip("Player Movement Speed")]
+    public float PlayerMovementSpeed; //Speed of the player movement
+    [Tooltip("Player Jump Force")]
+    public float PlayerJumpForce; //The force of Player's jump
+    [Tooltip("Gravity")]
+    public float PlayerGravityForce; //The gravity force of the player
+    public float GroundCheckRadius = 0.4f; //The radius to check if the player's still on the ground
+    [Tooltip("Player max health")]
+    public float maxHealth = 100; //Maximum health of the player
+    [Tooltip("Player health")]
+    public float currentHealth; //Current health of the player
+    [Tooltip("Shield bonus")]
+    public float ShieldAmount = 50; //Shield bonus value
+    [Tooltip("Player position")]
+    public Transform PlayerFeetPosition; //Position of the player's feet to check if player is grounded
+    [Tooltip("Player")]
+    public CharacterController CharacterController; //Reference to the character controller for movement and changing height of the collider
+    [Tooltip("Player")]
+    public GameObject Player; //Reference to the palyer model
+    //Private fields
     //These floats will get the reference of axis of where the player will move.
     private float m_moveInputX;
     private float m_moveInputZ;
 
-    //This is to set velocity of the player moving around
-    public Vector3 m_playerVelocity;
-
-    private bool ladderBottom; //Collider to check if the player has entered to move up ladder
-    private bool ladderTop; //Collider to check if the player has entered to move down ladder
-    private bool ladderTop2;
-    public float ladderSpeed; //Speed of the player moving on the ladder
-
-    //Player properties
-    //Float properties
-    public float PlayerMovementSpeed; //Speed of the player movement
-    public float PlayerJumpForce; //The force of Player's jump
-    public float PlayerGravityForce; //The gravity force of the player
-    public float GroundCheckRadius = 0.4f; //The radius to check if the player's still on the ground
-    public float maxHealth = 100;
-    public float currentHealth;
-    public float ShieldAmount = 50;
-
     public static bool ControlsEnabled;
     public static float ShieldHealth;
+
+    [Header("Weapon Properties")]
+    [Tooltip("Weapon holder")]
+    public GameObject WeaponHolder;
+    [Tooltip("If the player reloading")]
     public bool isReloading = false;
 
-    //Transform properties
-    public Transform PlayerFeetPosition; //Position of the player's feet to check if player is grounded
-
-    //Unity properties
-    public CharacterController CharacterController; //Reference to the character controller for movement and changing height of the collider
-    public GameObject Player; //Reference to the palyer model
+    [Header("Ground Properties")]
+    private bool m_isGrounded;
     public LayerMask GroundType; //The layer in the scene, which is used to check if the player is on the ground
 
-    public GameObject WeaponHolder;
-    public GameObject gameOver;
+    [Header("Menu And Other Screens")]
+    [Tooltip("Game Over Screen")]
+    public GameObject gameOver; // This sets the reference to the game over canvas
+    [Tooltip("Pause Menu")]
+    public GameObject pauseMenu; // This sets the reference to the pause menu canvas
 
-    public Transform LadderTopTransform;
-    public Transform LadderBottomTransform;
-
-    public static Transform KnifeStartPosition;
-
+    
     private SoundFX m_sound;
 
     private WaveSystem m_waveSystem;
@@ -80,7 +94,6 @@ public class PlayerController : MonoBehaviour
         ControlsEnabled = true;
         currentHealth = maxHealth;
         m_sound = FindObjectOfType<SoundFX>();
-        //m_reload = GetComponent<Reloading>();
         m_waveSystem = FindObjectOfType<WaveSystem>();
     }
 
@@ -111,7 +124,6 @@ public class PlayerController : MonoBehaviour
         if (currentHealth <= 0)
         {
             m_waveSystem.GameOver();
-            //gameOver.SetActive(true); // This enables the game over screen
         }
     }
 
@@ -141,7 +153,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Melee"))
         {
             Knife.SetActive(true); // This enables the knife
-            //m_reload.ReloadAnimation();
             WeaponHolder.SetActive(false);
         }
         if (Input.GetKeyDown(KeyCode.L))
@@ -155,7 +166,6 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Defensive Ability") && PlayerUI.shieldActive == false && PlayerUI.shieldCooldownActive == false)
         {
-            //playerShield.SetActive(true); // This enables the player's shield
             ShieldHealth = ShieldAmount;
             PlayerUI.shieldActive = true;
         }
