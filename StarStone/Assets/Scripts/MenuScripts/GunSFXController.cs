@@ -8,6 +8,7 @@ using UnityEngine;
 ///// </summary>
 public class GunSFXController : MonoBehaviour
 {
+    [Header("Gun Fire Properties")]
     public AudioSource Fire; // This sets the reference to the audio
     private float fireVolume = 0.8f; // This sets a starting volume
 

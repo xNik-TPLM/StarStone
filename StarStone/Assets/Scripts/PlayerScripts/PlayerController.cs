@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [Header("Knife Properties")]
     [Tooltip("Knife")]
     public GameObject Knife; //This sets the reference to the melee weapon
-    [Tooltip("Knife Position")]
     public static Transform KnifeStartPosition;
 
     [Header("Ladder Properties")]

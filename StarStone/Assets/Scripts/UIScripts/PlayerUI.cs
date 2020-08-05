@@ -20,7 +20,6 @@ public class PlayerUI : MonoBehaviour
     [Tooltip("This sets a timer for the defensive ability")]
     private float m_shieldCooldownTimer;
     public float ShiedCooldownMaxTime;
-    [Tooltip("This checks whether the shield has been used and whether the player can use it")]
     public static bool shieldCooldownActive;
     public static bool shieldActive; // This checks if the shield is currently enabled
 

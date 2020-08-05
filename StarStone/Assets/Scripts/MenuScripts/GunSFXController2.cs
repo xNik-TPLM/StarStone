@@ -8,6 +8,7 @@ using UnityEngine;
 ///// </summary>
 public class GunSFXController2 : MonoBehaviour
 {
+    [Header("Reload Properties")]
     public AudioSource Reload; // This sets the reference to the audio
     private float reloadVolume = 0.8f; // This sets a starting volume
 

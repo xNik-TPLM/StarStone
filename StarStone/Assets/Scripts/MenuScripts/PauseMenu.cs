@@ -14,8 +14,11 @@ public class PauseMenu : MonoBehaviour
     // Public bool which checks if the game is paused
     public static bool IsGamePaused;
 
+    [Header("Pause Menu And Cutscene")]
     // GameObjects to set reference to the pause menu and cutscene
+    [Tooltip("Pause menu")]
     public GameObject pauseMenu;
+    [Tooltip("Cutscene")]
     public GameObject Cutscene;
 
     // Reference to the sound effects script

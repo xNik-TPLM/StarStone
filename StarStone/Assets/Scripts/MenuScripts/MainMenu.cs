@@ -10,8 +10,11 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class MainMenu : MonoBehaviour
 {
+    [Header("Menu And Cutscene")]
     // Public GameObjects to set references to the menu and cutscene
+    [Tooltip("Game menu")]
     public GameObject Menu;
+    [Tooltip("Cutscene")]
     public GameObject Cutscene;
     
     // Reference for the sound script

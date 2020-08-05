@@ -8,8 +8,10 @@ using UnityEngine;
 ///// </summary>
 public class AmmoCrate : MonoBehaviour
 {
+    [Header("Ammo Properties")]
     public static bool HasAmmoRefilled;
     public InteractionTextData InteractionText;
+    [Tooltip("Ammo inside the ammo crate")]
     public int ammoCrateValue; // This sets the ammo value the player receives once picked up
 
     // Start is called before the first frame update

@@ -8,6 +8,7 @@ using UnityEngine;
 ///// </summary>
 public class PrototypeSFXController : MonoBehaviour
 {
+    [Header("Explosion Properties")]
     public AudioSource Explosion; // This sets the reference to the audio
     private float explosionVolume = 0.8f; // This sets a starting volume
 

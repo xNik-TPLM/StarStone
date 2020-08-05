@@ -10,7 +10,11 @@ public class HealthCrate : MonoBehaviour
 {
     private PlayerController m_player; // Sets the reference to the player script
     public static bool HealthKitUsed;
+    [Header("Text Properties")]
+    [Tooltip("Pop-up text")]
     public InteractionTextData InteractionText;
+    [Header("Crate Properties")]
+    [Tooltip("Bonus health inside crate")]
     public int healthCrateValue; // This sets the health value the player receives once picked up
 
     // Start is called before the first frame update
