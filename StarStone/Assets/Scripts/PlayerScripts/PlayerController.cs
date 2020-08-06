@@ -62,8 +62,6 @@ public class PlayerController : MonoBehaviour
     [Header("Weapon Properties")]
     [Tooltip("Weapon holder")]
     public GameObject WeaponHolder;
-    [Tooltip("If the player reloading")]
-    public bool isReloading = false;
 
     [Header("Ground Properties")]
     private bool m_isGrounded;
@@ -158,10 +156,6 @@ public class PlayerController : MonoBehaviour
         {
             Knife.SetActive(true); // This enables the knife
             WeaponHolder.SetActive(false);
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            isReloading = true;
         }
     }
 
