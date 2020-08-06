@@ -37,8 +37,8 @@ public class EndingCutscene : MonoBehaviour
                 break;
 
             case 2: //Hide the ending text and show the credits
-                EndingText.SetActive(true);
-                CreditsText.SetActive(false);
+                EndingText.SetActive(false);
+                CreditsText.SetActive(true);
                 break;
 
             case 3: //Go to the main menu

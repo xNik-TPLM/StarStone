@@ -38,8 +38,7 @@ public class PowerSwitch : MonoBehaviour
             PlayerUI.PopUpControlsEnabled = true;
             
             //Check if the player interacts with the power switch and all alters have been activated, then end the game, which is in the coroutine
-            //if (Input.GetButtonDown("Interact") && InteractAlters.HasAllSigilsActivated == true)
-            if (Input.GetButtonDown("Interact"))
+            if (Input.GetButtonDown("Interact") && InteractAlters.HasAllSigilsActivated == true)
             {
                 StartCoroutine(EndTheGame());
             }

@@ -101,13 +101,16 @@ public class PlayerUI : MonoBehaviour
         shieldSlider.maxValue = m_playerHealth.ShieldAmount;
         m_shieldCooldownTimer = ShiedCooldownMaxTime;
 
+        shieldActive = false;
+        PlayerController.ShieldHealth = 0;
+
 
         //Nikodem Hamrol
         m_offensiveAbilityReference = FindObjectOfType<OffensiveAbility>(); //Set reference of the offensive ability, which is the nuke. This will be used to get the max cooldown time
-        
-        //We set these bools as active so that, the cooldown can start as soon as the game starts
-        OffensiveAbility.NukeEnabled = true;
-        shieldCooldownActive = true;
+
+        //Disable pop up messages and controls pop up
+        PopUpControlsEnabled = false;
+        PopUpMessageEnabled = false;
 
         //At Start, set the max value for the generator slider and disable the overheating text
         GeneratorTemperatureSlider.maxValue = MaxGeneratorTemperature;
