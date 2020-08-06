@@ -212,13 +212,14 @@ public class WeaponBase : MonoBehaviour
     //This coroutine is for when the player is relaoding
     private IEnumerator Reloading()
     {        
-        //Start the reload animation
+        //Start the reload animation and set relaoding to shot to stop the player from shooting
         WeaponAnimator.SetBool("Reloading", true);
+        m_isWeaponReloading = true;
 
         //Wait until this amount of seconds, which a little less than the animation duration
         yield return new WaitForSeconds(0.52f);
-        //Set reloading to true, stop the animation, which will return it to idle, play the reloading sound and set the wpeon is realodin bollean to false, so the player can fire again
-        m_isWeaponReloading = true;
+
+        //Stop the animation, which will return it to idle, play the reloading sound and set the wpeon is realodin bollean to false, so the player can fire again
         WeaponAnimator.SetBool("Reloading", false);
         m_soundReference.PrimaryHandling.Play();
         m_isWeaponReloading = false;

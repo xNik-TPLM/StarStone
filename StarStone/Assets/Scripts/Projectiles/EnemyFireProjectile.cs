@@ -52,6 +52,7 @@ public class EnemyFireProjectile : ProjectileBase
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.collider.gameObject.GetComponent<PlayerController>().PlayerDamage(ProjectileDamage, 1);
+            Destroy(gameObject);
         }
     }
 }

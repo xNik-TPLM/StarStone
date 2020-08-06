@@ -41,7 +41,7 @@ public class FireElementalEnemy : EnemyBase
         {
             m_isPlayerInRange = true; //Set the bool that the player is in range
             transform.position = transform.position; //Stop the enemy in its position
-            transform.LookAt(m_playerTarget.position); //Aim at the enemy
+            transform.LookAt(new Vector3(m_playerTarget.position.x, gameObject.transform.position.y, m_playerTarget.position.z)); //Aim at the player
         }
         else
         {

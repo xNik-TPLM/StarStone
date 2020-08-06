@@ -95,7 +95,7 @@ public class InteractAlters : MonoBehaviour
 
                     case "FireStarStoneAlter":
                         //If the wind sigil has been interacted but the fire sigil hasn't
-                        if(HasWindSigilInteracted == true)
+                        if(HasWindSigilInteracted == true && HasFireSigilInteracted == false)
                         {
                             //The fire sigil has been interacted, which will initiate the next wave and show the fire starstone
                             HasSigilInteracted = true;
