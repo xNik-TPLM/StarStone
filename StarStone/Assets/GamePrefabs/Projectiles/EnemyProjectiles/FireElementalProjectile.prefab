@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileDuration: 1
-  ProjectileSpeed: 30
+  ProjectileSpeed: 20
   ProjectileDamage: 15
 --- !u!54 &-7427336122909681427
 Rigidbody:
