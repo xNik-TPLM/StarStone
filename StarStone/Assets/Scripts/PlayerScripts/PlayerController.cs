@@ -325,7 +325,7 @@ public class PlayerController : MonoBehaviour
     //This function controls the sprint (Ben Smith)
     private void PlayerSprint()
     {
-        if (Input.GetKey("w") && Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey("w") && Input.GetKey(KeyCode.LeftShift) && m_isGrounded == true)
         {
             transform.position += transform.TransformDirection(Vector3.forward) * Time.deltaTime * PlayerMovementSpeed * 2f;
         }
