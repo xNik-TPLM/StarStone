@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentAmmo: 0
   WeaponClipSize: 0
-  MaxAmmo: 0
+  MaxAmmo: 150
   IsAutomatic: 0
   UseHitscan: 0
   FireRate: 0

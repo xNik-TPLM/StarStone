@@ -5115,7 +5115,6 @@ MonoBehaviour:
   CharacterController: {fileID: 3297118803367451317}
   Player: {fileID: 6836557706347718234}
   WeaponHolder: {fileID: 8399359680510400983}
-  isReloading: 0
   GroundType:
     serializedVersion: 2
     m_Bits: 256
@@ -6405,11 +6404,6 @@ PrefabInstance:
         type: 3}
       propertyPath: WeaponDamage
       value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 2851377721164807728, guid: 6ca3fe58d3097ed4e938a49ae27b7909,
-        type: 3}
-      propertyPath: MaxAmmo
-      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2851377721164807728, guid: 6ca3fe58d3097ed4e938a49ae27b7909,
         type: 3}

@@ -1641,15 +1641,12 @@ MonoBehaviour:
   - Can you activate it?
   - "Great. I\u2019m really surprised with this training session. We can now say,
     that you are ready, but come back whenever you wish soldier."
-  - "Amazing. I\u2019m really surprised with this training session. We can now say,
+  - "Great. I\u2019m really surprised with this training session. We can now say,
     that you are ready, but come back whenever you wish soldier."
   DialogueText: {fileID: 653132722}
   CameraMovementPopUp: {fileID: 1886692953}
   PlayerMovementPopUp: {fileID: 143955519}
   PlayerAdvancedMovementPopUp: {fileID: 1610772100}
-  PlayerShootingPopUp: {fileID: 541219805}
-  PlayerNukePopUp: {fileID: 1224399994}
-  PlayerShieldPopUp: {fileID: 2138050106}
   PlayerSingleLinedPopUp: {fileID: 1773757985}
   TextW: {fileID: 1465008184}
   TextA: {fileID: 1647831681}
