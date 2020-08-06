@@ -417,7 +417,7 @@ MonoBehaviour:
     InteractControlsText: Press [F] to grab more ammo
     InteractPopUpMessages:
     - Already used this ammo crate in this wave
-  ammoCrateValue: 30
+  ammoCrateValue: 80
 --- !u!1 &969797013540129357
 GameObject:
   m_ObjectHideFlags: 0
