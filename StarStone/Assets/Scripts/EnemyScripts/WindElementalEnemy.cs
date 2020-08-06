@@ -64,13 +64,22 @@ public class WindElementalEnemy : EnemyBase
             //If detonation is enable
             if(m_detonationEnabled == true)
             {
-                //damage the player and disable detonation, to stop potential duplicated damage
+                //Damage the player, destroy the enemy, instantiate the explosion viusal effect and disable detonation, to stop potential duplicated damage
                 other.gameObject.GetComponent<PlayerController>().PlayerDamage(DetonationDamage, 0);
                 m_enemyCurrentHealth = 0;
                 Instantiate(ExplosionVFX, transform.position, transform.rotation);
                 m_detonationEnabled = false;
             }
         }
+    }
+    //This coroutine will detonate before normal detonation, in case the player is still inside the trigger
+    private IEnumerator DamagingDetonation()
+    {
+        //Wait the same amount of time, but a frame before
+        yield return new WaitForSeconds(MaxDetonationTime - 0.1f);
+
+        //Enable detonation
+        m_detonationEnabled = true;
     }
 
     //This coroutine will handle the detonation of the enemy
@@ -89,15 +98,5 @@ public class WindElementalEnemy : EnemyBase
             m_enemyCurrentHealth = 0;
             Instantiate(ExplosionVFX, transform.position, transform.rotation);
         }
-    }
-
-    //This coroutine will detonate before normal detonation, in case the player is still inside the trigger
-    private IEnumerator DamagingDetonation()
-    {
-        //Wait the same amount of time, but a frame before
-        yield return new WaitForSeconds(MaxDetonationTime - 0.1f);
-
-        //Enable detonation, kill the enemy and instantiate the explosion visual effect
-        m_detonationEnabled = true;
     }
 }

@@ -38,35 +38,56 @@ public class PlayerUI : MonoBehaviour
     //Reference to the offesive ability script to access the nuke max time
     private OffensiveAbility m_offensiveAbilityReference;
 
-    public static string PopUpMessageText;
-    public static string PopUpControlsText;
-    public static bool PopUpMessageEnabled;
-    public static bool PopUpControlsEnabled;
+    //Public static fields
+    //Static booleans
+    public static bool HasNextWaveStarted; //This checks if the next wave has started so that it can display the resupply message 
+    public static bool PopUpMessageEnabled; //This checks if the pop up message can be dispalyed on to the screen
+    public static bool PopUpControlsEnabled; //This checks if the controls can be displayed
+
+    //Static strings
+    public static string PopUpMessageText; //This string will display the pop up message from the object interacted
+    public static string PopUpControlsText; //This string will display the controls from the object to interact
 
 
     [Header("Slider Temperature Properties")]
+    [Tooltip("This is the max temperature for the generator, before overheating")]
     public float MaxGeneratorTemperature; //This is to set the max value for the slider and to check if the generator will overheat
+    [Tooltip("The maount of states for the generator for setting colour")]
     public int TemperatureStatesAmount;  //This is the amount of states the generatr has. This value makes it easier to calculate the middle states of the generator.
+    [Tooltip("Colours in RGB to represent the states of the generator")]
     public Vector3[] SliderColours; //This array keeps the rgb values for the states of the generator temperature.
+    [Tooltip("The slider object of the generator")]
     public Slider GeneratorTemperatureSlider; //This is used as reference to the generator slider, in order to update the value of it
+    [Tooltip("The fill image inside the generator slider")]
     public Image TemperatureFill; //This is used as reference to the image used to fill the slider, in order to change its colour
 
     [Header("Ability Cooldown Properties")]
     //These the two images are used as reference to the cooldown image, in order to update the fill amount and the change the colour of the image
+    [Tooltip("This is the cooldown fill image for the nuke ability")]
     public Image NukeCooldownImage;
+    [Tooltip("This is the cooldown fill image for the shield ability")]
     public Image ShieldCooldownImage;
 
     //This array keeps track the rgba values for the cooldown states.
-    public Vector4[] AbilityReadyColour;
+    [Tooltip("Colours in RGBA representing the state ")]
+    public Vector4[] AbilityStateColour;
 
     [Header("UI Components")]
-    public Text WaveStateText; //This text object will show the wave number and if they are in an intermission phase
+    [Tooltip("Wave state text object, to display the wave states")]
+    public Text WaveStateText; //This text object will show the wave states, such as the intermission objective and wave number
+    [Tooltip("Wave timer text object, that dispalys wave time")]
     public Text WaveTimerText; //This text object will show the time left for a wave to be completed
+    [Tooltip("The overheating text object, that displays it when the generator is overheating")]
     public Text OverheatingText; //This text object will indicate if the generator is overheating
+    [Tooltip("Pop up Controls text object, to display controls on the object to interact ")]
     public Text PopUpControls; //This text object will show the controls on objects that player will interact with
+    [Tooltip("Pop up message text object, to display a message once interacted with an object")]
     public Text PopUpMessage; //This text object will show the message, if the player can't yet interact with the object
+    [Tooltip("The time of the pop up message being on screen")]
     public float PopUpMessageMaxDisplayTime; //This is the max time that the pop up message will be displayed for
+    [Tooltip("Game Object that stores everyhting to do with the Nuke ability UI")]
     public GameObject NukeAbilityIcon; //This is the UI for the nuke, which contains the slider and icon
+    [Tooltip("Game Object that stores everything to do with the shield ability UI")]
     public GameObject ShieldAbilityIcon; //This is the UI for the shield, which contains the slider and icon
 
     // Start is called before the first frame update
@@ -140,6 +161,18 @@ public class PlayerUI : MonoBehaviour
         PopUpMessage.enabled = false;
     }
 
+    //This coroutine is used to display a message to collect resources before starting the next wave
+    private IEnumerator CollectResourcesMessage()
+    {
+        //Display text to resupply
+        WaveStateText.text = "Go to the Generator room and resupply";
+
+        //Wait five seconds and display the wave number, by setting next wave started boolean to false
+        yield return new WaitForSeconds(5);
+
+        HasNextWaveStarted = false;
+    }
+
     //This function is to update the HUD with displaying the controls and messages to the player (Nikodem Hamrol)
     private void UpdatePopUpMessages()
     {
@@ -173,9 +206,17 @@ public class PlayerUI : MonoBehaviour
                 WaveTimerText.enabled = false;
                 break;
 
-            case 1: //When waves are initiated, which will show the wave number and show the timer         
-                WaveStateText.text = "Wave: " + WaveSystem.WaveNumber.ToString();
-                WaveTimerText.enabled = true;
+            case 1: //When waves are initiated, it will display the wave number first. However, it will display resupply text once the player has interacted with the sigils then display the wave number again         
+                if (HasNextWaveStarted == true)
+                {
+                    StartCoroutine(CollectResourcesMessage());
+                }
+                else
+                {
+                    //Diplay the wave number
+                    WaveStateText.text = "Wave: " + WaveSystem.WaveNumber.ToString();
+                    WaveTimerText.enabled = true;
+                }
                 break;
 
             case 2: //This is when the player is in the intermission, which the player will be tasked to activate the alters
@@ -230,7 +271,7 @@ public class PlayerUI : MonoBehaviour
         }        
         
         NukeCooldownImage.fillAmount = OffensiveAbility.NukeCooldownTimer / m_offensiveAbilityReference.NukeCooldownMaxTime; //Update the image fill. Can't set max value of the fill amount, so we divide the cooldown timer by the max cooldown time
-        NukeCooldownImage.color = new Color(AbilityReadyColour[m_nukeCooldownColourIndex].w, AbilityReadyColour[m_nukeCooldownColourIndex].x, AbilityReadyColour[m_nukeCooldownColourIndex].y, AbilityReadyColour[m_nukeCooldownColourIndex].z); //Update the colour using indexes
+        NukeCooldownImage.color = new Color(AbilityStateColour[m_nukeCooldownColourIndex].x, AbilityStateColour[m_nukeCooldownColourIndex].y, AbilityStateColour[m_nukeCooldownColourIndex].z, AbilityStateColour[m_nukeCooldownColourIndex].w); //Update the colour using indexes
     }
 
     //This function will handle the cooldown display of the defensive ability (Nikodem Hamrol)
@@ -251,7 +292,7 @@ public class PlayerUI : MonoBehaviour
         }
 
         ShieldCooldownImage.fillAmount = m_shieldCooldownTimer / ShiedCooldownMaxTime; //Update the image fill.
-        ShieldCooldownImage.color = new Color(AbilityReadyColour[m_shieldCooldownColourIndex].w, AbilityReadyColour[m_shieldCooldownColourIndex].x, AbilityReadyColour[m_shieldCooldownColourIndex].y, AbilityReadyColour[m_shieldCooldownColourIndex].z); //Update the colour using indexes
+        ShieldCooldownImage.color = new Color(AbilityStateColour[m_shieldCooldownColourIndex].x, AbilityStateColour[m_shieldCooldownColourIndex].y, AbilityStateColour[m_shieldCooldownColourIndex].z, AbilityStateColour[m_shieldCooldownColourIndex].w); //Update the colour using indexes
     }
 
     //this function will handle the temperature of the generator display (Nikodem Hamrol)

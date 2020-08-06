@@ -191,14 +191,19 @@ public class WaveSystem : MonoBehaviour
             //If the cooldown is finished if the player is not in an intermission phase
             if (m_nextwaveTimer > WaveCooldown && InIntermission == false && InteractAlters.HasAllSigilsActivated == false)
             {
-                //Set the cooldown and enemies spawned to 0
+                //Set the cooldown and enemies spawned to 0 and pop a message to resupply
                 m_nextwaveTimer = 0;
                 EnemiesSpawned = 0;
-                
-                //Increment the wave index, set the timer to the next wave's time and start the wave
+                PlayerUI.HasNextWaveStarted = true;
+
+                //Increment the wave index, set the timer to the next wave's time
                 WaveNumberIndex++;
                 WaveTimer = waves[WaveNumberIndex].WaveTime;
+
+                //Start spawning next wave of enemies
                 m_hasWaveBegun = true;
+
+                //Reset all these booleans so the player has not interacted with the sigil and they can use the ammo box and health pack again
                 InteractAlters.HasSigilInteracted = false;
                 HealthCrate.HealthKitUsed = false;
                 AmmoCrate.HasAmmoRefilled = false;

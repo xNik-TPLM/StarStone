@@ -81,11 +81,13 @@ public class PlayerController : MonoBehaviour
     private WaveSystem m_waveSystem;
 
     //Nikodem Hamrol's fields and properties
-    private bool m_isPlayerBurning;
+    private bool m_isPlayerBurning; //This bool checks if the player is burning
 
     [Header("Player Burning Properties")]
-    public float MaxBurningTime;
-    public float BurningDamage;
+    [Tooltip("This is the maximum time the player can burn")]
+    public float MaxBurningTime; //The maximum time of burning
+    [Tooltip("This is the amount of burining damage the player will take per second")]
+    public float BurningDamage; //The amount of burning damage to the player
 
     // Start is called before the first frame update
     void Start()
@@ -93,6 +95,9 @@ public class PlayerController : MonoBehaviour
         ControlsEnabled = true;
         currentHealth = maxHealth;
         m_sound = FindObjectOfType<SoundFX>();
+
+        //Nikodem Hamrol
+        //Find the wave system script for reference, to use the GameOver function
         m_waveSystem = FindObjectOfType<WaveSystem>();
     }
 
@@ -369,7 +374,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //This coroutine handles the burning of the player, by dealing burning damage and waits until time's up
+    //This coroutine handles the burning of the player, by dealing burning damage and waits until time's up (Nikodem Hamrol)
     private IEnumerator PlayerBurning()
     {
         //Deal burning damage per second

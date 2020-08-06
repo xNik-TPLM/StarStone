@@ -2836,9 +2836,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoDisplay: {fileID: 7154827776655114167}
-  ShiedCooldownMaxTime: 10
-  healthSlider: {fileID: 7078558871997608791}
   shieldSlider: {fileID: 5138125371775238831}
+  ShiedCooldownMaxTime: 30
+  healthSlider: {fileID: 7078558871997608791}
   MaxGeneratorTemperature: 300
   TemperatureStatesAmount: 3
   SliderColours:
@@ -2850,9 +2850,9 @@ MonoBehaviour:
   TemperatureFill: {fileID: 7704418939290162988}
   NukeCooldownImage: {fileID: 5873275748550285862}
   ShieldCooldownImage: {fileID: 5514304952758034201}
-  AbilityReadyColour:
-  - {x: 240, y: 0, z: 1, w: 240}
-  - {x: 255, y: 255, z: 0.6, w: 255}
+  AbilityStateColour:
+  - {x: 240, y: 240, z: 0, w: 0.9}
+  - {x: 255, y: 255, z: 255, w: 0.6}
   WaveStateText: {fileID: 7935390616905818928}
   WaveTimerText: {fileID: 7843505989468108352}
   OverheatingText: {fileID: 6066898256268464758}
@@ -5099,10 +5099,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Knife: {fileID: 9195779116005136097}
-  playerShield: {fileID: 8041026485579920376}
-  pauseMenu: {fileID: 2935839137570746789}
-  m_playerVelocity: {x: 0, y: 0, z: 0}
+  LadderTopTransform: {fileID: 0}
+  LadderBottomTransform: {fileID: 0}
   ladderSpeed: 10
+  m_playerVelocity: {x: 0, y: 0, z: 0}
+  playerShield: {fileID: 8041026485579920376}
   PlayerMovementSpeed: 10
   PlayerJumpForce: 3
   PlayerGravityForce: -9.81
@@ -5110,17 +5111,16 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   ShieldAmount: 50
-  isReloading: 0
   PlayerFeetPosition: {fileID: 3297118803590164208}
   CharacterController: {fileID: 3297118803367451317}
   Player: {fileID: 6836557706347718234}
+  WeaponHolder: {fileID: 8399359680510400983}
+  isReloading: 0
   GroundType:
     serializedVersion: 2
     m_Bits: 256
-  WeaponHolder: {fileID: 8399359680510400983}
   gameOver: {fileID: 3175149891254623954}
-  LadderTopTransform: {fileID: 0}
-  LadderBottomTransform: {fileID: 0}
+  pauseMenu: {fileID: 2935839137570746789}
   MaxBurningTime: 5
   BurningDamage: 5
 --- !u!114 &8558817294421199429
